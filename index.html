@@ -367,8 +367,10 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "LØM Læringsapp",
   undertittel: "Ledelse, økonomi og markedsføring · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "0.5 · 11. september 2026",
+  versjon: "0.5.2 · 14. september 2026",
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
+  // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
+  telling: { url: "https://ekmorgezevmejjvhuzca.supabase.co", nokkel: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbW9yZ2V6ZXZtZWpqdmh1emNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1Mzg3MTEsImV4cCI6MjA3MDExNDcxMX0.qlhZMMXpU8RKKitjT22_F1qATWWm_nfXvZcjpcklE4Y" },
   proveAntall: 8,                // antall spørsmål i «Prøv»-modus
   bestaattProsent: 70,           // grense for «bestått» på prøve
   varsel: "Dette er kun et sammendrag/studiehefte utarbeidet som repetisjons- og øvingsstøtte. Det kan ikke siteres eller vises til i besvarelser, caser, prosjektoppgaver, eksamen eller høringer. Der gjelder lærebøkene — Hjertnes/Skorpen «Økonomistyring for LØM-emnet» og Hjertnes «Markedsføring, organisasjon og ledelse for LØM-emnet» — samt oppgitte primærkilder (Lovdata, lover, forskrifter, standarder)."
@@ -7464,6 +7466,53 @@ LOM.spill = (function () {
     oppnaadd: () => milepaeler.filter(m => m.kr <= S.kr) };
 })();
 
+
+/* ===================== Anonym bruksstatistikk (Supabase) =====================
+   Slås på med LOM.oppsett.telling = { url: "https://<prosjekt>.supabase.co", nokkel: "<anon-nøkkel>" }
+   i 00_struktur.js. Tom streng / manglende felt = ingen telling.
+   Teller bare når appen kjører fra en nettadresse (GitHub Pages) — aldri fra nedlastet
+   fil (file://). Ingen informasjonskapsler, ingen navn, ingen fremdrift eller svar sendes.
+   Det som registreres: et tilfeldig øktnummer (lever til fanen lukkes), hvilke sider
+   (kapittel/fane/verktøy) som åpnes, og hendelser (lest, prøve levert, prøve på tvers,
+   kalkulator, eksamensoppgave sett, spillmodus på, aktiv 2/10/30 minutter).
+   Nøkkelen i oppsettet er Supabases offentlige anon-nøkkel; tabellen lom_hendelser
+   tillater bare innsetting for den (RLS), aldri lesing.
+   ============================================================================== */
+window.LOM = window.LOM || {};
+LOM.telling = (function () {
+  const O = (LOM.oppsett && LOM.oppsett.telling) || {};
+  const paa = !!(O && O.url && O.nokkel) && /^https?:$/.test(location.protocol);
+  const versjon = (LOM.oppsett && LOM.oppsett.versjon) || "";
+  const okt = (() => { try { const a = new Uint8Array(8); crypto.getRandomValues(a); return Array.from(a, b => b.toString(16).padStart(2, "0")).join(""); } catch (e) { return String(Date.now()) + Math.random().toString(16).slice(2, 8); } })();
+  let ko = [], timer = null;
+  function send() {
+    if (!paa || !ko.length) return;
+    const rader = ko.splice(0, 50);
+    try {
+      fetch(O.url.replace(/\/$/, "") + "/rest/v1/lom_hendelser", {
+        method: "POST", keepalive: true,
+        headers: { "Content-Type": "application/json", "apikey": O.nokkel, "Authorization": "Bearer " + O.nokkel, "Prefer": "return=minimal" },
+        body: JSON.stringify(rader)
+      }).catch(() => { });
+    } catch (e) { }
+  }
+  function legg(type, navn) { if (!paa) return; ko.push({ okt, type, navn: String(navn).slice(0, 120), versjon }); clearTimeout(timer); timer = setTimeout(send, 1500); }
+  addEventListener("visibilitychange", () => { if (document.hidden) send(); });
+  addEventListener("pagehide", send);
+  const sti = () => { const h = (location.hash || "#/").slice(1); return h.startsWith("/") ? h : "/" + h; };
+  function side() { legg("side", sti()); }
+  function hendelse(navn) { legg("hendelse", navn); }
+  /* aktiv tid: teller mens fanen er synlig og brukeren har rørt seg siste 60 s */
+  let aktiv = 0, sist = Date.now(), sendt = {};
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach(e => addEventListener(e, () => { sist = Date.now(); }, { passive: true }));
+  setInterval(() => {
+    if (document.hidden || Date.now() - sist > 60000) return;
+    aktiv += 15;
+    [[120, "aktiv-2-min"], [600, "aktiv-10-min"], [1800, "aktiv-30-min"]].forEach(([s, n]) => { if (aktiv >= s && !sendt[n]) { sendt[n] = 1; hendelse(n); } });
+  }, 15000);
+  return { paa, side, hendelse };
+})();
+
 </script>
 <script>
 /* ===================== LØM Læringsapp — motor =====================
@@ -7529,6 +7578,7 @@ LOM.spill = (function () {
     else visForside();
     pakkTabeller();
     window.scrollTo(0, 0);
+    LOM.telling && LOM.telling.side(document.title);
   };
   const pakkTabeller = () => rot.querySelectorAll("table.tab").forEach(t => { if (!t.parentElement.classList.contains("tab-wrap")) { const w = el("div", { class: "tab-wrap" }); t.replaceWith(w); w.append(t); } });
   new MutationObserver(pakkTabeller).observe(rot, { childList: true, subtree: true });
@@ -7594,7 +7644,7 @@ LOM.spill = (function () {
     const lag = el("input", { type: "text", placeholder: "Lag (valgfritt, for senere)", value: T.lag || "", maxlength: 24, style: "margin-top:0" });
     const bak = el("div", { class: "modal-bak" }, el("div", { class: "modal" }, el("h3", null, "Velkommen til Nordlys Elektro"), el("p", { style: "font-size:.92rem;color:var(--tekst2)" }, "Du starter som lærling. Hver riktig svar, hvert lest kapittel og hver beståtte prøve gir kroner til bedriften — og løfter deg i gradene. Du konkurrerer bare mot deg selv."), inn, lag,
       el("div", { class: "rad" }, el("button", { class: "knapp", onclick: () => bak.remove() }, "Avbryt"), el("button", { class: "knapp primar", onclick: ok }, "Start"))));
-    function ok() { SP.sett({ navn: inn.value.trim() || "Lærling", lag: lag.value.trim(), paa: true }); bak.remove(); oppdaterSpillknapp(); melding("Spillmodus på"); etter && etter(); }
+    function ok() { SP.sett({ navn: inn.value.trim() || "Lærling", lag: lag.value.trim(), paa: true }); bak.remove(); oppdaterSpillknapp(); melding("Spillmodus på"); LOM.telling && LOM.telling.hendelse("spillmodus-paa"); etter && etter(); }
     inn.addEventListener("keydown", (e) => e.key === "Enter" && ok()); document.body.append(bak); inn.focus();
   }
   function oppdaterSpillknapp() { const b = $("#spill"); b.classList.toggle("aktiv", SP.paa()); b.title = SP.paa() ? "Spillmodus er på — klikk for normal" : "Bytt til spillmodus"; const t = b.querySelector(".tk"); if (t) t.textContent = SP.paa() ? "Spill på" : "Spill"; }
@@ -7636,7 +7686,7 @@ LOM.spill = (function () {
   function visVerktoy(id) {
     const v = (O.verktoy || []).find(x => x.id === id) || { navn: id };
     sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › Verktøy › " + v.navn);
-    rot.replaceChildren(verktoylinje([["← Forside", () => gaaTil("/")], ["Skriv ut", () => window.print()]]), el("h1", null, v.navn), v.tekst ? el("p", { class: "kilder", style: "margin-bottom:16px" }, v.tekst, v.ref ? " · " + v.ref : "") : null, LOM.kalkulatorer[id](el, F), varsel(), bunn()); SP.hendelse("kalkulator", { navn: id });
+    rot.replaceChildren(verktoylinje([["← Forside", () => gaaTil("/")], ["Skriv ut", () => window.print()]]), el("h1", null, v.navn), v.tekst ? el("p", { class: "kilder", style: "margin-bottom:16px" }, v.tekst, v.ref ? " · " + v.ref : "") : null, LOM.kalkulatorer[id](el, F), varsel(), bunn()); SP.hendelse("kalkulator", { navn: id }); LOM.telling && LOM.telling.hendelse("kalkulator-" + id);
   }
   const verktoylinje = (knapper, hoyre) => el("div", { class: "verktoylinje" }, el("div", null, knapper.map(([n, fn, kl]) => el("button", { class: "knapp liten " + (kl || ""), onclick: fn }, n))), hoyre ? el("div", null, hoyre) : null);
 
@@ -7673,7 +7723,7 @@ LOM.spill = (function () {
     ta.addEventListener("input", () => { l.eksamen.tekst = ta.value; const n = ord(ta.value); teller.textContent = n + " ord"; lagre(); belonn(n); });
     const los = el("div", { class: "losning " + (lager.laerer ? "" : "skjult") }, el("h3", null, "Løsningsforslag — hva som skiller bestått fra godt"), el("p", { class: "kilder" }, "Løsningsforslaget er øvings- og repetisjonsstøtte. Det kan ikke siteres eller vises til i besvarelser, caser, prosjektoppgaver, eksamen eller høringer."),
       E.losning.map(x => el("div", { class: "los-del" }, x.overskrift ? el("h4", null, x.overskrift) : null, x.tekst.split("\n").map(t => el("p", null, t)))));
-    const vis = el("button", { class: "knapp primar", onclick: () => { const n = ord(ta.value); if (n < 80 && !l.eksamen.vist && !bekreft(`Du har skrevet ${n} ord. Løsningsforslaget gir mest når du har skrevet ditt eget svar først. Vise likevel?`)) return; los.classList.remove("skjult"); vis.disabled = true; if (!l.eksamen.vist) { l.eksamen.vist = new Date().toISOString(); lagre(); } belonn(n); los.scrollIntoView({ behavior: "smooth", block: "start" }); } }, "Vis løsningsforslag");
+    const vis = el("button", { class: "knapp primar", onclick: () => { const n = ord(ta.value); if (n < 80 && !l.eksamen.vist && !bekreft(`Du har skrevet ${n} ord. Løsningsforslaget gir mest når du har skrevet ditt eget svar først. Vise likevel?`)) return; los.classList.remove("skjult"); vis.disabled = true; if (!l.eksamen.vist) { l.eksamen.vist = new Date().toISOString(); lagre(); LOM.telling && LOM.telling.hendelse("eksamen-" + id); } belonn(n); los.scrollIntoView({ behavior: "smooth", block: "start" }); } }, "Vis løsningsforslag");
     boks.append(
       el("div", { class: "kort eksamen" }, el("div", { class: "merkelapp" }, `Eksamensnær · ${E.tid} minutter · du er ${E.rolle}`), el("h2", null, E.tittel.charAt(0).toUpperCase() + E.tittel.slice(1)),
         el("p", { class: "kilder" }, "Én case av samme slag som du møter til eksamen i LØM: en kort situasjon, og et spørsmål som krever at du drøfter og anbefaler noe. Det finnes ingen fasit i vanlig forstand — løsningsforslaget viser hva som skiller et bestått svar fra et godt."),
@@ -7699,7 +7749,7 @@ LOM.spill = (function () {
       I.avvik && lager.laerer ? el("div", { class: "laererboks" }, el("h3", null, "Lærernotat — avvik i læreboka (vises kun i lærermodus)"), el("p", null, I.avvik)) : null,
       I.sjekkDegSelv ? el("div", { class: "kort" }, el("h3", null, "Sjekk deg selv"), el("p", null, I.sjekkDegSelv)) : null,
       el("div", { class: "kort dempet" }, el("h3", null, "Kilder"), el("p", { class: "kilder" }, I.kilde), I.ovingsark ? el("p", { class: "kilder" }, "Regneark til kapitlet: ", el("code", null, I.ovingsark), " (deles ut av lærer).") : null),
-      el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => { kapLager(id).lest = true; lagre(); SP.hendelse("lest", { id, tittel: finnKap(id).kap.tittel }); melding("Kapitlet er merket som lest"); gaaTil(`/kap/${id}/se`); } }, "Ferdig lest → Se og regn")));
+      el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => { kapLager(id).lest = true; lagre(); SP.hendelse("lest", { id, tittel: finnKap(id).kap.tittel }); LOM.telling && LOM.telling.hendelse("lest-" + id); melding("Kapitlet er merket som lest"); gaaTil(`/kap/${id}/se`); } }, "Ferdig lest → Se og regn")));
   }
 
   /* ---------- Se og regn ---------- */
@@ -7763,7 +7813,7 @@ LOM.spill = (function () {
         const riktig = sp.filter((q, i) => svar[i] === q.riktig).length, p = Math.round(100 * riktig / sp.length);
         l.prove = { best: Math.max(p, l.prove ? l.prove.best : 0), sist: p, dato: new Date().toISOString() }; lagre();
         const fk = finnKap(id); const delFerdig = fk.del.kapitler.filter(k => LOM.innhold[k.id]).every(k => kapStatus(k.id) === "ferdig");
-        SP.hendelse("prove", { id, tittel: fk.kap.tittel, prosent: p, bestaatt: p >= O.bestaattProsent, kapmester: kapStatus(id) === "ferdig", delmester: delFerdig });
+        SP.hendelse("prove", { id, tittel: fk.kap.tittel, prosent: p, bestaatt: p >= O.bestaattProsent, kapmester: kapStatus(id) === "ferdig", delmester: delFerdig }); LOM.telling && LOM.telling.hendelse("prove-" + id + (p >= O.bestaattProsent ? "-bestaatt" : "-ikke-bestaatt"));
         boks.replaceChildren(resultat(p, riktig, sp.length, false, kjor), gjennomgang(sp.map(q => ({ q })), svar));
         window.scrollTo(0, 0);
       }
@@ -7807,7 +7857,7 @@ LOM.spill = (function () {
         if (!tvang && svar.some(v => v === null)) { melding("Du har ubesvarte spørsmål"); return; }
         clearInterval(klokkeT);
         const riktig = sp.filter((x, i) => svar[i] === x.q.riktig).length, p = Math.round(100 * riktig / sp.length);
-        lager.tverr = { best: Math.max(p, best.best || 0), sist: p }; lagre(); SP.hendelse("tverr", { prosent: p, bestaatt: p >= O.bestaattProsent });
+        lager.tverr = { best: Math.max(p, best.best || 0), sist: p }; lagre(); SP.hendelse("tverr", { prosent: p, bestaatt: p >= O.bestaattProsent }); LOM.telling && LOM.telling.hendelse("prove-paa-tvers" + (p >= O.bestaattProsent ? "-bestaatt" : "-ikke-bestaatt"));
         const perKap = {}; sp.forEach((x, i) => { const k = perKap[x.kap.id] = perKap[x.kap.id] || { navn: `${x.del.navn} kap. ${x.kap.kap} ${x.kap.tittel}`, r: 0, n: 0, id: x.kap.id }; k.n++; if (svar[i] === x.q.riktig) k.r++; });
         rot.replaceChildren(resultat(p, riktig, sp.length, tvang, () => visTverrProve(omfangVelg.value)),
           el("div", { class: "kort" }, el("h3", null, "Resultat per kapittel"), el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Kapittel"), el("th", null, "Riktige"), el("th", null, "Andel"), el("th", null, ""))), el("tbody", null, Object.values(perKap).sort((a, b) => a.r / a.n - b.r / b.n).map(k => el("tr", null, el("td", null, k.navn), el("td", null, `${k.r} / ${k.n}`), el("td", null, el("div", { class: "stolpe liten" }, el("i", { style: `width:${Math.round(k.r / k.n * 100)}%;background:${k.r / k.n < .7 ? "var(--rod)" : "var(--gronn)"}` }))), el("td", null, k.r / k.n < .7 ? el("button", { class: "knapp liten", onclick: () => gaaTil(`/kap/${k.id}/les`) }, "Les kapitlet") : "✓")))))),
