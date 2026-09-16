@@ -1259,7 +1259,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "LØM Læringsapp",
   undertittel: "Ledelse, økonomi og markedsføring · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "0.6 · 15. september 2026",
+  versjon: "0.7 · 16. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -5505,7 +5505,7 @@ LOM.innhold.ok10 = {
     { navn: "Nåverdi med annuitetsfaktor", formel: "Årlig overskudd × nåverdifaktor − investeringsutgift", eksempel: "690 000 × 14,4982 − 3 450 000 = 6 553 790 kr (35 år, 6 %)" }
   ],
 
-  kalkulator: "naaverdi",
+  kalkulatorer: ["naaverdi", "naaverdiAvansert"],
 
   flervalg: [
     { sp: "Hvorfor står ikke avskrivningene i kontantstrømmen?", alt: ["Fordi de er for små til å bety noe", "Fordi avskrivning er en kostnad, ikke en utbetaling — pengene gikk ut i år 0", "Fordi de allerede er trukket fra i innbetalingsoverskuddet", "Fordi de kommer først etter tilbakebetalingstiden"], riktig: 1, forklaring: "Pengene forlot bedriften den dagen utstyret ble betalt, og de står med minus i år 0. Å ta med avskrivninger i tillegg teller utgiften to ganger. Det er den vanligste blandingen mellom kapittel 10 og kapittel 3. (Bok 1, kap. 10)" },
@@ -8188,6 +8188,79 @@ LOM.kalkulatorer.naaverdi = function (el, f) {
     graf.replaceChildren(el("div", { class: "kilder" }, "Nåverdi ved ulike avkastningskrav (nåverdiprofil):"), H().linjegraf([{ navn: "Nåverdi", farge: "var(--serie1)", punkter: pk }], { xNavn: "Avkastningskrav (%)", xsteg: 5, yTip: f.kr, markorer: [{ x: s.krav, y: NV, tekst: `Krav ${s.krav} %: ${f.kr(NV)}` }], vlinjer: ir !== null && ir * 100 <= 30 ? [{ x: ir * 100, tekst: `Internrente ${f.pst(ir * 100)}` }] : [] }));
     konkl.replaceChildren(el("div", { class: "tips" }, `Der kurven krysser null, ligger internrenten. Er avkastningskravet høyere enn internrenten, blir nåverdien negativ. Tilbakebetalingsmetoden ser ikke hva som skjer etter at investeringen er spilt inn — derfor er nåverdien hovedmetoden.`));
     let a = 0; tabBoks.replaceChildren(H().tab(el, [{ navn: "År", nokkel: "t" }, { navn: "Kontantstrøm", nokkel: "ks", num: true, fmt: f.kr }, { navn: "Diskonteringsfaktor", nokkel: "df", num: true, fmt: (v) => v.toFixed(4) }, { navn: "Nåverdi", nokkel: "nv", num: true, fmt: f.kr }, { navn: "Akkumulert (udiskontert)", nokkel: "akk", num: true, fmt: (v) => el("span", { style: `color:${v < 0 ? "var(--rod)" : "var(--gronn)"}` }, f.kr(v)) }], ks.map((c, t) => { a += c; return { t, ks: c, df: 1 / Math.pow(1 + s.krav / 100, t), nv: c / Math.pow(1 + s.krav / 100, t), akk: a }; }), { sorterbar: false }));
+  }
+  tegn(); return wrap;
+};
+
+/* ---------- Nåverdi, avansert: kraftverk og lange investeringer (Bok 1, kap. 10, utvidet) ---------- */
+LOM.kalkulatorer.naaverdiAvansert = function (el, f) {
+  const s = { kjop: 9000000, inn: 1300000, ut: 300000, aar: 40, rest: 0, indeks: 2, indeksPa: true, renter: [{ fra: 1, pst: 6 }, { fra: 16, pst: 7 }, { fra: 31, pst: 8 }] };
+  const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
+  const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
+  const graf = el("div"), tabBoks = el("div"), konkl = el("div"), renteBoks = el("div"), indeksKnapp = el("button", { class: "knapp liten" });
+
+  const renteVed = (t) => { let p = s.renter.length ? s.renter[0].pst : 0; for (const rp of s.renter) if (rp.fra <= t) p = rp.pst; return p; };
+  const nyttRenteRad = () => { const siste = s.renter[s.renter.length - 1]; s.renter.push({ fra: Math.min(s.aar, (siste ? siste.fra : 0) + 10), pst: siste ? siste.pst : 6 }); tegn(); };
+  function tegnRenter() {
+    s.renter.sort((a, b) => a.fra - b.fra);
+    const rader = s.renter.map((rad, i) => el("tr", null,
+      el("td", null, el("input", { type: "number", class: "celle", value: rad.fra, min: 1, max: s.aar, step: 1, onchange: (ev) => { rad.fra = Math.max(1, Math.min(s.aar, +ev.target.value || 1)); tegn(); } })),
+      el("td", null, el("input", { type: "number", class: "celle", value: rad.pst, min: 0, max: 20, step: 0.25, onchange: (ev) => { rad.pst = +ev.target.value || 0; tegn(); } })),
+      el("td", null, s.renter.length > 1 ? el("button", { class: "knapp liten", title: "Fjern perioden", onclick: () => { s.renter.splice(i, 1); tegn(); } }, "×") : null)));
+    renteBoks.replaceChildren(
+      el("table", { class: "tab linjer" }, el("thead", null, el("tr", null, el("th", null, "Fra år"), el("th", null, "Avkastningskrav (%)"), el("th"))), el("tbody", null, rader)),
+      el("button", { class: "knapp liten", onclick: nyttRenteRad }, "+ Ny renteperiode"));
+  }
+
+  const wrap = el("div", null,
+    el("div", { class: "kort" },
+      el("h2", null, "Nåverdi, avansert — kraftverk og lange investeringer"),
+      el("p", { class: "kilder" }, "Utvidelse av nåverdikalkulatoren for prosjekter med lang levetid, slik som et minikraftverk (100–1000 kW etter NVE sin klassifisering). Prosjekt 6 – Minikraftverk krever en kontantstrømmodell for investering, innbetalinger og utbetalinger, men gir ingen faste tall — tallene under er et illustrerende eksempel, ikke en fasit. Sett inn egne tall fra ditt prosjekt. Nåverdimetoden er som i Bok 1 kap. 10, utvidet til avkastningskrav som endrer seg over tid (renteperioder) og indeksregulerte kontantstrømmer."),
+      el("div", { class: "kalk" },
+        el("div", { class: "inndata" },
+          felt("Investering i dag", "kjop", 0, 100000000, 100000),
+          felt("Årlige innbetalinger, år 1 (dagens kroner)", "inn", 0, 20000000, 50000),
+          felt("Årlige utbetalinger, år 1 (dagens kroner)", "ut", 0, 10000000, 50000),
+          felt("Levetid (år)", "aar", 1, 60, 1),
+          felt("Utrangeringsverdi siste år", "rest", 0, 10000000, 50000),
+          felt("Indeksregulering per år (%)", "indeks", 0, 10, 0.25, "gjelder inn- og utbetalinger, ikke investeringen"),
+          el("div", null, indeksKnapp),
+          el("h4", { style: "margin-top:10px" }, "Avkastningskrav over tid (renteperioder)"),
+          renteBoks,
+          el("div", { class: "resultat" }, r("nv", "Nåverdi"), r("ir", "Internrente (sammenligning, konstant rente)"), r("tb", "Tilbakebetalingstid, diskontert"), r("dom", "Konklusjon"))),
+        el("div", null, graf, konkl))),
+    el("div", { class: "kort" }, el("h3", null, "Kontantstrøm år for år"), tabBoks));
+
+  function tegn() {
+    indeksKnapp.textContent = "Indeksregulering: " + (s.indeksPa ? "På" : "Av");
+    indeksKnapp.onclick = () => { s.indeksPa = !s.indeksPa; tegn(); };
+    tegnRenter();
+    const T = Math.round(s.aar);
+    const ks = [-s.kjop], df = [1], rente = [null];
+    for (let t = 1; t <= T; t++) {
+      const p = renteVed(t) / 100;
+      df.push(df[t - 1] / (1 + p)); rente.push(p * 100);
+      const indeksFaktor = s.indeksPa ? Math.pow(1 + s.indeks / 100, t - 1) : 1;
+      ks.push((s.inn - s.ut) * indeksFaktor + (t === T ? s.rest : 0));
+    }
+    const NV = ks.reduce((a, c, t) => a + c * df[t], 0);
+    const nvKonst = (rr) => ks.reduce((a, c, t) => a + c / Math.pow(1 + rr, t), 0);
+    let lo = -0.99, hi = 5, ir = null; if (nvKonst(lo) * nvKonst(hi) < 0) { for (let i = 0; i < 80; i++) { const mid = (lo + hi) / 2; if (nvKonst(lo) * nvKonst(mid) <= 0) hi = mid; else lo = mid; } ir = (lo + hi) / 2; }
+    let akkD = ks[0] * df[0], tb = null; for (let t = 1; t <= T; t++) { const forrige = akkD; akkD += ks[t] * df[t]; if (akkD >= 0 && tb === null) tb = t - 1 + (-forrige / (ks[t] * df[t])); }
+    res.nv.firstChild.textContent = f.kr(NV); res.nv.className = NV >= 0 ? "pos" : "neg";
+    res.ir.firstChild.textContent = ir === null ? "–" : f.pst(ir * 100); res.ir.className = ir !== null && ir * 100 >= renteVed(1) ? "pos" : "neg";
+    res.tb.firstChild.textContent = tb === null ? "Aldri innenfor levetiden" : tb.toLocaleString("nb-NO", { maximumFractionDigits: 1 }) + " år"; res.tb.className = tb !== null ? "pos" : "neg";
+    const ok = NV >= 0; res.dom.firstChild.textContent = ok ? "Lønnsom" : "Ikke lønnsom"; res.dom.className = ok ? "pos" : "neg";
+
+    let akkNv = 0, akkUd = 0; const linjeAkkNv = [], linjeAkkUd = [];
+    for (let t = 0; t <= T; t++) { akkNv += ks[t] * df[t]; akkUd += ks[t]; linjeAkkNv.push({ x: t, y: akkNv }); linjeAkkUd.push({ x: t, y: akkUd }); }
+    graf.replaceChildren(el("div", { class: "kilder" }, "Akkumulert kontantstrøm over levetiden, diskontert og udiskontert:"),
+      H().linjegraf([{ navn: "Diskontert (løpende nåverdi)", farge: "var(--serie1)", punkter: linjeAkkNv }, { navn: "Udiskontert", farge: "var(--serie3)", strek: "dash", punkter: linjeAkkUd }],
+        { xNavn: "År", xsteg: Math.max(1, Math.round(T / 10)), yTip: f.kr, H: 320, vlinjer: tb !== null ? [{ x: tb, tekst: `Tilbakebetalt år ${tb.toFixed(1)}` }] : [] }));
+    konkl.replaceChildren(el("div", { class: "tips" }, `Rentebanen har ${s.renter.length} periode${s.renter.length > 1 ? "r" : ""}, fra ${f.pst(renteVed(1))} i starten${s.renter.length > 1 ? ` til ${f.pst(renteVed(T))} mot slutten` : ""}. Internrenten over er en forenkling som forutsetter én konstant rente gjennom hele levetiden, brukt til sammenligning med kravene. ${s.indeksPa ? `Inn- og utbetalingene er indeksregulert med ${s.indeks} % per år — nominell kontantstrøm, ikke fast realverdi.` : "Inn- og utbetalingene er ikke indeksregulert (faste kroner gjennom hele levetiden)."}`));
+    tabBoks.replaceChildren(H().tab(el,
+      [{ navn: "År", nokkel: "t" }, { navn: "Rente dette året", nokkel: "rente", num: true, fmt: (v) => v === null ? "–" : f.pst(v) }, { navn: "Kontantstrøm", nokkel: "ks", num: true, fmt: f.kr }, { navn: "Diskonteringsfaktor", nokkel: "df", num: true, fmt: (v) => v.toFixed(4) }, { navn: "Nåverdi", nokkel: "nv", num: true, fmt: f.kr }],
+      ks.map((c, t) => ({ t, rente: rente[t], ks: c, df: df[t], nv: c * df[t] })), { sorterbar: false }));
   }
   tegn(); return wrap;
 };
