@@ -8227,7 +8227,7 @@ LOM.kalkulatorer.naaverdiAvansert = function (el, f) {
           el("div", null, indeksKnapp),
           el("h4", { style: "margin-top:10px" }, "Avkastningskrav over tid (renteperioder)"),
           renteBoks,
-          el("div", { class: "resultat" }, r("nv", "Nåverdi"), r("ir", "Internrente (sammenligning, konstant rente)"), r("tb", "Tilbakebetalingstid, diskontert"), r("dom", "Konklusjon"))),
+          el("div", { class: "resultat" }, r("nv", "Nåverdi"), r("ir", "Internrente (sammenligning, konstant rente)"), r("tbEnkel", "Tilbakebetalingstid (enkel, som i Bok 1, 10.1)"), r("tb", "Tilbakebetalingstid (diskontert)"), r("dom", "Konklusjon"))),
         el("div", null, graf, konkl))),
     el("div", { class: "kort" }, el("h3", null, "Kontantstrøm år for år"), tabBoks));
 
@@ -8247,8 +8247,10 @@ LOM.kalkulatorer.naaverdiAvansert = function (el, f) {
     const nvKonst = (rr) => ks.reduce((a, c, t) => a + c / Math.pow(1 + rr, t), 0);
     let lo = -0.99, hi = 5, ir = null; if (nvKonst(lo) * nvKonst(hi) < 0) { for (let i = 0; i < 80; i++) { const mid = (lo + hi) / 2; if (nvKonst(lo) * nvKonst(mid) <= 0) hi = mid; else lo = mid; } ir = (lo + hi) / 2; }
     let akkD = ks[0] * df[0], tb = null; for (let t = 1; t <= T; t++) { const forrige = akkD; akkD += ks[t] * df[t]; if (akkD >= 0 && tb === null) tb = t - 1 + (-forrige / (ks[t] * df[t])); }
+    let akkE = ks[0], tbEnkel = null; for (let t = 1; t <= T; t++) { const forrige = akkE; akkE += ks[t]; if (akkE >= 0 && tbEnkel === null) tbEnkel = t - 1 + (-forrige / ks[t]); }
     res.nv.firstChild.textContent = f.kr(NV); res.nv.className = NV >= 0 ? "pos" : "neg";
     res.ir.firstChild.textContent = ir === null ? "–" : f.pst(ir * 100); res.ir.className = ir !== null && ir * 100 >= renteVed(1) ? "pos" : "neg";
+    res.tbEnkel.firstChild.textContent = tbEnkel === null ? "Aldri innenfor levetiden" : tbEnkel.toLocaleString("nb-NO", { maximumFractionDigits: 1 }) + " år"; res.tbEnkel.className = tbEnkel !== null ? "pos" : "neg";
     res.tb.firstChild.textContent = tb === null ? "Aldri innenfor levetiden" : tb.toLocaleString("nb-NO", { maximumFractionDigits: 1 }) + " år"; res.tb.className = tb !== null ? "pos" : "neg";
     const ok = NV >= 0; res.dom.firstChild.textContent = ok ? "Lønnsom" : "Ikke lønnsom"; res.dom.className = ok ? "pos" : "neg";
 
@@ -8257,7 +8259,7 @@ LOM.kalkulatorer.naaverdiAvansert = function (el, f) {
     graf.replaceChildren(el("div", { class: "kilder" }, "Akkumulert kontantstrøm over levetiden, diskontert og udiskontert:"),
       H().linjegraf([{ navn: "Diskontert (løpende nåverdi)", farge: "var(--serie1)", punkter: linjeAkkNv }, { navn: "Udiskontert", farge: "var(--serie3)", strek: "dash", punkter: linjeAkkUd }],
         { xNavn: "År", xsteg: Math.max(1, Math.round(T / 10)), yTip: f.kr, H: 320, vlinjer: tb !== null ? [{ x: tb, tekst: `Tilbakebetalt år ${tb.toFixed(1)}` }] : [] }));
-    konkl.replaceChildren(el("div", { class: "tips" }, `Rentebanen har ${s.renter.length} periode${s.renter.length > 1 ? "r" : ""}, fra ${f.pst(renteVed(1))} i starten${s.renter.length > 1 ? ` til ${f.pst(renteVed(T))} mot slutten` : ""}. Internrenten over er en forenkling som forutsetter én konstant rente gjennom hele levetiden, brukt til sammenligning med kravene. ${s.indeksPa ? `Inn- og utbetalingene er indeksregulert med ${s.indeks} % per år — nominell kontantstrøm, ikke fast realverdi.` : "Inn- og utbetalingene er ikke indeksregulert (faste kroner gjennom hele levetiden)."}`));
+    konkl.replaceChildren(el("div", { class: "tips" }, `Rentebanen har ${s.renter.length} periode${s.renter.length > 1 ? "r" : ""}, fra ${f.pst(renteVed(1))} i starten${s.renter.length > 1 ? ` til ${f.pst(renteVed(T))} mot slutten` : ""}. Internrenten over er en forenkling som forutsetter én konstant rente gjennom hele levetiden, brukt til sammenligning med kravene. ${s.indeksPa ? `Inn- og utbetalingene er indeksregulert med ${s.indeks} % per år — nominell kontantstrøm, ikke fast realverdi.` : "Inn- og utbetalingene er ikke indeksregulert (faste kroner gjennom hele levetiden)."} Den enkle tilbakebetalingstiden er som i Bok 1, 10.1 — investeringsutgift delt på årlig innbetalingsoverskudd, uten å ta hensyn til at penger som kommer sent er mindre verdt. Den diskonterte tar med avkastningskravet og blir derfor alltid lengre; over lang levetid, som for et kraftverk, kan forskjellen bli stor. Begge deler tilbakebetalingsmetodens to blindsoner: verken ser hva som skjer etter at investeringen er spilt inn.`));
     tabBoks.replaceChildren(H().tab(el,
       [{ navn: "År", nokkel: "t" }, { navn: "Rente dette året", nokkel: "rente", num: true, fmt: (v) => v === null ? "–" : f.pst(v) }, { navn: "Kontantstrøm", nokkel: "ks", num: true, fmt: f.kr }, { navn: "Diskonteringsfaktor", nokkel: "df", num: true, fmt: (v) => v.toFixed(4) }, { navn: "Nåverdi", nokkel: "nv", num: true, fmt: f.kr }],
       ks.map((c, t) => ({ t, rente: rente[t], ks: c, df: df[t], nv: c * df[t] })), { sorterbar: false }));
