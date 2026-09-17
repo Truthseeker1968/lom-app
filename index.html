@@ -1350,7 +1350,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "LØM Læringsapp",
   undertittel: "Ledelse, økonomi og markedsføring · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.1 · 17. september 2026",
+  versjon: "1.1.1 · 17. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -8876,6 +8876,13 @@ LOM.pwa = (function () {
     return frag;
   }
   document.addEventListener("click", () => document.querySelectorAll(".fn.aapen").forEach(x => x.classList.remove("aapen")));
+  /* settInn: som el(), men fyller et element som allerede finnes. Nettleserens egen append()
+     hverken pakker ut lister eller hopper over null — da havner «[object HTMLDivElement]»
+     og «null» rett i teksten. Bruk alltid denne i stedet for boks.append(...). */
+  const settInn = (mal, ...barn) => {
+    for (const b of barn.flat(4)) if (b !== null && b !== undefined && b !== false) mal.append(b.nodeType ? b : tekstMedNoter(String(b)));
+    return mal;
+  };
   const nf = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
   const kr = (v) => nf.format(Math.round(v)) + " kr";
   const pst = (v, d = 1) => v.toLocaleString("nb-NO", { minimumFractionDigits: d, maximumFractionDigits: d }) + " %";
@@ -9308,7 +9315,7 @@ LOM.pwa = (function () {
     const los = el("div", { class: "losning " + (lager.laerer ? "" : "skjult") }, el("h3", null, "Løsningsforslag — hva som skiller bestått fra godt"), el("p", { class: "kilder" }, "Løsningsforslaget er øvings- og repetisjonsstøtte. Det kan ikke siteres eller vises til i besvarelser, caser, prosjektoppgaver, eksamen eller høringer."),
       E.losning.map(x => el("div", { class: "los-del" }, x.overskrift ? el("h4", null, x.overskrift) : null, x.tekst.split("\n").map(t => el("p", null, t)))));
     const vis = el("button", { class: "knapp primar", onclick: () => { const n = ord(ta.value); if (n < 80 && !l.eksamen.vist && !bekreft(`Du har skrevet ${n} ord. Løsningsforslaget gir mest når du har skrevet ditt eget svar først. Vise likevel?`)) return; los.classList.remove("skjult"); vis.disabled = true; if (!l.eksamen.vist) { l.eksamen.vist = new Date().toISOString(); lagre(); LOM.telling && LOM.telling.hendelse("eksamen-" + id); } belonn(n); los.scrollIntoView({ behavior: "smooth", block: "start" }); } }, "Vis løsningsforslag");
-    boks.append(
+    settInn(boks,
       el("div", { class: "kort eksamen" }, el("div", { class: "merkelapp" }, `Eksamensnær · ${E.tid} minutter · du er ${E.rolle}`), el("h2", null, E.tittel.charAt(0).toUpperCase() + E.tittel.slice(1)),
         el("p", { class: "kilder" }, "Én case av samme slag som du møter til eksamen i LØM: en kort situasjon, og et spørsmål som krever at du drøfter og anbefaler noe. Det finnes ingen fasit i vanlig forstand — løsningsforslaget viser hva som skiller et bestått svar fra et godt."),
         el("div", { class: "case" }, E.case.map(t => el("p", null, t))),
@@ -9324,7 +9331,7 @@ LOM.pwa = (function () {
 
   /* ---------- Les ---------- */
   function visLes(I, id, boks) {
-    boks.append(
+    settInn(boks,
       el("div", { class: "kort krok" }, el("h2", null, I.krok.tittel), I.krok.tekst.map(t => el("p", null, t))),
       el("div", { class: "kort maal" }, el("h3", null, "Etter dette kapitlet skal du kunne"), el("ol", null, I.laeringsmaal.map(m => el("li", null, m)))),
       I.teori.map(t => el("div", { class: "kort" }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, t.avsnitt.map(a => el("p", null, a)))),
@@ -9341,9 +9348,9 @@ LOM.pwa = (function () {
   /* ---------- Se og regn ---------- */
   function visSe(I, id, boks) {
     const liste = I.kalkulatorer || (I.kalkulator ? [I.kalkulator] : []);
-    if (!liste.length) { boks.append(el("div", { class: "kort" }, el("h3", null, "Ingen kalkulator i dette kapitlet"), el("p", null, "Kapitlet er begrepsorientert og har ikke egne regnestykker. Gå videre til Øv, eller prøv verktøyene på forsiden."), el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/ov`) }, "Videre → Øv")))); return; }
-    liste.forEach(k => { if (LOM.kalkulatorer[k]) { boks.append(LOM.kalkulatorer[k](el, F)); SP.hendelse("kalkulator", { navn: k }); } });
-    boks.append(el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/ov`) }, "Videre → Øv")));
+    if (!liste.length) { settInn(boks, el("div", { class: "kort" }, el("h3", null, "Ingen kalkulator i dette kapitlet"), el("p", null, "Kapitlet er begrepsorientert og har ikke egne regnestykker. Gå videre til Øv, eller prøv verktøyene på forsiden."), el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/ov`) }, "Videre → Øv")))); return; }
+    liste.forEach(k => { if (LOM.kalkulatorer[k]) { settInn(boks, LOM.kalkulatorer[k](el, F)); SP.hendelse("kalkulator", { navn: k }); } });
+    settInn(boks, el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/ov`) }, "Videre → Øv")));
   }
 
   /* ---------- felles: ett flervalgsspørsmål med umiddelbar tilbakemelding ---------- */
@@ -9410,13 +9417,13 @@ LOM.pwa = (function () {
       I.refleksjon.map((q, i) => { const mom = el("div", { class: "momenter skjult" }, el("b", null, "Momenter til sammenlikning"), q.momenter.map(m => el("p", null, m))); const ta = el("textarea", { placeholder: "Skriv resonnementet ditt her …" }); ta.value = (l.refl || {})[i] || ""; ta.addEventListener("input", () => { (l.refl = l.refl || {})[i] = ta.value; lagre(); });
         return el("div", { class: "sporsmal" }, el("div", { class: "nr" }, "Vurdering " + (i + 1)), el("div", { class: "tekst" }, q.sp), ta, el("button", { class: "knapp liten", style: "margin-top:6px", onclick: (e) => { mom.classList.toggle("skjult"); e.target.textContent = mom.classList.contains("skjult") ? "Vis momenter" : "Skjul momenter"; } }, "Vis momenter"), mom); }),
       I.vurderingsnokkel ? el("div", { style: "margin-top:16px" }, el("h3", null, "Vurderingsnøkkel (NKR 5.2)"), el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Lav"), el("th", null, "God (forventet)"), el("th", null, "Svært god"))), el("tbody", null, el("tr", null, el("td", null, I.vurderingsnokkel.lav), el("td", null, I.vurderingsnokkel.god), el("td", null, I.vurderingsnokkel.svaertGod))))) : null) : null;
-    boks.append(flerKort, regneKort, genKort, reflKort, el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/prov`) }, "Klar for prøve →")));
+    settInn(boks, flerKort, regneKort, genKort, reflKort, el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/prov`) }, "Klar for prøve →")));
   }
 
   /* ---------- Prøv ---------- */
   function visProv(I, id, boks) {
     const l = kapLager(id);
-    boks.append(el("div", { class: "kort" }, el("h2", null, "Prøve"), el("p", null, `${Math.min(O.proveAntall, I.flervalg.length)} tilfeldige spørsmål fra kapitlet, uten tilbakemelding underveis. Bestått ved ${O.bestaattProsent} % riktige. Du kan ta prøven så mange ganger du vil.`),
+    settInn(boks, el("div", { class: "kort" }, el("h2", null, "Prøve"), el("p", null, `${Math.min(O.proveAntall, I.flervalg.length)} tilfeldige spørsmål fra kapitlet, uten tilbakemelding underveis. Bestått ved ${O.bestaattProsent} % riktige. Du kan ta prøven så mange ganger du vil.`),
       l.prove ? el("p", { class: "kilder" }, `Beste resultat: ${l.prove.best} % · Siste: ${l.prove.sist} %`) : null, el("button", { class: "knapp primar", onclick: kjor }, "Start prøven")));
     function kjor() {
       const sp = bland(I.flervalg).slice(0, O.proveAntall), svar = new Array(sp.length).fill(null);
