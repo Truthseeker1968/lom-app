@@ -134,7 +134,7 @@ table.tab tr.hl td{background:var(--aksent-lys)}
 @media(max-width:820px){.kalk{grid-template-columns:1fr}}
 .kalk .inndata label{display:block;font-size:.88rem;color:var(--tekst2);margin:10px 0 2px}
 .kalk .inndata .verdi{display:flex;align-items:center;gap:8px}
-.kalk .inndata input[type=number]{width:120px;padding:6px 8px;border:1px solid var(--linje);border-radius:6px;font:inherit;background:var(--gul-lys)}
+.kalk .inndata input[type=number],.kalk .inndata input.tall{width:120px;padding:6px 8px;border:1px solid var(--linje);border-radius:6px;font:inherit;background:var(--gul-lys)}
 .kalk .inndata input[type=range]{width:100%;accent-color:var(--aksent)}
 .kalk .resultat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .kalk .resultat div{background:var(--flate2);border-radius:8px;padding:8px 10px}
@@ -147,7 +147,7 @@ table.tab tr.hl td{background:var(--aksent-lys)}
 .legende{display:flex;flex-wrap:wrap;gap:16px;font-size:.86rem;color:var(--tekst2);margin-top:8px}
 .legende i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px;border-radius:2px}
 .spaker table{margin-top:8px}
-.spaker input[type=number]{width:70px;padding:4px 6px;border:1px solid var(--linje);border-radius:6px;background:var(--gul-lys);font:inherit}
+.spaker input[type=number],.spaker input.tall{width:70px;padding:4px 6px;border:1px solid var(--linje);border-radius:6px;background:var(--gul-lys);font:inherit}
 .tips{background:var(--aksent-lys);border-radius:8px;padding:10px 14px;font-size:.92rem;margin-top:12px}
 
 /* øvelser */
@@ -195,7 +195,7 @@ footer.bunn{margin-top:40px;font-size:.8rem;color:var(--demp);text-align:center}
 .tilbud-oppsett{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 16px}
 .tilbud-oppsett label{display:block;font-size:.85rem;color:var(--tekst2);margin-bottom:2px}
 .tilbud-oppsett small{display:block;color:var(--demp);font-size:.76rem;margin-top:2px}
-.celle{padding:6px 8px;border:1px solid var(--linje);border-radius:6px;font:inherit;font-size:.9rem;background:var(--gul-lys);color:var(--tekst);width:100%;max-width:130px}
+.celle{text-align:right;padding:6px 8px;border:1px solid var(--linje);border-radius:6px;font:inherit;font-size:.9rem;background:var(--gul-lys);color:var(--tekst);width:100%;max-width:130px}
 .celle.bred{max-width:100%;width:100%}
 select.celle{background:var(--flate)}
 .katalog-rad{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
@@ -310,6 +310,13 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 .toppknapp.installknapp{border-color:var(--ok);color:var(--ok)}
 .toppknapp.installknapp .ik{font-weight:700}
 @media(max-width:640px){.toppknapp.installknapp .tk{display:none}}
+
+/* Fotnoter på tall: {{tall|forklaring}} */
+.fn{position:relative;border-bottom:1px dotted var(--aksent);cursor:help;white-space:nowrap}
+.fn .fn-boks{display:none;position:absolute;left:0;bottom:calc(100% + 6px);z-index:30;min-width:220px;max-width:340px;padding:8px 11px;border-radius:8px;background:var(--tekst);color:var(--flate);font-size:.82rem;font-weight:400;line-height:1.4;white-space:normal;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.fn:hover .fn-boks,.fn:focus .fn-boks,.fn.aapen .fn-boks{display:block}
+.fn .fn-boks::after{content:"";position:absolute;left:14px;top:100%;border:6px solid transparent;border-top-color:var(--tekst)}
+@media (max-width:640px){.fn .fn-boks{position:fixed;left:16px;right:16px;bottom:16px;top:auto;max-width:none} .fn .fn-boks::after{display:none}}
 
 </style>
 </head>
@@ -1259,7 +1266,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "LØM Læringsapp",
   undertittel: "Ledelse, økonomi og markedsføring · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "0.7 · 16. september 2026",
+  versjon: "0.8 · 17. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -5415,7 +5422,7 @@ LOM.innhold.ok10 = {
   id: "ok10",
   kilde: "Hjertnes og Skorpen: Økonomistyring for LØM-emnet (ISBN 978-82-450-5544-3), kapittel 10, innledningen med gjennomgangseksempelet Saltimport AS og tabell 10.1, avsnitt 10.1–10.4 med figur 10.1–10.4. Bransjetall: NHO Elektro, Lønnsomhetsrapport 2025, gjengitt i Elektro 24-7 19.08.2026.",
   bilde: "ok10.jpg",
-  ingress: "Termograferingsutstyret koster 480 000 kroner og gir 170 000 i året i fire år. Krever Nordlys 10 %, lønner det seg. Krever de 16 %, gjør det ikke det. Samme utstyr, to svar.",
+  ingress: "Termograferingsutstyret koster 480 000 kroner og gir et innbetalingsoverskudd på {{170 000|Innbetalingsoverskudd per år, netto: 260 000 kr mer inn − 90 000 kr mer ut = 170 000 kr. Kilde: øvingsheftet kap. 10, oppgave 1 (samme oppsett som Bok 1, tabell 10.1)}} i året i fire år. Krever Nordlys 10 % avkastning på pengene, lønner det seg. Krever de 16 %, gjør det ikke det. Samme utstyr, to svar.",
 
   laeringsmaal: [
     "sette opp kontantstrømmen for en investering med riktig fortegn, og forklare hvorfor avskrivninger ikke hører hjemme der",
@@ -5428,8 +5435,8 @@ LOM.innhold.ok10 = {
   krok: {
     tittel: "Samme utstyr, to svar",
     tekst: [
-      "Nordlys Elektro AS må i dag leie inn termografering fra andre hver gang en kunde vil ha varmesøk på en tavle. Kari har fått pris på eget utstyr: 480 000 kroner. Utstyret gir 260 000 kroner mer inn og 90 000 kroner mer ut hvert år i 4 år, og er verdiløst etterpå. Spørsmålet er enkelt å stille: lønner det seg?",
-      "Svaret avhenger av hva Nordlys krever å tjene på pengene sine. Krever de 10 %, er utstyret verdt 58 877 kroner mer enn det koster, og bør kjøpes. Krever de 16 %, mangler det 4 309 kroner, og det bør ikke kjøpes. Samme utstyr, samme kontantstrøm, motsatt konklusjon. Det er hele dette kapitlet i én setning: det er avkastningskravet som avgjør."
+      "Nordlys Elektro AS må i dag leie inn termografering fra andre hver gang en kunde vil ha varmesøk på en tavle. Kari har fått pris på eget utstyr: 480 000 kroner. Med eget utstyr regner hun med 260 000 kroner mer inn på konto hvert år, og 90 000 kroner mer ut til drift av utstyret. Netto sitter bedriften igjen med {{170 000|Innbetalingsoverskudd per år, netto: 260 000 kr mer inn − 90 000 kr mer ut = 170 000 kr. Kilde: øvingsheftet kap. 10, oppgave 1 (samme oppsett som Bok 1, tabell 10.1)}} kroner mer i året i fire år, og utstyret er verdiløst etterpå. Det er dette nettotallet — innbetalingsoverskuddet — hele analysen bygger på. Spørsmålet er enkelt å stille: lønner det seg?",
+      "Svaret avhenger av hva Nordlys krever å tjene på pengene sine. Krever de 10 %, er utstyret verdt {{58 877|Nåverdi ved 10 %: 154 545 + 140 496 + 127 724 + 116 112 = 538 877 kr i dag, minus investeringen 480 000 = 58 877 kr. Bok 1, avsnitt 10.2}} kroner mer enn det koster, og bør kjøpes. Krever de 16 %, mangler det {{4 309|Nåverdi ved 16 %: 146 552 + 126 338 + 108 912 + 93 889 = 475 691 kr, minus 480 000 = −4 309 kr. Bok 1, avsnitt 10.2}} kroner, og det bør ikke kjøpes. Samme utstyr, samme kontantstrøm, motsatt konklusjon. Det er hele dette kapitlet i én setning: det er avkastningskravet som avgjør. Hold musen over (eller trykk på) de understrekede tallene i kapitlet for å se hvor de kommer fra."
     ]
   },
 
@@ -5437,16 +5444,16 @@ LOM.innhold.ok10 = {
     {
       overskrift: "Kontantstrømmen — grunnlaget for alt",
       avsnitt: [
-        "En investeringsanalyse begynner alltid med kontantstrømmen: hva som faktisk går inn og ut av kassa, år for år. Tidspunkt 0 er kjøpsdagen. Investeringsutgiften står med minus der, mens inn- og utbetalingene fra driften for enkelhets skyld legges til slutten av hvert år etterpå. En eventuell utrangeringsverdi kommer i siste år. For termograferingsutstyret blir det −480 000 i år 0 og 170 000 i hvert av årene 1 til 4.",
-        "Legg merke til at avskrivninger ikke står i tabellen. Avskrivning er en kostnad, ikke en utbetaling — pengene forlot bedriften den dagen utstyret ble betalt. Det er den vanligste blandingen mellom dette kapitlet og kapittel 3."
+        "En investeringsanalyse begynner alltid med kontantstrømmen: hva som faktisk går inn og ut av kassa, år for år. Tidspunkt 0 er kjøpsdagen. Investeringsutgiften står med minus der, mens inn- og utbetalingene fra driften for enkelhets skyld legges til slutten av hvert år etterpå. En eventuell utrangeringsverdi kommer i siste år. For termograferingsutstyret blir det −480 000 i år 0 og {{170 000|Innbetalingsoverskudd per år, netto: 260 000 kr mer inn − 90 000 kr mer ut = 170 000 kr. Kilde: øvingsheftet kap. 10, oppgave 1 (samme oppsett som Bok 1, tabell 10.1)}} i hvert av årene 1 til 4. Legg merke til at 170 000 er et nettotall: det er de 260 000 kronene som kommer inn, minus de 90 000 som går ut. Det er alltid nettoen — innbetalingsoverskuddet — som står i kontantstrømmen, ikke bruttobeløpene hver for seg.",
+        "Legg også merke til at avskrivninger ikke står i tabellen. Avskrivning er en kostnad i regnskapet (kapittel 3), ikke en utbetaling — pengene forlot bedriften den dagen utstyret ble betalt, og de står allerede med minus i år 0. Tar du med avskrivningene i tillegg, teller du den samme utgiften to ganger. Det er den vanligste blandingen mellom dette kapitlet og kapittel 3."
       ],
       ref: "Bok 1, kap. 10, innledningen og tabell 10.1"
     },
     {
       overskrift: "Tilbakebetalingsmetoden — den enkle",
       avsnitt: [
-        "Tilbakebetalingstiden er investeringsutgiften delt på det årlige innbetalingsoverskuddet: 480 000 delt på 170 000 blir 2,82 år. Regelen er at investeringen gjennomføres dersom tiden er innenfor grensen ledelsen har satt. Nordlys krever 3 år, så utstyret passerer.",
-        "Metoden vurderer strengt tatt ikke lønnsomhet. Den sier bare hvor fort pengene er tilbake, og den har to blindsoner. Den ser ikke noe som helst av det som skjer etter tilbakebetalingsdagen, og den tar ikke hensyn til at penger som kommer sent, er mindre verdt enn penger som kommer tidlig. Et anlegg som gir 170 000 i sju år har samme tilbakebetalingstid som utstyret som gir det i fire — men nåverdien er 347 631 kroner mot 58 877.",
+        "Tilbakebetalingstiden svarer på ett spørsmål: hvor lang tid tar det før pengene er tilbake? Den regnes som investeringsutgiften delt på det årlige innbetalingsoverskuddet: 480 000 delt på 170 000 blir {{2,82 år|Tilbakebetalingstid = investeringsutgift / årlig innbetalingsoverskudd = 480 000 / 170 000 = 2,82 år (ca. 2 år og 10 måneder). Bok 1, avsnitt 10.1}}. Regelen er at investeringen gjennomføres dersom tiden er innenfor grensen ledelsen har satt. Nordlys krever at pengene skal være tilbake innen 3 år, så utstyret passerer — med liten margin.",
+        "Metoden vurderer strengt tatt ikke lønnsomhet. Den sier bare hvor fort pengene er tilbake, og den har to blindsoner. Den ser ikke noe som helst av det som skjer etter tilbakebetalingsdagen, og den tar ikke hensyn til at penger som kommer sent, er mindre verdt enn penger som kommer tidlig. Et anlegg som gir 170 000 i sju år har nøyaktig samme tilbakebetalingstid som utstyret som gir det i fire — men nåverdien er {{347 631|Nåverdi ved 10 % over sju år: 170 000 × nåverdifaktor 4,8684 = 827 631 kr, minus 480 000 = 347 631 kr. Samme metode som Bok 1, avsnitt 10.2 og 10.4}} kroner mot {{58 877|Nåverdi ved 10 %: 154 545 + 140 496 + 127 724 + 116 112 = 538 877 kr i dag, minus investeringen 480 000 = 58 877 kr. Bok 1, avsnitt 10.2}}. Metoden ser altså ikke forskjell på to investeringer som er svært ulikt lønnsomme.",
         "Likevel er metoden den mest brukte i praksis, og det er ikke uten grunn: den er enkel å regne, lett å forklare til noen som ikke er økonomer, og et brukbart mål på risiko når du ikke stoler helt på anslagene dine."
       ],
       ref: "Bok 1, kap. 10 (avsnitt 10.1–10.4)"
@@ -5455,7 +5462,7 @@ LOM.innhold.ok10 = {
       overskrift: "Nåverdimetoden — regn alt om til dagens kroner",
       avsnitt: [
         "En krone i dag er mer verdt enn en krone om fire år. Grunnen er ikke først og fremst prisstigning, men at kronen du har i dag kan settes i arbeid: i banken, i en servicebil eller i en montør til. Skal du sammenlikne penger som kommer på ulike tidspunkter, må alt regnes tilbake til kjøpsdagen. Det gjør du ved å dele på avkastningskravet pluss én, opphøyd i antall år.",
-        "Nåverdien er summen av det investeringen gir, vurdert på kjøpsdagen, minus det den koster. Er den positiv, er investeringen lønnsom. Ved 10 % er de fire innbetalingene verdt 154 545, 140 496, 127 724 og 116 112 kroner i dag — til sammen 538 877, og nåverdien er 58 877 kroner. Ved 16 % er summen 475 691, og nåverdien −4 309. Legg merke til at beløpet i år 0 aldri diskonteres — det er allerede i dagens kroner. Å dele på det er den vanligste fella i kapitlet."
+        "Nåverdien er summen av det investeringen gir, vurdert på kjøpsdagen, minus det den koster. Er den positiv, er investeringen lønnsom. Ved 10 % er de fire innbetalingsoverskuddene verdt {{154 545|170 000 / 1,10 = 154 545 kr (år 1)}}, {{140 496|170 000 / 1,10² = 170 000 / 1,21 = 140 496 kr (år 2)}}, {{127 724|170 000 / 1,10³ = 170 000 / 1,331 = 127 724 kr (år 3)}} og {{116 112|170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr (år 4)}} kroner i dag — til sammen 538 877 kroner, og nåverdien er 538 877 − 480 000 = {{58 877|Nåverdi ved 10 %: 154 545 + 140 496 + 127 724 + 116 112 = 538 877 kr i dag, minus investeringen 480 000 = 58 877 kr. Bok 1, avsnitt 10.2}} kroner. Ved 16 % er summen {{475 691|146 552 + 126 338 + 108 912 + 93 889 = 475 691 kr; hvert beløp er 170 000 delt på 1,16 opphøyd i antall år}}, og nåverdien −{{4 309|Nåverdi ved 16 %: 146 552 + 126 338 + 108 912 + 93 889 = 475 691 kr, minus 480 000 = −4 309 kr. Bok 1, avsnitt 10.2}}. Legg merke til at beløpet i år 0 aldri diskonteres — det er allerede i dagens kroner. Å dele på det er den vanligste fella i kapitlet."
       ],
       ref: "Bok 1, avsnitt 10.2"
     },
@@ -5470,7 +5477,7 @@ LOM.innhold.ok10 = {
     {
       overskrift: "Internrenten — investeringens egen avkastning",
       avsnitt: [
-        "Internrenten er den kalkulasjonsrenten som gjør nåverdien lik null, og den kan leses som investeringens avkastning i prosent. For termograferingsutstyret er den 15,55 %. Regelen er at investeringen gjennomføres dersom internrenten er høyere enn avkastningskravet. Det forklarer hele kapitlets poeng: 10 % er lavere enn 15,5 %, så da lønner det seg — 16 % er høyere, så da gjør det ikke det.",
+        "Internrenten er den kalkulasjonsrenten som gjør nåverdien lik null, og den kan leses som investeringens avkastning i prosent. For termograferingsutstyret er den {{15,55 %|Internrenten er den renten som gir nåverdi lik null. Lineær interpolasjon mellom 10 % (+58 877) og 16 % (−4 309) gir 15,6 %; eksakt utregning gir 15,55 %. Bok 1, avsnitt 10.3}}. Regelen er at investeringen gjennomføres dersom internrenten er høyere enn avkastningskravet. Det forklarer hele kapitlets poeng: 10 % er lavere enn 15,5 %, så da lønner det seg — 16 % er høyere, så da gjør det ikke det.",
         "Skal du velge mellom to lønnsomme investeringer, er det likevel nåverdien som skal avgjøre, ikke internrenten. Læreboka sier det med et bilde som er verdt å huske: en krone som blir til to, gir hundre prosent avkastning og én krone i fortjeneste. Hundre kroner som blir til hundre og femti, gir femti prosent og femti kroner. Det er pengene du lever av, ikke prosentene."
       ],
       ref: "Bok 1, avsnitt 10.3"
@@ -5487,29 +5494,29 @@ LOM.innhold.ok10 = {
   ],
 
   begreper: [
-    { begrep: "Kontantstrøm", forklaring: "Pengene inn minus pengene ut, år for år.", nordlys: "Det nye termograferingsutstyret koster 480 000 nå, og gir 170 000 i året i fire år.", bruk: "Investeringsutgiften står med minus i år 0. Driftsoverskuddene legges til slutten av hvert år.", felle: "Å ta med avskrivninger. Avskrivning er en kostnad, ikke en utbetaling — pengene gikk ut i år 0." },
-    { begrep: "Nåverdi (NV)", forklaring: "Hva fremtidige penger er verdt i dag.", nordlys: "170 000 om fire år er ikke like mye verdt som 170 000 i dag, fordi pengene kunne vært brukt til noe annet i mellomtiden. Ved 10 % er de verdt 116 112.", bruk: "Positiv nåverdi betyr lønnsom. Skal du velge mellom to lønnsomme investeringer, er det nåverdien som avgjør.", felle: "Å diskontere beløpet i år 0. Det er allerede i dagens kroner." },
+    { begrep: "Kontantstrøm", forklaring: "Pengene inn minus pengene ut, år for år.", nordlys: "Det nye termograferingsutstyret koster 480 000 nå, og gir et innbetalingsoverskudd på {{170 000|Innbetalingsoverskudd per år, netto: 260 000 kr mer inn − 90 000 kr mer ut = 170 000 kr. Kilde: øvingsheftet kap. 10, oppgave 1 (samme oppsett som Bok 1, tabell 10.1)}} i året i fire år.", bruk: "Investeringsutgiften står med minus i år 0. Driftsoverskuddene legges til slutten av hvert år.", felle: "Å ta med avskrivninger. Avskrivning er en kostnad, ikke en utbetaling — pengene gikk ut i år 0." },
+    { begrep: "Nåverdi (NV)", forklaring: "Hva fremtidige penger er verdt i dag.", nordlys: "170 000 om fire år er ikke like mye verdt som 170 000 i dag, fordi pengene kunne vært brukt til noe annet i mellomtiden. Ved 10 % er de verdt {{116 112|170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr. Bok 1, avsnitt 10.2}}.", bruk: "Positiv nåverdi betyr lønnsom. Skal du velge mellom to lønnsomme investeringer, er det nåverdien som avgjør.", felle: "Å diskontere beløpet i år 0. Det er allerede i dagens kroner." },
     { begrep: "Avkastningskrav (kalkulasjonsrente, diskonteringsrente)", forklaring: "Hvor mye bedriften minst må tjene på pengene for at det skal være verdt det.", nordlys: "Nordlys krever 10 % av pengene sine. Ved 16 % er den samme investeringen ikke lenger lønnsom. De samme kronene kunne gått til en servicebil eller en montør til — kravet er det beste du sier nei til.", bruk: "Risikofri avkastning pluss et påslag for risikoen i akkurat denne investeringen.", felle: "Å sette avkastningskravet lik lånerenta. Renta er gulvet. Dekker prosjektet bare den, har eierne tatt all risikoen og fått ingenting for den." },
-    { begrep: "Tilbakebetalingstid", forklaring: "Hvor lang tid det tar før investeringen har spilt seg inn.", nordlys: "Termograferingsutstyret er betalt ned på 2,82 år. Ledelsen i Nordlys krever at den er under 3 år. På denne metoden består investeringen.", bruk: "Enkel å regne og forklare, og et brukbart mål på risiko når du ikke stoler på anslagene.", felle: "Å velge mellom to investeringer på tilbakebetalingstid alene. Metoden ser ikke hva som skjer etterpå — et anlegg som gir i ti år og ett som gir i fem, kan komme likt ut." },
-    { begrep: "Internrente", forklaring: "Den renten som gjør nåverdien null — investeringens egen avkastning i prosent.", nordlys: "15,55 % for termograferingsutstyret. Over 10 % betyr lønnsomt, under 16 % betyr ulønnsomt.", bruk: "Gjennomfør investeringen dersom internrenten er høyere enn avkastningskravet.", felle: "Å velge etter internrente mellom to lønnsomme investeringer. En krone som blir til to gir 100 %, men bare én krone i fortjeneste." },
-    { begrep: "Kapitalbinding i omløpsmidler", forklaring: "Penger som bindes i lager og kundefordringer fordi investeringen gjennomføres.", nordlys: "Reservedelslageret på 30 000 kroner står med minus i år 0 og pluss i år 4. Nåverdien faller fra 58 877 til 49 368.", bruk: "Pengene kommer tilbake, men de har ligget døde i fire år.", felle: "Å glemme pluss-tegnet i siste år. Kapitalbindingen forsvinner ikke, den frigjøres." },
+    { begrep: "Tilbakebetalingstid", forklaring: "Hvor lang tid det tar før investeringen har spilt seg inn.", nordlys: "Termograferingsutstyret er betalt ned på {{2,82 år|Tilbakebetalingstid = investeringsutgift / årlig innbetalingsoverskudd = 480 000 / 170 000 = 2,82 år (ca. 2 år og 10 måneder). Bok 1, avsnitt 10.1}}. Ledelsen i Nordlys krever at den er under 3 år. På denne metoden består investeringen.", bruk: "Enkel å regne og forklare, og et brukbart mål på risiko når du ikke stoler på anslagene.", felle: "Å velge mellom to investeringer på tilbakebetalingstid alene. Metoden ser ikke hva som skjer etterpå — et anlegg som gir i ti år og ett som gir i fem, kan komme likt ut." },
+    { begrep: "Internrente", forklaring: "Den renten som gjør nåverdien null — investeringens egen avkastning i prosent.", nordlys: "{{15,55 %|Internrenten er den renten som gir nåverdi lik null. Lineær interpolasjon mellom 10 % (+58 877) og 16 % (−4 309) gir 15,6 %; eksakt utregning gir 15,55 %. Bok 1, avsnitt 10.3}} for termograferingsutstyret. Over 10 % betyr lønnsomt, under 16 % betyr ulønnsomt.", bruk: "Gjennomfør investeringen dersom internrenten er høyere enn avkastningskravet.", felle: "Å velge etter internrente mellom to lønnsomme investeringer. En krone som blir til to gir 100 %, men bare én krone i fortjeneste." },
+    { begrep: "Kapitalbinding i omløpsmidler", forklaring: "Penger som bindes i lager og kundefordringer fordi investeringen gjennomføres.", nordlys: "Reservedelslageret på 30 000 kroner står med minus i år 0 og pluss i år 4. Nåverdien faller fra 58 877 til {{49 368|30 000 ut i år 0, 30 000 tilbake i år 4. De 30 000 om fire år er verdt 30 000 / 1,4641 = 20 490 kr i dag. Nåverdien faller med 30 000 − 20 490 = 9 510 kr, fra 58 877 til 49 368 kr}}.", bruk: "Pengene kommer tilbake, men de har ligget døde i fire år.", felle: "Å glemme pluss-tegnet i siste år. Kapitalbindingen forsvinner ikke, den frigjøres." },
     { begrep: "Sunk cost", forklaring: "Kostnader som allerede er påløpt og ikke kan påvirkes av beslutningen.", nordlys: "Pengene prosjektgruppa hos Fjellkraft har brukt på å utrede kablingen er brukt uansett hva som besluttes.", bruk: "Læreboka kaller dem beslutningsirrelevante: gjort er gjort, og spist er spist. Skal aldri med i kontantstrømmen." }
   ],
 
   formler: [
-    { navn: "Årlig innbetalingsoverskudd", formel: "Innbetalinger − utbetalinger per år", eksempel: "260 000 − 90 000 = 170 000 kr" },
+    { navn: "Årlig innbetalingsoverskudd (netto)", formel: "Innbetalinger − utbetalinger per år", eksempel: "260 000 − 90 000 = 170 000 kr. Brutto inn og brutto ut hver for seg brukes ikke videre — det er nettoen som står i kontantstrømmen (Bok 1, tabell 10.1)" },
     { navn: "Tilbakebetalingstid", formel: "Investeringsutgift / årlig innbetalingsoverskudd", eksempel: "480 000 / 170 000 = 2,82 år" },
-    { navn: "Nåverdi av ett beløp", formel: "Beløp / (1 + r) opphøyd i n", eksempel: "170 000 / 1,10⁴ = 116 112 kr" },
-    { navn: "Nåverdi av investeringen", formel: "Sum av diskonterte innbetalingsoverskudd − investeringsutgift (år 0 diskonteres ikke)", eksempel: "538 877 − 480 000 = 58 877 kr ved 10 %" },
+    { navn: "Nåverdi av ett beløp", formel: "Beløp / (1 + r)ⁿ, der r er avkastningskravet som desimaltall og n er antall år fram i tid", eksempel: "170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr (år 4, 10 %)" },
+    { navn: "Nåverdi av investeringen", formel: "Sum av diskonterte innbetalingsoverskudd − investeringsutgift (år 0 diskonteres ikke)", eksempel: "(154 545 + 140 496 + 127 724 + 116 112) − 480 000 = 538 877 − 480 000 = 58 877 kr ved 10 %" },
     { navn: "Internrente (anslag ved lineær interpolasjon)", formel: "r1 + NV1 / (NV1 − NV2) × (r2 − r1)", eksempel: "10 % + 58 877 / (58 877 + 4 309) × 6 % = 15,6 % (eksakt 15,55 %)" },
-    { navn: "Nåverdi med annuitetsfaktor", formel: "Årlig overskudd × nåverdifaktor − investeringsutgift", eksempel: "690 000 × 14,4982 − 3 450 000 = 6 553 790 kr (35 år, 6 %)" }
+    { navn: "Nåverdi med annuitetsfaktor (like beløp hvert år)", formel: "Årlig innbetalingsoverskudd × nåverdifaktor − investeringsutgift", eksempel: "690 000 × 14,4982 − 3 450 000 = 6 553 790 kr (35 år, 6 %; faktoren fra tabellen i Bok 1)" }
   ],
 
   kalkulatorer: ["naaverdi", "naaverdiAvansert"],
 
   flervalg: [
     { sp: "Hvorfor står ikke avskrivningene i kontantstrømmen?", alt: ["Fordi de er for små til å bety noe", "Fordi avskrivning er en kostnad, ikke en utbetaling — pengene gikk ut i år 0", "Fordi de allerede er trukket fra i innbetalingsoverskuddet", "Fordi de kommer først etter tilbakebetalingstiden"], riktig: 1, forklaring: "Pengene forlot bedriften den dagen utstyret ble betalt, og de står med minus i år 0. Å ta med avskrivninger i tillegg teller utgiften to ganger. Det er den vanligste blandingen mellom kapittel 10 og kapittel 3. (Bok 1, kap. 10)" },
-    { sp: "Termograferingsutstyret koster 480 000 kroner og gir 170 000 i året. Hva er tilbakebetalingstiden?", alt: ["2,82 år", "3,00 år", "4,00 år", "1,42 år"], riktig: 0, forklaring: "480 000 / 170 000 = 2,82 år, omtrent 2 år og 10 måneder. Nordlys krever 3 år, så investeringen passerer — med liten margin. (Bok 1, kap. 10)" },
+    { sp: "Termograferingsutstyret koster 480 000 kroner og gir et innbetalingsoverskudd (netto) på 170 000 kroner i året. Hva er tilbakebetalingstiden?", alt: ["2,82 år", "3,00 år", "4,00 år", "1,42 år"], riktig: 0, forklaring: "Investeringsutgift / årlig innbetalingsoverskudd = 480 000 / 170 000 = 2,82 år, omtrent 2 år og 10 måneder. Nordlys krever 3 år, så investeringen passerer — med liten margin. (Bok 1, kap. 10)" },
     { sp: "Hva er de to blindsonene i tilbakebetalingsmetoden?", alt: ["Den ser ikke investeringsutgiften, og den glemmer avskrivningene", "Den krever et avkastningskrav, og den er vanskelig å forklare", "Den ser ikke det som skjer etter tilbakebetalingsdagen, og den tar ikke hensyn til pengenes tidsverdi", "Den ser ikke utrangeringsverdien, og den overvurderer risikoen"], riktig: 2, forklaring: "To investeringer med samme tilbakebetalingstid kan være svært ulikt lønnsomme, og 170 000 i år 4 behandles som om de var like mye verdt som 170 000 i år 1. (Bok 1, kap. 10)" },
     { sp: "Hvorfor er tilbakebetalingsmetoden likevel den mest brukte i praksis?", alt: ["Fordi den gir det mest presise lønnsomhetsmålet", "Fordi den er enkel å regne, lett å forklare og et brukbart mål på risiko", "Fordi den tar hensyn til avkastningskravet", "Fordi læreboka anbefaler den framfor nåverdi"], riktig: 1, forklaring: "Den er enkel, lett å forklare til noen som ikke er økonomer, og et brukbart mål på risiko når du ikke stoler helt på anslagene dine. Men den vurderer strengt tatt ikke lønnsomhet. (Bok 1, kap. 10)" },
     { sp: "Hvorfor er en krone i dag mer verdt enn en krone om fire år, ifølge læreboka?", alt: ["Først og fremst på grunn av prisstigning", "Fordi skatten øker over tid", "Fordi utstyret slites", "Fordi kronen du har i dag kan settes i arbeid og gi avkastning i mellomtiden"], riktig: 3, forklaring: "Grunnen er ikke først og fremst prisstigning, men at kronen kan settes i arbeid: i banken, i en servicebil eller i en montør til. (Bok 1, 10.2)" },
@@ -5518,20 +5525,20 @@ LOM.innhold.ok10 = {
     { sp: "Hvilke to deler består avkastningskravet av?", alt: ["Lånerenta pluss inflasjon", "Egenkapitalandel pluss gjeldsrente", "Risikofri avkastning pluss et påslag for risikoen i investeringen", "Avskrivningssats pluss skattesats"], riktig: 2, forklaring: "Læreboka setter kravet sammen av den avkastningen bedriften kunne fått helt uten risiko, pluss et påslag for risikoen i akkurat denne investeringen. Jo mer usikker kontantstrøm, jo høyere påslag. (Bok 1, kap. 10)" },
     { sp: "Hvorfor er lånerenta ikke et riktig avkastningskrav?", alt: ["Fordi den er for høy", "Fordi den er en nedre grense — en investering som akkurat dekker renta, gir eierne ingenting for risikoen", "Fordi renta varierer med lånets løpetid", "Fordi banken ikke godtar det"], riktig: 1, forklaring: "Lånerenta er en nedre grense. Kravet er heller ikke ett tall for hele bedriften: et instrument og en kabel i bakken har ikke samme usikkerhet. (Bok 1, kap. 10)" },
     { sp: "To investeringer er begge lønnsomme. Hvilket mål skal avgjøre valget?", alt: ["Internrenten, fordi den viser avkastning i prosent", "Tilbakebetalingstiden, fordi den er sikrest", "Den med lavest investeringsutgift", "Nåverdien, fordi det er kronene du lever av, ikke prosentene"], riktig: 3, forklaring: "En krone som blir til to gir hundre prosent og én krone i fortjeneste. Hundre kroner som blir til hundre og femti gir femti prosent og femti kroner. (Bok 1, 10.3)" },
-    { sp: "Utstyret krever et reservedelslager på 30 000 kroner. Hvor står kapitalbindingen i kontantstrømmen?", alt: ["Med minus i år 0, og den er tapt", "Med minus i år 0 og pluss i år 4, når den frigjøres", "Bare med pluss i år 4", "Fordelt som kostnad over fire år"], riktig: 1, forklaring: "Kapitalbindingen forsvinner ikke, den frigjøres når utstyret avvikles. Nåverdien faller likevel fra 58 877 til 49 368, fordi 30 000 om fire år bare er verdt 20 490 i dag ved 10 %. (Bok 1, kap. 10)" },
+    { sp: "Utstyret krever et reservedelslager på 30 000 kroner. Hvor står kapitalbindingen i kontantstrømmen?", alt: ["Med minus i år 0, og den er tapt", "Med minus i år 0 og pluss i år 4, når den frigjøres", "Bare med pluss i år 4", "Fordelt som kostnad over fire år"], riktig: 1, forklaring: "Kapitalbindingen forsvinner ikke, den frigjøres når utstyret avvikles. Nåverdien faller likevel fra 58 877 til 49 368, fordi 30 000 om fire år bare er verdt {{20 490|30 000 / 1,10⁴ = 30 000 / 1,4641 = 20 490 kr}} i dag ved 10 %. (Bok 1, kap. 10)" },
     { sp: "Hvordan skal utredningskostnaden Fjellkraft allerede har betalt behandles i analysen?", alt: ["Holdes helt utenfor — den er sunk cost og beslutningsirrelevant", "Som utbetaling i år 0", "Fordeles over 35 år", "Legges til investeringsutgiften"], riktig: 0, forklaring: "Pengene er brukt uansett hva som besluttes. Tar du dem med, straffer du et tiltak for penger som er brukt uansett. Gjort er gjort, og spist er spist. (Bok 1, kap. 10)" },
-    { sp: "Kablingen hos Fjellkraft har tilbakebetalingstid 5,0 år mot et krav på 4, men nåverdi på 6 553 790 kroner ved 6 %. Hvilken metode bør avgjøre?", alt: ["Tilbakebetalingsmetoden, fordi kravet er satt av ledelsen", "Nåverdimetoden, fordi kabelen lever i 35 år og tilbakebetalingskravet ikke ser lenger enn til år 4", "Ingen av dem — tiltaket bør utsettes", "Internrentemetoden alene"], riktig: 1, forklaring: "Regnet bare over fire år er nåverdien −1 059 077 — det er det tilbakebetalingsmetoden ser, og det den overser. Et krav om rask tilbakebetaling er fornuftig for utstyr som blir utdatert, ulogisk for en kabel i bakken. (Bok 1, kap. 10)" },
+    { sp: "Kablingen hos Fjellkraft har tilbakebetalingstid {{5,0 år|3 450 000 / 690 000 = 5,0 år, der 690 000 er summen av sparte kostnader per år (260 000 + 340 000 + 90 000)}} mot et krav på 4, men nåverdi på {{6 553 790|690 000 × 14,4982 − 3 450 000 = 6 553 790 kr (35 år, 6 %)}} kroner ved 6 %. Hvilken metode bør avgjøre?", alt: ["Tilbakebetalingsmetoden, fordi kravet er satt av ledelsen", "Nåverdimetoden, fordi kabelen lever i 35 år og tilbakebetalingskravet ikke ser lenger enn til år 4", "Ingen av dem — tiltaket bør utsettes", "Internrentemetoden alene"], riktig: 1, forklaring: "Regnet bare over fire år er nåverdien −1 059 077 — det er det tilbakebetalingsmetoden ser, og det den overser. Et krav om rask tilbakebetaling er fornuftig for utstyr som blir utdatert, ulogisk for en kabel i bakken. (Bok 1, kap. 10)" },
     { sp: "Hva skjer med nåverdien når avkastningskravet stiger, og hvilke beløp rammes hardest?", alt: ["Den stiger, og de tidlige beløpene rammes hardest", "Den er uendret, fordi kontantstrømmen er den samme", "Den faller, og alle beløp rammes like mye", "Den faller, og de seneste beløpene rammes hardest"], riktig: 3, forklaring: "Krever du høyere avkastning, trenger du mindre i dag for å nå samme beløp senere. År 4 faller fra 116 112 til 93 889 ved 10 mot 16 %, mens år 1 bare faller fra 154 545 til 146 552. (Bok 1, 10.2)" },
     { sp: "Hva er den ærlige måten å håndtere det tallene ikke fanger opp — kompetanse, uavhengighet av underleverandør, nye forespørsler?", alt: ["Legge til et skjønnsmessig beløp i kontantstrømmen", "Se bort fra tallene når investeringen er strategisk", "Regne nåverdien først, og så spørre hvor mye det uregnede må være verdt for at svaret skal snu", "Sette avkastningskravet til null"], riktig: 2, forklaring: "Da blir samtalen konkret, og ordet «strategisk» slutter å være noe man sier når regnestykket ikke går opp. (Bok 1, kap. 10)" }
   ],
 
   regne: [
-    { sp: "Utstyret gir 260 000 kr i økte innbetalinger og 90 000 kr i økte utbetalinger per år. Hva er det årlige innbetalingsoverskuddet?", svar: 170000, toleranse: 0, enhet: "kr", losning: "260 000 − 90 000 = 170 000 kr per år." },
-    { sp: "Investeringsutgiften er 480 000 kr. Hva er tilbakebetalingstiden i år, med to desimaler?", svar: 2.82, toleranse: 0.01, enhet: "år", losning: "480 000 / 170 000 = 2,82 år." },
-    { sp: "Hva er 170 000 kr om fire år verdt i dag ved 10 % avkastningskrav? Rund av til hele kroner.", svar: 116112, toleranse: 5, enhet: "kr", losning: "170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr." },
-    { sp: "Hva er nåverdien av utstyret ved 10 % avkastningskrav?", svar: 58877, toleranse: 20, enhet: "kr", losning: "154 545 + 140 496 + 127 724 + 116 112 = 538 877. NV = 538 877 − 480 000 = 58 877 kr." },
-    { sp: "Hva er nåverdien ved 16 %? Skriv negativt tall hvis den er negativ.", svar: -4309, toleranse: 20, enhet: "kr", losning: "146 552 + 126 338 + 108 912 + 93 889 = 475 691. NV = 475 691 − 480 000 = −4 309 kr." },
-    { sp: "Kablingen hos Fjellkraft koster 3 450 000 kr og sparer 690 000 kr i året i 35 år. Nåverdifaktoren ved 6 % er 14,4982. Hva er nåverdien?", svar: 6553790, toleranse: 2000, enhet: "kr", losning: "690 000 × 14,4982 − 3 450 000 = 10 003 790 − 3 450 000 = 6 553 790 kr. Runder du faktoren til 14,50, får du 6 555 000." }
+    { sp: "Utstyret gir 260 000 kr i økte innbetalinger og 90 000 kr i økte utbetalinger per år. Hva er det årlige innbetalingsoverskuddet?", svar: 170000, toleranse: 0, enhet: "kr", losning: "Innbetalingsoverskudd = innbetalinger − utbetalinger = 260 000 − 90 000 = 170 000 kr per år. Det er dette nettotallet som brukes videre i alle regnestykkene i kapitlet." },
+    { sp: "Investeringsutgiften er 480 000 kr. Hva er tilbakebetalingstiden i år, med to desimaler?", svar: 2.82, toleranse: 0.01, enhet: "år", losning: "Tilbakebetalingstid = investeringsutgift / årlig innbetalingsoverskudd = 480 000 / 170 000 = 2,82 år." },
+    { sp: "Hva er 170 000 kr om fire år verdt i dag ved 10 % avkastningskrav? Rund av til hele kroner.", svar: 116112, toleranse: 5, enhet: "kr", losning: "Nåverdi av ett beløp = beløp / (1 + r)ⁿ = 170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr." },
+    { sp: "Hva er nåverdien av utstyret ved 10 % avkastningskrav?", svar: 58877, toleranse: 20, enhet: "kr", losning: "Hvert år diskonteres for seg: 170 000 / 1,10 = 154 545, / 1,21 = 140 496, / 1,331 = 127 724, / 1,4641 = 116 112. Summen er 538 877 kr. Nåverdi = sum av diskonterte innbetalingsoverskudd − investeringsutgift = 538 877 − 480 000 = 58 877 kr." },
+    { sp: "Hva er nåverdien ved 16 %? Skriv negativt tall hvis den er negativ.", svar: -4309, toleranse: 20, enhet: "kr", losning: "Ved 16 % blir de fire beløpene 146 552 + 126 338 + 108 912 + 93 889 = 475 691 kr. Nåverdi = 475 691 − 480 000 = −4 309 kr. Negativ nåverdi betyr at investeringen ikke gir de 16 prosentene som kreves." },
+    { sp: "Kablingen hos Fjellkraft koster 3 450 000 kr og sparer {{690 000|Sum av tre årlige besparelser: 260 000 kr vedlikehold og beredskap + 340 000 kr KILE-kostnad + 90 000 kr nettap = 690 000 kr. Øvingsheftet kap. 10, oppgave 2}} kr i året i 35 år. Nåverdifaktoren ved 6 % er 14,4982. Hva er nåverdien?", svar: 6553790, toleranse: 2000, enhet: "kr", losning: "Nåverdi = årlig innbetalingsoverskudd × nåverdifaktor (annuitetsfaktor) − investeringsutgift = 690 000 × 14,4982 − 3 450 000 = 10 003 790 − 3 450 000 = 6 553 790 kr. Runder du faktoren til 14,50, får du 6 555 000. Nåverdifaktoren for 35 år og 6 % er hentet fra tabellen bak i Bok 1." }
   ],
 
   refleksjon: [
@@ -7568,11 +7575,28 @@ LOM.h = (function () {
   const nf0 = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
   const kort = (v) => Math.abs(v) >= 1e6 ? (v / 1e6).toLocaleString("nb-NO", { maximumFractionDigits: 1 }) + " mill." : Math.abs(v) >= 1e4 ? nf0.format(Math.round(v / 1000)) + " k" : nf0.format(v);
 
+  /* Tall med tusenskilletegn: 480000 vises som «480 000», desimaler med komma. */
+  const nfTall = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 4 });
+  const formatTall = (v) => (v === null || v === undefined || v === "" || isNaN(+v)) ? "" : nfTall.format(+v);
+  const lesTall = (t) => { const r = String(t).replace(/[\s  ]/g, "").replace(",", "."); if (r === "" || r === "-" || r === ".") return null; const v = +r; return isNaN(v) ? null : v; };
+
+  /* tallfelt(el, verdi, onEndre, attrs): tekstfelt som viser tallet med tusenskilletegn og tolker det studenten skriver.
+     Formateres når feltet mister fokus, slik at markøren ikke hopper mens man skriver. */
+  function tallfelt(el, verdi, onEndre, attrs) {
+    const a = Object.assign({ type: "text", inputmode: "decimal", autocomplete: "off" }, attrs || {});
+    a.class = ("tall " + (a.class || "")).trim();
+    const e = el("input", a); e.value = formatTall(verdi);
+    e.settVerdi = (v) => { e.value = formatTall(v); };
+    e.addEventListener("input", () => { const v = lesTall(e.value); if (v !== null) onEndre(v); });
+    e.addEventListener("blur", () => { const v = lesTall(e.value); e.value = formatTall(v === null ? 0 : v); if (v === null) onEndre(0); });
+    e.addEventListener("focus", () => { try { e.select(); } catch (x) { } });
+    return e;
+  }
+
   function felt(el, s, tegn, navn, nokkel, min, max, steg, hjelp) {
-    const tall = el("input", { type: "number", value: s[nokkel], min, max, step: steg });
     const glid = el("input", { type: "range", value: s[nokkel], min, max, step: steg });
-    const sync = (v) => { v = +v; if (isNaN(v)) return; s[nokkel] = v; tall.value = v; glid.value = v; tegn(); };
-    tall.addEventListener("input", () => sync(tall.value)); glid.addEventListener("input", () => sync(glid.value));
+    const tall = tallfelt(el, s[nokkel], (v) => { s[nokkel] = v; glid.value = v; tegn(); });
+    glid.addEventListener("input", () => { const v = +glid.value; s[nokkel] = v; tall.settVerdi(v); tegn(); });
     return el("div", null, el("label", null, navn, hjelp ? el("span", { style: "color:var(--demp)" }, " · " + hjelp) : null), el("div", { class: "verdi" }, tall), glid);
   }
 
@@ -7655,7 +7679,7 @@ LOM.h = (function () {
     tegn(); return wrap;
   }
 
-  return { felt, linjegraf, soyler, tab, sv, kort };
+  return { felt, tallfelt, formatTall, lesTall, linjegraf, soyler, tab, sv, kort };
 })();
 
 /* ---------- Tolker: fritekst → tall (ingen KI, bare mønstre) ---------- */
@@ -7711,13 +7735,7 @@ LOM.kalkulatorer = LOM.kalkulatorer || {};
 /* ---------- Nullpunkt (Bok 1, kap. 8) ---------- */
 LOM.kalkulatorer.nullpunkt = function (el, f) {
   const s = { P: 18500, VEK: 11200, FTK: 2100000, M: 210, timer: 6, kap: 2400, pst: 8, spakM: 320 };
-  const felt = (navn, nokkel, min, max, steg, hjelp) => {
-    const tall = el("input", { type: "number", value: s[nokkel], min, max, step: steg });
-    const glid = el("input", { type: "range", value: s[nokkel], min, max, step: steg });
-    const sync = (v) => { v = +v; if (isNaN(v)) return; s[nokkel] = v; tall.value = v; glid.value = v; tegn(); };
-    tall.addEventListener("input", () => sync(tall.value)); glid.addEventListener("input", () => sync(glid.value));
-    return el("div", null, el("label", null, navn, hjelp ? el("span", { style: "color:var(--demp)" }, " · " + hjelp) : null), el("div", { class: "verdi" }, tall), glid);
-  };
+  const felt = (navn, nokkel, min, max, steg, hjelp) => LOM.h.felt(el, s, tegn, navn, nokkel, min, max, steg, hjelp);
   const res = {}; const r = (k, tekst) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, tekst)); return res[k]; };
   const svgBoks = el("div");
   const spakTab = el("div", { class: "spaker" });
@@ -7854,8 +7872,8 @@ LOM.kalkulatorer.tilbud = function (el, f) {
   s.linjer.push(nyLinje({ tekst: vare("k5").navn, antall: 1, enhet: "bunt", listepris: vare("k5").listepris }));
   s.linjer.push(nyLinje({ tekst: "Rundsum: kjøring og avfall", antall: 1, enhet: "rs", regel: "rundsum", rundsum: 650, listepris: 0 }));
 
-  const inn = (nokkel, attrs, etter) => { const e = el("input", Object.assign({ value: s[nokkel], "data-nokkel": nokkel }, attrs)); e.addEventListener("input", () => { s[nokkel] = attrs.type === "number" ? (+e.value || 0) : e.value; tegn(etter); }); return e; };
-  const tall = (o, k, attrs) => { const e = el("input", Object.assign({ type: "number", value: o[k], class: "celle" }, attrs || {})); e.addEventListener("input", () => { o[k] = +e.value || 0; tegn(); }); return e; };
+  const inn = (nokkel, attrs, etter) => { if (attrs.type === "number") { const a = Object.assign({}, attrs, { "data-nokkel": nokkel }); delete a.type; return LOM.h.tallfelt(el, s[nokkel], (v) => { s[nokkel] = v; tegn(etter); }, a); } const e = el("input", Object.assign({ value: s[nokkel], "data-nokkel": nokkel }, attrs)); e.addEventListener("input", () => { s[nokkel] = e.value; tegn(etter); }); return e; };
+  const tall = (o, k, attrs) => LOM.h.tallfelt(el, o[k], (v) => { o[k] = v; tegn(); }, Object.assign({ class: "celle" }, attrs || {}));
   const tekst = (o, k) => { const e = el("input", { type: "text", value: o[k], class: "celle bred" }); e.addEventListener("input", () => { o[k] = e.value; tegn(true); }); return e; };
   const velg = (o, k, valg) => { const e = el("select", { class: "celle" }, valg.map(([v, n]) => el("option", { value: v, selected: o[k] === v ? "selected" : null }, n))); e.addEventListener("change", () => { o[k] = e.value; tegn(); }); return e; };
 
@@ -7902,7 +7920,7 @@ LOM.kalkulatorer.tilbud = function (el, f) {
       return el("div", { class: "v" }, erBilde ? el("img", { src: url, alt: v.navn, onclick: () => window.open(url) }) : el("a", { class: "fil", href: url, download: v.navn, title: "Last ned" }, "📄"), el("small", { title: v.navn }, v.navn), el("button", { title: "Fjern", onclick: async () => { await LOM.h.db.slett(v.id); visVedlegg(); } }, "×")); }));
     if (!liste.length) vedleggBoks.append(el("small", { class: "kilder" }, "Ingen vedlegg ennå."));
   }
-  const oppdaterFelt = () => { wrap.querySelectorAll(".tilbud-oppsett input").forEach(i => { const k = i.dataset.nokkel; if (k && k in s) i.value = s[k]; }); };
+  const oppdaterFelt = () => { wrap.querySelectorAll(".tilbud-oppsett input").forEach(i => { const k = i.dataset.nokkel; if (k && k in s) if (i.settVerdi) i.settVerdi(s[k]); else i.value = s[k]; }); };
 
   const wrap = el("div", null,
     el("div", { class: "kort" },
@@ -8016,7 +8034,7 @@ const H = () => LOM.h;
 LOM.kalkulatorer.regnskap = function (el, f) {
   const s = { salg: 22400000, mat: 7990000, ue: 3660000, lonn: 7400000, avskr: 620000, andre: 1386000, rinn: 56000, rkost: 210000, skatt: 262000,
     maskiner: 1200000, biler: 2400000, lager: 1400000, fordr: 4200000, bank: 1000000, aksje: 300000, annenEK: 2610000, laan: 2800000, levg: 2100000, off: 1200000, ferie: 890000, kassek: 300000 };
-  const inn = (k, navn) => { const e = el("input", { type: "number", value: s[k], class: "celle", step: 10000 }); e.addEventListener("input", () => { s[k] = +e.value || 0; tegn(); }); return el("tr", null, el("td", null, navn), el("td", { class: "num" }, e)); };
+  const inn = (k, navn) => { const e = H().tallfelt(el, s[k], (v) => { s[k] = v; tegn(); }, { class: "celle" }); return el("tr", null, el("td", null, navn), el("td", { class: "num" }, e)); };
   const ut = (navn, kl) => { const td = el("td", { class: "num" }); const tr = el("tr", { class: kl || "" }, el("td", null, navn), td); tr._td = td; return tr; };
   const R = { bf: ut("= Bruttofortjeneste", "sum"), dr: ut("= Driftsresultat", "sum"), fs: ut("= Resultat før skatt", "sum"), aar: ut("= Årsresultat", "sum") };
   const B = { am: ut("Sum anleggsmidler", "sum"), om: ut("Sum omløpsmidler", "sum"), eiend: ut("SUM EIENDELER", "sum"), ek: ut("Sum egenkapital", "sum"), kg: ut("Sum kortsiktig gjeld", "sum"), passiva: ut("SUM EGENKAPITAL OG GJELD", "sum") };
@@ -8043,7 +8061,7 @@ LOM.kalkulatorer.regnskap = function (el, f) {
 LOM.kalkulatorer.nokkeltall = function (el, f) {
   const s = { salg: 22400000, vare: 11650000, lonn: 7400000, avskr: 620000, andre: 1386000, rinn: 56000, rkost: 210000, skatt: 262000, am: 3600000, lager: 1400000, fordr: 4200000, bank: 1000000, ek: 2910000, lg: 2800000, kg: 4490000, tkStart: 9400000 };
   const norm = { dm: 7.5, tkr: 14.6, ekr: 20, lg1: 200, lg2: 100, eka: 36.2, gg: 5 };
-  const inn = (k, navn) => { const e = el("input", { type: "number", value: s[k], class: "celle", step: 10000 }); e.addEventListener("input", () => { s[k] = +e.value || 0; tegn(); }); return el("div", null, el("label", null, navn), e); };
+  const inn = (k, navn) => { const e = H().tallfelt(el, s[k], (v) => { s[k] = v; tegn(); }, { class: "celle" }); return el("div", null, el("label", null, navn), e); };
   const tabBoks = el("div"), graf = el("div"), konkl = el("div");
   const wrap = el("div", null,
     el("div", { class: "kort" }, el("h2", null, "Nøkkeltallskalkulator — de sju nøkkeltallene"), el("p", { class: "kilder" }, "Endre regnskapspostene og se nøkkeltallene flytte seg mot bransjetall og normtall. Rentabilitet regnes av gjennomsnittlig kapital, slik Bok 1 kap. 4.2 gjør. Bransjetall: NHO Elektro, Lønnsomhetsrapport 2025."),
@@ -8098,14 +8116,14 @@ LOM.kalkulatorer.timepris = function (el, f) {
 /* ---------- Knapp faktor (Bok 1, kap. 7) ---------- */
 LOM.kalkulatorer.knappfaktor = function (el, f) {
   const s = { kap: 1200, typer: [{ navn: "Ladepunkt", db: 1050, timer: 2, mat: 6500, maks: 150 }, { navn: "Solcelleanlegg", db: 4400, timer: 14, mat: 38000, maks: 30 }, { navn: "Boliginstallasjon", db: 900, timer: 3, mat: 4000, maks: 120 }, { navn: "Nybygg (prosjekt)", db: 2100, timer: 9, mat: 22000, maks: 40 }] };
-  const kapInn = el("input", { type: "number", value: s.kap, class: "celle", step: 50 }); kapInn.addEventListener("input", () => { s.kap = +kapInn.value || 0; tegn(); });
+  const kapInn = H().tallfelt(el, s.kap, (v) => { s.kap = v; tegn(); }, { class: "celle" });
   const tabBoks = el("div"), planBoks = el("div"), graf = el("div");
   const wrap = el("div", null,
     el("div", { class: "kort" }, el("h2", null, "Knapp faktor — hvem får montørtimene?"), el("p", { class: "kilder" }, "Når timene ikke strekker til, skal du prioritere jobbene som gir mest dekningsbidrag per montørtime — ikke per oppdrag. Endre tallene og se rangeringen snu. (Bok 1, kap. 7.1–7.3)"),
       el("div", { class: "katalog-rad" }, el("label", null, "Tilgjengelige montørtimer i perioden ", kapInn), el("button", { class: "knapp liten", onclick: () => { s.typer.push({ navn: "Ny type", db: 1000, timer: 4, mat: 5000, maks: 20 }); tegn(); } }, "+ Oppdragstype")), tabBoks),
     el("div", { class: "kort" }, el("h3", null, "Planen: rangering etter DB per time"), planBoks, graf));
   function tegn() {
-    const celle = (o, k, st) => { const e = el("input", { type: k === "navn" ? "text" : "number", value: o[k], class: "celle", step: st || 1 }); e.addEventListener("input", () => { o[k] = k === "navn" ? e.value : (+e.value || 0); tegn(); }); return e; };
+    const celle = (o, k, st) => { if (k !== "navn") return H().tallfelt(el, o[k], (v) => { o[k] = v; tegn(); }, { class: "celle" }); const e = el("input", { type: "text", value: o[k], class: "celle" }); e.addEventListener("input", () => { o[k] = e.value; tegn(); }); return e; };
     const rader = s.typer.map(t => ({ t, dbT: t.timer ? t.db / t.timer : 0, dbM: t.mat ? t.db / t.mat : 0 }));
     const rangT = rader.slice().sort((a, b) => b.dbT - a.dbT), rangDB = rader.slice().sort((a, b) => b.t.db - a.t.db);
     tabBoks.replaceChildren(el("div", { class: "tab-wrap" }, el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Oppdragstype"), el("th", null, "DB per oppdrag"), el("th", null, "Montørtimer"), el("th", null, "Materiell"), el("th", null, "Maks etterspørsel"), el("th", null, "DB per time"), el("th", null, "Rang (timer)"), el("th", null, "Rang (DB)"), el("th", null, ""))),
@@ -8157,7 +8175,7 @@ LOM.kalkulatorer.likviditet = function (el, f) {
     graf.replaceChildren(H().linjegraf([{ navn: "Saldo på konto", farge: "var(--serie1)", punkter: rader.map((r, i) => ({ x: i + 1, y: r.ub })), fyll: true }, { navn: "Kassekredittgrense", farge: "var(--rod)", strek: "dash", punkter: [{ x: 1, y: -s.kassek }, { x: 12, y: -s.kassek }] }], { xNavn: "Måned", xsteg: 1, xFormat: (x) => MND[x - 1], yTip: f.kr, H: 320 }),
       el("div", { class: "legende" }, el("span", null, el("i", { style: "background:var(--serie1)" }), "Bankinnskudd ved månedsslutt"), el("span", null, el("i", { style: "background:var(--rod)" }), "Kassekredittgrense")));
     konkl.replaceChildren(el("div", { class: "tilbake " + (min.ub < -s.kassek ? "feil" : min.ub < 0 ? "fasit" : "riktig") }, min.ub < -s.kassek ? `I ${min.mnd} går kontoen til ${f.kr(min.ub)} — mer enn kassekreditten dekker. Da mangler det penger til lønn.` : min.ub < 0 ? `Laveste saldo er ${f.kr(min.ub)} i ${min.mnd}. Kassekreditten redder det, men det koster renter.` : `Laveste saldo er ${f.kr(min.ub)} i ${min.mnd}. Kontoen holder hele året.`), el("div", { class: "tips" }, `Innbetalingene fra et salg fordeles ${Math.round(a0 * 100)} % i salgsmåneden, ${Math.round(a1 * 100)} % måneden etter og ${Math.round(a2 * 100)} % måneden deretter. Feriepengene (${f.kr(s.ferie)}) går ut i juni; mva og arbeidsgiveravgift annenhver måned.`));
-    salgBoks.replaceChildren(el("div", { class: "salg-rad" }, s.salg.map((v, i) => { const e = el("input", { type: "number", value: v, class: "celle", step: 50000 }); e.addEventListener("input", () => { s.salg[i] = +e.value || 0; tegn(); }); return el("label", null, MND[i], e); })), el("p", { class: "kilder", style: "margin-top:8px" }, `Sum salgsinntekt: ${f.kr(s.salg.reduce((a, b) => a + b, 0))}`));
+    salgBoks.replaceChildren(el("div", { class: "salg-rad" }, s.salg.map((v, i) => { const e = H().tallfelt(el, v, (nv) => { s.salg[i] = nv; tegn(); }, { class: "celle" }); return el("label", null, MND[i], e); })), el("p", { class: "kilder", style: "margin-top:8px" }, `Sum salgsinntekt: ${f.kr(s.salg.reduce((a, b) => a + b, 0))}`));
     tabBoks.replaceChildren(H().tab(el, [{ navn: "Måned", nokkel: "mnd" }, { navn: "Inn", nokkel: "inn", num: true, fmt: f.kr }, { navn: "Leverandører", nokkel: "lev", num: true, fmt: f.kr }, { navn: "Lønn og feriep.", nokkel: "lonn", num: true, fmt: f.kr }, { navn: "Mva, aga, skatt", nokkel: "off", num: true, fmt: f.kr }, { navn: "Annet", nokkel: "andre", num: true, fmt: f.kr }, { navn: "Netto", nokkel: "netto", num: true, fmt: (v) => el("span", { style: `color:${v < 0 ? "var(--rod)" : "var(--gronn)"}` }, f.kr(v)) }, { navn: "Saldo ut", nokkel: "ub", num: true, fmt: (v) => el("b", { style: `color:${v < 0 ? "var(--rod)" : "inherit"}` }, f.kr(v)) }], rader, { sorterbar: false }));
   }
   tegn(); return wrap;
@@ -8169,12 +8187,13 @@ LOM.kalkulatorer.naaverdi = function (el, f) {
   const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
   const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
   const graf = el("div"), tabBoks = el("div"), konkl = el("div");
-  const wrap = el("div", null, el("div", { class: "kort" }, el("h2", null, "Investeringskalkulator — lønner utstyret seg?"), el("p", { class: "kilder" }, "Nordlys vurderer feilsøkings- og termograferingsutstyr. Kontantstrøm, ikke resultat: avskrivninger er ikke med. Nåverdi, internrente og tilbakebetalingstid som i Bok 1 kap. 10."),
+  const wrap = el("div", null, el("div", { class: "kort" }, el("h2", null, "Investeringskalkulator — lønner utstyret seg?"), el("p", { class: "kilder" }, "Nordlys vurderer termograferingsutstyr til 480 000 kroner. Legg inn bruttotallene — hvor mye mer som kommer inn og hvor mye mer som går ut hvert år — så regner kalkulatoren ut nettoen (innbetalingsoverskuddet) som brukes i kontantstrømmen. Kontantstrøm, ikke resultat: avskrivninger er ikke med. Nåverdi, internrente og tilbakebetalingstid som i Bok 1 kap. 10."),
     el("div", { class: "kalk" }, el("div", { class: "inndata" }, felt("Kjøpesum i dag", "kjop", 0, 3000000, 10000), felt("Økte innbetalinger per år", "inn", 0, 1500000, 10000), felt("Økte utbetalinger per år", "ut", 0, 1000000, 10000), felt("Levetid (år)", "aar", 1, 10, 1), felt("Utrangeringsverdi siste år", "rest", 0, 1000000, 10000), felt("Kapitalbinding i omløpsmidler", "binding", 0, 500000, 5000), felt("Avkastningskrav (%)", "krav", 0, 30, 0.5), felt("Krav til tilbakebetalingstid (år)", "kravTB", 1, 10, 0.5),
-      el("div", { class: "resultat" }, r("nv", "Nåverdi"), r("ir", "Internrente"), r("tb", "Tilbakebetalingstid"), r("dom", "Konklusjon"))),
+      el("div", { class: "resultat" }, r("netto", "Innbetalingsoverskudd per år (netto)"), r("nv", "Nåverdi"), r("ir", "Internrente"), r("tb", "Tilbakebetalingstid"), r("dom", "Konklusjon"))),
       el("div", null, graf, konkl))),
     el("div", { class: "kort" }, el("h3", null, "Kontantstrøm år for år"), tabBoks));
   function tegn() {
+    res.netto.firstChild.textContent = f.kr(s.inn - s.ut); res.netto.className = s.inn - s.ut >= 0 ? "pos" : "neg"; res.netto.title = `${f.kr(s.inn)} inn − ${f.kr(s.ut)} ut = ${f.kr(s.inn - s.ut)}`;
     const ks = [-s.kjop - s.binding]; for (let t = 1; t <= s.aar; t++) ks.push(s.inn - s.ut + (t === s.aar ? s.rest + s.binding : 0));
     const nv = (r) => ks.reduce((a, c, t) => a + c / Math.pow(1 + r, t), 0);
     const NV = nv(s.krav / 100);
@@ -8186,7 +8205,7 @@ LOM.kalkulatorer.naaverdi = function (el, f) {
     const ok = NV >= 0; res.dom.firstChild.textContent = ok ? "Lønnsom" : "Ikke lønnsom"; res.dom.className = ok ? "pos" : "neg";
     const pk = []; for (let r = 0; r <= 30; r += 2) pk.push({ x: r, y: nv(r / 100) });
     graf.replaceChildren(el("div", { class: "kilder" }, "Nåverdi ved ulike avkastningskrav (nåverdiprofil):"), H().linjegraf([{ navn: "Nåverdi", farge: "var(--serie1)", punkter: pk }], { xNavn: "Avkastningskrav (%)", xsteg: 5, yTip: f.kr, markorer: [{ x: s.krav, y: NV, tekst: `Krav ${s.krav} %: ${f.kr(NV)}` }], vlinjer: ir !== null && ir * 100 <= 30 ? [{ x: ir * 100, tekst: `Internrente ${f.pst(ir * 100)}` }] : [] }));
-    konkl.replaceChildren(el("div", { class: "tips" }, `Der kurven krysser null, ligger internrenten. Er avkastningskravet høyere enn internrenten, blir nåverdien negativ. Tilbakebetalingsmetoden ser ikke hva som skjer etter at investeringen er spilt inn — derfor er nåverdien hovedmetoden.`));
+    konkl.replaceChildren(el("div", { class: "tips" }, `Innbetalingsoverskuddet er ${f.kr(s.inn)} − ${f.kr(s.ut)} = ${f.kr(s.inn - s.ut)} per år — det er dette nettotallet som står i kontantstrømmen, ikke bruttobeløpene. Der kurven krysser null, ligger internrenten. Er avkastningskravet høyere enn internrenten, blir nåverdien negativ. Tilbakebetalingsmetoden ser ikke hva som skjer etter at investeringen er spilt inn — derfor er nåverdien hovedmetoden.`));
     let a = 0; tabBoks.replaceChildren(H().tab(el, [{ navn: "År", nokkel: "t" }, { navn: "Kontantstrøm", nokkel: "ks", num: true, fmt: f.kr }, { navn: "Diskonteringsfaktor", nokkel: "df", num: true, fmt: (v) => v.toFixed(4) }, { navn: "Nåverdi", nokkel: "nv", num: true, fmt: f.kr }, { navn: "Akkumulert (udiskontert)", nokkel: "akk", num: true, fmt: (v) => el("span", { style: `color:${v < 0 ? "var(--rod)" : "var(--gronn)"}` }, f.kr(v)) }], ks.map((c, t) => { a += c; return { t, ks: c, df: 1 / Math.pow(1 + s.krav / 100, t), nv: c / Math.pow(1 + s.krav / 100, t), akk: a }; }), { sorterbar: false }));
   }
   tegn(); return wrap;
@@ -8638,9 +8657,28 @@ LOM.pwa = (function () {
       else if (k.startsWith("on")) e.addEventListener(k.slice(2), attrs[k]);
       else if (attrs[k] !== null && attrs[k] !== undefined) e.setAttribute(k, attrs[k]);
     }
-    for (const b of barn.flat(2)) if (b !== null && b !== undefined && b !== false) e.append(b.nodeType ? b : document.createTextNode(String(b)));
+    for (const b of barn.flat(2)) if (b !== null && b !== undefined && b !== false) e.append(b.nodeType ? b : tekstMedNoter(String(b)));
     return e;
   };
+  /* Fotnoter i innholdstekst: «{{170 000|innbetalingsoverskudd: 260 000 − 90 000 · Bok 1, tabell 10.1}}»
+     vises som tallet med prikket understrek; svevetekst (mus) eller trykk (mobil) viser forklaringen. */
+  const NOTE_RE = /\{\{([^{}|]+)\|([^{}]+)\}\}/g;
+  const renTekst = (s) => String(s).replace(NOTE_RE, "$1");
+  function tekstMedNoter(s) {
+    if (s.indexOf("{{") < 0) return document.createTextNode(s);
+    const frag = document.createDocumentFragment(); let sist = 0, m; NOTE_RE.lastIndex = 0;
+    while ((m = NOTE_RE.exec(s))) {
+      if (m.index > sist) frag.append(document.createTextNode(s.slice(sist, m.index)));
+      const boks = document.createElement("span"); boks.className = "fn-boks"; boks.textContent = m[2].trim();
+      const sp = document.createElement("span"); sp.className = "fn"; sp.tabIndex = 0; sp.setAttribute("role", "note"); sp.setAttribute("aria-label", m[2].trim());
+      sp.append(document.createTextNode(m[1]), boks);
+      sp.addEventListener("click", (ev) => { ev.stopPropagation(); sp.classList.toggle("aapen"); });
+      frag.append(sp); sist = m.index + m[0].length;
+    }
+    if (sist < s.length) frag.append(document.createTextNode(s.slice(sist)));
+    return frag;
+  }
+  document.addEventListener("click", () => document.querySelectorAll(".fn.aapen").forEach(x => x.classList.remove("aapen")));
   const nf = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
   const kr = (v) => nf.format(Math.round(v)) + " kr";
   const pst = (v, d = 1) => v.toLocaleString("nb-NO", { minimumFractionDigits: d, maximumFractionDigits: d }) + " %";
@@ -9012,7 +9050,7 @@ LOM.pwa = (function () {
   /* ---------- lærermodus ---------- */
   function laererBoks(I, id) {
     const eksport = () => {
-      const t = [`${I.id} — flervalg`, ...I.flervalg.map((q, i) => `${i + 1}. ${q.sp}\n` + q.alt.map((a, j) => `   ${B(j)}. ${a}${j === q.riktig ? " (riktig)" : ""}`).join("\n") + `\n   Begrunnelse: ${q.forklaring}`), "", `${I.id} — regneoppgaver`, ...(I.regne || []).map((q, i) => `${i + 1}. ${q.sp}\n   Fasit: ${q.svar} ${q.enhet}. ${q.losning}`), "", `${I.id} — vurderingsoppgaver`, ...(I.refleksjon || []).map((q, i) => `${i + 1}. ${q.sp}\n   Momenter: ${q.momenter.join(" | ")}`)].join("\n");
+      const t = [`${I.id} — flervalg`, ...I.flervalg.map((q, i) => `${i + 1}. ${q.sp}\n` + q.alt.map((a, j) => `   ${B(j)}. ${a}${j === q.riktig ? " (riktig)" : ""}`).join("\n") + `\n   Begrunnelse: ${q.forklaring}`), "", `${I.id} — regneoppgaver`, ...(I.regne || []).map((q, i) => `${i + 1}. ${q.sp}\n   Fasit: ${q.svar} ${q.enhet}. ${q.losning}`), "", `${I.id} — vurderingsoppgaver`, ...(I.refleksjon || []).map((q, i) => `${i + 1}. ${q.sp}\n   Momenter: ${q.momenter.join(" | ")}`)].map(renTekst).join("\n");
       navigator.clipboard && navigator.clipboard.writeText(t).then(() => melding("Spørsmål med fasit er kopiert"), () => melding("Kunne ikke kopiere"));
     };
     const eksportGen = () => { const qs = LOM.generator.lag(id, 10); const t = qs.map((q, i) => `${i + 1}. ${q.sp}\n` + q.alt.map((a, j) => `   ${B(j)}. ${a}${j === q.riktig ? " (riktig)" : ""}`).join("\n") + `\n   ${q.forklaring}`).join("\n"); navigator.clipboard && navigator.clipboard.writeText(t).then(() => melding("10 genererte spørsmål er kopiert")); };
