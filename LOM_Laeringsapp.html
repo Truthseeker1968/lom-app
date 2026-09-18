@@ -546,11 +546,16 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 @media (prefers-reduced-motion: reduce) { .vink, .fb-knapp.vink { animation: none } }
 
 /* ===== Lommeregner i regnehjelpen ===== */
-.fb-faner { display: flex; gap: 6px; margin-bottom: 14px; border-bottom: 1px solid var(--linje) }
-.fb-fane { border: none; background: none; font: inherit; font-weight: 600; font-size: .9rem; cursor: pointer;
-  padding: 8px 14px; color: var(--demp); border-bottom: 2px solid transparent; margin-bottom: -1px }
-.fb-fane:hover { color: var(--tekst) }
-.fb-fane.valgt { color: var(--aksent); border-bottom-color: var(--aksent) }
+.fb-faner { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 16px;
+  padding: 4px; background: var(--flate2); border: 1px solid var(--linje); border-radius: 12px }
+.fb-fane { display: flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid transparent;
+  background: none; font: inherit; font-weight: 600; font-size: .92rem; cursor: pointer; padding: 10px 12px;
+  color: var(--tekst2); border-radius: 9px; transition: background .12s ease, color .12s ease, box-shadow .12s ease }
+.fb-fane:hover { background: var(--flate); color: var(--tekst); border-color: var(--linje) }
+.fb-fane.valgt { background: var(--aksent); color: #fff; border-color: var(--aksent);
+  box-shadow: 0 2px 8px rgba(42, 120, 214, .28) }
+.fb-fane.valgt:hover { background: var(--aksent); color: #fff }
+.fb-fane-ikon { font-size: 1.05rem; line-height: 1 }
 
 .lomme { outline: none; max-width: 420px }
 .lomme:focus-visible { box-shadow: 0 0 0 3px var(--aksent-lys); border-radius: 12px }
@@ -1518,7 +1523,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.7.0 · 18. september 2026",
+  versjon: "1.7.1 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -8719,10 +8724,12 @@ LOM.veiledning = (function () {
 
     /* To faner: formlene fra kapitlet, og en vanlig lommeregner. */
     const kalkBoks = el("div", { class: "fb-fane-kalk skjult" }, kalkulator(el));
-    const fane = (navn, valgt) => el("button", { class: "fb-fane" + (valgt ? " valgt" : ""), type: "button" }, navn);
-    const faneFormler = fane("Formler", true), faneKalk = fane("Lommeregner", false);
+    const fane = (ikon, navn, valgt) => el("button", { class: "fb-fane" + (valgt ? " valgt" : ""), type: "button", "aria-pressed": valgt ? "true" : "false" },
+      el("span", { class: "fb-fane-ikon" }, ikon), navn);
+    const faneFormler = fane("∑", "Formler", true), faneKalk = fane("÷", "Lommeregner", false);
     const bytt = (tilKalk) => {
       faneKalk.classList.toggle("valgt", tilKalk); faneFormler.classList.toggle("valgt", !tilKalk);
+      faneKalk.setAttribute("aria-pressed", tilKalk ? "true" : "false"); faneFormler.setAttribute("aria-pressed", tilKalk ? "false" : "true");
       kalkBoks.classList.toggle("skjult", !tilKalk);
       panel.querySelector(".fb-fane-formler").classList.toggle("skjult", tilKalk);
       if (tilKalk) kalkBoks.firstChild.focus();
