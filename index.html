@@ -406,19 +406,19 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 .emne { margin-top: 30px }
 .emne .stor { margin: 6px 0 14px }
 .temaer { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) }
-.temaer .tema { --farge: var(--demp); display: grid; grid-template-columns: 34px 1fr; gap: 10px 12px; align-items: start;
+.temaer .etema { --farge: var(--demp); display: grid; grid-template-columns: 34px 1fr; gap: 10px 12px; align-items: start;
   padding: 14px 16px; border: 1px solid var(--linje); border-left: 4px solid var(--farge); border-radius: 12px;
   background: var(--flate); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease }
-.temaer .tema:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, .10) }
-.temaer .tema.kommer { cursor: default; opacity: .72; background: transparent; border-left-style: dashed }
-.temaer .tema.kommer:hover { transform: none; box-shadow: none }
-.temaer .tema-nr { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+.temaer .etema:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, .10) }
+.temaer .etema.kommer { cursor: default; opacity: .72; background: transparent; border-left-style: dashed }
+.temaer .etema.kommer:hover { transform: none; box-shadow: none }
+.temaer .etema-nr { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
   background: var(--farge); color: #fff; font-weight: 700; font-size: .95rem }
-.temaer .tema.kommer .tema-nr { background: transparent; color: var(--demp); border: 1px dashed var(--linje) }
-.temaer .tema-tekst b { display: block; font-size: 1.02rem; line-height: 1.3 }
-.temaer .tema-tekst p { margin: 5px 0 0; font-size: .87rem; color: var(--demp); line-height: 1.45 }
-.temaer .tema-merke { grid-column: 2; font-size: .76rem; letter-spacing: .02em; text-transform: uppercase; color: var(--demp) }
-.temaer .tema:not(.kommer) .tema-merke { color: var(--farge); font-weight: 600 }
+.temaer .etema.kommer .etema-nr { background: transparent; color: var(--demp); border: 1px dashed var(--linje) }
+.temaer .etema-tekst b { display: block; font-size: 1.02rem; line-height: 1.3 }
+.temaer .etema-tekst p { margin: 5px 0 0; font-size: .87rem; color: var(--demp); line-height: 1.45 }
+.temaer .etema-merke { grid-column: 2; font-size: .76rem; letter-spacing: .02em; text-transform: uppercase; color: var(--demp) }
+.temaer .etema:not(.kommer) .etema-merke { color: var(--farge); font-weight: 600 }
 @media (max-width: 520px) { .temaer { grid-template-columns: 1fr } }
 
 </style>
@@ -1369,7 +1369,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.2.0 · 18. september 2026",
+  versjon: "1.2.1 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -9156,11 +9156,11 @@ LOM.pwa = (function () {
     const kort = E.temaer.map((t, i) => {
       const d = t.del ? delAv(t.del) : null;
       const kap = d ? d.kapitler.filter(k => LOM.innhold[k.id]).length : 0;
-      return el("li", { class: "tema" + (d ? "" : " kommer"), style: d ? "--farge:" + d.farge : "",
+      return el("li", { class: "etema" + (d ? "" : " kommer"), style: d ? "--farge:" + d.farge : "",
           onclick: () => { if (!d) return; const m = document.getElementById("del-" + d.id); if (m) m.scrollIntoView({ behavior: "smooth", block: "start" }); } },
-        el("span", { class: "tema-nr" }, i + 1),
-        el("div", { class: "tema-tekst" }, el("b", null, t.navn), el("p", null, t.tekst)),
-        el("span", { class: "tema-merke" }, d ? kap + " kapitler i appen" : "Annet materiell"));
+        el("span", { class: "etema-nr" }, i + 1),
+        el("div", { class: "etema-tekst" }, el("b", null, t.navn), el("p", null, t.tekst)),
+        el("span", { class: "etema-merke" }, d ? kap + " kapitler i appen" : "Annet materiell"));
     });
     const dekket = E.temaer.filter(t => t.del).length;
     return el("section", { class: "emne" },
