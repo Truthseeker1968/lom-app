@@ -402,6 +402,25 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
   .modus{padding-bottom:50px}
 }
 
+/* ===== Emneseksjon: 10TE13I og de sju temaene ===== */
+.emne { margin-top: 30px }
+.emne .stor { margin: 6px 0 14px }
+.temaer { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) }
+.temaer .tema { --farge: var(--demp); display: grid; grid-template-columns: 34px 1fr; gap: 10px 12px; align-items: start;
+  padding: 14px 16px; border: 1px solid var(--linje); border-left: 4px solid var(--farge); border-radius: 12px;
+  background: var(--flate); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease }
+.temaer .tema:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, .10) }
+.temaer .tema.kommer { cursor: default; opacity: .72; background: transparent; border-left-style: dashed }
+.temaer .tema.kommer:hover { transform: none; box-shadow: none }
+.temaer .tema-nr { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--farge); color: #fff; font-weight: 700; font-size: .95rem }
+.temaer .tema.kommer .tema-nr { background: transparent; color: var(--demp); border: 1px dashed var(--linje) }
+.temaer .tema-tekst b { display: block; font-size: 1.02rem; line-height: 1.3 }
+.temaer .tema-tekst p { margin: 5px 0 0; font-size: .87rem; color: var(--demp); line-height: 1.45 }
+.temaer .tema-merke { grid-column: 2; font-size: .76rem; letter-spacing: .02em; text-transform: uppercase; color: var(--demp) }
+.temaer .tema:not(.kommer) .tema-merke { color: var(--farge); font-weight: 600 }
+@media (max-width: 520px) { .temaer { grid-template-columns: 1fr } }
+
 </style>
 </head>
 <body>
@@ -1348,16 +1367,16 @@ LOM.katalog = {
    ===================================================================== */
 window.LOM = window.LOM || {};
 LOM.oppsett = {
-  tittel: "LØM Læringsapp",
-  undertittel: "Ledelse, økonomi og markedsføring · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.1.1 · 17. september 2026",
+  tittel: "Teknisk kommunikasjon og ledelse (LØM)",
+  undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
+  versjon: "1.2.0 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
   telling: { url: "https://ekmorgezevmejjvhuzca.supabase.co", nokkel: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbW9yZ2V6ZXZtZWpqdmh1emNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1Mzg3MTEsImV4cCI6MjA3MDExNDcxMX0.qlhZMMXpU8RKKitjT22_F1qATWWm_nfXvZcjpcklE4Y" },
   proveAntall: 8,                // antall spørsmål i «Prøv»-modus
   bestaattProsent: 70,           // grense for «bestått» på prøve
-  varsel: "Dette er kun et sammendrag/studiehefte utarbeidet som repetisjons- og øvingsstøtte. Det kan ikke siteres eller vises til i besvarelser, caser, prosjektoppgaver, eksamen eller høringer. Der gjelder lærebøkene — Hjertnes/Skorpen «Økonomistyring for LØM-emnet» og Hjertnes «Markedsføring, organisasjon og ledelse for LØM-emnet» — samt oppgitte primærkilder (Lovdata, lover, forskrifter, standarder)."
+  varsel: "Dette er kun en øvings- og læringsapp — et sammendrag og studiehefte utarbeidet som repetisjons- og øvingsstøtte. Det kan ikke siteres eller vises til i besvarelser, caser, prosjektoppgaver, eksamen eller høringer. Der gjelder lærebøkene — Hjertnes/Skorpen «Økonomistyring for LØM-emnet» og Hjertnes «Markedsføring, organisasjon og ledelse for LØM-emnet» — samt oppgitte primærkilder (Lovdata, lover, forskrifter, standarder)."
 };
 
 LOM.deler = [
@@ -1429,6 +1448,28 @@ LOM.oppsett.verktoy = [
   { id: "naaverdi", ikon: "∫", navn: "Investeringskalkulator", tekst: "Nåverdi, internrente og tilbakebetalingstid med nåverdiprofil.", ref: "Bok 1, kapittel 10" },
   { id: "prissetting", ikon: "↗", navn: "Prissetting og rabatt", tekst: "Gulv, tak og handlingsrom — og regnestykket ingen gjør før de gir rabatt.", ref: "Bok 2, kapittel 7" }
 ];
+
+/* Emnet appen hører hjemme i. Fra høsten 2026 er LØM ikke lenger et eget emne for
+   førsteårsstudentene, men tre av de sju temaene i 10TE13I Teknisk kommunikasjon og ledelse.
+   Temaer med "del" peker på en del i LOM.deler; de øvrige vises som kommende. */
+LOM.oppsett.emne = {
+  kode: "10TE13I",
+  navn: "Teknisk kommunikasjon og ledelse",
+  studiepoeng: 25,
+  program: "Fordypning i Elkraft · Fagskolen Oslo",
+  kilde: "Studiekatalogen, Fagskolen Oslo, høsten 2026",
+  ingress: "Emnet samler kommunikasjon, økonomi, ledelse, markedsføring og prosjektledelse i sju temaer. Appen dekker de tre temaene som bygger på LØM-lærebøkene; de fire øvrige er en del av emnet, men hører til annet undervisningsmateriell.",
+  gammelModell: "Går du på et kull der Ledelse, økonomi og markedsføring (LØM, emne 00TX00A) er et eget emne, er alt innholdet i appen fortsatt ditt pensum — du kan se bort fra temainndelingen under.",
+  temaer: [
+    { navn: "Kommunikasjon og samhandling", tekst: "Kommunikasjonsteori, retorikk og profesjonell samhandling; møter, presentasjoner og faglig formidling tilpasset situasjon, målgruppe og kanal." },
+    { navn: "Kildebruk og dokumentasjon", tekst: "Kildebruk, tekstorganisering og problemformulering; faglige tekster med presist språk og etterrettelige henvisninger." },
+    { navn: "Økonomistyring", del: "okonomi", tekst: "Regnskap, regnskapsanalyse, kalkulasjon, budsjett og investeringsanalyse som grunnlag for å vurdere lønnsomhet og måloppnåelse." },
+    { navn: "Organisasjon og ledelse", del: "orgled", tekst: "Organisasjonsstruktur, arbeidsmiljø, motivasjon, kompetansebehov og rekruttering — og lovene som rammer inn arbeidsforholdet." },
+    { navn: "Markedsforståelse", del: "marked", tekst: "Marked, kjøpsatferd, segmentering og konkurransevirkemidler; å begrunne valg av budskap, målgrupper og kanaler." },
+    { navn: "Prosjektledelse", tekst: "Prosjektplanlegging og prosjektstyring: ressurser, aktiviteter, milepæler, framdrift og sammenhengen mellom tid, kostnad, kvalitet og risiko." },
+    { navn: "Kontrakter, ressurser og kvalitet", tekst: "Kontrakter, entrepriseformer, ansvarsforhold og relevante lover og avtaler i ledelse og arbeidsutførelse." }
+  ]
+};
 
 LOM.innhold = LOM.innhold || {};
 
@@ -8796,7 +8837,7 @@ LOM.pwa = (function () {
     if (ios) trinn = ["Trykk på Del-knappen nederst i Safari (firkanten med pil opp).", "Velg «Legg til på Hjem-skjerm».", "Trykk «Legg til». Appen får eget ikon og åpnes uten adressefelt."];
     else if (safariMac) trinn = ["Velg Arkiv → «Legg til i Dock» i Safari.", "Bekreft. Appen legger seg i Dock som et eget program."];
     else if (firefox) trinn = ["Firefox på PC installerer ikke nettapper. Bruk Chrome eller Edge for å installere, eller legg siden til som bokmerke.", "På Android: meny (⋮) → «Legg til på startskjermen»."];
-    else trinn = ["Åpne nettlesermenyen (⋮ eller ··· øverst til høyre).", "Velg «Installer LØM Læringsapp» eller «Legg til på startskjermen».", "Bekreft. Appen får eget ikon på skrivebordet, i startmenyen eller på startskjermen og virker også uten nett."];
+    else trinn = ["Åpne nettlesermenyen (⋮ eller ··· øverst til høyre).", "Velg «Installer appen» eller «Legg til på startskjermen».", "Bekreft. Appen får eget ikon på skrivebordet, i startmenyen eller på startskjermen og virker også uten nett."];
     const bak = el("div", { class: "modal-bak", onclick: (e) => { if (e.target === bak) bak.remove(); } },
       el("div", { class: "modal" }, el("h3", null, "Installer appen"),
         el("p", { style: "font-size:.92rem;color:var(--tekst2)" }, "Appen kan legges på skrivebordet eller startskjermen som et vanlig program. Fremdrift og svar lagres på samme måte som i nettleseren."),
@@ -8838,7 +8879,7 @@ LOM.pwa = (function () {
 
 </script>
 <script>
-/* ===================== LØM Læringsapp — motor =====================
+/* ========== Teknisk kommunikasjon og ledelse (LØM) — øve- og læringsapp: motor ==========
    Alt innhold ligger i kilde/innhold/*.js. Denne fila styrer navigasjon,
    visning, øvelser, kalkulatorer, generator, fremdrift og lærermodus.
    =================================================================== */
@@ -9107,6 +9148,29 @@ LOM.pwa = (function () {
     return { x, fane: neste };
   }
 
+  /* ---------- emnet appen hører hjemme i ---------- */
+  function emneSeksjon() {
+    const E = O.emne;
+    if (!E || !E.temaer) return null;
+    const delAv = (id) => LOM.deler.find(d => d.id === id) || null;
+    const kort = E.temaer.map((t, i) => {
+      const d = t.del ? delAv(t.del) : null;
+      const kap = d ? d.kapitler.filter(k => LOM.innhold[k.id]).length : 0;
+      return el("li", { class: "tema" + (d ? "" : " kommer"), style: d ? "--farge:" + d.farge : "",
+          onclick: () => { if (!d) return; const m = document.getElementById("del-" + d.id); if (m) m.scrollIntoView({ behavior: "smooth", block: "start" }); } },
+        el("span", { class: "tema-nr" }, i + 1),
+        el("div", { class: "tema-tekst" }, el("b", null, t.navn), el("p", null, t.tekst)),
+        el("span", { class: "tema-merke" }, d ? kap + " kapitler i appen" : "Annet materiell"));
+    });
+    const dekket = E.temaer.filter(t => t.del).length;
+    return el("section", { class: "emne" },
+      el("h2", { class: "sek-tittel" }, `Emnet: ${E.kode} ${E.navn}`),
+      el("p", { class: "kilder" }, `${E.studiepoeng} studiepoeng · ${E.program} · ${E.kilde}`),
+      el("p", { class: "stor" }, E.ingress),
+      el("ul", { class: "temaer" }, kort),
+      el("p", { class: "kilder" }, `Appen dekker ${dekket} av de ${E.temaer.length} temaene. ${E.gammelModell}`));
+  }
+
   /* ---------- forside ---------- */
   function visForside() {
     sti.innerHTML = "";
@@ -9116,7 +9180,7 @@ LOM.pwa = (function () {
     const sokFelt = el("input", { type: "search", placeholder: "Søk i teori, begreper, formler og kalkulatorer …", class: "sok" });
     const sokSvar = el("div", { class: "sok-svar skjult" });
     const helt = el("div", { class: "helt" },
-      el("div", null, el("h1", null, O.tittel), el("p", { class: "stor" }, "Teori, begreper, kalkulatorer og øvelser til hele LØM-pensumet. Velg et kapittel, les kort, se sammenhengen i grafen, øv med tilbakemelding og ta en prøve når du er klar."), el("p", { class: "kilder" }, O.undertittel), sokFelt, sokSvar),
+      el("div", null, el("h1", null, O.tittel), el("p", { class: "stor" }, "Teori, begreper, kalkulatorer og øvelser til økonomistyring, organisasjon og ledelse og markedsforståelse — de tre temaene i emnet som bygger på LØM-lærebøkene. Velg et kapittel, les kort, se sammenhengen i grafen, øv med tilbakemelding og ta en prøve når du er klar."), el("p", { class: "kilder" }, O.undertittel), sokFelt, sokSvar),
       el("div", { class: "fremdrift-kort" }, el("h3", null, "Din fremdrift"), el("div", { class: "stolpe" }, el("i", { style: "width:" + prosent + "%" })),
         el("div", { class: "stat-rad" }, el("div", null, el("b", null, ferdige), el("small", null, "fullført")), el("div", null, el("b", null, paab), el("small", null, "påbegynt")), el("div", null, el("b", null, tilgj.length), el("small", null, "kapitler"))),
         el("p", { style: "margin:8px 0 0;font-size:.82rem;color:var(--demp)" }, "Fremdriften lagres i nettleseren på denne PC-en. ", el("a", { href: "#", onclick: (e) => { e.preventDefault(); if (bekreft("Nullstille all fremdrift på denne PC-en?")) { lager.kap = {}; lager.tverr = null; lagre(); rute(); } } }, "Nullstill"))));
@@ -9124,7 +9188,7 @@ LOM.pwa = (function () {
     const deler = el("div", { class: "deler" });
     const tegnDeler = () => {
       deler.replaceChildren(...LOM.deler.map(d =>
-        el("section", { class: "del", style: "--farge:" + d.farge },
+        el("section", { class: "del", id: "del-" + d.id, style: "--farge:" + d.farge },
           el("header", null, emblem(d.id, d.farge), el("div", null, el("h2", null, d.navn), el("small", null, d.bok))),
           el("ul", { class: "kapliste bilder" }, d.kapitler.map(k => { const har = !!LOM.innhold[k.id]; const I = LOM.innhold[k.id]; const st = kapStatus(k.id); const l = lager.kap[k.id];
             return el("li", { class: har ? "" : "kommer", onclick: () => har && gaaTil("/kap/" + k.id + "/les") },
@@ -9188,10 +9252,10 @@ LOM.pwa = (function () {
     const verktoy = el("div", null, el("h2", { class: "sek-tittel" }, "Verktøy og prøver på tvers"),
       el("div", { class: "verktoy", style: "margin-top:8px" },
         (O.verktoy || []).map(v => el("div", { class: "v", onclick: () => gaaTil("/verktoy/" + v.id) }, el("span", { class: "ikon" }, v.ikon || "∑"), el("div", null, el("b", null, v.navn), el("small", null, v.tekst)))),
-        el("div", { class: "v", onclick: () => gaaTil("/prove/alle") }, el("span", { class: "ikon" }, "?"), el("div", null, el("b", null, "Prøve på tvers av kapitler"), el("small", null, "Eksamenstrening: hele LØM eller én del, med eller uten klokke, resultat per kapittel."))),
+        el("div", { class: "v", onclick: () => gaaTil("/prove/alle") }, el("span", { class: "ikon" }, "?"), el("div", null, el("b", null, "Prøve på tvers av kapitler"), el("small", null, "Eksamenstrening: alt innholdet eller én del, med eller uten klokke, resultat per kapittel."))),
         el("div", { class: "v", onclick: () => gaaTil("/generator") }, el("span", { class: "ikon" }, "∞"), el("div", null, el("b", null, "Ubegrenset øving"), el("small", null, "Generatoren lager nye regne- og begrepsspørsmål med nye tall hver gang.")))));
-    const felles = filboks("felles", null, "Felles filer til hele LØM", "Faktaarket om Nordlys Elektro AS, ordlista og veiledningene. Alle tall i oppgavene bygger på faktaarket.");
-    rot.replaceChildren(...[SP.paa() ? spillPanel() : null, helt, fortsett, modusrad, el("h2", { class: "sek-tittel" }, "Alle kapitler"), deler, verktoy, felles ? el("div", { style: "margin-top:30px" }, felles) : null, varsel(), bunn()].filter(Boolean));
+    const felles = filboks("felles", null, "Felles filer til hele fagstoffet", "Faktaarket om Nordlys Elektro AS, ordlista og veiledningene. Alle tall i oppgavene bygger på faktaarket.");
+    rot.replaceChildren(...[SP.paa() ? spillPanel() : null, helt, fortsett, modusrad, emneSeksjon(), el("h2", { class: "sek-tittel" }, "Alle kapitler"), deler, verktoy, felles ? el("div", { style: "margin-top:30px" }, felles) : null, varsel(), bunn()].filter(Boolean));
   }
 
   /* ---------- spillmodus ---------- */
@@ -9317,7 +9381,7 @@ LOM.pwa = (function () {
     const vis = el("button", { class: "knapp primar", onclick: () => { const n = ord(ta.value); if (n < 80 && !l.eksamen.vist && !bekreft(`Du har skrevet ${n} ord. Løsningsforslaget gir mest når du har skrevet ditt eget svar først. Vise likevel?`)) return; los.classList.remove("skjult"); vis.disabled = true; if (!l.eksamen.vist) { l.eksamen.vist = new Date().toISOString(); lagre(); LOM.telling && LOM.telling.hendelse("eksamen-" + id); } belonn(n); los.scrollIntoView({ behavior: "smooth", block: "start" }); } }, "Vis løsningsforslag");
     settInn(boks,
       el("div", { class: "kort eksamen" }, el("div", { class: "merkelapp" }, `Eksamensnær · ${E.tid} minutter · du er ${E.rolle}`), el("h2", null, E.tittel.charAt(0).toUpperCase() + E.tittel.slice(1)),
-        el("p", { class: "kilder" }, "Én case av samme slag som du møter til eksamen i LØM: en kort situasjon, og et spørsmål som krever at du drøfter og anbefaler noe. Det finnes ingen fasit i vanlig forstand — løsningsforslaget viser hva som skiller et bestått svar fra et godt."),
+        el("p", { class: "kilder" }, "Én case av samme slag som du møter til muntlig eksamen: en kort situasjon, og et spørsmål som krever at du drøfter og anbefaler noe. Det finnes ingen fasit i vanlig forstand — løsningsforslaget viser hva som skiller et bestått svar fra et godt."),
         el("div", { class: "case" }, E.case.map(t => el("p", null, t))),
         E.bygger ? el("p", { class: "kilder" }, E.bygger) : null,
         E.regneark && I.ovingsark ? el("p", { class: "kilder" }, "I regnearket ", el("code", null, I.ovingsark), ": ", E.regneark) : null,
@@ -9446,7 +9510,7 @@ LOM.pwa = (function () {
   function visTverrProve(omfang) {
     sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › Prøve på tvers");
     const tilgj = LOM.deler.map(d => ({ del: d, kap: d.kapitler.filter(k => LOM.innhold[k.id]) })).filter(x => x.kap.length);
-    const omfangVelg = el("select", null, el("option", { value: "alle" }, "Hele LØM"), tilgj.map(x => el("option", { value: x.del.id, selected: x.del.id === omfang ? "selected" : null }, x.del.navn)));
+    const omfangVelg = el("select", null, el("option", { value: "alle" }, "Alle tre delene"), tilgj.map(x => el("option", { value: x.del.id, selected: x.del.id === omfang ? "selected" : null }, x.del.navn)));
     const kapVelg = el("select", { multiple: "multiple", size: 6, class: "kapvelg" }); const fyllKap = () => kapVelg.replaceChildren(...tilgj.filter(x => omfangVelg.value === "alle" || x.del.id === omfangVelg.value).flatMap(x => x.kap.map(k => el("option", { value: k.id }, `${x.del.navn} · kap. ${k.kap} ${k.tittel}`)))); omfangVelg.addEventListener("change", fyllKap); fyllKap();
     const antallVelg = el("select", null, [10, 20, 30, 40].map(n => el("option", { value: n }, n + " spørsmål")));
     const tidVelg = el("select", null, [[0, "Uten klokke"], [10, "10 minutter"], [20, "20 minutter"], [40, "40 minutter"], [60, "60 minutter"]].map(([v, n]) => el("option", { value: v }, n)));
