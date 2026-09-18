@@ -522,6 +522,29 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 .fb-full { margin: 8px 0 0; font-size: .86rem; line-height: 1.55 }
 .fb-treff-knapper { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap }
 
+/* ===== Vink: rolig puls på knapper studenten ennå ikke har oppdaget =====
+   Pulsen går i korte drag med lang pause imellom, og forsvinner for godt
+   så snart knappen er brukt. Slås av for dem som har bedt om mindre bevegelse. */
+@keyframes vink-puls {
+  0%, 62%, 100% { transform: none; box-shadow: 0 0 0 0 rgba(42, 120, 214, 0) }
+  68% { transform: scale(1.055); box-shadow: 0 0 0 6px rgba(42, 120, 214, .22) }
+  74% { transform: none; box-shadow: 0 0 0 12px rgba(42, 120, 214, 0) }
+  80% { transform: scale(1.055); box-shadow: 0 0 0 6px rgba(42, 120, 214, .18) }
+  86% { transform: none; box-shadow: 0 0 0 12px rgba(42, 120, 214, 0) }
+}
+.vink { animation: vink-puls 7s ease-in-out 2s infinite }
+.fb-knapp.vink { animation: vink-puls 7s ease-in-out 2s infinite }
+.fb-knapp.vink:hover { animation: none }
+.hintknapp.vink { animation-name: vink-puls }
+
+.pek-regnehjelp { margin: 10px 0 0; padding: 10px 14px; border-radius: 10px; background: var(--aksent-lys);
+  border-left: 3px solid var(--aksent); font-size: .88rem; line-height: 1.5; color: var(--tekst) }
+.pek-merke { display: inline-block; background: var(--aksent); color: #fff; border-radius: 999px;
+  padding: 1px 9px; font-weight: 600; font-size: .82rem; white-space: nowrap }
+:root[data-theme="dark"] .pek-regnehjelp { background: #1b2a3d; border-color: var(--aksent) }
+
+@media (prefers-reduced-motion: reduce) { .vink, .fb-knapp.vink { animation: none } }
+
 </style>
 </head>
 <body>
@@ -1470,7 +1493,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.5.0 · 18. september 2026",
+  versjon: "1.6.0 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -8626,7 +8649,7 @@ LOM.veiledning = (function () {
 
     const lukk = () => { panel.classList.remove("aapen"); skygge.classList.remove("aapen"); knapp.classList.remove("skjult"); document.body.classList.remove("fb-aapen"); document.removeEventListener("keydown", paaEsc); };
     const paaEsc = (e) => { if (e.key === "Escape") lukk(); };
-    const aapne = () => { if (!innhold.firstChild) tegn(); panel.classList.add("aapen"); skygge.classList.add("aapen"); knapp.classList.add("skjult"); document.body.classList.add("fb-aapen"); document.addEventListener("keydown", paaEsc); velg.focus(); };
+    const aapne = () => { if (!innhold.firstChild) tegn(); knapp.classList.remove("vink"); LOM.vink && LOM.vink.merkSett("regnehjelp"); panel.classList.add("aapen"); skygge.classList.add("aapen"); knapp.classList.add("skjult"); document.body.classList.add("fb-aapen"); document.addEventListener("keydown", paaEsc); velg.focus(); };
 
     /* Søk i alt innholdet — samme søkemotor som forsiden bruker. Treffene vises
        her inne med sammendrag, slik at studenten slipper å forlate oppgaven. */
@@ -8679,7 +8702,8 @@ LOM.veiledning = (function () {
 
     const skygge = el("div", { class: "fb-skygge", onclick: lukk });
 
-    const knapp = el("button", { class: "fb-knapp", onclick: aapne },
+    const vinker = LOM.vink && !LOM.vink.settFoer("regnehjelp");
+    const knapp = el("button", { class: "fb-knapp" + (vinker ? " vink" : ""), onclick: aapne },
       el("span", { class: "fb-ikon" }, "∑"), el("span", { class: "fb-knapp-tekst" }, "Regnehjelp"));
 
     return el("div", { class: "fb-rot" }, skygge, panel, knapp);
@@ -9746,6 +9770,12 @@ LOM.pwa = (function () {
 
   /* ---------- rammeverk ---------- */
   const rot = $("#app"), sti = $("#sti");
+  /* Vink: en rolig puls på knapper studenten ennå ikke har oppdaget.
+     Den slutter for godt så snart knappen er brukt én gang. */
+  const settFoer = (n) => { try { return localStorage.getItem("lom_sett_" + n) === "1"; } catch (e) { return false; } };
+  const merkSett = (n) => { try { localStorage.setItem("lom_sett_" + n, "1"); } catch (e) { } };
+  LOM.vink = { settFoer, merkSett };
+
   let SOK_MAAL = null;   // overskrift/begrep søket skal hoppe til etter navigering
   const gaaTil = (h) => { location.hash = h; };
   const rute = () => {
@@ -10245,7 +10275,7 @@ LOM.pwa = (function () {
     }));
     let hintRad = null;
     const hint = I ? lagHint(q, I) : null;
-    if (hint) { const boks = el("div", { class: "hint skjult" }); const kn = el("button", { class: "knapp liten hintknapp", onclick: () => { boks.replaceChildren(el("b", null, "Hint: "), tekstMedNoter(hint)); boks.className = "hint"; kn.disabled = true; SP.hendelse("hint", {}); } }, "💡 Vis hint"); hintRad = [el("div", { class: "hintrad" }, kn), boks]; }
+    if (hint) { const boks = el("div", { class: "hint skjult" }); const kn = el("button", { class: "knapp liten hintknapp" + (i === 0 && !settFoer("hint") ? " vink" : ""), onclick: () => { boks.replaceChildren(el("b", null, "Hint: "), tekstMedNoter(hint)); boks.className = "hint"; kn.disabled = true; kn.classList.remove("vink"); merkSett("hint"); SP.hendelse("hint", {}); } }, "💡 Vis hint"); hintRad = [el("div", { class: "hintrad" }, kn), boks]; }
     return el("div", { class: "sporsmal" }, el("div", { class: "nr" }, (q.generert ? "Generert · " : "") + "Spørsmål " + (i + 1)), el("div", { class: "tekst" }, q.sp), figur(q.figur), knapper, hintRad, lager.laerer ? el("div", { class: "tilbake fasit" }, "Fasit: " + B(q.riktig) + ". " + q.forklaring) : null, feed);
   }
 
@@ -10256,6 +10286,7 @@ LOM.pwa = (function () {
     const poeng = el("span", { class: "poeng" }, "0 / " + I.flervalg.length);
     const flerKort = el("div", { class: "kort" }, el("div", { class: "ov-topp" }, el("h2", { style: "margin:0" }, "Flervalg"), el("span", null, "Riktige: ", poeng)),
       el("p", { class: "kilder" }, "Tilbakemelding med begrunnelse etter hvert svar. Resultatet lagres når alle er besvart."),
+      LOM.formelbok && LOM.formelbok.forKapittel(id).length ? el("p", { class: "pek-regnehjelp" }, el("b", null, "Står du fast?"), " Knappen ", el("span", { class: "pek-merke" }, "∑ Regnehjelp"), " nede til høyre følger deg nedover siden. Der finner du formlene i dette kapitlet med forklaring og eksempeltall, og et søk i alt fagstoffet i appen.") : null,
       I.flervalg.map((q, i) => flervalgKort(q, i, (ok) => { if (ok) riktig++; besvart++; poeng.textContent = `${riktig} / ${I.flervalg.length}`; if (besvart === I.flervalg.length) { l.ov = { riktig, total: I.flervalg.length, dato: new Date().toISOString() }; lagre(); melding(`Øvelse fullført: ${riktig} av ${I.flervalg.length} riktige`); } }, I)));
 
     const regneKort = I.regne && I.regne.length ? el("div", { class: "kort regne" }, el("h2", null, "Regneoppgaver"), el("p", { class: "kilder" }, "Skriv svaret som tall (komma eller punktum som desimal, minus for negative tall). Du får løsningsforslaget når du sjekker."),
