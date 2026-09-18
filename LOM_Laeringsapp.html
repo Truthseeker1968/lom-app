@@ -456,15 +456,71 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
   font-size: .85rem; line-height: 1.45 }
 .mf-kilde { margin: 10px 0 0; font-size: .78rem; color: var(--demp) }
 
-.formelboks .fb-topp { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap }
-.formelboks .fb-topp h2 { margin: 0 }
-.formelboks .fb-topp small { color: var(--demp) }
-.fb-kropp { margin-top: 16px }
-.fb-label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .88rem; margin-bottom: 14px; max-width: 460px }
-.fb-velg { font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--linje); background: var(--flate); color: var(--tekst) }
+/* Regnehjelpen: flytende knapp nede til høyre som åpner et panel.
+   På PC glir panelet inn fra høyre og lar oppgaven være synlig; på mobil
+   kommer det opp nedenfra med en dempet bakgrunn bak. */
+.fb-knapp { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; align-items: center; gap: 9px;
+  padding: 12px 18px; border: none; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 600;
+  background: var(--aksent); color: #fff; box-shadow: 0 4px 16px rgba(0, 0, 0, .22);
+  transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease }
+.fb-knapp:hover { transform: translateY(-2px); box-shadow: 0 7px 22px rgba(0, 0, 0, .28) }
+.fb-knapp.skjult { opacity: 0; pointer-events: none; transform: translateY(8px) }
+.fb-ikon { font-size: 1.15rem; line-height: 1 }
+
+.fb-skygge { position: fixed; inset: 0; z-index: 61; background: rgba(0, 0, 0, .42);
+  opacity: 0; pointer-events: none; transition: opacity .18s ease }
+.fb-panel { position: fixed; z-index: 62; display: flex; flex-direction: column;
+  background: var(--flate); border: 1px solid var(--linje); box-shadow: -6px 0 28px rgba(0, 0, 0, .18);
+  top: 0; right: 0; bottom: 0; width: min(440px, 92vw); border-radius: 16px 0 0 16px;
+  transform: translateX(102%); transition: transform .22s ease; overscroll-behavior: contain }
+.fb-panel.aapen { transform: none }
+.fb-panel-topp { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 18px; border-bottom: 1px solid var(--linje) }
+.fb-panel-topp b { display: block; font-size: 1.1rem }
+.fb-panel-topp small { color: var(--demp); font-size: .82rem }
+.fb-lukk { border: 1px solid var(--linje); background: var(--flate2); color: var(--tekst); cursor: pointer;
+  width: 34px; height: 34px; border-radius: 50%; font-size: 1rem; line-height: 1 }
+.fb-lukk:hover { border-color: var(--aksent); color: var(--aksent) }
+.fb-panel-kropp { padding: 16px 18px 24px; overflow-y: auto; -webkit-overflow-scrolling: touch }
+.fb-panel-kropp .minformel { background: var(--flate2); margin-bottom: 0 }
+.fb-panel-kropp .mf-felter { grid-template-columns: 1fr }
+.fb-label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .88rem; margin-bottom: 14px }
+.fb-velg { font: inherit; padding: 9px 10px; border-radius: 8px; border: 1px solid var(--linje); background: var(--flate); color: var(--tekst) }
+
+@media (max-width: 720px) {
+  .fb-skygge.aapen { opacity: 1; pointer-events: auto }
+  .fb-knapp { right: 14px; bottom: 14px; padding: 11px 16px }
+  .fb-panel { top: auto; left: 0; right: 0; width: auto; max-height: 82vh; border-radius: 18px 18px 0 0;
+    border-width: 1px 0 0; box-shadow: 0 -6px 28px rgba(0, 0, 0, .24); transform: translateY(102%) }
+}
+/* Når panelet er åpent på brede skjermer, trekkes innholdet inn slik at
+   oppgaven ikke havner under panelet. */
+@media (min-width: 721px) {
+  body.fb-aapen .side { padding-right: min(460px, 94vw); transition: padding-right .22s ease }
+}
+@media print { .fb-knapp, .fb-panel, .fb-skygge { display: none } }
 .sek-tittel.hele-verktoyet { margin-top: 6px }
 @media (max-width: 560px) { .forstaa { padding: 18px 16px 14px } .mf-felter { grid-template-columns: 1fr } }
 .mf-forklaring { margin: -8px 0 14px; font-size: .88rem; line-height: 1.55; color: var(--tekst2) }
+
+/* Søk inne i regnehjelpen */
+.fb-sok-felt { font: inherit; padding: 9px 11px; border-radius: 8px; border: 1px solid var(--linje);
+  background: var(--flate); color: var(--tekst); width: 100%; box-sizing: border-box }
+.fb-panel.soker .fb-formeldel { display: none }
+.fb-treff { display: grid; gap: 12px; margin-bottom: 4px }
+.fb-treff-topp { margin: 0; font-size: .82rem; color: var(--demp); font-weight: 600 }
+.fb-tomt { margin: 0; font-size: .88rem; color: var(--demp); line-height: 1.5 }
+.fb-treff-rad { border: 1px solid var(--linje); border-left: 3px solid var(--aksent); border-radius: 10px;
+  padding: 12px 14px; background: var(--flate2) }
+.fb-treff-hode { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap }
+.fb-treff-hode b { font-size: .98rem; line-height: 1.3 }
+.fb-merke { font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 700;
+  color: var(--aksent); border: 1px solid var(--aksent); border-radius: 999px; padding: 1px 7px; white-space: nowrap }
+.fb-kap { display: block; margin-top: 3px; color: var(--demp); font-size: .78rem }
+.fb-utdrag { margin: 7px 0 0; font-size: .86rem; line-height: 1.5; color: var(--tekst2) }
+.fb-utdrag mark { background: var(--gul-lys); color: inherit; border-radius: 3px; padding: 0 2px }
+.fb-full { margin: 8px 0 0; font-size: .86rem; line-height: 1.55 }
+.fb-treff-knapper { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap }
 
 </style>
 </head>
@@ -1414,7 +1470,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.3.1 · 18. september 2026",
+  versjon: "1.5.0 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -8562,18 +8618,71 @@ LOM.veiledning = (function () {
   function formelboks(el, kapId) {
     const liste = LOM.formelbok.forKapittel(kapId);
     if (!liste.length) return null;
+
     const innhold = el("div", { class: "fb-innhold" });
     const velg = el("select", { class: "fb-velg" }, liste.map((f, i) => el("option", { value: String(i) }, f.navn)));
     const tegn = () => innhold.replaceChildren(miniFormel(el, liste[+velg.value]));
     velg.addEventListener("change", tegn);
-    const kropp = el("div", { class: "fb-kropp skjult" },
-      el("p", { class: "kilder" }, "Velg formelen du trenger, bytt ut tallene med dine egne, og se regnestykket skrive seg selv ut. Dette er en regnehjelp til øvingene — på prøven og til eksamen står du på egne ben."),
-      el("label", { class: "fb-label" }, "Formel", velg), innhold);
-    const kn = el("button", {
-      class: "knapp", onclick: () => { const av = kropp.classList.toggle("skjult"); kn.textContent = av ? "Åpne regnehjelpen" : "Lukk regnehjelpen"; if (!av && !innhold.firstChild) tegn(); }
-    }, "Åpne regnehjelpen");
-    return el("div", { class: "kort formelboks" },
-      el("div", { class: "fb-topp" }, el("div", null, el("h2", null, "Regnehjelp"), el("small", null, `${liste.length} formler fra dette kapitlet, med forklaring og eksempeltall`)), kn), kropp);
+
+    const lukk = () => { panel.classList.remove("aapen"); skygge.classList.remove("aapen"); knapp.classList.remove("skjult"); document.body.classList.remove("fb-aapen"); document.removeEventListener("keydown", paaEsc); };
+    const paaEsc = (e) => { if (e.key === "Escape") lukk(); };
+    const aapne = () => { if (!innhold.firstChild) tegn(); panel.classList.add("aapen"); skygge.classList.add("aapen"); knapp.classList.add("skjult"); document.body.classList.add("fb-aapen"); document.addEventListener("keydown", paaEsc); velg.focus(); };
+
+    /* Søk i alt innholdet — samme søkemotor som forsiden bruker. Treffene vises
+       her inne med sammendrag, slik at studenten slipper å forlate oppgaven. */
+    const sokInn = el("input", { type: "search", class: "fb-sok-felt", placeholder: "Søk i teori, begreper og formler …" });
+    const sokFelt = el("label", { class: "fb-label" }, "Søk", sokInn);
+    const treffBoks = el("div", { class: "fb-treff skjult" });
+    const visTreff = () => {
+      const q = sokInn.value.trim();
+      const M = LOM.sokMotor;
+      if (q.length < 2 || !M) { treffBoks.className = "fb-treff skjult"; treffBoks.replaceChildren(); panel.classList.remove("soker"); return; }
+      panel.classList.add("soker"); treffBoks.className = "fb-treff";
+      const treff = M.sok(q);
+      if (!treff.length) {
+        treffBoks.replaceChildren(el("p", { class: "fb-tomt" }, `Ingen treff på «${q}». Prøv ett fagord om gangen, for eksempel «dekningsgrad», «likviditet» eller «avkastningskrav».`));
+        return;
+      }
+      treffBoks.replaceChildren(
+        el("p", { class: "fb-treff-topp" }, `${treff.length} treff på «${q}»`),
+        ...treff.map(r => {
+          const hel = M.renTekst(r.tekst || "");
+          const full = el("p", { class: "fb-full skjult" }, hel);
+          const kort = el("p", { class: "fb-utdrag" }, M.utdrag(r.tekst || "", q));
+          /* «Vis hele» har bare noe for seg når utdraget faktisk er forkortet. */
+          const lang = hel.length > 250;
+          return el("div", { class: "fb-treff-rad" },
+            el("div", { class: "fb-treff-hode" }, el("span", { class: "fb-merke" }, r.type), el("b", null, M.renTekst(r.tittel))),
+            r.kapNavn ? el("small", { class: "fb-kap" }, r.kapNavn) : null,
+            kort, lang ? full : null,
+            el("div", { class: "fb-treff-knapper" },
+              lang ? el("button", {
+                class: "knapp liten", onclick: (e) => {
+                  const av = full.classList.toggle("skjult"); kort.classList.toggle("skjult", !av);
+                  e.target.textContent = av ? "Vis hele" : "Vis mindre";
+                }
+              }, "Vis hele") : null,
+              el("button", { class: "knapp liten", onclick: () => { lukk(); M.aapne(r); } }, "Gå til kapitlet →")));
+        }));
+    };
+    let sokT; sokInn.addEventListener("input", () => { clearTimeout(sokT); sokT = setTimeout(visTreff, 130); });
+    sokInn.addEventListener("keydown", (e) => { if (e.key === "Escape" && sokInn.value) { e.stopPropagation(); sokInn.value = ""; visTreff(); } });
+
+    const panel = el("aside", { class: "fb-panel", role: "dialog", "aria-label": "Regnehjelp" },
+      el("div", { class: "fb-panel-topp" },
+        el("div", null, el("b", null, "Regnehjelp"), el("small", null, `${liste.length} formler fra dette kapitlet`)),
+        el("button", { class: "fb-lukk", "aria-label": "Lukk regnehjelpen", onclick: lukk }, "✕")),
+      el("div", { class: "fb-panel-kropp" }, sokFelt, treffBoks,
+        el("div", { class: "fb-formeldel" },
+          el("p", { class: "kilder" }, "Velg formelen du trenger, bytt ut tallene med dine egne, og se regnestykket skrive seg selv ut. Dette er en regnehjelp til øvingene — på prøven og til eksamen står du på egne ben."),
+          el("label", { class: "fb-label" }, "Formel", velg), innhold)));
+
+    const skygge = el("div", { class: "fb-skygge", onclick: lukk });
+
+    const knapp = el("button", { class: "fb-knapp", onclick: aapne },
+      el("span", { class: "fb-ikon" }, "∑"), el("span", { class: "fb-knapp-tekst" }, "Regnehjelp"));
+
+    return el("div", { class: "fb-rot" }, skygge, panel, knapp);
   }
 
   /* ---------------------------------------------------------------
@@ -10274,6 +10383,15 @@ LOM.pwa = (function () {
   /* ---------- tema og hjem ---------- */
   $("#tema").addEventListener("click", () => { const naa = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", naa); try { localStorage.setItem("lom_tema", naa); } catch (e) { } oppdaterTemaknapp(); });
   $("#hjem").addEventListener("click", () => gaaTil("/"));
+
+  /* Søket gjøres tilgjengelig for andre motorfiler (regnehjelpen i veiledning.js).
+     Alt ligger fortsatt her; dette er bare en dør inn. */
+  LOM.sokMotor = {
+    sok,
+    utdrag: (tekst, q) => utdrag(el, tekst, q),
+    renTekst,
+    aapne: (r) => { SOK_MAAL = r.maal || null; gaaTil(r.verktoy ? "/verktoy/" + r.verktoy : `/kap/${r.kapId}/${r.fane || "les"}`); }
+  };
 
   /* ---------- oppstart ---------- */
   $("#topp-tittel").textContent = O.tittel;
