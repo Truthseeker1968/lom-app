@@ -575,6 +575,74 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 .lomme-kn.lik:hover { filter: brightness(1.08) }
 .lomme-hjelp { margin: 12px 0 0; font-size: .78rem; color: var(--demp); line-height: 1.45 }
 
+/* Varsel om ny versjon — blir stående til studenten trykker */
+.ny-versjon { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 70;
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 18px; border-radius: 999px;
+  background: var(--tekst); color: var(--bg); box-shadow: 0 6px 22px rgba(0, 0, 0, .3); font-size: .9rem }
+.ny-versjon .knapp { background: var(--aksent); color: #fff; border-color: var(--aksent) }
+.ny-versjon-lukk { background: none; border: none; color: inherit; opacity: .7; cursor: pointer; font-size: .95rem; padding: 2px 4px }
+.ny-versjon-lukk:hover { opacity: 1 }
+@media (max-width: 480px) { .ny-versjon { left: 12px; right: 12px; transform: none; justify-content: space-between; border-radius: 14px } }
+@media print { .ny-versjon { display: none } }
+
+/* ===== Mobil: ingenting skal stikke utenfor skjermen =====
+   Tre årsaker gikk igjen: lange filnavn i <code> som ikke kunne brytes,
+   tabeller inne i rutenett der elementet vokser til innholdet i stedet for
+   å la tabellen rulle, og felt med fast bredde. */
+code, kbd, samp { overflow-wrap: anywhere; word-break: break-word }
+.kilder { overflow-wrap: anywhere }
+.tab-wrap { min-width: 0; max-width: 100% }
+.to-kol > *, .verktoy > *, .deler > *, .moduser > *, .temaer > * { min-width: 0 }
+@media (max-width: 720px) {
+  table.tab td.formel { white-space: normal; overflow-wrap: anywhere }
+  .kort { overflow-wrap: break-word }
+}
+@media (max-width: 480px) {
+  /* Lange enkeltord som «Investeringskalkulator» sprenger overskriften på smal skjerm */
+  h1 { font-size: 1.5rem; line-height: 1.22 }
+  h1, h2, h3 { overflow-wrap: break-word; hyphens: auto }
+}
+/* Nedtrekkslister med lange valg (generatoren, prøve på tvers) sprengte raden */
+select { max-width: 100% }
+.prove-valg { flex-wrap: wrap }
+.prove-valg label, .prove-valg select { min-width: 0; max-width: 100% }
+@media (max-width: 360px) {
+  /* På de smaleste telefonene må topplinja stramme inn, ellers dyttes knappene utenfor */
+  .topp { padding: 0 12px; gap: 8px }
+  .topp .hoyre { gap: 6px }
+  .topp .logo .merke { width: 26px; height: 26px }
+  .topp #topp-tittel { font-size: .95rem }
+}
+@media (max-width: 340px) {
+  .topp { padding: 0 8px; gap: 6px }
+  .topp .hoyre { gap: 4px }
+  .topp .toppknapp { padding: 6px; min-width: 34px }
+  .side { padding-left: 12px; padding-right: 12px }
+  h1 { font-size: 1.35rem }
+}
+@media (max-width: 760px) {
+  /* Fagkalkulatorene: inndata over resultat i stedet for ved siden av */
+  .kalk { grid-template-columns: 1fr }
+  .kalk > * { min-width: 0 }
+}
+@media (max-width: 400px) {
+  .kalk .resultat { grid-template-columns: 1fr }
+  .kalk .resultat > * { min-width: 0 }
+}
+@media (max-width: 720px) {
+  /* Lang apptittel skal ikke bryte og bli klippet av topplinja */
+  .topp .logo { min-width: 0; flex: 0 1 auto }
+  .topp #topp-tittel { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block }
+}
+@media (max-width: 520px) {
+  .topp #topp-tittel { max-width: 40vw }
+}
+@media (max-width: 560px) {
+  /* Stien blir uleselig på smal skjerm; «← Forside» rett under gjør samme nytte */
+  .topp .sti { display: none }
+  .topp #topp-tittel { max-width: 52vw }
+}
+
 </style>
 </head>
 <body>
@@ -1523,7 +1591,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.7.1 · 18. september 2026",
+  versjon: "1.8.0 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -9807,9 +9875,48 @@ LOM.pwa = (function () {
     window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); utsatt = e; oppdater(); });
     window.addEventListener("appinstalled", () => { utsatt = null; oppdater(); });
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js").then(r => { sw = r; r.addEventListener("updatefound", () => { const ny = r.installing; ny && ny.addEventListener("statechange", () => { if (ny.state === "installed" && navigator.serviceWorker.controller) { const m = document.getElementById("melding"); if (m) { m.textContent = "Ny versjon er lastet ned — åpne appen på nytt for å ta den i bruk."; m.classList.add("vis"); setTimeout(() => m.classList.remove("vis"), 6000); } } }); }); }).catch(() => {});
+      /* updateViaCache: "none" gjør at nettleseren aldri serverer sw.js fra sin egen
+         mellomlagring. Uten den kan en gammel utgave bli hengende i opptil et døgn,
+         og studenten ser en app som er flere versjoner bak. */
+      navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(r => {
+        sw = r;
+        const sjekk = () => r.update().catch(() => { });
+        sjekk();
+        setInterval(sjekk, 30 * 60 * 1000);
+        window.addEventListener("focus", sjekk);
+        r.addEventListener("updatefound", () => {
+          const ny = r.installing;
+          ny && ny.addEventListener("statechange", () => {
+            if (ny.state === "installed" && navigator.serviceWorker.controller) nyVersjon();
+          });
+        });
+      }).catch(() => { });
+      /* Når den nye utgaven har tatt over, laster vi siden på nytt — én gang. */
+      let lastet = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (lastet) return; lastet = true;
+        if (document.body.dataset.oppdaterer === "ja") location.reload();
+      });
     }
     oppdater();
+  }
+
+  /* Varsel som blir stående til studenten trykker. Vi laster aldri siden på nytt
+     under beina på noen som holder på med en oppgave. */
+  function nyVersjon() {
+    if (document.getElementById("ny-versjon")) return;
+    const boks = document.createElement("div");
+    boks.id = "ny-versjon"; boks.className = "ny-versjon";
+    const tekst = document.createElement("span");
+    tekst.textContent = "Ny versjon av appen er klar.";
+    const kn = document.createElement("button");
+    kn.className = "knapp liten"; kn.textContent = "Oppdater nå";
+    kn.addEventListener("click", () => { document.body.dataset.oppdaterer = "ja"; location.reload(); });
+    const lukk = document.createElement("button");
+    lukk.className = "ny-versjon-lukk"; lukk.setAttribute("aria-label", "Lukk"); lukk.textContent = "✕";
+    lukk.addEventListener("click", () => boks.remove());
+    boks.append(tekst, kn, lukk);
+    document.body.appendChild(boks);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
