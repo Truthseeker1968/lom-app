@@ -545,6 +545,31 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 
 @media (prefers-reduced-motion: reduce) { .vink, .fb-knapp.vink { animation: none } }
 
+/* ===== Lommeregner i regnehjelpen ===== */
+.fb-faner { display: flex; gap: 6px; margin-bottom: 14px; border-bottom: 1px solid var(--linje) }
+.fb-fane { border: none; background: none; font: inherit; font-weight: 600; font-size: .9rem; cursor: pointer;
+  padding: 8px 14px; color: var(--demp); border-bottom: 2px solid transparent; margin-bottom: -1px }
+.fb-fane:hover { color: var(--tekst) }
+.fb-fane.valgt { color: var(--aksent); border-bottom-color: var(--aksent) }
+
+.lomme { outline: none; max-width: 420px }
+.lomme:focus-visible { box-shadow: 0 0 0 3px var(--aksent-lys); border-radius: 12px }
+.lomme-skjerm { background: var(--flate2); border: 1px solid var(--linje); border-radius: 12px;
+  padding: 12px 16px; text-align: right; margin-bottom: 12px; font-variant-numeric: tabular-nums }
+.lomme-linje { min-height: 18px; font-size: .84rem; color: var(--demp) }
+.lomme-tall { font-size: 1.85rem; font-weight: 600; line-height: 1.25; word-break: break-all }
+.lomme-rutenett { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px }
+.lomme-kn { font: inherit; font-size: 1.1rem; font-weight: 600; padding: 14px 0; cursor: pointer;
+  border: 1px solid var(--linje); border-radius: 10px; background: var(--flate); color: var(--tekst);
+  transition: background .1s ease, border-color .1s ease }
+.lomme-kn:hover { border-color: var(--aksent) }
+.lomme-kn:active { background: var(--aksent-lys) }
+.lomme-kn.lys { background: var(--flate2); color: var(--tekst2) }
+.lomme-kn.op { background: var(--flate2); color: var(--aksent) }
+.lomme-kn.lik { background: var(--aksent); color: #fff; border-color: var(--aksent) }
+.lomme-kn.lik:hover { filter: brightness(1.08) }
+.lomme-hjelp { margin: 12px 0 0; font-size: .78rem; color: var(--demp); line-height: 1.45 }
+
 </style>
 </head>
 <body>
@@ -1493,7 +1518,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.6.0 · 18. september 2026",
+  versjon: "1.7.0 · 18. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -1570,6 +1595,7 @@ LOM.oppsett.verktoy = [
   { id: "knappfaktor", ikon: "↕", navn: "Knapp faktor", tekst: "Hvem får montørtimene? Rangering etter dekningsbidrag per time og plan for perioden.", ref: "Bok 1, kapittel 7" },
   { id: "likviditet", ikon: "≈", navn: "Likviditetsbudsjett", tekst: "Måned for måned: når kommer pengene, og når går de? Prøv 45 dagers kredittid.", ref: "Bok 1, kapittel 9" },
   { id: "naaverdi", ikon: "∫", navn: "Investeringskalkulator", tekst: "Nåverdi, internrente og tilbakebetalingstid med nåverdiprofil.", ref: "Bok 1, kapittel 10" },
+  { id: "lommeregner", ikon: "÷", navn: "Lommeregner", tekst: "En vanlig regnemaskin med de fire regneartene, prosent og fortegn — for de gangene du bare trenger å regne litt.", ref: "Verktøy" },
   { id: "prissetting", ikon: "↗", navn: "Prissetting og rabatt", tekst: "Gulv, tak og handlingsrom — og regnestykket ingen gjør før de gir rabatt.", ref: "Bok 2, kapittel 7" }
 ];
 
@@ -8691,14 +8717,30 @@ LOM.veiledning = (function () {
     let sokT; sokInn.addEventListener("input", () => { clearTimeout(sokT); sokT = setTimeout(visTreff, 130); });
     sokInn.addEventListener("keydown", (e) => { if (e.key === "Escape" && sokInn.value) { e.stopPropagation(); sokInn.value = ""; visTreff(); } });
 
+    /* To faner: formlene fra kapitlet, og en vanlig lommeregner. */
+    const kalkBoks = el("div", { class: "fb-fane-kalk skjult" }, kalkulator(el));
+    const fane = (navn, valgt) => el("button", { class: "fb-fane" + (valgt ? " valgt" : ""), type: "button" }, navn);
+    const faneFormler = fane("Formler", true), faneKalk = fane("Lommeregner", false);
+    const bytt = (tilKalk) => {
+      faneKalk.classList.toggle("valgt", tilKalk); faneFormler.classList.toggle("valgt", !tilKalk);
+      kalkBoks.classList.toggle("skjult", !tilKalk);
+      panel.querySelector(".fb-fane-formler").classList.toggle("skjult", tilKalk);
+      if (tilKalk) kalkBoks.firstChild.focus();
+    };
+    faneFormler.addEventListener("click", () => bytt(false));
+    faneKalk.addEventListener("click", () => bytt(true));
+    const faner = el("div", { class: "fb-faner", role: "tablist" }, faneFormler, faneKalk);
+
     const panel = el("aside", { class: "fb-panel", role: "dialog", "aria-label": "Regnehjelp" },
       el("div", { class: "fb-panel-topp" },
         el("div", null, el("b", null, "Regnehjelp"), el("small", null, `${liste.length} formler fra dette kapitlet`)),
         el("button", { class: "fb-lukk", "aria-label": "Lukk regnehjelpen", onclick: lukk }, "✕")),
       el("div", { class: "fb-panel-kropp" }, sokFelt, treffBoks,
-        el("div", { class: "fb-formeldel" },
-          el("p", { class: "kilder" }, "Velg formelen du trenger, bytt ut tallene med dine egne, og se regnestykket skrive seg selv ut. Dette er en regnehjelp til øvingene — på prøven og til eksamen står du på egne ben."),
-          el("label", { class: "fb-label" }, "Formel", velg), innhold)));
+        el("div", { class: "fb-formeldel" }, faner,
+          el("div", { class: "fb-fane-formler" },
+            el("p", { class: "kilder" }, "Velg formelen du trenger, bytt ut tallene med dine egne, og se regnestykket skrive seg selv ut. Dette er en regnehjelp til øvingene — på prøven og til eksamen står du på egne ben."),
+            el("label", { class: "fb-label" }, "Formel", velg), innhold),
+          kalkBoks)));
 
     const skygge = el("div", { class: "fb-skygge", onclick: lukk });
 
@@ -8707,6 +8749,72 @@ LOM.veiledning = (function () {
       el("span", { class: "fb-ikon" }, "∑"), el("span", { class: "fb-knapp-tekst" }, "Regnehjelp"));
 
     return el("div", { class: "fb-rot" }, skygge, panel, knapp);
+  }
+
+  /* ---------------------------------------------------------------
+     Enkel lommeregner. De fire regneartene, prosent, fortegn, slett
+     og bakover. Prosent oppfører seg som på en vanlig kalkulator:
+     «200 + 25 %» blir 250, mens «200 × 25 %» blir 50.
+     --------------------------------------------------------------- */
+  function kalkulator(el) {
+    const S = { vis: "0", akk: null, op: null, ny: true };
+    const nfVis = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 10 });
+    const visTall = (t) => {
+      if (t === "" || t === "-") return t || "0";
+      if (!/^-?[0-9]*,?[0-9]*$/.test(t)) return t;   /* «—» ved deling på null slippes gjennom */
+      const minus = t.startsWith("-"); const u = minus ? t.slice(1) : t;
+      const [hel, des] = u.split(",");
+      const h = hel === "" ? "0" : nfVis.format(+hel);
+      return (minus ? "−" : "") + h + (des !== undefined ? "," + des : "");
+    };
+    const tall = (t) => { const v = parseFloat(String(t).replace(",", ".")); return isNaN(v) ? 0 : v; };
+    const tekst = (v) => {
+      if (!isFinite(v)) return "—";
+      const r = Math.round(v * 1e10) / 1e10;
+      return String(r).replace(".", ",");
+    };
+    const skjerm = el("div", { class: "lomme-tall" }, "0");
+    const linje = el("div", { class: "lomme-linje" }, "");
+    const OP = { "+": (a, b) => a + b, "−": (a, b) => a - b, "×": (a, b) => a * b, "÷": (a, b) => b === 0 ? NaN : a / b };
+
+    const tegn = () => { skjerm.textContent = visTall(S.vis); linje.textContent = S.akk === null ? "" : visTall(tekst(S.akk)) + " " + S.op; };
+    const regnUt = () => { if (S.op && S.akk !== null) { const sv = OP[S.op](S.akk, tall(S.vis)); S.vis = tekst(sv); S.akk = null; S.op = null; } };
+
+    function trykk(t) {
+      if (t >= "0" && t <= "9") { S.vis = S.ny || S.vis === "0" ? t : S.vis + t; S.ny = false; }
+      else if (t === ",") { if (S.ny) { S.vis = "0,"; S.ny = false; } else if (!S.vis.includes(",")) S.vis += ","; }
+      else if (OP[t]) { regnUt(); S.akk = tall(S.vis); S.op = t; S.ny = true; }
+      else if (t === "=") { regnUt(); S.ny = true; }
+      else if (t === "%") {
+        const v = tall(S.vis);
+        S.vis = tekst(S.akk !== null && (S.op === "+" || S.op === "−") ? S.akk * v / 100 : v / 100);
+        S.ny = false;
+      }
+      else if (t === "±") { S.vis = S.vis.startsWith("-") ? S.vis.slice(1) : "-" + S.vis; }
+      else if (t === "C") { S.vis = "0"; S.akk = null; S.op = null; S.ny = true; }
+      else if (t === "⌫") { S.vis = S.vis.length > 1 ? S.vis.slice(0, -1) : "0"; if (S.vis === "-") S.vis = "0"; }
+      tegn();
+    }
+
+    const knapp = (t, kl) => el("button", { class: "lomme-kn " + (kl || ""), type: "button", onclick: () => trykk(t) }, t);
+    const rutenett = el("div", { class: "lomme-rutenett" },
+      knapp("C", "lys"), knapp("⌫", "lys"), knapp("%", "lys"), knapp("÷", "op"),
+      knapp("7"), knapp("8"), knapp("9"), knapp("×", "op"),
+      knapp("4"), knapp("5"), knapp("6"), knapp("−", "op"),
+      knapp("1"), knapp("2"), knapp("3"), knapp("+", "op"),
+      knapp("±", "lys"), knapp("0"), knapp(","), knapp("=", "lik"));
+
+    const rot = el("div", { class: "lomme", tabindex: "0" },
+      el("div", { class: "lomme-skjerm" }, linje, skjerm), rutenett,
+      el("p", { class: "lomme-hjelp" }, "Du kan også bruke tastaturet: tallene, +, −, *, /, Enter, prosent og Backspace."));
+
+    rot.addEventListener("keydown", (e) => {
+      const k = e.key;
+      const kart = { "*": "×", "x": "×", "/": "÷", "-": "−", "+": "+", "Enter": "=", "=": "=", ".": ",", ",": ",", "%": "%", "Backspace": "⌫", "Escape": "C", "Delete": "C" };
+      if ((k >= "0" && k <= "9") || kart[k]) { e.preventDefault(); trykk(kart[k] || k); }
+    });
+    tegn();
+    return rot;
   }
 
   /* ---------------------------------------------------------------
@@ -8774,7 +8882,7 @@ LOM.veiledning = (function () {
 
   function panelFor(el, id) { return VEIL[id] ? panel(el, VEIL[id]) : null; }
 
-  return { miniFormel, panel, panelFor, formelboks, VEIL };
+  return { miniFormel, panel, panelFor, formelboks, kalkulator, VEIL };
 })();
 
 
@@ -9370,6 +9478,14 @@ LOM.kalkulatorer.prissetting = function (el, f) {
       el("div", { class: "kilder" }, "Legg merke til hvor mye brattere dekningsbidraget faller enn prisen. Hele avslaget tas fra dekningsbidraget; kostnadene er de samme uansett."));
   }
   tegn(); return wrap;
+};
+
+/* Lommeregner som eget verktøy på forsiden. Selve regnemaskinen bor i
+   veiledning.js, slik at den er nøyaktig den samme som i regnehjelpen. */
+LOM.kalkulatorer.lommeregner = function (el) {
+  return el("div", { class: "kort" },
+    el("p", { class: "kilder", style: "margin-top:0" }, "En vanlig regnemaskin med de fire regneartene, prosent og fortegn. Den samme finner du under fanen «Lommeregner» i regnehjelpen inne i øvingene."),
+    LOM.veiledning.kalkulator(el));
 };
 
 
