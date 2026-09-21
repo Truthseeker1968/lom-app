@@ -1,3 +1,7 @@
+---
+tags: [klassemateriell, lom, md]
+indeksert: 2026-09-21
+---
 [LES_MEG.md](https://github.com/user-attachments/files/32325498/LES_MEG.md)
 # LØM Læringsapp — slik er den bygd, og slik endrer du den
 
