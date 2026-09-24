@@ -643,6 +643,150 @@ select { max-width: 100% }
   .topp #topp-tittel { max-width: 52vw }
 }
 
+/* Satstabellen på forsiden */
+.satser { margin-top: 26px }
+.satser h2 { margin-top: 0 }
+.satser table.tab { min-width: 0 }
+.sats-gammel { color: var(--gul); font-weight: 600 }
+.pek-vurdering { margin: 10px 0 0; padding: 10px 14px; border-radius: 10px; background: var(--gul-lys);
+  border-left: 3px solid var(--gul); font-size: .9rem; line-height: 1.55; color: var(--tekst) }
+:root[data-theme="dark"] .pek-vurdering { background: #2b2410; border-color: #c79a2a }
+.refleksjon .ov-topp { margin-bottom: 4px }
+/* Synlig fokusmarkering for alt som kan nås med tastatur */
+:focus-visible { outline: 3px solid var(--aksent); outline-offset: 2px; border-radius: 6px }
+.fb-ingen-formler { margin: 0 0 14px; padding: 10px 12px; border-radius: 10px; background: var(--flate2); font-size: .88rem; line-height: 1.5; color: var(--tekst2) }
+
+/* =====================================================================
+   Forside 2.0 — toppbilde, tre temakort, egne ikoner
+   Arver fargetokenene appen har fra før (--aksent, --flate, --linje …).
+   ===================================================================== */
+.ikon-svg { width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; flex: none }
+
+/* --- toppbildet --- */
+.hero { position: relative; overflow: hidden; border-radius: 20px; margin: 4px 0 8px; color: #fff;
+  background: #16263a var(--bilde, none) center 55% / cover no-repeat; box-shadow: 0 10px 34px rgba(12, 24, 40, .22) }
+.hero::before { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(10, 20, 34, .93) 0%, rgba(10, 20, 34, .80) 42%, rgba(10, 20, 34, .30) 100%) }
+.hero-innhold { position: relative; max-width: 640px; padding: 44px 44px 36px }
+.hero-merke { display: inline-block; font-size: .8rem; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .24); color: #e8eef6 }
+.hero h1 { color: #fff; font-size: 2.35rem; line-height: 1.12; margin: 16px 0 12px; letter-spacing: -.01em }
+.hero-ingress { font-size: 1.08rem; line-height: 1.6; color: #dbe4ee; margin: 0 0 24px }
+.hero-knapp { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; min-height: 56px;
+  padding: 11px 20px 11px 22px; border-radius: 14px; background: #fff; color: #10233a; font-weight: 700; font-size: 1.05rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25); transition: transform .14s ease, box-shadow .14s ease }
+.hero-knapp span { display: flex; flex-direction: column; line-height: 1.25 }
+.hero-knapp small { font-weight: 600; font-size: .76rem; letter-spacing: .03em; text-transform: uppercase; color: var(--aksent) }
+.hero-knapp .ikon-svg { font-size: 1.3rem; color: var(--aksent) }
+.hero-knapp:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0, 0, 0, .3) }
+.hero-sok { display: flex; align-items: center; gap: 10px; margin: 22px 0 0; padding: 0 16px; min-height: 52px;
+  border-radius: 14px; background: rgba(255, 255, 255, .96); color: #53606e; cursor: text }
+.hero-sok .ikon-svg { font-size: 1.2rem }
+.hero-sok input.sok { flex: 1; border: none; background: transparent; font: inherit; font-size: 1rem; color: #10233a;
+  padding: 14px 0; margin: 0; box-shadow: none; min-width: 0; outline: none; width: auto; max-width: none }
+.hero-sok:focus-within { box-shadow: 0 0 0 3px rgba(120, 175, 240, .7) }
+.hero-fakta { margin: 16px 0 0; font-size: .9rem; color: #c4d0dc }
+.hero-fremdrift { margin: 18px 0 0; font-size: .86rem; color: #c4d0dc; line-height: 1.5 }
+.hero-fremdrift a { color: #fff }
+.hero-fremdrift .stolpe { background: rgba(255, 255, 255, .18); height: 8px; margin: 0 0 8px; max-width: 420px }
+.hero-fremdrift .stolpe > i { background: #7fd3a4 }
+
+/* To-delte fremdriftsstolper: fullført og påbegynt ved siden av hverandre */
+.hero-fremdrift .stolpe, .tk-fremdrift .stolpe { display: flex }
+.stolpe > i.paab { opacity: .45; border-radius: 0 999px 999px 0 }
+
+/* --- tre temakort --- */
+.tema-seksjon { margin-top: 12px }
+.temakortene { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 12px }
+.temakort { display: flex; flex-direction: column; text-decoration: none; color: var(--tekst); background: var(--flate);
+  border: 1px solid var(--linje); border-radius: 18px; overflow: hidden; box-shadow: var(--skygge);
+  transition: transform .16s ease, box-shadow .16s ease }
+.temakort:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(12, 24, 40, .16) }
+.tk-bilde { position: relative; aspect-ratio: 16 / 9; background: var(--farge) var(--bilde, none) center / cover no-repeat }
+.tk-bilde::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .45) 100%) }
+.tk-emblem { position: absolute; left: 16px; bottom: -22px; z-index: 1; width: 52px; height: 52px; border-radius: 14px;
+  display: grid; place-items: center; background: var(--farge); box-shadow: 0 4px 12px rgba(0, 0, 0, .22); border: 3px solid var(--flate) }
+.tk-emblem .emblem { width: 32px; height: 32px }
+.tk-tekst { display: flex; flex-direction: column; gap: 6px; padding: 32px 18px 18px; flex: 1 }
+.tk-tekst h3 { margin: 0; font-size: 1.28rem; line-height: 1.2 }
+.tk-tekst small { color: var(--tekst2); font-size: .88rem }
+.tk-fremdrift { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; font-size: .84rem; color: var(--tekst2) }
+.tk-fremdrift .stolpe { margin: 0; height: 7px }
+.tk-fremdrift .stolpe > i { background: var(--farge) }
+.tk-apne { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 10px; font-weight: 650; color: var(--farge) }
+.temakort:hover .tk-apne { text-decoration: underline }
+.tema-resten { margin: 16px 0 0; font-size: .9rem; line-height: 1.55; color: var(--tekst2) }
+
+/* --- arbeidsmåtene med egne ikoner --- */
+a.modus { text-decoration: none; color: var(--tekst) }
+.modus-ikon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; font-size: 1.5rem;
+  color: var(--m-farge, var(--aksent)); background: color-mix(in srgb, var(--m-farge, var(--aksent)) 12%, transparent) }
+.modus-knapp { display: inline-flex; align-items: center; gap: 6px }
+a.v { text-decoration: none; color: var(--tekst) }
+
+/* --- temasiden --- */
+.del-topp { position: relative; overflow: hidden; border-radius: 20px; margin: 4px 0 20px; color: #fff; min-height: 230px;
+  display: flex; align-items: flex-end; background: var(--farge) var(--bilde, none) center / cover no-repeat }
+.del-topp::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 16, 28, .15) 0%, rgba(8, 16, 28, .82) 100%) }
+.del-topp-innhold { position: relative; display: flex; gap: 18px; align-items: flex-end; padding: 28px 30px; width: 100% }
+.del-topp .tk-emblem { position: static; flex: none; border-color: rgba(255, 255, 255, .5) }
+.del-topp h1 { color: #fff; margin: 0 0 4px; font-size: 2rem }
+.del-topp p { margin: 0 0 10px; color: #dbe4ee; font-size: .95rem }
+.tk-fremdrift.lys { color: #dbe4ee; max-width: 360px }
+.tk-fremdrift.lys .stolpe { background: rgba(255, 255, 255, .22) }
+.tk-fremdrift.lys .stolpe > i { background: #7fd3a4 }
+.kapliste.store { display: grid; gap: 10px; padding: 0; list-style: none }
+.kapliste.store li { background: var(--flate); border: 1px solid var(--linje); border-radius: 14px; padding: 10px 14px 10px 10px; min-height: 64px }
+.kapliste.store .kap-bilde { width: 120px; height: 68px; border-radius: 10px }
+.kapliste.store .tit b { font-size: 1.02rem }
+
+/* --- mobil --- */
+@media (max-width: 860px) {
+  .temakortene { grid-template-columns: 1fr }
+  .temakort { flex-direction: row }
+  .tk-bilde { aspect-ratio: auto; width: 38%; min-height: 150px; flex: none }
+  .tk-emblem { left: auto; right: -20px; bottom: 14px; width: 44px; height: 44px }
+  .tk-emblem .emblem { width: 26px; height: 26px }
+  .tk-tekst { padding: 16px 16px 16px 30px }
+}
+@media (max-width: 560px) {
+  .hero { border-radius: 16px; margin-top: 0 }
+  .hero::before { background: linear-gradient(180deg, rgba(10, 20, 34, .30) 0%, rgba(10, 20, 34, .88) 48%) }
+  .hero-innhold { padding: 30px 20px 22px }
+  .hero h1 { font-size: 1.7rem }
+  .hero-ingress { font-size: 1rem }
+  .hero-knapp { display: flex; justify-content: space-between; width: 100%; box-sizing: border-box }
+  .temakort { flex-direction: column }
+  .tk-bilde { width: auto; aspect-ratio: 16 / 7; min-height: 0 }
+  .tk-emblem { left: 16px; right: auto; bottom: -20px }
+  .tk-tekst { padding: 30px 16px 16px }
+  .del-topp { min-height: 190px }
+  .del-topp-innhold { padding: 20px 18px; flex-direction: column; align-items: flex-start; gap: 12px }
+  .del-topp h1 { font-size: 1.6rem }
+  .kapliste.store .kap-bilde { width: 84px; height: 56px }
+}
+
+/* =====================================================================
+   Berøringsskjerm: trykkflater på minst 44 piksler (designstandarden).
+   Gjelder bare når pekeren er en finger, så lærerens PC-visning med de
+   tette kalkulatortabellene forblir kompakt.
+   ===================================================================== */
+@media (pointer: coarse) {
+  .knapp, button.knapp.liten, .hintknapp, .fb-lukk, .alt { min-height: 44px }
+  .fb-lukk { min-width: 44px }
+  input.tall, input.celle, select, select.celle, .prove-valg input, .prove-valg select,
+  input[type="text"], input[type="search"], input[type="number"] { min-height: 44px; box-sizing: border-box }
+  .topp .sti span, .bunn a, .hero-fremdrift a { display: inline-block; min-height: 44px; line-height: 44px }
+}
+
+/* Smale skjermer: ingen hjelpetekst under 13,5 piksler. Egne regler rundt om i
+   stilarket setter mange av disse lavere; dette er et gulv for lesbarhet på telefon. */
+@media (max-width: 720px) {
+  small, .merkelapp, table.tab th, label, .mf-kilde, .etema-merke, .lomme-hjelp,
+  .fb-kap, .fb-merke, .sok-merke, .hero-knapp small { font-size: .84rem !important }
+}
+@media (pointer: coarse) { input[type="range"] { min-height: 44px } }
+
 </style>
 </head>
 <body>
@@ -1591,7 +1735,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "1.8.0 · 18. september 2026",
+  versjon: "2.0.0 · 24. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -1682,7 +1826,7 @@ LOM.oppsett.emne = {
   program: "Fordypning i Elkraft · Fagskolen Oslo",
   kilde: "Studiekatalogen, Fagskolen Oslo, høsten 2026",
   ingress: "Emnet samler kommunikasjon, økonomi, ledelse, markedsføring og prosjektledelse i sju temaer. Appen dekker de tre temaene som bygger på LØM-lærebøkene; de fire øvrige er en del av emnet, men hører til annet undervisningsmateriell.",
-  gammelModell: "Går du på et kull der Ledelse, økonomi og markedsføring (LØM, emne 00TX00A) er et eget emne, er alt innholdet i appen fortsatt ditt pensum — du kan se bort fra temainndelingen under.",
+  gammelModell: "Går du på et kull der Ledelse, økonomi og markedsføring (LØM, emne 00TX00A) er et eget emne, er alt innholdet i appen fortsatt ditt pensum — du kan se bort fra temainndelingen.",
   temaer: [
     { navn: "Kommunikasjon og samhandling", tekst: "Kommunikasjonsteori, retorikk og profesjonell samhandling; møter, presentasjoner og faglig formidling tilpasset situasjon, målgruppe og kanal." },
     { navn: "Kildebruk og dokumentasjon", tekst: "Kildebruk, tekstorganisering og problemformulering; faglige tekster med presist språk og etterrettelige henvisninger." },
@@ -1693,6 +1837,10 @@ LOM.oppsett.emne = {
     { navn: "Kontrakter, ressurser og kvalitet", tekst: "Kontrakter, entrepriseformer, ansvarsforhold og relevante lover og avtaler i ledelse og arbeidsutførelse." }
   ]
 };
+
+/* Bildene på forsiden og temasidene. Filnavnene er kapittelbildene i kilde/bilder/.
+   Bytt fritt — hero er det store toppbildet, de tre andre er temakortene. */
+LOM.oppsett.forsidebilder = { hero: "ma05.jpg", okonomi: "ok04.jpg", orgled: "ol11.jpg", marked: "ma02.jpg" };
 
 LOM.innhold = LOM.innhold || {};
 
@@ -1724,6 +1872,23 @@ LOM.tall = {
     kilde: "SSB tabell 12939/12910, statistikkår 2024; NHO Elektro Lønnsomhetsrapport 2025 (809 bedrifter i utvalget, ikke bransjen)",
     foretak: 3462, bedrifter: 3860, sysselsatte: 40039, omsetningMrd: 73.5,
     nhoElektroMedlemmer: 1950, utvalgLonnsomhet: 809, medUnderskudd: 120, driftsmargin: 7.5, totalkapitalrentabilitet: 14.6
+  },
+
+  /* Satser som kan endres av myndighetene. Disse står også i teksten i kapittel 2, 5,
+     9 og 20, men her er de samlet med kontrolldato og kilde, slik at det alltid er mulig
+     å se når de sist ble etterprøvd. `kontrollert` er datoen noen faktisk slo opp i kilden.
+     sjekk.py varsler når datoen er eldre enn tolv måneder. Endrer du en sats, må du endre
+     den her OG i kapitteltekstene — søk etter tallet i kilde/innhold/. */
+  satser: {
+    kontrollert: "2026-09-20",
+    merverdiavgift: { verdi: 25, enhet: "%", navn: "Merverdiavgift, alminnelig sats",
+      kilde: "Merverdiavgiftsloven § 5-1 (Lovdata)" },
+    feriepenger: { verdi: 12, enhet: "%", navn: "Feriepenger, lovens minstesats ved fire ukers ferie",
+      kilde: "Ferieloven § 10 (Lovdata)" },
+    arbeidsgiveravgift: { verdi: 14.1, enhet: "%", navn: "Arbeidsgiveravgift, sone 1",
+      kilde: "Stortingets årlige avgiftsvedtak, sone 1 (Skatteetaten)" },
+    selskapsskatt: { verdi: 22, enhet: "%", navn: "Alminnelig selskapsskatt",
+      kilde: "Stortingets skattevedtak (Skatteetaten)" }
   }
 };
 
@@ -8026,8 +8191,10 @@ LOM.h = (function () {
   }
 
   function felt(el, s, tegn, navn, nokkel, min, max, steg, hjelp) {
-    const glid = el("input", { type: "range", value: s[nokkel], min, max, step: steg });
-    const tall = tallfelt(el, s[nokkel], (v) => { s[nokkel] = v; glid.value = v; tegn(); });
+    /* navn kan være et element eller tekst — skjermleseren trenger ren tekst */
+    const etikett = (typeof navn === "string" ? navn : (navn && navn.textContent) || "").trim();
+    const glid = el("input", { type: "range", value: s[nokkel], min, max, step: steg, "aria-label": etikett + " (glidebryter)" });
+    const tall = tallfelt(el, s[nokkel], (v) => { s[nokkel] = v; glid.value = v; tegn(); }, { "aria-label": etikett });
     glid.addEventListener("input", () => { const v = +glid.value; s[nokkel] = v; tall.settVerdi(v); tegn(); });
     return el("div", null, el("label", null, navn, hjelp ? el("span", { style: "color:var(--demp)" }, " · " + hjelp) : null), el("div", { class: "verdi" }, tall), glid);
   }
@@ -8738,8 +8905,11 @@ LOM.veiledning = (function () {
 
   /* Regnehjelpen i Øv-fanen: alle formlene som hører til kapitlet. */
   function formelboks(el, kapId) {
+    /* Regnehjelpen finnes i alle kapitler. Søk og lommeregner er nyttig overalt;
+       formelfanen vises bare der formelboka har formler for kapitlet. (Fram til 2.0
+       forsvant hele panelet i de 22 kapitlene uten formler — det var en feil.) */
     const liste = LOM.formelbok.forKapittel(kapId);
-    if (!liste.length) return null;
+    const harFormler = liste.length > 0;
 
     const innhold = el("div", { class: "fb-innhold" });
     const velg = el("select", { class: "fb-velg" }, liste.map((f, i) => el("option", { value: String(i) }, f.navn)));
@@ -8748,7 +8918,7 @@ LOM.veiledning = (function () {
 
     const lukk = () => { panel.classList.remove("aapen"); skygge.classList.remove("aapen"); knapp.classList.remove("skjult"); document.body.classList.remove("fb-aapen"); document.removeEventListener("keydown", paaEsc); };
     const paaEsc = (e) => { if (e.key === "Escape") lukk(); };
-    const aapne = () => { if (!innhold.firstChild) tegn(); knapp.classList.remove("vink"); LOM.vink && LOM.vink.merkSett("regnehjelp"); panel.classList.add("aapen"); skygge.classList.add("aapen"); knapp.classList.add("skjult"); document.body.classList.add("fb-aapen"); document.addEventListener("keydown", paaEsc); velg.focus(); };
+    const aapne = () => { if (harFormler && !innhold.firstChild) tegn(); knapp.classList.remove("vink"); LOM.vink && LOM.vink.merkSett("regnehjelp"); panel.classList.add("aapen"); skygge.classList.add("aapen"); knapp.classList.add("skjult"); document.body.classList.add("fb-aapen"); document.addEventListener("keydown", paaEsc); (harFormler ? velg : sokInn).focus(); };
 
     /* Søk i alt innholdet — samme søkemotor som forsiden bruker. Treffene vises
        her inne med sammendrag, slik at studenten slipper å forlate oppgaven. */
@@ -8791,7 +8961,7 @@ LOM.veiledning = (function () {
     sokInn.addEventListener("keydown", (e) => { if (e.key === "Escape" && sokInn.value) { e.stopPropagation(); sokInn.value = ""; visTreff(); } });
 
     /* To faner: formlene fra kapitlet, og en vanlig lommeregner. */
-    const kalkBoks = el("div", { class: "fb-fane-kalk skjult" }, kalkulator(el));
+    const kalkBoks = el("div", { class: "fb-fane-kalk" + (harFormler ? " skjult" : "") }, kalkulator(el));
     const fane = (ikon, navn, valgt) => el("button", { class: "fb-fane" + (valgt ? " valgt" : ""), type: "button", "aria-pressed": valgt ? "true" : "false" },
       el("span", { class: "fb-fane-ikon" }, ikon), navn);
     const faneFormler = fane("∑", "Formler", true), faneKalk = fane("÷", "Lommeregner", false);
@@ -8804,15 +8974,16 @@ LOM.veiledning = (function () {
     };
     faneFormler.addEventListener("click", () => bytt(false));
     faneKalk.addEventListener("click", () => bytt(true));
-    const faner = el("div", { class: "fb-faner", role: "tablist" }, faneFormler, faneKalk);
+    const faner = harFormler ? el("div", { class: "fb-faner", role: "tablist" }, faneFormler, faneKalk)
+      : el("p", { class: "fb-ingen-formler" }, el("b", null, "Lommeregner"), " — dette kapitlet har ingen formler i formelboka, men søket over finner teori og begreper fra hele appen.");
 
     const panel = el("aside", { class: "fb-panel", role: "dialog", "aria-label": "Regnehjelp" },
       el("div", { class: "fb-panel-topp" },
-        el("div", null, el("b", null, "Regnehjelp"), el("small", null, `${liste.length} formler fra dette kapitlet`)),
+        el("div", null, el("b", null, "Regnehjelp"), el("small", null, harFormler ? `${liste.length} formler fra dette kapitlet · søk · lommeregner` : "Søk i fagstoffet · lommeregner")),
         el("button", { class: "fb-lukk", "aria-label": "Lukk regnehjelpen", onclick: lukk }, "✕")),
       el("div", { class: "fb-panel-kropp" }, sokFelt, treffBoks,
         el("div", { class: "fb-formeldel" }, faner,
-          el("div", { class: "fb-fane-formler" },
+          el("div", { class: "fb-fane-formler" + (harFormler ? "" : " skjult") },
             el("p", { class: "kilder" }, "Velg formelen du trenger, bytt ut tallene med dine egne, og se regnestykket skrive seg selv ut. Dette er en regnehjelp til øvingene — på prøven og til eksamen står du på egne ben."),
             el("label", { class: "fb-label" }, "Formel", velg), innhold),
           kalkBoks)));
@@ -9138,7 +9309,7 @@ LOM.kalkulatorer.tilbud = function (el, f) {
   } }, "Legg inn i kalkulatoren");
   /* lagre og hente tilbud (lokalt) */
   const LAGER = "lom_tilbud"; const lesLager = () => { try { return JSON.parse(localStorage.getItem(LAGER) || "{}"); } catch (e) { return {}; } };
-  const listeVelg = el("select"); const fyllListe = () => { const l = lesLager(); listeVelg.replaceChildren(el("option", { value: "" }, "— lagrede tilbud —"), ...Object.keys(l).sort().map(k => el("option", { value: k }, k))); };
+  const listeVelg = el("select", { "aria-label": "Velg et lagret tilbud" }); const fyllListe = () => { const l = lesLager(); listeVelg.replaceChildren(el("option", { value: "" }, "— lagrede tilbud —"), ...Object.keys(l).sort().map(k => el("option", { value: k }, k))); };
   const navnInn = el("input", { type: "text", class: "celle", placeholder: "Navn på tilbudet", style: "max-width:220px" });
   const lagreT = () => { const navn = navnInn.value.trim() || s.kunde.slice(0, 40) || "Tilbud"; const l = lesLager(); l[navn] = JSON.parse(JSON.stringify(s)); try { localStorage.setItem(LAGER, JSON.stringify(l)); } catch (e) { } fyllListe(); listeVelg.value = navn; s._navn = navn; visVedlegg(); tolkSvar.textContent = `Lagret som «${navn}» på denne PC-en.`; };
   const hentT = () => { const l = lesLager(); const t = l[listeVelg.value]; if (!t) return; Object.assign(s, t); s._navn = listeVelg.value; navnInn.value = listeVelg.value; oppdaterFelt(); tegn(); visVedlegg(); };
@@ -9942,6 +10113,17 @@ LOM.pwa = (function () {
       else if (attrs[k] !== null && attrs[k] !== undefined) e.setAttribute(k, attrs[k]);
     }
     for (const b of barn.flat(2)) if (b !== null && b !== undefined && b !== false) e.append(b.nodeType ? b : tekstMedNoter(String(b)));
+    /* Er et vanlig element gjort klikkbart, skal det også kunne nås med Tab og
+       utløses med Enter eller mellomrom. Uten dette kommer ikke en student som
+       navigerer med tastatur — eller bruker skjermleser — inn i kapittellista,
+       verktøykortene eller temakortene i det hele tatt. */
+    if (attrs && attrs.onclick && !/^(button|a|input|select|textarea)$/.test(tag) && !e.classList.contains("kommer")) {
+      if (!e.hasAttribute("tabindex")) e.tabIndex = 0;
+      if (!e.hasAttribute("role")) e.setAttribute("role", "button");
+      e.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); attrs.onclick(ev); }
+      });
+    }
     return e;
   };
   /* Fotnoter i innholdstekst: «{{170 000|innbetalingsoverskudd: 260 000 − 90 000 · Bok 1, tabell 10.1}}»
@@ -10019,6 +10201,7 @@ LOM.pwa = (function () {
     else if (a === "daglig") visDaglig();
     else if (a === "spill") visSpillside();
     else if (a === "velg") visModusvelger(b || "ov");
+    else if (a === "del") visDel(b);
     else visForside();
     pakkTabeller();
     window.scrollTo(0, 0);
@@ -10223,38 +10406,117 @@ LOM.pwa = (function () {
       el("p", { class: "kilder" }, `Appen dekker ${dekket} av de ${E.temaer.length} temaene. ${E.gammelModell}`));
   }
 
+  /* Skjemafelt inne i tabeller har ingen synlig etikett — raden og kolonnen
+     forteller hva feltet er. Her settes den sammenhengen som aria-label, slik at
+     en skjermleser sier «Materiell, inntakskost» i stedet for bare «tekstfelt».
+     Kjøres etter at en side er tegnet; hopper over felt som allerede er merket. */
+  function merkFelter(rot) {
+    rot.querySelectorAll("input, select, textarea").forEach(f => {
+      if (f.type === "hidden") return;
+      if (f.getAttribute("aria-label") || f.getAttribute("placeholder") || (f.labels && f.labels.length) || f.closest("label")) return;
+      const celle = f.closest("td, th");
+      const rad = f.closest("tr");
+      const tabell = f.closest("table");
+      let navn = "";
+      if (celle && rad) {
+        const i = [...rad.children].indexOf(celle);
+        const hode = tabell && tabell.querySelector("thead tr");
+        const kol = hode && hode.children[i] ? renTekst(hode.children[i].textContent).trim() : "";
+        const forste = rad.children[0] !== celle ? renTekst(rad.children[0].textContent).trim() : "";
+        navn = [forste, kol].filter(Boolean).join(", ");
+      }
+      if (!navn) { const f2 = f.closest("div"); const b = f2 && f2.querySelector("label, b, strong"); navn = b ? renTekst(b.textContent).trim() : ""; }
+      if (navn) f.setAttribute("aria-label", navn.slice(0, 80));
+    });
+  }
+
+  /* ---------- satser med kontrolldato ---------- */
+  function satsBoks() {
+    const S = LOM.tall && LOM.tall.satser;
+    if (!S) return null;
+    const navn = Object.keys(S).filter(k => k !== "kontrollert");
+    const d = S.kontrollert;
+    const alder = Math.floor((Date.now() - new Date(d)) / 86400000);
+    const gammel = alder > 365;
+    return el("div", { class: "kort satser" },
+      el("h2", null, "Satser appen regner med"),
+      el("p", { class: "kilder" }, "Disse kan endres av Stortinget eller i lov. Står det en annen sats i oppgaven du jobber med, er det oppgaven som gjelder — og si fra til læreren."),
+      el("table", { class: "tab" },
+        el("thead", null, el("tr", null, el("th", null, "Sats"), el("th", null, "Verdi"), el("th", null, "Hjemmel"))),
+        el("tbody", null, navn.map(k => el("tr", null,
+          el("td", null, S[k].navn),
+          el("td", { class: "num" }, String(S[k].verdi).replace(".", ",") + " " + S[k].enhet),
+          el("td", null, S[k].kilde))))),
+      el("p", { class: "kilder" + (gammel ? " sats-gammel" : "") },
+        gammel ? `Sist kontrollert ${d} — mer enn ett år siden. Kontroller mot hjemmelen før du bruker tallene.`
+               : `Sist kontrollert mot hjemmelen ${d}.`));
+  }
+
+  /* ---------- forside ---------- */
+  /* ---------- ikoner (egne SVG-er i stedet for emojier) ---------- */
+  function ikon(navn) {
+    const sv = LOM.h.sv;
+    const svg = sv("svg", { viewBox: "0 0 24 24", class: "ikon-svg", "aria-hidden": "true",
+      fill: "none", stroke: "currentColor", "stroke-width": "1.8", "stroke-linecap": "round", "stroke-linejoin": "round" });
+    const P = {
+      les:  ["M4 5.5C4 4.7 4.7 4 5.5 4H11v15H5.5C4.7 19 4 18.3 4 17.5z", "M20 5.5c0-.8-.7-1.5-1.5-1.5H13v15h5.5c.8 0 1.5-.7 1.5-1.5z", "M11 4.8c.6-.5 1.3-.8 2-.8"],
+      se:   ["M4 20h16", "M6 20V13", "M11 20V8", "M16 20v-5", "M5 10l5-4 5 4 5-5"],
+      ov:   ["M15.5 4.5l4 4L9 19H5v-4z", "M13 7l4 4"],
+      prov: ["M12 3a9 9 0 1 0 9 9", "M12 7a5 5 0 1 0 5 5", "M12 12l8-8", "M17 4h3v3"],
+      eks:  ["M2 9l10-5 10 5-10 5z", "M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5", "M22 9v6"],
+      sok:  ["M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15z", "M16 16l5 5"],
+      pil:  ["M5 12h14", "M13 6l6 6-6 6"]
+    };
+    (P[navn] || []).forEach(d => svg.append(sv("path", { d })));
+    return svg;
+  }
+
+  /* Én rad i kapittellista — brukt både på temasiden og i søk etter kapittel */
+  function kapRad(k) {
+    const har = !!LOM.innhold[k.id]; const I = LOM.innhold[k.id]; const st = kapStatus(k.id); const l = lager.kap[k.id];
+    return el("li", { class: har ? "" : "kommer", onclick: () => har && gaaTil("/kap/" + k.id + "/les") },
+      har && LOM.bilder && LOM.bilder[I.bilde] ? el("img", { class: "kap-bilde", src: LOM.bilder[I.bilde], alt: "", loading: "lazy" }) : el("span", { class: "nr" }, k.kap),
+      el("span", { class: "tit" }, el("b", null, `Kap. ${k.kap} ${k.tittel}`), har && I.ingress ? el("small", null, renTekst(I.ingress).split(". ")[0] + ".") : null),
+      el("span", { class: "status" }, !har ? "Kommer" : st === "ferdig" ? el("span", { class: "merkelapp ferdig" }, "✓ Fullført") : st === "delvis" ? el("span", { class: "merkelapp delvis" }, l.prove ? `Prøve ${l.prove.best} %` : "Påbegynt") : ""));
+  }
+
+  /* Fremdrift per del — brukt på temakortene og på temasiden */
+  function delFremdrift(d) {
+    const kap = d.kapitler.filter(k => LOM.innhold[k.id]);
+    const f = kap.filter(k => kapStatus(k.id) === "ferdig").length;
+    const p = kap.filter(k => kapStatus(k.id) === "delvis").length;
+    return { antall: kap.length, ferdig: f, paab: p, prosent: kap.length ? Math.round(100 * (f + p * 0.4) / kap.length) : 0 };
+  }
+
+  const fremdriftTekst = (F) => !F.ferdig && !F.paab ? "Ikke startet"
+    : [F.ferdig ? `${F.ferdig} fullført` : null, F.paab ? `${F.paab} påbegynt` : null].filter(Boolean).join(" · ");
+
+  /* Temanavnet slik emnet 10TE13I bruker det (Markedsføring → Markedsforståelse) */
+  const temaNavn = (d) => { const t = O.emne && O.emne.temaer.find(x => x.del === d.id); return t ? t.navn : d.navn; };
+  const bildeAv = (fil) => LOM.bilder && fil && LOM.bilder[fil] ? LOM.bilder[fil] : null;
+  const delerIRekkefolge = () => {
+    const rekke = O.emne ? O.emne.temaer.filter(t => t.del).map(t => t.del) : LOM.deler.map(d => d.id);
+    return rekke.map(id => LOM.deler.find(d => d.id === id)).filter(Boolean);
+  };
+
   /* ---------- forside ---------- */
   function visForside() {
     sti.innerHTML = "";
     const tilgj = alleKap().filter(x => LOM.innhold[x.kap.id]);
     const ferdige = tilgj.filter(x => kapStatus(x.kap.id) === "ferdig").length, paab = tilgj.filter(x => kapStatus(x.kap.id) === "delvis").length;
-    const prosent = tilgj.length ? Math.round(100 * ferdige / tilgj.length) : 0;
-    const sokFelt = el("input", { type: "search", placeholder: "Søk i teori, begreper, formler og kalkulatorer …", class: "sok" });
+    const T = modusTall();
+    const B = O.forsidebilder || {};
+    const antVerktoy = (O.verktoy || []).length;
+
+    /* --- søk --- */
+    const sokFelt = el("input", { type: "search", placeholder: "Søk etter et begrep, en formel eller et tema …", class: "sok", "aria-label": "Søk i hele appen" });
     const sokSvar = el("div", { class: "sok-svar skjult" });
-    const helt = el("div", { class: "helt" },
-      el("div", null, el("h1", null, O.tittel), el("p", { class: "stor" }, "Teori, begreper, kalkulatorer og øvelser til økonomistyring, organisasjon og ledelse og markedsforståelse — de tre temaene i emnet som bygger på LØM-lærebøkene. Velg et kapittel, les kort, se sammenhengen i grafen, øv med tilbakemelding og ta en prøve når du er klar."), el("p", { class: "kilder" }, O.undertittel), sokFelt, sokSvar),
-      el("div", { class: "fremdrift-kort" }, el("h3", null, "Din fremdrift"), el("div", { class: "stolpe" }, el("i", { style: "width:" + prosent + "%" })),
-        el("div", { class: "stat-rad" }, el("div", null, el("b", null, ferdige), el("small", null, "fullført")), el("div", null, el("b", null, paab), el("small", null, "påbegynt")), el("div", null, el("b", null, tilgj.length), el("small", null, "kapitler"))),
-        el("p", { style: "margin:8px 0 0;font-size:.82rem;color:var(--demp)" }, "Fremdriften lagres i nettleseren på denne PC-en. ", el("a", { href: "#", onclick: (e) => { e.preventDefault(); if (bekreft("Nullstille all fremdrift på denne PC-en?")) { lager.kap = {}; lager.tverr = null; lagre(); rute(); } } }, "Nullstill"))));
-
-    const deler = el("div", { class: "deler" });
-    const tegnDeler = () => {
-      deler.replaceChildren(...LOM.deler.map(d =>
-        el("section", { class: "del", id: "del-" + d.id, style: "--farge:" + d.farge },
-          el("header", null, emblem(d.id, d.farge), el("div", null, el("h2", null, d.navn), el("small", null, d.bok))),
-          el("ul", { class: "kapliste bilder" }, d.kapitler.map(k => { const har = !!LOM.innhold[k.id]; const I = LOM.innhold[k.id]; const st = kapStatus(k.id); const l = lager.kap[k.id];
-            return el("li", { class: har ? "" : "kommer", onclick: () => har && gaaTil("/kap/" + k.id + "/les") },
-              har && LOM.bilder && LOM.bilder[I.bilde] ? el("img", { class: "kap-bilde", src: LOM.bilder[I.bilde], alt: "", loading: "lazy" }) : el("span", { class: "nr" }, k.kap),
-              el("span", { class: "tit" }, el("b", null, `Kap. ${k.kap} ${k.tittel}`), har && I.ingress ? el("small", null, renTekst(I.ingress).split(". ")[0] + ".") : null),
-              el("span", { class: "status" }, !har ? "Kommer" : st === "ferdig" ? el("span", { class: "merkelapp ferdig" }, "✓ Fullført") : st === "delvis" ? el("span", { class: "merkelapp delvis" }, l.prove ? `Prøve ${l.prove.best} %` : "Påbegynt") : "")); })))));
-    };
-    tegnDeler();
-
+    const innhold = el("div", { class: "forside-innhold" });
     const FANENAVN = { les: "Les", se: "Se og regn", ov: "Øv", eks: "Eksamen" };
     const tegnSok = () => {
       const q = sokFelt.value.trim();
-      if (q.length < 2) { sokSvar.className = "sok-svar skjult"; sokSvar.replaceChildren(); deler.classList.remove("skjult"); return; }
-      const treff = sok(q); sokSvar.className = "sok-svar"; deler.classList.add("skjult");
+      if (q.length < 2) { sokSvar.className = "sok-svar skjult"; sokSvar.replaceChildren(); innhold.classList.remove("skjult"); return; }
+      const treff = sok(q); sokSvar.className = "sok-svar"; innhold.classList.add("skjult");
       if (!treff.length) {
         sokSvar.replaceChildren(el("div", { class: "sok-tom" }, el("b", null, `Ingen treff på «${q}».`),
           el("p", null, "Prøv et enkeltord eller et fagord — for eksempel «nåverdi», «dekningsbidrag», «likviditetsgrad» eller «motivasjon». Søket leter i teori, begreper, formler, læringsmål og kalkulatorer i alle 30 kapitler."),
@@ -10274,40 +10536,101 @@ LOM.pwa = (function () {
     let sokT; sokFelt.addEventListener("input", () => { clearTimeout(sokT); sokT = setTimeout(tegnSok, 120); });
     sokFelt.addEventListener("keydown", (e) => { if (e.key === "Escape") { sokFelt.value = ""; tegnSok(); } });
 
-    /* Fire veier inn i kapitlet — det studenten faktisk skal gjøre */
-    const T = modusTall();
-    const modusKort = (fane, undertekst, knapp, maal) => {
-      const m = MODUS[fane];
-      return el("div", { class: "modus " + fane, onclick: () => gaaTil(maal) },
-        el("span", { class: "modus-ikon" }, m.ikon),
-        el("div", { class: "modus-tekst" }, el("b", null, m.navn), el("small", null, undertekst), el("p", null, m.tekst)),
-        el("span", { class: "modus-knapp" }, knapp));
-    };
-    const modusrad = el("div", null,
-      el("h2", { class: "sek-tittel" }, "Slik jobber du i appen"),
-      el("p", { class: "kilder" }, `Hvert av de ${T.kapitler} kapitlene har de samme fire stegene. Du velger selv hvor du hopper inn — ingenting er låst.`),
-      el("div", { class: "moduser" },
-        modusKort("les", `${T.teori} teoriavsnitt · ${T.begreper} begreper`, "Velg kapittel →", "/velg/les"),
-        modusKort("se", `${T.kalk} kalkulatorer`, "Velg kapittel →", "/velg/se"),
-        modusKort("ov", `${T.flervalg} flervalg med hint · ${T.regne} regneoppgaver`, "Velg kapittel →", "/velg/ov"),
-        modusKort("prov", `${O.proveAntall} spørsmål · bestått fra ${O.bestaattProsent} %`, "Velg kapittel →", "/velg/prov"),
-        modusKort("eks", `${T.eksamen} eksamensnære oppgaver`, "Velg kapittel →", "/velg/eks")));
-
+    /* --- toppbilde med én primærhandling --- */
     const sis = sisteKapittel();
-    const fortsett = sis ? el("div", { class: "fortsett", style: "--farge:" + sis.x.del.farge, onclick: () => gaaTil(`/kap/${sis.x.kap.id}/${sis.fane}`) },
-      LOM.bilder && LOM.bilder[LOM.innhold[sis.x.kap.id].bilde] ? el("img", { src: LOM.bilder[LOM.innhold[sis.x.kap.id].bilde], alt: "" }) : null,
-      el("div", { class: "f-tekst" }, el("small", null, "Fortsett der du slapp"),
-        el("b", null, `Kap. ${sis.x.kap.kap} ${sis.x.kap.tittel}`),
-        el("span", null, `Neste steg: ${MODUS[sis.fane].navn}`)),
-      el("span", { class: "modus-knapp" }, "Fortsett →")) : null;
+    const forste = tilgj[0];
+    const cta = sis
+      ? el("a", { class: "hero-knapp", href: `#/kap/${sis.x.kap.id}/${sis.fane}` }, el("span", null, el("small", null, "Fortsett der du slapp"), `Kap. ${sis.x.kap.kap} ${sis.x.kap.tittel}`), ikon("pil"))
+      : el("a", { class: "hero-knapp", href: `#/kap/${forste.kap.id}/les` }, el("span", null, el("small", null, "Ny her?"), "Start med kapittel 1"), ikon("pil"));
+    const nyStudent = ferdige + paab === 0;
+    const fremdrift = nyStudent
+      ? el("p", { class: "hero-fakta" }, `${T.kapitler} kapitler · ${T.flervalg} flervalg · ${T.refleksjon} vurderingsoppgaver · ${antVerktoy} verktøy`)
+      : el("div", { class: "hero-fremdrift" },
+          el("div", { class: "stolpe", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": String(tilgj.length), "aria-valuenow": String(ferdige), "aria-label": "Fullførte kapitler" },
+            el("i", { style: `width:${Math.round(100 * ferdige / tilgj.length)}%` }), el("i", { class: "paab", style: `width:${Math.round(100 * paab / tilgj.length)}%` })),
+          el("span", null, `${ferdige} av ${tilgj.length} kapitler fullført` + (paab ? ` · ${paab} påbegynt` : "") + " · lagres bare i denne nettleseren · "),
+          el("a", { href: "#", onclick: (e) => { e.preventDefault(); if (bekreft("Nullstille all fremdrift på denne PC-en?")) { lager.kap = {}; lager.tverr = null; lagre(); rute(); } } }, "Nullstill"));
+    const hero = el("section", { class: "hero", style: bildeAv(B.hero) ? `--bilde:url(${bildeAv(B.hero)})` : "" },
+      el("div", { class: "hero-innhold" },
+        el("span", { class: "hero-merke" }, O.undertittel),
+        el("h1", null, O.tittel),
+        el("p", { class: "hero-ingress" }, "Økonomistyring, organisasjon og ledelse og markedsforståelse — forklart med tall og situasjoner fra elektrobransjen, med kalkulatorer du kan leke med og øvelser som gir deg begrunnelsen, ikke bare fasiten."),
+        cta,
+        el("label", { class: "hero-sok" }, ikon("sok"), sokFelt),
+        fremdrift));
 
-    const verktoy = el("div", null, el("h2", { class: "sek-tittel" }, "Verktøy og prøver på tvers"),
+    /* --- tre store temakort --- */
+    const temakort = el("section", { class: "tema-seksjon" },
+      el("h2", { class: "sek-tittel" }, "Velg tema"),
+      el("div", { class: "temakortene" }, delerIRekkefolge().map(d => {
+        const F = delFremdrift(d);
+        return el("a", { class: "temakort", href: "#/del/" + d.id, style: `--farge:${d.farge}` + (bildeAv(B[d.id]) ? `;--bilde:url(${bildeAv(B[d.id])})` : "") },
+          el("div", { class: "tk-bilde" }, el("span", { class: "tk-emblem" }, emblem(d.id, "#fff"))),
+          el("div", { class: "tk-tekst" },
+            el("h3", null, temaNavn(d)),
+            el("small", null, `${F.antall} kapitler · ${d.bok.split(",")[0].replace(/«|»/g, "")}`),
+            el("div", { class: "tk-fremdrift" },
+              el("div", { class: "stolpe" }, el("i", { style: `width:${Math.round(100 * F.ferdig / (F.antall || 1))}%` }), el("i", { class: "paab", style: `width:${Math.round(100 * F.paab / (F.antall || 1))}%` })),
+              el("span", null, fremdriftTekst(F))),
+            el("span", { class: "tk-apne" }, "Se kapitlene", ikon("pil"))));
+      })),
+      O.emne ? el("p", { class: "tema-resten" },
+        el("b", null, `Resten av emnet ${O.emne.kode}: `),
+        (n => n.length > 1 ? n.slice(0, -1).join("; ") + " og " + n[n.length - 1] : n.join(""))(O.emne.temaer.filter(t => !t.del).map(t => t.navn)),
+        " — hører til annet undervisningsmateriell. ", O.emne.gammelModell) : null);
+
+    /* --- fem arbeidsmåter --- */
+    const modusKort = (fane, undertekst, maal) => {
+      const m = MODUS[fane];
+      return el("a", { class: "modus " + fane, href: "#" + maal },
+        el("span", { class: "modus-ikon" }, ikon(fane)),
+        el("div", { class: "modus-tekst" }, el("b", null, m.navn), el("small", null, undertekst), el("p", null, m.tekst)),
+        el("span", { class: "modus-knapp" }, "Velg kapittel", ikon("pil")));
+    };
+    const modusrad = el("section", null,
+      el("h2", { class: "sek-tittel" }, "Slik jobber du i appen"),
+      el("p", { class: "kilder" }, `Hvert av de ${T.kapitler} kapitlene har de samme fem stegene. Du velger selv hvor du hopper inn — ingenting er låst.`),
+      el("div", { class: "moduser" },
+        modusKort("les", `${T.teori} teoriavsnitt · ${T.begreper} begreper`, "/velg/les"),
+        modusKort("se", `${T.kalk} kalkulatorer`, "/velg/se"),
+        modusKort("ov", `${T.flervalg} flervalg · ${T.regne} regneoppgaver · ${T.refleksjon} vurderingsoppgaver`, "/velg/ov"),
+        modusKort("prov", `${O.proveAntall} spørsmål · bestått fra ${O.bestaattProsent} %`, "/velg/prov"),
+        modusKort("eks", `${T.eksamen} eksamensnære oppgaver`, "/velg/eks")));
+
+    /* --- verktøy --- */
+    const verktoy = el("section", null, el("h2", { class: "sek-tittel" }, "Verktøy og prøver på tvers"),
       el("div", { class: "verktoy", style: "margin-top:8px" },
-        (O.verktoy || []).map(v => el("div", { class: "v", onclick: () => gaaTil("/verktoy/" + v.id) }, el("span", { class: "ikon" }, v.ikon || "∑"), el("div", null, el("b", null, v.navn), el("small", null, v.tekst)))),
-        el("div", { class: "v", onclick: () => gaaTil("/prove/alle") }, el("span", { class: "ikon" }, "?"), el("div", null, el("b", null, "Prøve på tvers av kapitler"), el("small", null, "Eksamenstrening: alt innholdet eller én del, med eller uten klokke, resultat per kapittel."))),
-        el("div", { class: "v", onclick: () => gaaTil("/generator") }, el("span", { class: "ikon" }, "∞"), el("div", null, el("b", null, "Ubegrenset øving"), el("small", null, "Generatoren lager nye regne- og begrepsspørsmål med nye tall hver gang.")))));
+        (O.verktoy || []).map(v => el("a", { class: "v", href: "#/verktoy/" + v.id }, el("span", { class: "ikon" }, v.ikon || "∑"), el("div", null, el("b", null, v.navn), el("small", null, v.tekst)))),
+        el("a", { class: "v", href: "#/prove/alle" }, el("span", { class: "ikon" }, "?"), el("div", null, el("b", null, "Prøve på tvers av kapitler"), el("small", null, "Eksamenstrening: alt innholdet eller én del, med eller uten klokke, resultat per kapittel."))),
+        el("a", { class: "v", href: "#/generator" }, el("span", { class: "ikon" }, "∞"), el("div", null, el("b", null, "Ubegrenset øving"), el("small", null, "Generatoren lager nye regne- og begrepsspørsmål med nye tall hver gang.")))));
     const felles = filboks("felles", null, "Felles filer til hele fagstoffet", "Faktaarket om Nordlys Elektro AS, ordlista og veiledningene. Alle tall i oppgavene bygger på faktaarket.");
-    rot.replaceChildren(...[SP.paa() ? spillPanel() : null, helt, fortsett, modusrad, emneSeksjon(), el("h2", { class: "sek-tittel" }, "Alle kapitler"), deler, verktoy, felles ? el("div", { style: "margin-top:30px" }, felles) : null, varsel(), bunn()].filter(Boolean));
+
+    innhold.replaceChildren(...[temakort, modusrad, verktoy, felles ? el("div", { style: "margin-top:30px" }, felles) : null, satsBoks()].filter(Boolean));
+    rot.replaceChildren(...[SP.paa() ? spillPanel() : null, hero, sokSvar, innhold, varsel(), bunn()].filter(Boolean));
+  }
+
+  /* ---------- temaside: alle kapitlene i én del ---------- */
+  function visDel(id) {
+    const d = LOM.deler.find(x => x.id === id);
+    if (!d) { gaaTil("/"); return; }
+    const B = O.forsidebilder || {};
+    const F = delFremdrift(d);
+    sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › ", temaNavn(d));
+    const topp = el("section", { class: "del-topp", style: `--farge:${d.farge}` + (bildeAv(B[d.id]) ? `;--bilde:url(${bildeAv(B[d.id])})` : "") },
+      el("div", { class: "del-topp-innhold" },
+        el("span", { class: "tk-emblem" }, emblem(d.id, "#fff")),
+        el("div", null,
+          el("h1", null, temaNavn(d)),
+          el("p", null, d.bok),
+          el("div", { class: "tk-fremdrift lys" },
+            el("div", { class: "stolpe" }, el("i", { style: `width:${Math.round(100 * F.ferdig / (F.antall || 1))}%` }), el("i", { class: "paab", style: `width:${Math.round(100 * F.paab / (F.antall || 1))}%` })),
+            el("span", null, F.ferdig || F.paab ? `${F.ferdig} av ${F.antall} kapitler fullført` + (F.paab ? ` · ${F.paab} påbegynt` : "") : "Ingen kapitler startet ennå — begynn gjerne med det første")))));
+    rot.replaceChildren(
+      verktoylinje([["← Forside", () => gaaTil("/")]]),
+      topp,
+      el("ul", { class: "kapliste bilder store" }, d.kapitler.map(kapRad)),
+      varsel(), bunn());
+    window.scrollTo(0, 0);
   }
 
   /* ---------- spillmodus ---------- */
@@ -10377,7 +10700,7 @@ LOM.pwa = (function () {
     const v = (O.verktoy || []).find(x => x.id === id) || { navn: id };
     sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › Verktøy › " + v.navn);
     const veil = LOM.veiledning ? LOM.veiledning.panelFor(el, id) : null;
-    rot.replaceChildren(...[verktoylinje([["← Forside", () => gaaTil("/")], ["Skriv ut", () => window.print()]]), el("h1", null, v.navn), v.tekst ? el("p", { class: "kilder", style: "margin-bottom:16px" }, v.tekst, v.ref ? " · " + v.ref : "") : null, veil, veil ? el("h2", { class: "sek-tittel hele-verktoyet" }, "Hele verktøyet") : null, LOM.kalkulatorer[id](el, F), varsel(), bunn()].filter(Boolean)); SP.hendelse("kalkulator", { navn: id }); LOM.telling && LOM.telling.hendelse("kalkulator-" + id);
+    rot.replaceChildren(...[verktoylinje([["← Forside", () => gaaTil("/")], ["Skriv ut", () => window.print()]]), el("h1", null, v.navn), v.tekst ? el("p", { class: "kilder", style: "margin-bottom:16px" }, v.tekst, v.ref ? " · " + v.ref : "") : null, veil, veil ? el("h2", { class: "sek-tittel hele-verktoyet" }, "Hele verktøyet") : null, LOM.kalkulatorer[id](el, F), varsel(), bunn()].filter(Boolean)); merkFelter(rot); SP.hendelse("kalkulator", { navn: id }); LOM.telling && LOM.telling.hendelse("kalkulator-" + id);
   }
   const verktoylinje = (knapper, hoyre) => el("div", { class: "verktoylinje" }, el("div", null, knapper.map(([n, fn, kl]) => el("button", { class: "knapp liten " + (kl || ""), onclick: fn }, n))), hoyre ? el("div", null, hoyre) : null);
 
@@ -10516,7 +10839,8 @@ LOM.pwa = (function () {
     const poeng = el("span", { class: "poeng" }, "0 / " + I.flervalg.length);
     const flerKort = el("div", { class: "kort" }, el("div", { class: "ov-topp" }, el("h2", { style: "margin:0" }, "Flervalg"), el("span", null, "Riktige: ", poeng)),
       el("p", { class: "kilder" }, "Tilbakemelding med begrunnelse etter hvert svar. Resultatet lagres når alle er besvart."),
-      LOM.formelbok && LOM.formelbok.forKapittel(id).length ? el("p", { class: "pek-regnehjelp" }, el("b", null, "Står du fast?"), " Knappen ", el("span", { class: "pek-merke" }, "∑ Regnehjelp"), " nede til høyre følger deg nedover siden. Der finner du formlene i dette kapitlet med forklaring og eksempeltall, og et søk i alt fagstoffet i appen.") : null,
+      el("p", { class: "pek-regnehjelp" }, el("b", null, "Står du fast?"), " Knappen ", el("span", { class: "pek-merke" }, "∑ Regnehjelp"), " nede til høyre følger deg nedover siden. ",
+        LOM.formelbok && LOM.formelbok.forKapittel(id).length ? "Der finner du formlene i dette kapitlet med forklaring og eksempeltall, et søk i alt fagstoffet og en lommeregner." : "Der kan du søke opp begreper og teori fra hele appen uten å forlate oppgaven, og regne på en lommeregner."),
       I.flervalg.map((q, i) => flervalgKort(q, i, (ok) => { if (ok) riktig++; besvart++; poeng.textContent = `${riktig} / ${I.flervalg.length}`; if (besvart === I.flervalg.length) { l.ov = { riktig, total: I.flervalg.length, dato: new Date().toISOString() }; lagre(); melding(`Øvelse fullført: ${riktig} av ${I.flervalg.length} riktige`); } }, I)));
 
     const regneKort = I.regne && I.regne.length ? el("div", { class: "kort regne" }, el("h2", null, "Regneoppgaver"), el("p", { class: "kilder" }, "Skriv svaret som tall (komma eller punktum som desimal, minus for negative tall). Du får løsningsforslaget når du sjekker."),
@@ -10531,11 +10855,21 @@ LOM.pwa = (function () {
       el("p", { class: "kilder" }, LOM.generator.harMaler(id) ? "Generatoren lager nye regnespørsmål med nye tall og begrepsspørsmål fra kapitlet. Trykk for fem nye." : "Generatoren lager begrepsspørsmål fra kapitlets begrepstabell. Trykk for fem nye."),
       el("button", { class: "knapp", onclick: nyeGen }, "Fem nye spørsmål"), genBoks);
 
-    const reflKort = I.refleksjon && I.refleksjon.length ? el("div", { class: "kort refleksjon" }, el("h2", null, "Vurderingsoppgaver"), el("p", { class: "kilder" }, "Disse har ikke ett riktig svar. Skriv ditt eget resonnement først, og sammenlikn med momentene etterpå. Det er begrunnelsen eksamen belønner. Teksten din lagres på denne PC-en."),
-      I.refleksjon.map((q, i) => { const mom = el("div", { class: "momenter skjult" }, el("b", null, "Momenter til sammenlikning"), q.momenter.map(m => el("p", null, m))); const ta = el("textarea", { placeholder: "Skriv resonnementet ditt her …" }); ta.value = (l.refl || {})[i] || ""; ta.addEventListener("input", () => { (l.refl = l.refl || {})[i] = ta.value; lagre(); });
+    const reflTeller = el("span", { class: "poeng" }, "0 / " + ((I.refleksjon || []).length));
+    const oppdaterRefl = () => {
+      const r = l.refl || {}; const n = Object.keys(r).filter(k => (r[k] || "").trim().length >= 120).length;
+      reflTeller.textContent = n + " / " + I.refleksjon.length;
+      if (n && !l.reflMeldt) { l.reflMeldt = true; lagre(); SP.hendelse("vurdering", {}); LOM.telling && LOM.telling.hendelse("vurdering-" + id); }
+    };
+    const reflKort = I.refleksjon && I.refleksjon.length ? el("div", { class: "kort refleksjon" },
+      el("div", { class: "ov-topp" }, el("h2", { style: "margin:0" }, "Vurderingsoppgaver"), reflTeller),
+      el("p", { class: "pek-vurdering" }, el("b", null, "Dette er oppgavetypen eksamen faktisk stiller."), " Flervalgene sjekker at du kjenner begrepene. Her skal du velge mellom tiltak som alle kan forsvares, begrunne valget og si hva som kan gå galt. Det er begrunnelsen som gir karakteren — ikke at du husker formelen."),
+      el("p", { class: "kilder" }, "Ingen fasit. Skriv ditt eget resonnement først, og sammenlikn med momentene etterpå. Teksten lagres bare i nettleseren på denne PC-en."),
+      I.refleksjon.map((q, i) => { const mom = el("div", { class: "momenter skjult" }, el("b", null, "Momenter til sammenlikning"), q.momenter.map(m => el("p", null, m))); const ta = el("textarea", { placeholder: "Skriv resonnementet ditt her …" }); ta.value = (l.refl || {})[i] || ""; ta.addEventListener("input", () => { (l.refl = l.refl || {})[i] = ta.value; lagre(); oppdaterRefl(); });
         return el("div", { class: "sporsmal" }, el("div", { class: "nr" }, "Vurdering " + (i + 1)), el("div", { class: "tekst" }, q.sp), ta, el("button", { class: "knapp liten", style: "margin-top:6px", onclick: (e) => { mom.classList.toggle("skjult"); e.target.textContent = mom.classList.contains("skjult") ? "Vis momenter" : "Skjul momenter"; } }, "Vis momenter"), mom); }),
       I.vurderingsnokkel ? el("div", { style: "margin-top:16px" }, el("h3", null, "Vurderingsnøkkel (NKR 5.2)"), el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Lav"), el("th", null, "God (forventet)"), el("th", null, "Svært god"))), el("tbody", null, el("tr", null, el("td", null, I.vurderingsnokkel.lav), el("td", null, I.vurderingsnokkel.god), el("td", null, I.vurderingsnokkel.svaertGod))))) : null) : null;
-    settInn(boks, LOM.veiledning ? LOM.veiledning.formelboks(el, id) : null, flerKort, regneKort, genKort, reflKort, el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/prov`) }, "Klar for prøve →")));
+    if (I.refleksjon && I.refleksjon.length) oppdaterRefl();
+    settInn(boks, LOM.veiledning ? LOM.veiledning.formelboks(el, id) : null, flerKort, regneKort, reflKort, genKort, el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => gaaTil(`/kap/${id}/prov`) }, "Klar for prøve →")));
   }
 
   /* ---------- Prøv ---------- */
@@ -10653,6 +10987,14 @@ LOM.pwa = (function () {
     renTekst,
     aapne: (r) => { SOK_MAAL = r.maal || null; gaaTil(r.verktoy ? "/verktoy/" + r.verktoy : `/kap/${r.kapId}/${r.fane || "les"}`); }
   };
+
+  /* Kalkulatorene tegner tabellene sine på nytt for hvert tastetrykk, så
+     merkingen må gjentas. En observatør med kort forsinkelse gjør det av seg selv. */
+  (function () {
+    let t = null;
+    new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => merkFelter(rot), 120); })
+      .observe(rot, { childList: true, subtree: true });
+  })();
 
   /* ---------- oppstart ---------- */
   $("#topp-tittel").textContent = O.tittel;
