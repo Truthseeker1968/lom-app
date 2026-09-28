@@ -826,6 +826,12 @@ table.tab.formeltab { min-width: 0 }
   table.formeltab td:last-child { color: var(--tekst2) }
 }
 
+/* Kildelenker (00_lenker.js): lov, forskrift, register eller etat som åpnes i ny fane */
+a.kildelenke { color: var(--aksent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; overflow-wrap: anywhere }
+a.kildelenke::after { content: "\2197"; font-size: .75em; margin-left: 2px; text-decoration: none; display: inline-block }
+a.kildelenke:hover, a.kildelenke:focus-visible { text-decoration-thickness: 2px }
+@media print { a.kildelenke::after { content: " (" attr(href) ")"; font-size: .8em } }
+
 </style>
 </head>
 <body>
@@ -1767,6 +1773,55 @@ LOM.katalog = {
 };
 
 
+/* ===================== Lenker til kilder utenfor appen =====================
+   Når en tekst i appen nevner en lov, en forskrift, et register eller en offentlig
+   kilde, gjør appen første forekomst i hvert kort om til en lenke som åpnes i ny fane.
+   Står det en paragraf rett etter navnet («arbeidsmiljøloven § 10-4», «FEK § 7»),
+   går lenken rett til paragrafen på Lovdata.
+
+   Slik legger du til en ny kilde: kopier en linje og endre tre ting.
+     navn     vises når musa holdes over lenken («Åpner … i ny fane»)
+     moenster ordet eller ordene som skal bli lenke (regulært uttrykk; «s?» tar med genitiv)
+     url      adressen. For lover og forskrifter på Lovdata: https://lovdata.no/lov/<dato-nr>
+              eller https://lovdata.no/forskrift/<dato-nr>. Sett paragraf: true når
+              «§ N» etter navnet skal føre rett til paragrafen.
+   Adressene er kontrollert mot søk 28.09.2026.
+*/
+LOM.lenker = [
+  // Lover og forskrifter (Lovdata)
+  { navn: "FEK på Lovdata", moenster: "forskrift om elektroforetak og kvalifikasjonskrav|FEK", url: "https://lovdata.no/forskrift/2013-06-19-739", paragraf: true },
+  { navn: "Forskrift om elektriske lavspenningsanlegg på Lovdata", moenster: "forskrift om elektriske lavspenningsanlegg|FEL", url: "https://lovdata.no/forskrift/1998-11-06-1060", paragraf: true },
+  { navn: "Arbeidsmiljøloven på Lovdata", moenster: "arbeidsmiljølovens?", url: "https://lovdata.no/lov/2005-06-17-62", paragraf: true },
+  { navn: "Håndverkertjenesteloven på Lovdata", moenster: "håndverkertjenestelovens?", url: "https://lovdata.no/lov/1989-06-16-63", paragraf: true },
+  { navn: "Markedsføringsloven på Lovdata", moenster: "markedsføringslovens?", url: "https://lovdata.no/lov/2009-01-09-2", paragraf: true },
+  { navn: "Ferieloven på Lovdata", moenster: "ferielovens?", url: "https://lovdata.no/lov/1988-04-29-21", paragraf: true },
+  { navn: "Likestillings- og diskrimineringsloven på Lovdata", moenster: "likestillings- og diskrimineringslovens?|diskrimineringslovens?", url: "https://lovdata.no/lov/2017-06-16-51", paragraf: true },
+  { navn: "Regnskapsloven på Lovdata", moenster: "regnskapslovens?", url: "https://lovdata.no/lov/1998-07-17-56", paragraf: true },
+  { navn: "Bokføringsloven på Lovdata", moenster: "bokføringslovens?", url: "https://lovdata.no/lov/2004-11-19-73", paragraf: true },
+  { navn: "Aksjeloven på Lovdata", moenster: "aksjelovens?", url: "https://lovdata.no/lov/1997-06-13-44", paragraf: true },
+  { navn: "Skatteloven på Lovdata", moenster: "skattelovens?", url: "https://lovdata.no/lov/1999-03-26-14", paragraf: true },
+  { navn: "Merverdiavgiftsloven på Lovdata", moenster: "merverdiavgiftslovens?", url: "https://lovdata.no/lov/2009-06-19-58", paragraf: true },
+  { navn: "Angrerettloven på Lovdata", moenster: "angrerettlovens?", url: "https://lovdata.no/lov/2014-06-20-27", paragraf: true },
+  { navn: "Energiloven på Lovdata", moenster: "energilovens?", url: "https://lovdata.no/lov/1990-06-29-50", paragraf: true },
+  { navn: "Lovdata", moenster: "Lovdata", url: "https://lovdata.no/" },
+
+  // Registre og etater
+  { navn: "Elvirksomhetsregisteret hos DSB", moenster: "Elvirksomhetsregisteret", url: "https://www.dsb.no/elsikkerhet/kvalifikasjoner-foretak-og-virksomhet/elvirksomhetsregisteret/" },
+  { navn: "Brønnøysundregistrene", moenster: "Enhetsregisteret|Foretaksregisteret|Brønnøysundregistrene|Brønnøysund", url: "https://www.brreg.no/" },
+  { navn: "DSBs artikler fra bladet Elsikkerhet", moenster: "Elsikkerhet nr\\. ?\\d+", url: "https://www.installatorproven.no/artikler-fra-elsikkerhet/" },
+  { navn: "Direktoratet for samfunnssikkerhet og beredskap (DSB)", moenster: "Direktoratet for samfunnssikkerhet og beredskap|DSB", url: "https://www.dsb.no/" },
+  { navn: "Statistisk sentralbyrå (SSB)", moenster: "Statistisk sentralbyrå|SSB", url: "https://www.ssb.no/" },
+  { navn: "Skatteetaten", moenster: "Skatteetaten", url: "https://www.skatteetaten.no/" },
+  { navn: "Enova", moenster: "Enova", url: "https://www.enova.no/" },
+  { navn: "Arbeidstilsynet", moenster: "Arbeidstilsynet", url: "https://www.arbeidstilsynet.no/" },
+  { navn: "Forbrukertilsynet", moenster: "Forbrukertilsynet", url: "https://www.forbrukertilsynet.no/" },
+  { navn: "Norsk Elektroteknisk Komite (NEK)", moenster: "NEK 400", url: "https://www.nek.no/" },
+
+  // Nettadresser skrevet i teksten («dsb.no», «installatorproven.no»)
+  { navn: "Nettstedet", moenster: "(?:[a-z0-9-]+\\.)+no(?:/[\\w\\-./]*)?", url: "https://{treff}", nettadresse: true },
+];
+
+
 /* =====================================================================
    00_struktur.js — appens oppsett og kapitteloversikt
    Rediger fritt. Kapitler uten innholdsfil vises som «Kommer».
@@ -1775,7 +1830,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.2.0 · 27. september 2026",
+  versjon: "2.3.0 · 28. september 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -10556,6 +10611,72 @@ LOM.pwa = (function () {
     });
   }
 
+  /* Kildelenker: navn på lover, forskrifter, registre og etater (LOM.lenker i
+     00_lenker.js) blir lenker som åpnes i ny fane. Første forekomst per kort,
+     og «§ N» rett etter et lov- eller forskriftsnavn går til paragrafen på Lovdata.
+     Kjøres etter hver tegning; tekst i knapper, felt, kode og eksisterende lenker
+     røres ikke, og en kilde som alt er lenket i kortet, lenkes ikke igjen. */
+  const LENKER = (LOM.lenker || []).map((l, i) => ({ ...l, i })).sort((a, b) => (b.nettadresse ? 1 : 0) - (a.nettadresse ? 1 : 0));
+  const BOKST = "\\p{L}\\p{N}";
+  const LENKE_RE = LENKER.length ? new RegExp(LENKER.map(l => `(?<![${BOKST}@/.])(${l.moenster})(?![${BOKST}])`).join("|"), "giu") : null;
+  /* Paragrafkjede rett etter et lovnavn: «§ 7», «(FEK) § 7», «§ 3, § 5 og § 7», «§§ 9-3, 13-1 og 14-1». */
+  const PNR = "\\d{1,3}(?:-\\d{1,3})?[a-z]?";
+  const KJEDE_RE = new RegExp(`^(\\)?,?\\s*(?:FOR-\\d{4}-\\d\\d-\\d\\d-\\d+,?\\s*)?)(§§?\\s?${PNR}(?:(?:\\s*,\\s*|\\s+og\\s+)(?:§\\s?)?${PNR})*)`, "u");
+  const NR_RE = new RegExp(`(?:§§?\\s?)?(${PNR})`, "gu");
+  const UTENFOR = "a, button, input, textarea, select, code, script, style, summary, .fn-boks, .topp, h1, h2, h3, h4";
+  function lagLenke(tekst, url, tittel) {
+    const a = document.createElement("a");
+    a.href = url; a.target = "_blank"; a.rel = "noopener"; a.className = "kildelenke";
+    a.title = `Åpner ${tittel} i ny fane`; a.textContent = tekst;
+    return a;
+  }
+  function lenkeKilder(rot) {
+    if (!LENKE_RE) return;
+    const gaa = document.createTreeWalker(rot, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (!n.nodeValue.trim() || !n.parentElement || n.parentElement.closest(UTENFOR)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const noder = []; for (let n = gaa.nextNode(); n; n = gaa.nextNode()) noder.push(n);
+    for (const node of noder) {
+      const s = node.nodeValue; LENKE_RE.lastIndex = 0;
+      if (!LENKE_RE.test(s)) continue;
+      const kort = node.parentElement.closest(".kort, section, details, li, .losning") || rot;
+      const brukt = new Set([...kort.querySelectorAll("a.kildelenke[data-k]")].map(a => a.dataset.k));
+      const frag = document.createDocumentFragment(); let sist = 0, m, endret = false;
+      LENKE_RE.lastIndex = 0;
+      while ((m = LENKE_RE.exec(s))) {
+        const gi = m.slice(1).findIndex(x => x !== undefined); const l = LENKER[gi];
+        let treff = m[0], url = l.url, nokkel = String(l.i);
+        if (l.nettadresse) { treff = treff.replace(/[./-]+$/, ""); url = "https://" + treff; nokkel = "w:" + treff; }
+        let slutt = m.index + treff.length;
+        const kjede = l.paragraf ? KJEDE_RE.exec(s.slice(slutt)) : null;
+        LENKE_RE.lastIndex = kjede ? slutt + kjede[0].length : slutt;
+        if (!brukt.has(nokkel)) {
+          brukt.add(nokkel); endret = true;
+          if (m.index > sist) frag.append(document.createTextNode(s.slice(sist, m.index)));
+          const a = lagLenke(treff, url, l.nettadresse ? treff : l.navn); a.dataset.k = nokkel; frag.append(a);
+          sist = slutt;
+        }
+        if (kjede) {
+          /* Hvert paragrafnummer i kjeden blir sin egen lenke til paragrafen. */
+          endret = true;
+          const start = slutt + kjede[1].length, tekst = kjede[2]; let i = 0, n;
+          if (start > sist) frag.append(document.createTextNode(s.slice(sist, start)));
+          NR_RE.lastIndex = 0;
+          while ((n = NR_RE.exec(tekst))) {
+            if (n.index > i) frag.append(document.createTextNode(tekst.slice(i, n.index)));
+            frag.append(lagLenke(n[0], l.url.replace(/\/$/, "") + "/%C2%A7" + n[1], `${l.navn.replace(/ på Lovdata$/, "")} § ${n[1]} på Lovdata`));
+            i = n.index + n[0].length;
+          }
+          if (i < tekst.length) frag.append(document.createTextNode(tekst.slice(i)));
+          sist = slutt + kjede[0].length;
+        }
+      }
+      if (!endret) continue;
+      if (sist < s.length) frag.append(document.createTextNode(s.slice(sist)));
+      node.replaceWith(frag);
+    }
+  }
+
   /* ---------- satser med kontrolldato ---------- */
   function satsBoks() {
     const S = LOM.tall && LOM.tall.satser;
@@ -11160,7 +11281,7 @@ LOM.pwa = (function () {
      merkingen må gjentas. En observatør med kort forsinkelse gjør det av seg selv. */
   (function () {
     let t = null;
-    new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => merkFelter(rot), 120); })
+    new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => { merkFelter(rot); lenkeKilder(rot); }, 120); })
       .observe(rot, { childList: true, subtree: true });
   })();
 

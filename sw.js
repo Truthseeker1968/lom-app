@@ -4,7 +4,7 @@
    og lagres i cache; uten nett brukes siste lagrede kopi. Pensumfilene (pensum/…) lagres
    når de åpnes, så en åpnet PDF finnes også uten nett. Kall til andre domener
    (bruksstatistikk) går rett gjennom. */
-const VERSJON = "2.2.0-27.-september-2026";
+const VERSJON = "2.3.0-28.-september-2026";
 const CACHE = "lom-app-" + VERSJON;
 const FORHAAND = ["./", "./index.html", "./manifest.webmanifest", "./ikon-192.png", "./ikon-512.png"];
 
