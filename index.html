@@ -832,6 +832,33 @@ a.kildelenke::after { content: "\2197"; font-size: .75em; margin-left: 2px; text
 a.kildelenke:hover, a.kildelenke:focus-visible { text-decoration-thickness: 2px }
 @media print { a.kildelenke::after { content: " (" attr(href) ")"; font-size: .8em } }
 
+/* ---------- Utskrift av kapittel (knappen «Skriv ut kapitlet» i Les) ---------- */
+.utskriftrad{justify-content:flex-end;margin:0 0 10px}
+.utskrift-topp,.utskrift-noter,.fn-nr{display:none}
+@media print{
+  body.utskrift{background:#fff;color:#000}
+  body.utskrift .topp,body.utskrift .verktoylinje,body.utskrift .faner,body.utskrift .kap-topp,body.utskrift .knapperad,body.utskrift .filer,body.utskrift .varsel,body.utskrift .laererboks,body.utskrift .bunn,body.utskrift .fb-knapp,body.utskrift .fb-panel,body.utskrift .ny-versjon{display:none!important}
+  body.utskrift .utskrift-topp{display:block;border-bottom:2px solid #000;margin:0 0 18px;padding-bottom:10px}
+  body.utskrift .utskrift-topp h1{font-size:1.9rem;margin:4px 0 6px}
+  body.utskrift .utskrift-topp .merkelapp{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:#444}
+  body.utskrift .utskrift-noter{display:block;break-before:page}
+  body.utskrift .utskrift-noter li{margin:0 0 6px;font-size:.9rem;line-height:1.4}
+  body.utskrift .side{max-width:none;padding:0}
+  body.utskrift .kort{background:#fff;border:1px solid #bbb;box-shadow:none;animation:none;break-inside:auto;page-break-inside:auto}
+  body.utskrift .kort.krok,body.utskrift .kort.maal,body.utskrift .formeltab tr{break-inside:avoid}
+  body.utskrift .kort h2{break-after:avoid}
+  body.utskrift .begrep{break-inside:avoid}
+  body.utskrift .begrep summary::after{content:""}
+  body.utskrift .begrep summary{cursor:default}
+  body.utskrift .fn{border-bottom:none;white-space:normal;cursor:auto}
+  body.utskrift .fn .fn-boks{display:none!important}
+  body.utskrift .fn-nr{display:inline;font-size:.7em;vertical-align:super;line-height:0;margin-left:1px;color:#444}
+  body.utskrift a.kildelenke::after{content:""}
+  body.utskrift .tab{font-size:.85rem}
+  body.utskrift .kilder{color:#444}
+  @page{margin:18mm 16mm}
+}
+
 </style>
 </head>
 <body>
@@ -1830,7 +1857,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.3.3 · 2. oktober 2026",
+  versjon: "2.4.0 · 5. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
   laererPin: "LOM2026",          // PIN for lærermodus (endre før distribusjon)
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -11016,9 +11043,36 @@ LOM.pwa = (function () {
     if (l.eksamen.vist) { los.classList.remove("skjult"); vis.disabled = true; }
   }
 
+  /* ---------- Utskrift av et kapittel ----------
+     Åpner alle begrepskort, gjør tallforklaringene ({{tall|forklaring}}) om til nummererte sluttnoter,
+     setter inn en utskriftstopp og kaller nettleserens utskrift. Der velger brukeren «Lagre som PDF».
+     Alt ryddes tilbake etter utskriften (afterprint), også om dialogen avbrytes. */
+  function skrivUtKapittel(id, boks) {
+    const { del, kap, innhold: I } = finnKap(id);
+    const tittelFoer = document.title;
+    const lukkede = [...boks.querySelectorAll("details:not([open])")];
+    lukkede.forEach(d => d.open = true);
+    boks.querySelectorAll(".fn.aapen").forEach(x => x.classList.remove("aapen"));
+    const noter = [...boks.querySelectorAll(".fn")];
+    const merker = noter.map((sp, i) => { const m = el("sup", { class: "fn-nr" }, String(i + 1)); sp.after(m); return m; });
+    const dato = new Date().toLocaleDateString("nb-NO", { day: "numeric", month: "long", year: "numeric" });
+    const topp = el("div", { class: "utskrift-topp" }, el("div", { class: "merkelapp" }, `${del.navn} · kapittel ${kap.kap}`), el("h1", null, kap.tittel), I.ingress ? el("p", null, I.ingress) : null,
+      el("p", { class: "kilder" }, `${O.tittel} ${O.versjon} · skrevet ut ${dato} · Fagskolen Oslo, Avdeling Elkraft`));
+    const bunn = noter.length ? el("div", { class: "kort utskrift-noter" }, el("h3", null, "Forklaringer til tallene"), el("p", { class: "kilder" }, "Tallene med nummer i teksten er regnet eller hentet slik:"),
+      el("ol", null, noter.map(sp => el("li", null, el("b", null, sp.firstChild.textContent, ": "), sp.querySelector(".fn-boks").textContent)))) : null;
+    boks.prepend(topp); if (bunn) boks.append(bunn);
+    document.body.classList.add("utskrift");
+    document.title = `LØM kap. ${kap.kap} ${kap.tittel}`;
+    const rydd = () => { window.removeEventListener("afterprint", rydd); document.body.classList.remove("utskrift"); document.title = tittelFoer; topp.remove(); if (bunn) bunn.remove(); merker.forEach(m => m.remove()); lukkede.forEach(d => d.open = false); };
+    window.addEventListener("afterprint", rydd);
+    LOM.telling && LOM.telling.hendelse("utskrift-" + id);
+    setTimeout(() => { window.print(); setTimeout(() => { if (document.body.classList.contains("utskrift")) rydd(); }, 1500); }, 50);
+  }
+
   /* ---------- Les ---------- */
   function visLes(I, id, boks) {
     settInn(boks,
+      el("div", { class: "knapperad utskriftrad" }, el("button", { class: "knapp liten", title: "Åpner alle begreper og tallforklaringer og sender hele kapitlet til utskrift. Velg «Lagre som PDF» som skriver.", onclick: () => skrivUtKapittel(id, boks) }, "🖨 Skriv ut kapitlet (PDF)")),
       el("div", { class: "kort krok" }, el("h2", null, I.krok.tittel), I.krok.tekst.map(t => el("p", null, t))),
       el("div", { class: "kort maal" }, el("h3", null, "Etter dette kapitlet skal du kunne"), el("ol", null, I.laeringsmaal.map(m => el("li", null, m)))),
       I.teori.map(t => el("div", { class: "kort" }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, t.avsnitt.map(a => el("p", null, a)))),
