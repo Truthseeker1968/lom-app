@@ -911,6 +911,9 @@ body.utskrift details.dypere{border:0;background:transparent} body.utskrift deta
 .forklaring ol{margin:4px 0 0 1.2em;padding:0}
 .forklaring li{margin:2px 0}
 .tilbake .forklaring{background:var(--flate,#fff);color:var(--tekst,#2A2F36);padding:6px 12px;border-radius:8px;border:1px solid var(--linje)}
+.formelhint{margin-top:8px;padding:6px 10px;border:1px solid var(--linje);border-radius:8px}
+.formelhint summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--aksent,#2F4A6D)}
+.formelhint p{margin:6px 0 0}
 
 </style>
 </head>
@@ -927,16 +930,16 @@ body.utskrift details.dypere{border:0;background:transparent} body.utskrift deta
 <script>
 window.LOM = window.LOM || {}; LOM.utgave = "student";
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4 (én mappe per kapittel) + klasseoppgaver fra LOM_Pensum_2026_v5 (11.10.2026), speilet 08.10.2026 09:51. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4 og v5 (presentasjon og klasseoppgaver fra v5) + klasseoppgaver fra LOM_Pensum_2026_v5 (11.10.2026), speilet 08.10.2026 09:51. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
   {
    "type": "presentasjon",
-   "navn": "OK01_Etablering_og_oppstart_Presentasjon.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 685
+   "navn": "OK01_Etablering_og_oppstart_Presentasjon_v5.pdf",
+   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1215
   },
   {
    "type": "sammendrag",
@@ -1005,10 +1008,10 @@ LOM.filer = {
  "ok02": [
   {
    "type": "presentasjon",
-   "navn": "OK02_Viktige_begreper_Presentasjon.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 872
+   "navn": "OK02_Viktige_begreper_Presentasjon_v5.pdf",
+   "fil": "pensum/ok02/OK02_Viktige_begreper_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1273
   },
   {
    "type": "sammendrag",
@@ -1049,10 +1052,10 @@ LOM.filer = {
  "ok03": [
   {
    "type": "presentasjon",
-   "navn": "OK03_Bedriftens_regnskap_Presentasjon.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 915
+   "navn": "OK03_Bedriftens_regnskap_Presentasjon_v5.pdf",
+   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 980
   },
   {
    "type": "sammendrag",
@@ -1093,10 +1096,10 @@ LOM.filer = {
  "ok04": [
   {
    "type": "presentasjon",
-   "navn": "OK04_Regnskapsanalyse_Presentasjon.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 656
+   "navn": "OK04_Regnskapsanalyse_Presentasjon_v5.pdf",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1337
   },
   {
    "type": "sammendrag",
@@ -1137,10 +1140,10 @@ LOM.filer = {
  "ok05": [
   {
    "type": "presentasjon",
-   "navn": "OK05_Kalkulasjon_Presentasjon.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 958
+   "navn": "OK05_Kalkulasjon_Presentasjon_v5.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1072
   },
   {
    "type": "sammendrag",
@@ -1181,10 +1184,10 @@ LOM.filer = {
  "ok06": [
   {
    "type": "presentasjon",
-   "navn": "OK06_Kapitalbehov_og_finansiering_Presentasjon.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 889
+   "navn": "OK06_Kapitalbehov_og_finansiering_Presentasjon_v5.pdf",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1019
   },
   {
    "type": "sammendrag",
@@ -1225,10 +1228,10 @@ LOM.filer = {
  "ok07": [
   {
    "type": "presentasjon",
-   "navn": "OK07_Produktvalg_knapp_faktor_Presentasjon.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 964
+   "navn": "OK07_Produktvalg_knapp_faktor_Presentasjon_v5.pdf",
+   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1125
   },
   {
    "type": "sammendrag",
@@ -1269,10 +1272,10 @@ LOM.filer = {
  "ok08": [
   {
    "type": "presentasjon",
-   "navn": "OK08_Nullpunktsanalyse_Presentasjon.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 941
+   "navn": "OK08_Nullpunktsanalyse_Presentasjon_v5.pdf",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1339
   },
   {
    "type": "sammendrag",
@@ -1313,10 +1316,10 @@ LOM.filer = {
  "ok09": [
   {
    "type": "presentasjon",
-   "navn": "OK09_Budsjettering_Presentasjon.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 929
+   "navn": "OK09_Budsjettering_Presentasjon_v5.pdf",
+   "fil": "pensum/ok09/OK09_Budsjettering_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 977
   },
   {
    "type": "sammendrag",
@@ -1364,10 +1367,10 @@ LOM.filer = {
  "ok10": [
   {
    "type": "presentasjon",
-   "navn": "OK10_Investeringsanalyse_Presentasjon.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 934
+   "navn": "OK10_Investeringsanalyse_Presentasjon_v5.pdf",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 906
   },
   {
    "type": "sammendrag",
@@ -1408,10 +1411,10 @@ LOM.filer = {
  "ma01": [
   {
    "type": "presentasjon",
-   "navn": "MA01_Hva_er_markedsforing_Presentasjon.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 995
+   "navn": "MA01_Hva_er_markedsforing_Presentasjon_v5.pdf",
+   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 886
   },
   {
    "type": "sammendrag",
@@ -1445,10 +1448,10 @@ LOM.filer = {
  "ma02": [
   {
    "type": "presentasjon",
-   "navn": "MA02_Kjopsatferd_Presentasjon.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 792
+   "navn": "MA02_Kjopsatferd_Presentasjon_v5.pdf",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1210
   },
   {
    "type": "sammendrag",
@@ -1482,10 +1485,10 @@ LOM.filer = {
  "ma03": [
   {
    "type": "presentasjon",
-   "navn": "MA03_Markedsplanen_Presentasjon.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 814
+   "navn": "MA03_Markedsplanen_Presentasjon_v5.pdf",
+   "fil": "pensum/ma03/MA03_Markedsplanen_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1109
   },
   {
    "type": "sammendrag",
@@ -1526,10 +1529,10 @@ LOM.filer = {
  "ma04": [
   {
    "type": "presentasjon",
-   "navn": "MA04_Markedsundersokelser_Presentasjon.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 642
+   "navn": "MA04_Markedsundersokelser_Presentasjon_v5.pdf",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 850
   },
   {
    "type": "sammendrag",
@@ -1570,10 +1573,10 @@ LOM.filer = {
  "ma05": [
   {
    "type": "presentasjon",
-   "navn": "MA05_Markedssegmentering_Presentasjon.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 686
+   "navn": "MA05_Markedssegmentering_Presentasjon_v5.pdf",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1464
   },
   {
    "type": "sammendrag",
@@ -1614,10 +1617,10 @@ LOM.filer = {
  "ma06": [
   {
    "type": "presentasjon",
-   "navn": "MA06_Produkt_Presentasjon.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 777
+   "navn": "MA06_Produkt_Presentasjon_v5.pdf",
+   "fil": "pensum/ma06/MA06_Produkt_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1449
   },
   {
    "type": "sammendrag",
@@ -1658,10 +1661,10 @@ LOM.filer = {
  "ma07": [
   {
    "type": "presentasjon",
-   "navn": "MA07_Pris_Presentasjon.pdf",
-   "fil": "pensum/ma07/MA07_Pris_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 772
+   "navn": "MA07_Pris_Presentasjon_v5.pdf",
+   "fil": "pensum/ma07/MA07_Pris_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1111
   },
   {
    "type": "sammendrag",
@@ -1702,10 +1705,10 @@ LOM.filer = {
  "ma08": [
   {
    "type": "presentasjon",
-   "navn": "MA08_Distribusjon_Presentasjon.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 878
+   "navn": "MA08_Distribusjon_Presentasjon_v5.pdf",
+   "fil": "pensum/ma08/MA08_Distribusjon_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1250
   },
   {
    "type": "sammendrag",
@@ -1746,10 +1749,10 @@ LOM.filer = {
  "ma09": [
   {
    "type": "presentasjon",
-   "navn": "MA09_Pavirkning_Presentasjon.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 840
+   "navn": "MA09_Pavirkning_Presentasjon_v5.pdf",
+   "fil": "pensum/ma09/MA09_Pavirkning_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1146
   },
   {
    "type": "sammendrag",
@@ -1790,10 +1793,10 @@ LOM.filer = {
  "ma10": [
   {
    "type": "presentasjon",
-   "navn": "MA10_Markedsplanen_oppsummert_Presentasjon.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 799
+   "navn": "MA10_Markedsplanen_oppsummert_Presentasjon_v5.pdf",
+   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1168
   },
   {
    "type": "sammendrag",
@@ -1834,10 +1837,10 @@ LOM.filer = {
  "ol11": [
   {
    "type": "presentasjon",
-   "navn": "OL11_Hva_er_en_organisasjon_Presentasjon.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 803
+   "navn": "OL11_Hva_er_en_organisasjon_Presentasjon_v5.pdf",
+   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1250
   },
   {
    "type": "sammendrag",
@@ -1871,10 +1874,10 @@ LOM.filer = {
  "ol12": [
   {
    "type": "presentasjon",
-   "navn": "OL12_Interne_rammebetingelser_Presentasjon.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 632
+   "navn": "OL12_Interne_rammebetingelser_Presentasjon_v5.pdf",
+   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1456
   },
   {
    "type": "sammendrag",
@@ -1908,10 +1911,10 @@ LOM.filer = {
  "ol13": [
   {
    "type": "presentasjon",
-   "navn": "OL13_Eksterne_rammebetingelser_Presentasjon.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 692
+   "navn": "OL13_Eksterne_rammebetingelser_Presentasjon_v5.pdf",
+   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1031
   },
   {
    "type": "sammendrag",
@@ -1945,10 +1948,10 @@ LOM.filer = {
  "ol14": [
   {
    "type": "presentasjon",
-   "navn": "OL14_Klassiske_organisasjonsteorier_Presentasjon.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 809
+   "navn": "OL14_Klassiske_organisasjonsteorier_Presentasjon_v5.pdf",
+   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1590
   },
   {
    "type": "sammendrag",
@@ -1982,10 +1985,10 @@ LOM.filer = {
  "ol15": [
   {
    "type": "presentasjon",
-   "navn": "OL15_Nyere_organisasjonsteorier_Presentasjon.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 673
+   "navn": "OL15_Nyere_organisasjonsteorier_Presentasjon_v5.pdf",
+   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1150
   },
   {
    "type": "sammendrag",
@@ -2019,10 +2022,10 @@ LOM.filer = {
  "ol16": [
   {
    "type": "presentasjon",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_Presentasjon.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 679
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_Presentasjon_v5.pdf",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 998
   },
   {
    "type": "sammendrag",
@@ -2056,10 +2059,10 @@ LOM.filer = {
  "ol17": [
   {
    "type": "presentasjon",
-   "navn": "OL17_Ledelse_og_motivasjon_Presentasjon.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 809
+   "navn": "OL17_Ledelse_og_motivasjon_Presentasjon_v5.pdf",
+   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 874
   },
   {
    "type": "sammendrag",
@@ -2093,10 +2096,10 @@ LOM.filer = {
  "ol18": [
   {
    "type": "presentasjon",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_Presentasjon.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 728
+   "navn": "OL18_Personalpolitikk_og_rekruttering_Presentasjon_v5.pdf",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 971
   },
   {
    "type": "sammendrag",
@@ -2137,10 +2140,10 @@ LOM.filer = {
  "ol19": [
   {
    "type": "presentasjon",
-   "navn": "OL19_Organisasjonskultur_Presentasjon.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 726
+   "navn": "OL19_Organisasjonskultur_Presentasjon_v5.pdf",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1246
   },
   {
    "type": "sammendrag",
@@ -2174,10 +2177,10 @@ LOM.filer = {
  "ol20": [
   {
    "type": "presentasjon",
-   "navn": "OL20_Noen_viktige_lover_Presentasjon.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_Presentasjon.pdf",
-   "dato": "08.10.2026",
-   "kb": 728
+   "navn": "OL20_Noen_viktige_lover_Presentasjon_v5.pdf",
+   "fil": "pensum/ol20/OL20_Noen_viktige_lover_Presentasjon_v5.pdf",
+   "dato": "11.10.2026",
+   "kb": 1059
   },
   {
    "type": "sammendrag",
@@ -2359,7 +2362,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.6.1 · 11. oktober 2026",
+  versjon: "2.6.2 · 11. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -37009,6 +37012,7 @@ LOM.pwa = (function () {
           }
           if (st[d.id] !== undefined && (d.type !== "tekst" || (sv[d.id] || "").length >= 20)) setTimeout(lever, 0);
           return el("div", { class: "sporsmal"}, el("div", { class: "nr" }, "Deloppgave " + d.id + ")"), el("div", { class: "tekst" }, d.sp), el("div", { class: "inn" }, inn, d.enhet ? el("span", { class: "enhet" }, d.enhet) : null, el("button", { class: "knapp", onclick: lever }, "Lever")),
+            !lager.laerer && d.forklaring && d.forklaring.formel && (d.type === "tall" || d.type === "tekst") ? el("details", { class: "forklaring formelhint" }, el("summary", null, "Formel og begrep"), el("p", null, d.forklaring.formel)) : null,
             lager.laerer && d.type !== "tekst" ? el("div", { class: "tilbake fasit" }, "Fasit: " + (d.type === "tall" ? nf(d.svar) + " " + d.enhet : d.type === "valg" ? B(d.riktig) : d.poster.map(p => (p.riktig ? "Ja" : "Nei") + " " + p.navn).join(" · ")) + ". " + d.losning) : null, lager.laerer ? forklaring(d.forklaring, true) : null, feed);
         });
         const samm = el("details", { class: "dypere" }, el("summary", null, el("span", { class: "dypere-tittel" }, "Kort oppsummert"), el("span", { class: "dypere-under" }, "Teorien du trenger, på fem linjer.")), el("p", null, o.sammendrag));
