@@ -324,8 +324,8 @@ textarea.eksamen-svar{width:100%;min-height:260px;font:inherit;font-size:.98rem;
 
 /* Filer til kapitlet */
 .filliste{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.filliste li a{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1.5px solid var(--linje);border-radius:12px;background:var(--flate2);color:var(--tekst);text-decoration:none;transition:border-color .15s,box-shadow .15s}
-.filliste li a:hover{border-color:var(--ok);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.filliste li > a{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1.5px solid var(--linje);border-radius:12px;background:var(--flate2);color:var(--tekst);text-decoration:none;transition:border-color .15s,box-shadow .15s}
+.filliste li > a:hover{border-color:var(--ok);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .filliste .fil-ik{font-size:1.5rem;line-height:1.1;color:var(--ok)}
 .filliste .fil-tekst{display:flex;flex-direction:column;gap:2px;min-width:0}
 .filliste .fil-tekst b{font-size:.95rem}
@@ -914,6 +914,20 @@ body.utskrift details.dypere{border:0;background:transparent} body.utskrift deta
 .formelhint{margin-top:8px;padding:6px 10px;border:1px solid var(--linje);border-radius:8px}
 .formelhint summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--aksent,#2F4A6D)}
 .formelhint p{margin:6px 0 0}
+/* Filkort: tydelig handling og kvittering ved nedlasting (2.6.4) */
+.filliste li{display:flex;flex-direction:column;gap:6px}
+.filliste{align-items:start}
+.filliste li > a{min-height:44px}
+.filliste .fil-handling{align-self:flex-start;margin-top:6px;font-size:.8rem;font-weight:600;padding:3px 9px;border-radius:999px;border:1.5px solid var(--aksent);color:var(--aksent);background:var(--kort,#fff);white-space:nowrap}
+.filliste .fil-handling.last{background:var(--aksent);color:#fff}
+.filliste .fil-status{font-size:.88rem;line-height:1.45;padding:10px 12px;border-radius:10px;background:var(--aksent-lys);color:var(--tekst);border:1px solid var(--aksent)}
+.filliste .fil-status p{margin:6px 0 0}
+.filliste .fil-status .fil-navn{font-family:ui-monospace,Consolas,monospace;font-size:.85rem;word-break:break-all}
+.filliste .fil-status .fil-tips{color:var(--tekst2)}
+.filliste .fil-status.skjult{display:none}
+.filliste .fil-status.feil{border-color:var(--feil,#b4451f);background:var(--flate2)}
+.filliste .fil-valg{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.filliste .fil-valg .knapp{min-height:44px;display:inline-flex;align-items:center}
 
 </style>
 </head>
@@ -2572,7 +2586,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.6.3 · 11. oktober 2026",
+  versjon: "2.6.4 · 12. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -36972,9 +36986,47 @@ LOM.pwa = (function () {
     const paaNett = /^https?:$/.test(location.protocol);
     if (!paaNett) return el("div", { class: "kort dempet filer" }, el("h3", null, tittel || "Filer til kapitlet"), el("p", { class: "kilder" }, `${liste.length} ${liste.length === 1 ? "fil" : "filer"} (${liste.map(f => FILTYPE[f.type] ? FILTYPE[f.type][0].toLowerCase() : f.type).join(", ")}) ligger i nettutgaven av appen`, O.nettadresse ? [": ", el("a", { href: O.nettadresse + "#/kap/" + id + "/les", target: "_blank", rel: "noopener" }, O.nettadresse)] : ".", ""));
     return el("div", { class: "kort filer" }, el("h3", null, tittel || "Filer til kapitlet"), ingress ? el("p", { class: "kilder" }, ingress) : null,
-      el("ul", { class: "filliste" }, liste.map(f => el("li", null,
-        el("a", { href: f.fil, target: "_blank", rel: "noopener", download: /\.xlsx?$/i.test(f.navn) ? f.navn : null, onclick: () => { LOM.telling && LOM.telling.hendelse("fil-" + id + "-" + f.type); } },
-          el("span", { class: "fil-ik" }, filIkon(f.navn)), el("span", { class: "fil-tekst" }, el("b", null, f.type === "tema" ? temaFilNavn(f.navn)[0] : FILTYPE[f.type] ? FILTYPE[f.type][0] : f.type, f.type === "regneark" && /_Regneark_(.+?)\.xlsx?$|kap\d+_(.+?)_NY/.test(f.navn) ? ": " + (([, x, y]) => x || y)(f.navn.match(/_Regneark_(.+?)\.xlsx?$|kap\d+_(.+?)_NY/)).replace(/_/g, " ").toLowerCase() : "", /\.xlsx?$/i.test(f.navn) ? " (Excel)" : " (PDF)"), el("small", null, f.type === "felles" ? f.navn.replace(/^LOM_|_NY|\.pdf$|\.xlsx$/g, "").replace(/_/g, " ") : f.type === "tema" ? temaFilNavn(f.navn)[1] : (FILTYPE[f.type] ? FILTYPE[f.type][1] : ""), ` · oppdatert ${f.dato} · ${f.kb >= 1024 ? (f.kb / 1024).toFixed(1) + " MB" : f.kb + " kB"}`)))))));
+      el("ul", { class: "filliste" }, liste.map(f => { const xl = /\.xlsx?$/i.test(f.navn); const status = el("div", { class: "fil-status skjult", role: "status", "aria-live": "polite" }); return el("li", null,
+        el("a", { href: f.fil, target: "_blank", rel: "noopener", download: xl ? f.navn : null, "aria-label": (xl ? "Last ned " : "Åpne ") + f.navn + (xl ? " (regneark)" : " i ny fane"), onclick: (ev) => { LOM.telling && LOM.telling.hendelse("fil-" + id + "-" + f.type); if (xl) { ev.preventDefault(); lastNedRegneark(f, status); } } },
+          el("span", { class: "fil-ik" }, filIkon(f.navn)), el("span", { class: "fil-tekst" }, el("b", null, f.type === "tema" ? temaFilNavn(f.navn)[0] : FILTYPE[f.type] ? FILTYPE[f.type][0] : f.type, f.type === "regneark" && /_Regneark_(.+?)\.xlsx?$|kap\d+_(.+?)_NY/.test(f.navn) ? ": " + (([, x, y]) => x || y)(f.navn.match(/_Regneark_(.+?)\.xlsx?$|kap\d+_(.+?)_NY/)).replace(/_/g, " ").toLowerCase() : "", /\.xlsx?$/i.test(f.navn) ? " (Excel)" : " (PDF)"), el("small", null, f.type === "felles" ? f.navn.replace(/^LOM_|_NY|\.pdf$|\.xlsx$/g, "").replace(/_/g, " ") : f.type === "tema" ? temaFilNavn(f.navn)[1] : (FILTYPE[f.type] ? FILTYPE[f.type][1] : ""), ` · oppdatert ${f.dato} · ${f.kb >= 1024 ? (f.kb / 1024).toFixed(1) + " MB" : f.kb + " kB"}`), el("span", { class: "fil-handling" + (xl ? " last" : "") }, xl ? "↓ Last ned regnearket" : "↗ Åpne i ny fane"))), status); })));
+  }
+  /* Etter klikk på et regneark: si hva som skjedde, hva fila heter og hvor den ligger, tilpasset enheten. */
+  function nedlastHjelp() {
+    const ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) return "På iPhone og iPad: trykk «Last ned» hvis du blir spurt. Fila havner i Filer-appen under Nedlastinger. Åpne den derfra med Excel eller Numbers.";
+    if (/Android/i.test(ua)) return "På Android havner fila i Filer-appen under Nedlastinger, og ofte vises et varsel øverst på skjermen. Trykk på varselet eller fila for å åpne den i Excel eller Google Regneark.";
+    if (/Mac/i.test(ua)) return "På Mac havner fila i mappen Nedlastinger. Klikk på nedlastingsikonet øverst til høyre i nettleseren, eller åpne Finder og velg Nedlastinger. Dobbeltklikk for å åpne i Excel.";
+    return "På PC havner fila i mappen Nedlastinger. Trykk Ctrl+J for å se nedlastingene i nettleseren, eller åpne Filutforsker og velg Nedlastinger. Dobbeltklikk for å åpne i Excel. Excel kan vise en gul linje øverst. Trykk «Aktiver redigering» for å skrive i arket.";
+  }
+  /* Regneark hentes med fetch og lagres som fil. Det virker også i installert app (PWA), der en vanlig
+     nedlastingslenke ofte ikke gir noen synlig reaksjon. Studenten får alltid beskjed om hva som skjedde. */
+  const absUrl = (fil) => new URL(fil, location.href).href;
+  const nettVisning = (fil) => "https://view.officeapps.live.com/op/view.aspx?src=" + encodeURIComponent(absUrl(fil));
+  async function lastNedRegneark(f, boks) {
+    boks.classList.remove("skjult"); boks.classList.remove("feil");
+    boks.replaceChildren(el("b", null, "Laster ned " + f.navn + " …"));
+    try {
+      const svar = await fetch(f.fil, { cache: "no-store" });
+      if (!svar.ok) throw new Error("HTTP " + svar.status);
+      const blob = await svar.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = f.navn; a.style.display = "none";
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      visNedlasting(boks, f);
+      melding("Regnearket er lastet ned til Nedlastinger");
+    } catch (e) {
+      boks.classList.add("feil");
+      boks.replaceChildren(el("b", null, "Regnearket ble ikke lastet ned."), el("p", null, navigator.onLine === false ? "Du ser ut til å være uten nett. Koble til og prøv igjen." : "Nettleseren stoppet nedlastingen. Prøv en av løsningene under."),
+        el("div", { class: "fil-valg" }, el("a", { class: "knapp liten", href: f.fil, download: f.navn }, "Prøv å laste ned direkte"), el("a", { class: "knapp liten", href: nettVisning(f.fil), target: "_blank", rel: "noopener" }, "Vis arket i nettleseren ↗")));
+      melding("Nedlastingen virket ikke. Se valgene under kortet.");
+    }
+  }
+  function visNedlasting(boks, f) {
+    const t = new Date().toLocaleTimeString("nb-NO", { hour: "2-digit", minute: "2-digit" });
+    boks.replaceChildren(el("b", null, "✓ Lastet ned kl. " + t + ": "), el("span", { class: "fil-navn" }, f.navn), el("p", null, nedlastHjelp()),
+      el("p", { class: "fil-tips" }, "Ser du ingen fil, eller vil du bare se på arket uten å laste ned? ", el("a", { href: nettVisning(f.fil), target: "_blank", rel: "noopener" }, "Vis arket i nettleseren ↗"), " Der kan du lese, men ikke regne. For å regne må du laste ned og åpne i Excel."));
+    boks.classList.remove("skjult");
   }
 
   /* ---------- Eksamen: Del C fra øvingsheftet ---------- */
@@ -37051,7 +37103,7 @@ LOM.pwa = (function () {
       T.trinn && T.trinn.length ? el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Trinn"), el("th", null, "Hva du avklarer"), el("th", null, "Hvor det står"))),
         el("tbody", null, T.trinn.map((t, i) => el("tr", null, el("td", null, el("b", null, `${i + 1} · ${t.navn}`)), el("td", null, t.hva), el("td", null, t.hvor))))) : null,
       (T.bolker || []).flatMap(b => [el("h3", null, b.overskrift), b.ref ? el("div", { class: "ref" }, b.ref) : null, ...b.avsnitt.map(a => el("p", null, a))]),
-      filboks(id, ["tema"], "Filer til temaet", "Presentasjon, veiledning, mal for forretningsplan og regneark. Åpnes i ny fane; regneark lastes ned."),
+      filboks(id, ["tema"], "Filer til temaet", "Presentasjon, veiledning, mal for forretningsplan og regneark. PDF åpnes i ny fane. Regneark (Excel) lastes ned til mappen Nedlastinger på enheten din."),
       T.kilde ? el("p", { class: "kilder" }, T.kilde) : null);
   }
 
@@ -37072,7 +37124,7 @@ LOM.pwa = (function () {
         I.begreper.map(b => el("details", { class: "begrep" }, el("summary", null, b.begrep), el("div", { class: "rad" }, el("b", null, "På norsk"), el("span", null, b.forklaring)), b.nordlys ? el("div", { class: "rad" }, el("b", null, "Hos Nordlys"), el("span", null, b.nordlys)) : null, b.bruk ? el("div", { class: "rad" }, el("b", null, "Du bruker det til"), el("span", null, b.bruk)) : null, b.felle ? el("div", { class: "rad" }, el("b", { class: "felle" }, "Vanlig felle"), el("span", null, b.felle)) : null))),
       I.avvik && lager.laerer ? el("div", { class: "laererboks" }, el("h3", null, "Lærernotat — avvik i læreboka (vises kun i lærermodus)"), el("p", null, I.avvik)) : null,
       I.sjekkDegSelv ? el("div", { class: "kort" }, el("h3", null, "Sjekk deg selv"), el("p", null, I.sjekkDegSelv)) : null,
-      filboks(id, ["presentasjon", "sammendrag", "hefte", "regneark", "klasse", "klassefasit"], "Filer til kapitlet", "Siste gjeldende utgave av det som brukes i undervisningen. Åpnes i ny fane; regneark lastes ned."),
+      filboks(id, ["presentasjon", "sammendrag", "hefte", "regneark", "klasse", "klassefasit"], "Filer til kapitlet", "Siste gjeldende utgave av det som brukes i undervisningen. PDF åpnes i ny fane. Regneark (Excel) lastes ned til mappen Nedlastinger på enheten din."),
       el("div", { class: "kort dempet" }, el("h3", null, "Kilder"), el("p", { class: "kilder" }, I.kilde), I.ovingsark ? el("p", { class: "kilder" }, "Regneark til kapitlet: ", el("code", null, I.ovingsark), (LOM.filer && LOM.filer[id] && LOM.filer[id].some(f => f.type === "regneark")) ? " (se Filer til kapitlet)." : " (deles ut av lærer).") : null),
       el("div", { class: "knapperad" }, el("button", { class: "knapp primar", onclick: () => { kapLager(id).lest = true; lagre(); SP.hendelse("lest", { id, tittel: finnKap(id).kap.tittel }); LOM.telling && LOM.telling.hendelse("lest-" + id); melding("Kapitlet er merket som lest"); gaaTil(`/kap/${id}/se`); } }, "Ferdig lest → Se og regn")));
   }
