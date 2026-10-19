@@ -2185,7 +2185,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.9.0 · 19. oktober 2026",
+  versjon: "2.9.1 · 19. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -18065,7 +18065,7 @@ LOM.innhold.ok05.klasseoppgaver = [
   I.kalkulatorer = (I.kalkulatorer || []).concat(["budsjettkalkyle"]);
   I.tema = {
     tittel: "Fra budsjett til kalkyle — og hvorfor Eldata, KlarCalc og SmartCraft regner det samme",
-    ingress: "Læreboka og Jan Helge regner satsene ut av budsjettet. Eldata, KlarCalc og SmartCraft har satsene ferdig i oppsettet, fordi noen allerede har regnet dem ut. Dette temaet viser hele veien fra budsjettet til Elektro AS 2026 til prisen på én jobb, og den samme jobben regnet på bokas måte og på Eldatas måte. Prisen blir lik til kronen. Regnearket i filboksen har én fane per trinn, en fane der du sorterer budsjettkontoene selv, og fem øvelser med sjekk.",
+    ingress: "Læreboka regner satsene ut av budsjettet. Eldata, KlarCalc og SmartCraft har satsene ferdig i oppsettet, fordi noen allerede har regnet dem ut. Dette temaet viser hele veien fra budsjettet til Elektro AS 2026 til prisen på én jobb, og den samme jobben regnet på bokas måte og på Eldatas måte. Prisen blir lik til kronen. Regnearket i filboksen har én fane per trinn, en fane der du sorterer budsjettkontoene selv, og fem øvelser med sjekk.",
     trinn: [
       { navn: "1 Sorter budsjettet", hva: "Hver konto får en gruppe: direkte materiell, direkte lønn, sosiale kostnader på lønnen, eller indirekte kostnader. Spørsmålet er alltid: kan kostnaden føres direkte på en bestemt jobb?", hvor: "Kap. 5.2.1 · regnearket fane 1" },
       { navn: "2 Regn ut satsene", hva: "Sosiale kostnader i % av lønn, tilleggssats = indirekte kostnader / direkte lønn, fortjeneste = driftsresultat / sum kostnader.", hvor: "Formelsamlingen kap. 5 · fane 2" },
@@ -18076,7 +18076,7 @@ LOM.innhold.ok05.klasseoppgaver = [
     bolker: [
       { overskrift: "To halvdeler av den samme pila", avsnitt: [
         "En installatør som har kalkulert i Eldata eller KlarCalc i mange år, kjenner igjen alt i en selvkostkalkyle — bortsett fra hvor satsene kommer fra. I programmet ligger sosiale omkostninger, driftsomkostninger, fellesomkostninger og fortjeneste som ferdige prosenter i bedriftsmalen. Brukerveiledningen til KlarCalc sier det rett ut under «Sosiale og administrative kostnader»: hvis du ikke vet satsene, kan du få dem fra regnskapsføreren.",
-        "Læreboka lærer deg å gjøre regnskapsførerens del av jobben. Du starter med budsjettet, regner ut satsene, og bruker dem på jobben. Programmene starter der boka slutter. Budsjett → satser er bokas og Jan Helges halvdel; satser → tilbud er Eldatas og KlarCalcs halvdel. Det er den samme pila."],
+        "Læreboka lærer deg å gjøre regnskapsførerens del av jobben. Du starter med budsjettet, regner ut satsene, og bruker dem på jobben. Programmene starter der boka slutter. Budsjett → satser er bokas halvdel; satser → tilbud er Eldatas og KlarCalcs halvdel. Det er den samme pila."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2; Brukerveiledning KlarCalc 2025, Systeminnstillinger" },
       { overskrift: "Trinn 1 og 2: budsjettet blir til satser", avsnitt: [
         "Elektro AS budsjetterer med en omsetning på 50 millioner kroner og et driftsresultat på {{5 205 000|Sum inntekter 50 000 000 − sum driftskostnader 44 795 000 = 5 205 000 kr. Budsjett Elektro AS 2026, linje 9050}} kroner. Direkte materiell er innkjøp av varer minus bonus pluss underentrepriser: {{21 250 000|21 000 000 − 750 000 + 1 000 000 = 21 250 000 kr. Konto 4300, 4302 og 4500}} kroner. Lønn til produksjonen med bastillegg, helligdagsgodtgjørelse, sykelønn og feriepenger er {{11 100 000|9 000 000 + 200 000 + 400 000 + 300 000 + 1 200 000 = 11 100 000 kr. Konto 5000–5030}} kroner. Arbeidsgiveravgift og yrkesskadeforsikring for produksjonen er {{1 660 000|1 600 000 + 60 000 = 1 660 000 kr. Konto 5400 og 5920}} kroner, altså {{15,0 %|1 660 000 / 11 100 000 = 0,1495, avrundet 15,0 %}} sosiale kostnader. Sammen blir det {{12 760 000|11 100 000 + 1 660 000 = 12 760 000 kr}} kroner i direkte lønn — det boka kaller direkte lønnskostnader.",
@@ -18091,7 +18091,7 @@ LOM.innhold.ok05.klasseoppgaver = [
         ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3; Brukerveiledning KlarCalc 2025; smartcraftspark.com/no (lest 19.10.2026)" },
       { overskrift: "Trinn 5: nøkkelen er et valg", avsnitt: [
         "Budsjettet sier hvor mye de indirekte kostnadene er, men ikke hvordan de skal fordeles på jobbene. Legger du alt på direkte lønn (84,5 %), får en materielltung jobb med 5 000 kroner i lønn og 40 000 i materiell selvkost {{49 226|5 000 + 40 000 + 5 000 × 0,8452 = 49 226 kr}}. Legger du det på alle direkte kostnader ({{31,7 %|10 785 000 / (21 250 000 + 12 760 000) = 0,317}}), blir den samme jobben {{59 270|45 000 × 1,3171 = 59 270 kr}}. For en lønnstung servicejobb går det motsatt vei. Begge nøklene dekker de samme kronene over året.",
-        "Det er derfor Eldata og KlarCalc har eget påslag på materiell og egen timepris: det tilsvarer to tilleggssatser, slik boka viser for industribedriften i kap. 5.3. Jan Helges enkle variant med én sats på lønn er riktig for en håndverksbedrift — boka sier at håndverksbedrifter kan behandle de indirekte kostnadene under ett — men den som priser store tavleleveranser, bør vite hva valget gjør."],
+        "Det er derfor Eldata og KlarCalc har eget påslag på materiell og egen timepris: det tilsvarer to tilleggssatser, slik boka viser for industribedriften i kap. 5.3. Den enkle varianten med én sats på lønn er riktig for en håndverksbedrift — boka sier at håndverksbedrifter kan behandle de indirekte kostnadene under ett — men den som priser store tavleleveranser, bør vite hva valget gjør."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2.1 og 5.3" },
       { overskrift: "Hva programmene ikke viser deg", avsnitt: [
         "Eldata viser selvkost bare indirekte, gjennom faktorene og DB1, DB2 og DB3; DB3 nettofortjeneste er bokas fortjeneste. KlarCalc viser dekningsbidrag når du holder pekeren over kakediagrammet. SmartCraft Spark lover at du «ser hva du tjener før jobben starter», men dokumenterer ikke offentlig hvordan påslagene regnes. Felles for alle tre: tallene blir aldri bedre enn satsene som ligger i oppsettet. Er budsjettet gammelt eller faktureringsgraden for optimistisk, regner programmet raskt og presist på feil grunnlag. Det er den forståelsen boka gir, og som programmene forutsetter at noen har."],
@@ -35859,7 +35859,7 @@ LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
   const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
   const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
   const velg = el("select", { "aria-label": "Fordelingsnøkkel", onchange: (e) => { s.nokkel = e.target.value; tegn(); } },
-    el("option", { value: "lonn" }, "Nøkkel 1: tilleggssats på direkte lønn (Jan Helge, boka eks. 3)"),
+    el("option", { value: "lonn" }, "Nøkkel 1: tilleggssats på direkte lønn (boka eks. 3)"),
     el("option", { value: "alle" }, "Nøkkel 2: tilleggssats på alle direkte kostnader"));
   const bokBoks = el("div"), eldBoks = el("div"), satsBoks = el("div"), tips = el("div"), nokBoks = el("div");
   const wrap = el("div", null,
