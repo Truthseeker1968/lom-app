@@ -2185,7 +2185,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.9.1 · 19. oktober 2026",
+  versjon: "2.9.3 · 20. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -18056,67 +18056,73 @@ LOM.innhold.ok05.klasseoppgaver = [
  }
 ];
 
-/* ---------- Tema: Fra budsjett til kalkyle (lagt til 19.10.2026, versjon 2.9.0) ----------
-   Budsjettet er Elektro AS 2026 fra Prosjekt Bolig (3EKC/3EKD). Bokas metode (kap. 5.2, eks. 3)
-   sammenliknet med Eldata (håndboken «ELdata kalkyle», NELFO), KlarCalc (brukerveiledning 2025)
-   og SmartCraft Spark (smartcraftspark.com/no, lest 19.10.2026). */
+/* ---------- Tema: Fra budsjett til kalkyle (versjon 2.9.3, 20.10.2026) ----------
+   Budsjett: Elektro AS 2026 (Prosjekt Bolig). Satsene vist som Eldata-satser S, D, F og P.
+   Forutsetning: timelønn 270 kr og 29 935 fakturerte timer (20,2 årsverk × 1 478). */
 (function () {
   const I = LOM.innhold.ok05;
   I.kalkulatorer = (I.kalkulatorer || []).concat(["budsjettkalkyle"]);
   I.tema = {
-    tittel: "Fra budsjett til kalkyle — og hvorfor Eldata, KlarCalc og SmartCraft regner det samme",
-    ingress: "Læreboka regner satsene ut av budsjettet. Eldata, KlarCalc og SmartCraft har satsene ferdig i oppsettet, fordi noen allerede har regnet dem ut. Dette temaet viser hele veien fra budsjettet til Elektro AS 2026 til prisen på én jobb, og den samme jobben regnet på bokas måte og på Eldatas måte. Prisen blir lik til kronen. Regnearket i filboksen har én fane per trinn, en fane der du sorterer budsjettkontoene selv, og fem øvelser med sjekk.",
+    tittel: "Fra budsjett til kalkyle — S, D, F og P slik du kjenner dem fra Eldata",
+    ingress: "I Eldata skriver du inn fire satser: S (sosiale omkostninger), D (driftsomkostninger), F (fellesomkostninger) og P (fortjeneste). Dette temaet viser hvor satsene kommer fra: de regnes ut av bedriftens egne tall, budsjettet eller regnskapet. Jobbens egne kostnader regnes alltid for jobben selv. Regnearket i filboksen og kalkulatoren «Fra budsjett til kalkyle» viser hele regnestykket.",
     trinn: [
-      { navn: "1 Sorter budsjettet", hva: "Hver konto får en gruppe: direkte materiell, direkte lønn, sosiale kostnader på lønnen, eller indirekte kostnader. Spørsmålet er alltid: kan kostnaden føres direkte på en bestemt jobb?", hvor: "Kap. 5.2.1 · regnearket fane 1" },
-      { navn: "2 Regn ut satsene", hva: "Sosiale kostnader i % av lønn, tilleggssats = indirekte kostnader / direkte lønn, fortjeneste = driftsresultat / sum kostnader.", hvor: "Formelsamlingen kap. 5 · fane 2" },
-      { navn: "3 Kalkyle på jobben", hva: "Direkte lønn + materiell + indirekte kostnader = selvkost. Selvkost + fortjeneste = pris uten merverdiavgift.", hvor: "Kap. 5.2 eksempel 3 · fane 3" },
-      { navn: "4 Samme jobb i Eldata", hva: "Arbeidslønn + sosiale omkostninger + driftsomkostninger + fellesomkostninger + fortjeneste. Samme kroner, flere trinn.", hvor: "ELdata kalkyle (NELFO) · fane 4" },
-      { navn: "5 Velg nøkkel", hva: "Budsjettet sier hvor mye som skal dekkes, ikke hvordan det fordeles. Nøkkelen avgjør om tavleanbudet eller servicejobben blir dyr.", hvor: "Kap. 5.3 · fane 5" }
+      { navn: "1 Sorter budsjettet", hva: "Hver budsjettlinje får en bøtte: materiell, lønn, S, D eller F. Driftsresultatet er P.", hvor: "Kap. 5.2.1 · regnearket fane 1" },
+      { navn: "2 Finn de fakturerte timene", hva: "Budsjettet har kroner, Eldata regner per time. Broen er antall timer kunden betaler for.", hvor: "Kap. 5.2 · faktureringsgrad" },
+      { navn: "3 Regn ut satsene", hva: "S, D og F i prosent eller kroner per fakturert time. P i prosent av selvkost.", hvor: "Formelsamlingen kap. 5 · fane 2" },
+      { navn: "4 Bygg timeprisen", hva: "Timelønn + S + D + F + P = det kunden betaler for timen.", hvor: "Kalkulatoren" },
+      { navn: "5 Kalkuler jobben", hva: "Jobbens egne timer og materiell × satsene. Eldata-trappen og bokas oppstilling gir samme pris.", hvor: "Kap. 5.2 eksempel 3 · fane 3 og 4" }
     ],
     bolker: [
-      { overskrift: "To halvdeler av den samme pila", avsnitt: [
-        "En installatør som har kalkulert i Eldata eller KlarCalc i mange år, kjenner igjen alt i en selvkostkalkyle — bortsett fra hvor satsene kommer fra. I programmet ligger sosiale omkostninger, driftsomkostninger, fellesomkostninger og fortjeneste som ferdige prosenter i bedriftsmalen. Brukerveiledningen til KlarCalc sier det rett ut under «Sosiale og administrative kostnader»: hvis du ikke vet satsene, kan du få dem fra regnskapsføreren.",
-        "Læreboka lærer deg å gjøre regnskapsførerens del av jobben. Du starter med budsjettet, regner ut satsene, og bruker dem på jobben. Programmene starter der boka slutter. Budsjett → satser er bokas halvdel; satser → tilbud er Eldatas og KlarCalcs halvdel. Det er den samme pila."],
-        ref: "Økonomistyring for LØM-emnet, kap. 5.2; Brukerveiledning KlarCalc 2025, Systeminnstillinger" },
-      { overskrift: "Trinn 1 og 2: budsjettet blir til satser", avsnitt: [
-        "Elektro AS budsjetterer med en omsetning på 50 millioner kroner og et driftsresultat på {{5 205 000|Sum inntekter 50 000 000 − sum driftskostnader 44 795 000 = 5 205 000 kr. Budsjett Elektro AS 2026, linje 9050}} kroner. Direkte materiell er innkjøp av varer minus bonus pluss underentrepriser: {{21 250 000|21 000 000 − 750 000 + 1 000 000 = 21 250 000 kr. Konto 4300, 4302 og 4500}} kroner. Lønn til produksjonen med bastillegg, helligdagsgodtgjørelse, sykelønn og feriepenger er {{11 100 000|9 000 000 + 200 000 + 400 000 + 300 000 + 1 200 000 = 11 100 000 kr. Konto 5000–5030}} kroner. Arbeidsgiveravgift og yrkesskadeforsikring for produksjonen er {{1 660 000|1 600 000 + 60 000 = 1 660 000 kr. Konto 5400 og 5920}} kroner, altså {{15,0 %|1 660 000 / 11 100 000 = 0,1495, avrundet 15,0 %}} sosiale kostnader. Sammen blir det {{12 760 000|11 100 000 + 1 660 000 = 12 760 000 kr}} kroner i direkte lønn — det boka kaller direkte lønnskostnader.",
-        "Alt annet er indirekte: lønn til administrasjonen, husleie, biler, verktøy, kontor, reklame, forsikringer og tap på krav. Til sammen {{10 785 000|44 795 000 − 21 250 000 − 12 760 000 = 10 785 000 kr}} kroner. Tilleggssatsen er de indirekte kostnadene delt på fordelingsgrunnlaget, her direkte lønn: 10 785 000 / 12 760 000 = {{84,5 %|10 785 000 / 12 760 000 = 0,8452, altså 84,5 %}}. Fortjenesten hentes også fra budsjettet: driftsresultatet delt på sum kostnader, 5 205 000 / 44 795 000 = {{11,6 %|5 205 000 / 44 795 000 = 0,1162, altså 11,6 % av selvkost}} av selvkost."],
-        ref: "Økonomistyring for LØM-emnet, kap. 5.2.1 og formelsamlingen (tilleggssats = indirekte kostnader / fordelingsgrunnlaget)" },
-      { overskrift: "Trinn 3 og 4: samme jobb, to oppstillinger", avsnitt: [
-        "Jobben har 25 timer à 400 kroner i lønn (tariff og tillegg, en forutsetning for eksempelet) og 10 000 kroner i materiell. Boka stiller det opp slik: direkte lønnskostnader {{11 495|25 × 400 × 1,1495 = 11 495 kr}}, pluss materiell 10 000, pluss indirekte kostnader {{9 716|11 495 × 0,8452 = 9 716 kr}}, gir selvkost {{31 212|11 495 + 10 000 + 9 716 = 31 212 kr}}. Fortjeneste {{3 627|31 212 × 0,1162 = 3 627 kr}} gir pris uten merverdiavgift {{34 838|31 212 + 3 627 = 34 838 kr (avrundet)}} kroner.",
-        "Eldata går trappen ett trinn om gangen: arbeidslønn 10 000, pluss sosiale omkostninger 15,0 %, pluss driftsomkostninger {{19,5 %|Driftsomkostninger 2 490 000 / direkte lønn 12 760 000 = 0,195. Biler, verktøy, bom, garanti og kurs}}, pluss fellesomkostninger {{54,4 %|Fellesomkostninger 8 295 000 / (12 760 000 + 2 490 000) = 0,544. Eldata regner fellesomkostningene av summen inkludert drift}}, pluss fortjeneste 11,6 %. Arbeidet blir {{23 676|10 000 × 1,1495 × 1,1951 × 1,5439 × 1,1162 = 23 676 kr}} kroner (faktor arbeid 2,37), materiellet {{11 162|10 000 × 1,1162 = 11 162 kr (faktor materiell 1,12)}} kroner, og kundeprisen {{34 838|23 676 + 11 162 = 34 838 kr}} kroner. Nøyaktig det samme. Driftsomkostninger og fellesomkostninger i Eldata er bokas indirekte kostnader delt i to: 1,195 × 1,544 = 1,845, som er 1 + 84,5 %."],
-        ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3; ELdata kalkyle, bildet Kalkulasjon arbeid" },
+      { overskrift: "Det korte svaret", avsnitt: [
+        "Eldata, KlarCalc og SmartCraft har satsene ferdig i oppsettet. Brukerveiledningen til KlarCalc sier: kjenner du ikke satsene, kan du få dem fra regnskapsføreren. Læreboka lærer deg den jobben: å regne satsene ut av bedriftens tall.",
+        "Det viktigste: jobbens egne kostnader, altså estimerte timer ganger timelønn, materiell til nettopris, reise og underentrepriser, regnes alltid for jobben selv. Bare påslagene S, D, F og P hentes fra bedriftens tall. Bransjen bruker som regel fjorårets regnskap. Boka viser at de også kan regnes fra budsjettet. Regnestykket er det samme."],
+        ref: "Økonomistyring for LØM-emnet, kap. 5.2; Brukerveiledning KlarCalc 2025" },
+      { overskrift: "Trinn 1: Budsjettet i Eldata-bøtter", avsnitt: [
+        "Elektro AS budsjetterer med 50 millioner kroner i omsetning. Materiell er innkjøp minus bonus pluss underentrepriser: {{21 250 000|21 000 000 − 750 000 + 1 000 000. Sumlinja «4500 Fremmedytelser» på rad 20}}. Lønn produksjon med bastillegg: {{9 200 000|9 000 000 + 200 000. Konto 5000 og 5002. Eldata: sum arbeidslønn}}.",
+        "S, de sosiale kostnadene, er feriepenger, helligdager, sykelønn, arbeidsgiveravgift og yrkesskade for produksjonen: {{3 560 000|1 200 000 + 400 000 + 300 000 + 1 600 000 + 60 000. Konto 5030, 5010, 5020, 5400 og 5920}}. Feriepengene alene er 13,0 % av lønna — nesten det samme som i et vanlig Eldata-oppsett.",
+        "D, driftsomkostningene, følger montørene ut: biler, verktøy, bom, garanti og kurs, {{2 490 000|Konto 6010, 6500-gruppen, 6920, 7000–7060, 7140–7141, 7550–7560 og 5990}}. F, fellesomkostningene, er alt annet: administrasjon, pensjon, lokaler, kontor, reklame, forsikring og tap, {{8 295 000|Resten av driftskostnadene}}. D + F er {{10 785 000|Sum kostnader 44 795 000 − materiell 21 250 000 − lønn 9 200 000 − S 3 560 000}}. Det enkleste er å trekke fra, ikke å lete linje for linje: sumlinjene i budsjettet inneholder linjene over seg og telles ellers to ganger."],
+        ref: "Budsjett Elektro AS 2026; Økonomistyring for LØM-emnet, kap. 5.2.1" },
+      { overskrift: "Trinn 2: De fakturerte timene binder alt sammen", avsnitt: [
+        "Budsjettet har kroner, men ingen timer. Eldata regner per time. Med timelønn 270 kr og 1 680 timer per årsverk betaler Elektro AS for {{20,2 årsverk|9 200 000 / (270 × 1 680)}}. Hvert årsverk fakturerer 1 478 timer etter sykdom og uproduktiv tid. Det gir {{29 935 fakturerte timer|20,2 × 1 478. Forutsetning hentet fra et vanlig Eldata-ark for sosiale kostnader}} i året.",
+        "Bedriften betaler lønn for alle timene, men kunden betaler bare for de fakturerte. Alt som skal dekkes, må hentes inn på de 29 935 timene."],
+        ref: "Økonomistyring for LØM-emnet, kap. 5.2 (faktureringsgrad)" },
+      { overskrift: "Trinn 3: Satsene", avsnitt: [
+        "S: all produksjonslønn, 12 760 000, delt på timelønn ganger fakturerte timer, minus 1: {{57,9 %|12 760 000 / (270 × 29 935) − 1 = 0,579}}. Det er høyere enn feriepenger, AGA, helligdager og sykelønn til sammen (38,7 %), fordi også timene som ikke faktureres skal dekkes. Et vanlig Eldata-ark for sosiale kostnader havner på omtrent det samme, rundt 55 %.",
+        "D: {{19,5 %|2 490 000 / 12 760 000}} av lønn med S, eller {{83 kr per fakturert time|2 490 000 / 29 935}}. F: {{54,4 %|8 295 000 / (12 760 000 + 2 490 000)}} av summen med D, eller {{277 kr per fakturert time|8 295 000 / 29 935}}. Eldata godtar begge deler. P: driftsresultatet delt på sum kostnader, {{11,6 %|5 205 000 / 44 795 000}} av selvkost.",
+        "Læreboka kaller D og F samlet for tilleggssatsen for indirekte kostnader: {{84,5 % av direkte lønn|10 785 000 / 12 760 000. Det samme som 1,195 × 1,544 − 1}}. Påslagene ganges, de legges ikke sammen."],
+        ref: "Økonomistyring for LØM-emnet, formelsamlingen kap. 5: tilleggssats = indirekte kostnader / fordelingsgrunnlaget" },
+      { overskrift: "Trinn 4 og 5: Timeprisen og jobben", avsnitt: [
+        "Timeprisen bygget opp: timelønn 270 + S 156 = timekost {{426|270 × 1,579}}. + D 83 + F 277 = selvkost {{787 kr per time|426 + 83 + 277 (avrundet)}}. + P 11,6 % = timepris {{878 kr|787 × 1,116}}. Faktor arbeid er {{3,25|878 / 270}}.",
+        "Jobben: 25 fakturerte timer à 270 kr og 10 000 kr i materiell. Eldata-trappen: arbeidslønn 6 750 → S 10 656 → D 12 736 → F 19 663 → P {{21 948|Kalkulert arbeidspris}}. Materiellet får bare P: 11 162. Kundepris {{33 110|21 948 + 11 162}}.",
+        "Boka: direkte lønnskostnader 10 656 + materiell 10 000 + indirekte kostnader 84,5 % av 10 656 = 9 007 gir selvkost {{29 663|10 656 + 10 000 + 9 007}}. Fortjeneste 3 447 gir pris u/mva. {{33 110|29 663 × 1,116}}. Samme pris, til kronen."],
+        ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3; ELdata kalkyle (NELFO)" },
       { overskrift: "Fellen: «timepris» betyr to ting", avsnitt: [
-        "I eksempel 3 i boka har bygningsfirmaet en «timepris» på 620 kroner, og den ganges med timene for å finne direkte lønnskostnader. Det er bedriftens kostnad per time — det praksis kaller timekost. I KlarCalc er «salgspris pr time» det kunden betaler, og SmartCraft Spark lar deg justere «timeprisen på montører, lærlinger osv.» — også den kundens pris. Hos Elektro AS er timekosten {{460|400 × 1,1495 = 459,82 kr}} kroner og timeprisen til kunden {{947|400 × 1,1495 × 1,8452 × 1,1162 = 947 kr}} kroner. Si timekost om det første og timepris om det andre, så blander du dem aldri."],
+        "I eksempel 3 i boka er «timepris 620 kr» hva timen koster bedriften. I Eldata, KlarCalc og SmartCraft er timepris det kunden betaler. Hos Elektro AS er timekosten 426 kr og timeprisen 878 kr. Si timekost om det første og timepris om det andre."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3; Brukerveiledning KlarCalc 2025; smartcraftspark.com/no (lest 19.10.2026)" },
-      { overskrift: "Trinn 5: nøkkelen er et valg", avsnitt: [
-        "Budsjettet sier hvor mye de indirekte kostnadene er, men ikke hvordan de skal fordeles på jobbene. Legger du alt på direkte lønn (84,5 %), får en materielltung jobb med 5 000 kroner i lønn og 40 000 i materiell selvkost {{49 226|5 000 + 40 000 + 5 000 × 0,8452 = 49 226 kr}}. Legger du det på alle direkte kostnader ({{31,7 %|10 785 000 / (21 250 000 + 12 760 000) = 0,317}}), blir den samme jobben {{59 270|45 000 × 1,3171 = 59 270 kr}}. For en lønnstung servicejobb går det motsatt vei. Begge nøklene dekker de samme kronene over året.",
-        "Det er derfor Eldata og KlarCalc har eget påslag på materiell og egen timepris: det tilsvarer to tilleggssatser, slik boka viser for industribedriften i kap. 5.3. Den enkle varianten med én sats på lønn er riktig for en håndverksbedrift — boka sier at håndverksbedrifter kan behandle de indirekte kostnadene under ett — men den som priser store tavleleveranser, bør vite hva valget gjør."],
-        ref: "Økonomistyring for LØM-emnet, kap. 5.2.1 og 5.3" },
-      { overskrift: "Hva programmene ikke viser deg", avsnitt: [
-        "Eldata viser selvkost bare indirekte, gjennom faktorene og DB1, DB2 og DB3; DB3 nettofortjeneste er bokas fortjeneste. KlarCalc viser dekningsbidrag når du holder pekeren over kakediagrammet. SmartCraft Spark lover at du «ser hva du tjener før jobben starter», men dokumenterer ikke offentlig hvordan påslagene regnes. Felles for alle tre: tallene blir aldri bedre enn satsene som ligger i oppsettet. Er budsjettet gammelt eller faktureringsgraden for optimistisk, regner programmet raskt og presist på feil grunnlag. Det er den forståelsen boka gir, og som programmene forutsetter at noen har."],
-        ref: "ELdata kalkyle, bildet Kalkulasjon dekningsbidrag; Brukerveiledning KlarCalc 2025, Ferdig kalkulert; smartcraftspark.com/no" }
+      { overskrift: "Nøkkelen er et valg", avsnitt: [
+        "Budsjettet sier hvor mye D og F er, men ikke om de skal legges på timene, på materiellet eller på begge. Elektro AS legger alt på timene, slik et Eldata-oppsett med faktor materiell 1,0 gjør. En tavlejobb med 5 000 kr lønn og 40 000 kr materiell får da selvkost {{49 226|5 000 + 40 000 + 5 000 × 0,845}}. Legges påslaget på alt direkte ({{31,7 %|10 785 000 / (12 760 000 + 21 250 000)}}), blir den {{59 270|45 000 × 1,317}}. For en servicejobb går det motsatt vei.",
+        "Etterkalkylen viser om satsene holdt. Ble det færre fakturerte timer enn forutsatt, dekker ikke påslagene kostnadene, og satsene må opp."],
+        ref: "Økonomistyring for LØM-emnet, kap. 5.2.1, 5.2.3 og 5.3" }
     ],
-    kilde: "Hjertnes og Skorpen: Økonomistyring for LØM-emnet, kap. 5.2, 5.2.1, 5.3 og formelsamlingen. Budsjett Elektro AS 2026 (Prosjekt Bolig 3EKC/3EKD). ELdata kalkyle (NELFO). Brukerveiledning KlarCalc 2025 V 1.0. SmartCraft Spark: smartcraftspark.com/no og pressemelding 14.05.2025 (lest 19.10.2026). Grupperingen av budsjettkontoene i drift og felles er laget for dette temaet og kan diskuteres."
+    kilde: "Hjertnes og Skorpen: Økonomistyring for LØM-emnet, kap. 5.2, 5.2.1, 5.2.3, 5.3 og formelsamlingen. Budsjett Elektro AS 2026 (Prosjekt Bolig 3EKC/3EKD). ELdata kalkyle (NELFO). Brukerveiledning KlarCalc 2025 V 1.0. SmartCraft Spark: smartcraftspark.com/no (lest 19.10.2026). Forutsetninger: timelønn 270 kr, 1 680 timer og 1 478 fakturerte timer per årsverk. Sorteringen i D og F er laget for temaet og kan diskuteres."
   };
   I.begreper.push(
-    { begrep: "Tilleggssats", forklaring: "De indirekte kostnadene i prosent av et fordelingsgrunnlag, oftest direkte lønn. Regnes ut av budsjettet (forkalkyle) eller regnskapet (etterkalkyle).", nordlys: "Elektro AS 2026: 10 785 000 / 12 760 000 = {{84,5 %|Indirekte kostnader / direkte lønn. Budsjett Elektro AS 2026}} av direkte lønn.", bruk: "Legges på direkte lønn i selvkostkalkylen for hver jobb.", felle: "Å tro at satsen er gitt. Den er et valg av nøkkel — på lønn, på materiell eller på begge." },
-    { begrep: "Timekost og timepris", forklaring: "Timekost er hva en time koster bedriften (lønn pluss sosiale kostnader). Timepris er hva kunden betaler for timen, med indirekte kostnader og fortjeneste lagt på.", nordlys: "Elektro AS: timekost {{460|400 × 1,1495 = 460 kr}} kroner, timepris {{947|460 × 1,8452 × 1,1162 = 947 kr}} kroner.", bruk: "Boka kaller timekosten «timepris» i eksempel 3; KlarCalc og SmartCraft bruker timepris om kundens pris.", felle: "Å sammenlikne bokas 620 kr med en faktura på 900 kr og tro at én av dem er feil." },
-    { begrep: "Faktor arbeid og faktor materiell (Eldata)", forklaring: "Alle påslagene i Eldata ganget sammen til ett tall. Netto × faktor = kundepris.", nordlys: "Elektro AS: faktor arbeid {{2,37|1,1495 × 1,8452 × 1,1162 = 2,368}}, faktor materiell {{1,12|1 + fortjeneste 11,6 %}}.", bruk: "Faktoren er bokas satser i ett tall: (1 + sosiale) × (1 + tilleggssats) × (1 + fortjeneste).", felle: "Å endre faktoren uten å vite hvilken sats den bygger på." }
+    { begrep: "S, D, F og P (Eldata)", forklaring: "De fire påslagene i Eldata: sosiale omkostninger, driftsomkostninger, fellesomkostninger og fortjeneste.", nordlys: "Elektro AS: S {{57,9 %|12 760 000 / (270 × 29 935) − 1}}, D 19,5 % (83 kr/t), F 54,4 % (277 kr/t), P 11,6 %.", bruk: "Regnes ut av bedriftens budsjett eller regnskap og legges inn i bedriftsmalen.", felle: "Å legge prosentene sammen. De ganges." },
+    { begrep: "Tilleggssats", forklaring: "Bokas navn på påslaget for indirekte kostnader. Tilsvarer D og F i Eldata samlet.", nordlys: "Elektro AS: {{84,5 % av direkte lønn|10 785 000 / 12 760 000}}.", bruk: "Legges på direkte lønnskostnader i selvkostkalkylen.", felle: "Å tro at satsen er gitt. Den er et valg av nøkkel." },
+    { begrep: "Timekost og timepris", forklaring: "Timekost er hva timen koster bedriften (timelønn + S). Timepris er hva kunden betaler (med D, F og P).", nordlys: "Elektro AS: timekost {{426 kr|270 × 1,579}}, timepris {{878 kr|426 + 83 + 277, × 1,116}}.", bruk: "Boka kaller timekosten «timepris» i eksempel 3; Eldata og KlarCalc bruker timepris om kundens pris.", felle: "Å sammenlikne bokas 620 kr med en faktura på 878 kr og tro at én av dem er feil." }
   );
   I.flervalg.push(
-    { sp: "Budsjettet til Elektro AS har indirekte kostnader på 10 785 000 og direkte lønn på 12 760 000. Hva er tilleggssatsen på direkte lønn?", hint: "Tilleggssats = indirekte kostnader / fordelingsgrunnlaget.", alt: ["84,5 %", "118,3 %", "31,7 %", "21,6 %"], riktig: 0, forklaring: "10 785 000 / 12 760 000 = 0,845, altså 84,5 %. 118,3 % er brøken snudd, 31,7 % er satsen på alle direkte kostnader, og 21,6 % er indirekte delt på omsetningen. (Økonomistyring for LØM-emnet, formelsamlingen kap. 5)" },
-    { sp: "Hvor kommer satsene i Eldata og KlarCalc egentlig fra?", hint: "Les hva KlarCalc sier under «Sosiale og administrative kostnader».", alt: ["Fra bedriftens budsjett eller regnskap, regnet ut av regnskapsfører eller kalkulatør", "Fra NELFO, de er like for alle bedrifter", "Fra grossistens rabattfil", "Fra akkordtariffen"], riktig: 0, forklaring: "Satsene er bedriftens egne og regnes ut av budsjettet eller regnskapet — nøyaktig det boka lærer deg. Brukerveiledningen til KlarCalc: «Hvis du ikke vet de respektive satser, kan du få dette fra din regnskapsfører.» Akkordtariffen gir arbeidstid og tarifftillegg, rabattfilen gir innkjøpspris." },
-    { sp: "I eksempel 3 i boka har firmaet en «timepris» på 620 kr som ganges med timene for å finne direkte lønnskostnader. Hva er dette tallet?", hint: "Står tallet før eller etter indirekte kostnader og fortjeneste i oppstillingen?", alt: ["Bedriftens kostnad per time (timekost)", "Prisen kunden betaler per time", "Timeprisen inkludert merverdiavgift", "Akkordsatsen fra tariffen"], riktig: 0, forklaring: "Tallet står på første linje, før indirekte kostnader og fortjeneste — det er bedriftens kostnad. I KlarCalc og SmartCraft betyr timepris kundens pris. Samme ord, to betydninger. (Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3)" },
-    { sp: "Eldata har driftsomkostninger 19,5 % og fellesomkostninger 54,4 % (av summen inkludert drift). Hvilken samlet tilleggssats på direkte lønn tilsvarer det?", hint: "Påslagene ganges, de legges ikke sammen: (1 + a) × (1 + b) − 1.", alt: ["84,5 %", "73,9 %", "64,9 %", "106,3 %"], riktig: 0, forklaring: "1,195 × 1,544 = 1,845, altså 84,5 %. Legger du prosentene sammen (73,9 %), glemmer du at fellesomkostningene regnes av en sum som allerede har drift i seg. (ELdata kalkyle, Kalkulasjon arbeid)" },
-    { sp: "To jobber har like store direkte kostnader, men jobb A er mest materiell og jobb B mest lønn. Bedriften legger alle indirekte kostnader på direkte lønn. Hva skjer?", hint: "Hvilken jobb har størst fordelingsgrunnlag?", alt: ["Jobb B får høyest selvkost", "Jobb A får høyest selvkost", "De får lik selvkost", "Det avhenger av fortjenesten"], riktig: 0, forklaring: "Med tilleggssats på lønn bærer lønnstunge jobber mest av de indirekte kostnadene. Bytter du nøkkel til alle direkte kostnader, flytter byrden seg mot materielltunge jobber. Budsjettet sier hvor mye, nøkkelen sier hvem. (Økonomistyring for LØM-emnet, kap. 5.2.1 og 5.3)" }
+    { sp: "Elektro AS har indirekte kostnader (D + F) på 10 785 000 og direkte lønnskostnader på 12 760 000. Hva er tilleggssatsen?", hint: "Tilleggssats = indirekte kostnader / fordelingsgrunnlaget.", alt: ["84,5 %", "118,3 %", "31,7 %", "21,6 %"], riktig: 0, forklaring: "10 785 000 / 12 760 000 = 84,5 %. 118,3 % er brøken snudd, 31,7 % er satsen på alle direkte kostnader, og 21,6 % er indirekte delt på omsetningen. (Økonomistyring for LØM-emnet, formelsamlingen kap. 5)" },
+    { sp: "Hvor kommer satsene S, D, F og P i Eldata og KlarCalc fra?", hint: "Les hva KlarCalc sier under «Sosiale og administrative kostnader».", alt: ["Fra bedriftens budsjett eller regnskap, regnet ut av regnskapsfører eller kalkulatør", "Fra NELFO, de er like for alle bedrifter", "Fra grossistens rabattfil", "Fra akkordtariffen"], riktig: 0, forklaring: "Satsene er bedriftens egne og regnes ut av budsjettet eller regnskapet. Akkordtariffen gir arbeidstid og tillegg, rabattfilen gir innkjøpspris." },
+    { sp: "Hvorfor blir S i Eldata (57,9 %) høyere enn feriepenger, AGA, helligdager og sykelønn til sammen (38,7 %)?", hint: "Hvor mange av de betalte timene betaler kunden for?", alt: ["Fordi lønna for timene som ikke faktureres også må hentes inn på de fakturerte timene", "Fordi arbeidsgiveravgiften regnes to ganger", "Fordi fortjenesten ligger i S", "Fordi materiellet har påslag"], riktig: 0, forklaring: "Bedriften betaler for 1 680 timer per årsverk, men bare 1 478 faktureres. S regnes per fakturert time: 12 760 000 / (270 × 29 935) − 1 = 57,9 %." },
+    { sp: "Eldata har D 19,5 % og F 54,4 % (av summen med D). Hvilken samlet tilleggssats tilsvarer det?", hint: "Påslagene ganges: (1 + a) × (1 + b) − 1.", alt: ["84,5 %", "73,9 %", "64,9 %", "106,3 %"], riktig: 0, forklaring: "1,195 × 1,544 = 1,845, altså 84,5 %. Å legge prosentene sammen (73,9 %) glemmer at F regnes av en sum som allerede har D i seg. (ELdata kalkyle, Kalkulasjon arbeid)" },
+    { sp: "Antall fakturerte timer i året faller fra 29 935 til 27 000. Hva skjer med F i kroner per time?", hint: "F i kroner deles på færre timer.", alt: ["Den øker fra 277 til 307 kr", "Den faller fra 277 til 250 kr", "Den er uendret", "Den øker til 878 kr"], riktig: 0, forklaring: "8 295 000 / 27 000 = 307 kr. Færre fakturerte timer betyr at hver time må bære mer av de faste kostnadene." }
   );
-  /* Riktig svar står først i kilden over; her flyttes det til varierende plass, siden appen ikke stokker alternativene. */
   [2, 1, 3, 0, 2].forEach((pos, i, a) => { const q = I.flervalg[I.flervalg.length - a.length + i]; const r = q.alt.splice(0, 1)[0]; q.alt.splice(pos, 0, r); q.riktig = pos; });
   I.regne.push(
-    { sp: "Elektro AS: driftsresultat 5 205 000 og sum kostnader 44 795 000. Hva er fortjenesten i prosent av selvkost? Svar med én desimal.", svar: 11.6, toleranse: 0.05, enhet: "%", losning: "Fortjeneste = driftsresultat / sum kostnader = 5 205 000 / 44 795 000 = 0,1162, altså 11,6 % av selvkost. Legger du 11,6 % på alle jobbene og budsjettet holder, ender året på 50 millioner i omsetning." },
-    { sp: "En jobb hos Elektro AS har 30 000 kr i direkte lønn (inkludert sosiale) og 15 000 kr i materiell. Tilleggssatsen er 84,5 % av direkte lønn. Hva er selvkosten?", svar: 70350, toleranse: 60, enhet: "kr", losning: "Direkte lønn 30 000 + materiell 15 000 + indirekte 30 000 × 0,845 = 25 350 gir selvkost 70 350 kr. (Med full sats 84,52 % blir det 70 357.)" },
-    { sp: "Lønn per time er 400 kr, sosiale kostnader 15 %, tilleggssats 84,5 % og fortjeneste 11,6 %. Hva blir timeprisen til kunden uten merverdiavgift? Svar i hele kroner.", svar: 947, toleranse: 3, enhet: "kr", losning: "Timekost 400 × 1,15 = 460. Med indirekte: 460 × 1,845 = 848,70. Med fortjeneste: 848,70 × 1,116 = 947 kr. Det er tallet KlarCalc kaller salgspris pr time, og faktor arbeid i Eldata er 947 / 400 = 2,37." }
+    { sp: "Elektro AS: all produksjonslønn med sosiale kostnader er 12 760 000, timelønna 270 kr og fakturerte timer 29 935. Hva blir S i prosent? Svar med én desimal.", svar: 57.9, toleranse: 0.1, enhet: "%", losning: "S = 12 760 000 / (270 × 29 935) − 1 = 12 760 000 / 8 082 450 − 1 = 0,579, altså 57,9 %." },
+    { sp: "En jobb har 30 000 kr i direkte lønnskostnader og 15 000 kr i materiell. Tilleggssatsen er 84,5 % av direkte lønn. Hva er selvkosten?", svar: 70350, toleranse: 60, enhet: "kr", losning: "30 000 + 15 000 + 30 000 × 0,845 = 70 350 kr. (Med full sats 84,52 % blir det 70 357.)" },
+    { sp: "Timelønn 270, S 57,9 %, D 83 kr/t, F 277 kr/t og P 11,6 % av selvkost. Hva blir timeprisen til kunden? Svar i hele kroner.", svar: 878, toleranse: 3, enhet: "kr", losning: "Timekost 270 × 1,579 = 426. Selvkost per time 426 + 83 + 277 = 786. Timepris 786 × 1,116 = 878 kr. Faktor arbeid 878 / 270 = 3,25." }
   );
 })();
 
@@ -35853,77 +35859,79 @@ LOM.kalkulatorer.sosialekostnader = function (el, f) {
   tegn(); return wrap;
 };
 
-/* ---------- Fra budsjett til kalkyle (Økonomistyring for LØM-emnet, kap. 5.2 og 5.3; Eldata, KlarCalc og SmartCraft til sammenlikning) ---------- */
+/* ---------- Fra budsjett til kalkyle: S, D, F og P som i Eldata (Økonomistyring for LØM-emnet, kap. 5.2 og 5.3) ---------- */
 LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
-  const s = { M: 21250000, L: 11100000, S: 1660000, D: 2490000, Fe: 8295000, res: 5205000, timer: 25, tlonn: 400, mat: 10000, nokkel: "lonn" };
+  const s = { M: 21250000, L: 9200000, S: 3560000, D: 2490000, Fe: 8295000, res: 5205000, tl: 270, timer: 29935, jt: 25, mat: 10000, nokkel: "lonn" };
   const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
   const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
   const velg = el("select", { "aria-label": "Fordelingsnøkkel", onchange: (e) => { s.nokkel = e.target.value; tegn(); } },
-    el("option", { value: "lonn" }, "Nøkkel 1: tilleggssats på direkte lønn (boka eks. 3)"),
-    el("option", { value: "alle" }, "Nøkkel 2: tilleggssats på alle direkte kostnader"));
-  const bokBoks = el("div"), eldBoks = el("div"), satsBoks = el("div"), tips = el("div"), nokBoks = el("div");
+    el("option", { value: "lonn" }, "Alt påslag på timene (faktor materiell 1,0)"),
+    el("option", { value: "alle" }, "Påslag på både timer og materiell"));
+  const satsBoks = el("div"), graf = el("div"), bokBoks = el("div"), eldBoks = el("div"), nokBoks = el("div"), tips = el("div");
   const wrap = el("div", null,
-    el("div", { class: "kort" }, el("h2", null, "Fra budsjett til kalkyle — boka, Eldata og KlarCalc side om side"),
-      el("p", { class: "kilder" }, "Budsjettet til Elektro AS 2026 (Prosjekt Bolig) er fylt inn. Kalkulatoren gjør det regnskapsføreren gjør for Eldata og KlarCalc: regner satsene ut av budsjettet. Så bruker den satsene på én jobb, oppstilt slik boka gjør det og slik Eldata gjør det. Prisen blir den samme. (Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3 og formelsamlingen: tilleggssats = indirekte kostnader / fordelingsgrunnlaget)"),
+    el("div", { class: "kort" }, el("h2", null, "Fra budsjett til S, D, F og P — og prisen på én jobb"),
+      el("p", { class: "kilder" }, "Budsjettet til Elektro AS 2026 er fylt inn og sortert i bøttene du kjenner fra Eldata. Kalkulatoren regner ut satsene slik regnskapsføreren ville gjort, i prosent og i kroner per fakturert time, og bruker dem på én jobb. Jobbens egne kostnader (timer, timelønn, materiell) regnes alltid for jobben selv. (Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3 og 5.3)"),
       el("div", { class: "kalk" }, el("div", { class: "inndata" },
-        el("h3", null, "Budsjettet, sortert"),
-        felt("Direkte materiell (4300 − 4302 + 4500)", "M", 0, 60000000, 50000),
-        felt("Lønn produksjon (5000–5030)", "L", 0, 30000000, 50000, "Eldata: sum arbeidslønn"),
-        felt("Sosiale kostnader produksjon (AGA + yrkesskade)", "S", 0, 6000000, 10000),
-        felt("Driftsomkostninger (biler, verktøy, bom, garanti, kurs)", "D", 0, 10000000, 10000),
-        felt("Fellesomkostninger (adm., lokaler, kontor, reklame)", "Fe", 0, 20000000, 10000),
-        felt("Driftsresultat i budsjettet", "res", 0, 15000000, 10000),
+        el("h3", null, "Budsjettet i Eldata-bøtter"),
+        felt("Materiell (4300 − 4302 + 4500)", "M", 0, 60000000, 50000),
+        felt("Lønn produksjon (5000 + 5002)", "L", 0, 30000000, 50000, "Eldata: sum arbeidslønn"),
+        felt("S: feriepenger, helligdag, sykelønn, AGA, yrkesskade", "S", 0, 10000000, 10000),
+        felt("D: biler, verktøy, bom, garanti, kurs", "D", 0, 10000000, 10000),
+        felt("F: administrasjon, lokaler, kontor, reklame m.m.", "Fe", 0, 20000000, 10000),
+        felt("Driftsresultat (P)", "res", 0, 15000000, 10000),
+        el("h3", null, "Timene"),
+        felt("Timelønn (tariff + tillegg)", "tl", 150, 600, 5, "forutsetning"),
+        felt("Fakturerte timer i året", "timer", 5000, 80000, 100, "forutsetning: 20,2 årsverk × 1 478"),
         el("h3", null, "Jobben"),
-        felt("Timer på jobben", "timer", 1, 400, 1),
-        felt("Lønn per time (tariff + tillegg)", "tlonn", 200, 800, 5, "forutsetning, ikke budsjettall"),
-        felt("Materiell, netto innkjøpspris", "mat", 0, 500000, 500),
-        el("div", null, el("label", null, "Fordelingsnøkkel"), velg),
-        el("div", { class: "resultat" }, r("sos", "Sosiale kostnader i %"), r("till", "Tilleggssats"), r("fortj", "Fortjeneste i % av selvkost"), r("selv", "Selvkost for jobben"), r("pris", "Pris u/mva."), r("tp", "Timepris til kunden"))),
-        el("div", null, satsBoks, tips))),
-    el("div", { class: "kort" }, el("h3", null, "Samme jobb, to oppstillinger"), el("div", null, el("h4", null, "Boka (selvkostkalkyle)"), bokBoks, el("h4", { style: "margin-top:18px" }, "Eldata (trappen)"), eldBoks)),
-    el("div", { class: "kort" }, el("h3", null, "Hva nøkkelen gjør med to ulike jobber"), nokBoks));
+        felt("Fakturerte timer på jobben", "jt", 1, 400, 1),
+        felt("Materiell, nettopris", "mat", 0, 500000, 500),
+        el("div", null, el("label", null, "Hvor legges påslaget?"), velg),
+        el("div", { class: "resultat" }, r("tp", "Timepris til kunden"), r("fa", "Faktor arbeid"), r("selv", "Selvkost for jobben"), r("pris", "Pris u/mva."))),
+        el("div", null, satsBoks, graf, tips))),
+    el("div", { class: "kort" }, el("h3", null, "Samme jobb: Eldata-trappen og bokas selvkostkalkyle"), el("h4", null, "Eldata"), eldBoks, el("h4", { style: "margin-top:18px" }, "Boka (selvkostkalkyle, eksempel 3)"), bokBoks),
+    el("div", { class: "kort" }, el("h3", null, "Hva valget av nøkkel gjør med to ulike jobber"), nokBoks));
   function tegn() {
     const DL = s.L + s.S, ind = s.D + s.Fe, kost = s.M + DL + ind;
-    const sos = s.L ? s.S / s.L : 0, p = kost ? s.res / kost : 0;
-    const sL = DL ? ind / DL : 0, s2 = (DL + s.M) ? ind / (DL + s.M) : 0;
-    const pL = s.nokkel === "lonn" ? sL : s2, pM = s.nokkel === "lonn" ? 0 : s2;
-    const dDrift = DL ? s.D / DL : 0, dFelles = (DL + s.D) ? s.Fe / (DL + s.D) : 0;
-    const lonn = s.timer * s.tlonn, dl = lonn * (1 + sos), indJ = dl * pL + s.mat * pM, selv = dl + s.mat + indJ, fj = selv * p, pris = selv + fj;
-    const tp = s.tlonn * (1 + sos) * (1 + pL) * (1 + p);
-    res.sos.firstChild.textContent = f.pst(sos * 100); res.till.firstChild.textContent = f.pst(pL * 100) + (s.nokkel === "alle" ? " av alt direkte" : " av lønn");
-    res.fortj.firstChild.textContent = f.pst(p * 100); res.selv.firstChild.textContent = f.kr(selv); res.pris.firstChild.textContent = f.kr(pris); res.tp.firstChild.textContent = f.kr(tp);
+    const sS = (s.tl * s.timer) ? DL / (s.tl * s.timer) - 1 : 0, sD = DL ? s.D / DL : 0, sF = (DL + s.D) ? s.Fe / (DL + s.D) : 0, sP = kost ? s.res / kost : 0;
+    const till = DL ? ind / DL : 0, s2 = (DL + s.M) ? ind / (DL + s.M) : 0;
+    const pL = s.nokkel === "lonn" ? till : s2, pM = s.nokkel === "lonn" ? 0 : s2;
+    const tk = s.tl * (1 + sS), tp = tk * (1 + pL) * (1 + sP), fa = s.tl ? tp / s.tl : 0;
+    const lonn = s.jt * s.tl, dl = lonn * (1 + sS), indJ = dl * pL + s.mat * pM, selv = dl + s.mat + indJ, fj = selv * sP, pris = selv + fj;
+    res.tp.firstChild.textContent = f.kr(tp) + "/t"; res.fa.firstChild.textContent = fa.toLocaleString("nb-NO", { maximumFractionDigits: 2 }); res.selv.firstChild.textContent = f.kr(selv); res.pris.firstChild.textContent = f.kr(pris);
+    const tr = (a, b, c, d, fet) => el("tr", fet ? { class: "hl" } : null, el("td", null, fet ? el("b", null, a) : a), el("td", null, b), el("td", { class: "num" }, c), el("td", { class: "num" }, d));
+    satsBoks.replaceChildren(el("div", { class: "tab-wrap" }, el("table", { class: "tab" },
+      el("thead", null, el("tr", null, el("th", null, "Eldata-sats"), el("th", null, "Utregning"), el("th", null, "Prosent"), el("th", null, "Kr per fakt. time"))),
+      el("tbody", null,
+        tr("S – sosiale", `${f.nf.format(DL)} / (${f.nf.format(s.tl)} × ${f.nf.format(s.timer)}) − 1`, f.pst(sS * 100), f.nf.format(Math.round(s.tl * sS))),
+        tr("D – drift", `${f.nf.format(s.D)} / ${f.nf.format(DL)}`, f.pst(sD * 100), f.nf.format(Math.round(s.D / s.timer))),
+        tr("F – felles", `${f.nf.format(s.Fe)} / ${f.nf.format(DL + s.D)}`, f.pst(sF * 100), f.nf.format(Math.round(s.Fe / s.timer))),
+        tr("D + F = bokas tilleggssats", `${f.nf.format(ind)} / ${f.nf.format(DL)}`, f.pst(till * 100), f.nf.format(Math.round(ind / s.timer)), true),
+        tr("P – fortjeneste", `${f.nf.format(s.res)} / ${f.nf.format(kost)}`, f.pst(sP * 100), "av selvkost")))));
+    graf.replaceChildren(el("div", { class: "kilder", style: "margin-top:10px" }, "Timeprisen bygget opp, kroner per fakturert time:"),
+      H().soyler([{ navn: "Timelønn", verdi: s.tl }, { navn: "S", verdi: s.tl * sS }, { navn: "D", verdi: s.D / s.timer * (s.nokkel === "lonn" ? 1 : DL / (DL + s.M)) }, { navn: "F", verdi: s.Fe / s.timer * (s.nokkel === "lonn" ? 1 : DL / (DL + s.M)) }, { navn: "P", verdi: tp - tp / (1 + sP) }, { navn: "Timepris", verdi: tp }], { yFormat: (v) => f.nf.format(Math.round(v)) + " kr", H: 240 }));
+    tips.replaceChildren(el("div", { class: "tips" }, `S blir ${f.pst(sS * 100)} fordi all produksjonslønn, også ferie, helligdager, sykdom og timer som ikke faktureres, skal hentes inn på de ${f.nf.format(s.timer)} timene kunden betaler for. Færre fakturerte timer gir høyere S, D og F per time.`));
     const rad = (a, b, c, fet) => el("tr", fet ? { class: "hl" } : null, el("td", null, fet ? el("b", null, a) : a), el("td", { class: "num" }, c || ""), el("td", { class: "num" }, fet ? el("b", null, f.kr(b)) : f.kr(b)));
-    const tab = (rader) => el("div", { class: "tab-wrap" }, el("table", { class: "tab" }, el("tbody", null, rader)));
-    bokBoks.replaceChildren(tab([
-      rad("Direkte lønnskostnader", dl, `${f.nf.format(s.timer)} t × ${f.kr(s.tlonn * (1 + sos))}`),
-      rad("+ direkte materialkostnader", s.mat),
-      rad("+ indirekte kostnader", indJ, s.nokkel === "lonn" ? f.pst(pL * 100) + " av lønn" : f.pst(s2 * 100) + " av alt direkte"),
-      rad("= Selvkost", selv, "", true), rad("+ fortjeneste", fj, f.pst(p * 100) + " av selvkost"), rad("= Pris u/mva.", pris, "", true)]),
-      el("p", { class: "kilder" }, `Timekosten ${f.kr(s.tlonn * (1 + sos))} er det boka kaller «timepris» i eksempel 3 — bedriftens kostnad, ikke kundens pris.`));
-    let a = lonn; const aS = a * sos; a += aS; let aD, aF;
-    if (s.nokkel === "lonn") { aD = a * dDrift; a += aD; aF = a * dFelles; a += aF; } else { aD = a * pL; a += aD; aF = 0; }
-    const aP = a * p; a += aP; const m = s.mat, mI = m * pM, mP = (m + mI) * p, mSum = m + mI + mP;
+    const tab = (rader) => el("div", { class: "tab-wrap" }, el("table", { class: "tab" }, el("tbody", null, rader.filter(Boolean))));
+    let a = lonn; const a1 = a * (1 + sS); let a2, a3;
+    if (s.nokkel === "lonn") { a2 = a1 * (1 + sD); a3 = a2 * (1 + sF); } else { a2 = a1 * (1 + pL); a3 = a2; }
+    const a4 = a3 * (1 + sP), m1 = s.mat * (1 + pM), m2 = m1 * (1 + sP);
     eldBoks.replaceChildren(tab([
-      rad("Sum arbeidslønn", lonn, `${f.nf.format(s.timer)} t × ${f.kr(s.tlonn)}`),
-      rad("+ sosiale omkostninger", aS, f.pst(sos * 100)),
-      s.nokkel === "lonn" ? rad("+ driftsomkostninger", aD, f.pst(dDrift * 100)) : rad("+ drift og felles samlet", aD, f.pst(pL * 100)),
-      s.nokkel === "lonn" ? rad("+ fellesomkostninger", aF, f.pst(dFelles * 100)) : null,
-      rad("+ fortjeneste", aP, f.pst(p * 100)), rad("= Kalkulert arbeidspris", a, "faktor " + (a / lonn).toLocaleString("nb-NO", { maximumFractionDigits: 3 }), true),
-      rad("Netto materiell", m), rad("+ påslag indirekte", mI, f.pst(pM * 100)), rad("+ fortjeneste", mP, f.pst(p * 100)),
-      rad("= Kalkulert materiellpris", mSum, "faktor " + (m ? (mSum / m).toLocaleString("nb-NO", { maximumFractionDigits: 3 }) : "–"), true),
-      rad("Kundepris eks. mva", a + mSum, "", true)].filter(Boolean)),
-      el("p", { class: "kilder" }, Math.abs(a + mSum - pris) < 1 ? "Eldata-trappen og bokas oppstilling gir samme pris, til kronen." : "Avvik mellom oppstillingene — sjekk tallene."));
-    satsBoks.replaceChildren(el("div", { class: "tab-wrap" }, el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Fra budsjettet"), el("th", null, "Kroner"), el("th", null, "Sats"))), el("tbody", null,
-      el("tr", null, el("td", null, "Direkte lønn (lønn + sosiale)"), el("td", { class: "num" }, f.kr(DL)), el("td", { class: "num" }, "")),
-      el("tr", null, el("td", null, "Indirekte (drift + felles)"), el("td", { class: "num" }, f.kr(ind)), el("td", { class: "num" }, f.pst(sL * 100) + " av lønn")),
-      el("tr", null, el("td", null, "Sum kostnader (selvkost for året)"), el("td", { class: "num" }, f.kr(kost)), el("td", { class: "num" }, "")),
-      el("tr", null, el("td", null, "Omsetning = kostnader + resultat"), el("td", { class: "num" }, f.kr(kost + s.res)), el("td", { class: "num" }, f.pst(p * 100) + " fortj."))))));
-    tips.replaceChildren(el("div", { class: "tips" }, `KlarCalc ber deg hente satsene for «sosiale og administrative kostnader» fra regnskapsføreren. Det er nøyaktig dette regnestykket: ${f.pst(sos * 100)} sosiale og ${f.pst(sL * 100)} indirekte. I KlarCalc og SmartCraft blir det til én timepris (${f.kr(tp)}) og ett påslag på materiell (${f.pst(((1 + pM) * (1 + p) - 1) * 100)}).`));
-    const jobb = (dlx, mx) => ({ n1: dlx + mx + dlx * sL, n2: (dlx + mx) * (1 + s2) });
+      rad("Sum arbeidslønn", lonn, `${f.nf.format(s.jt)} t × ${f.kr(s.tl)}`), rad("+ S sosiale", a1, f.pst(sS * 100)),
+      s.nokkel === "lonn" ? rad("+ D drift", a2, f.pst(sD * 100)) : rad("+ D og F samlet", a2, f.pst(pL * 100)),
+      s.nokkel === "lonn" ? rad("+ F felles", a3, f.pst(sF * 100)) : null,
+      rad("+ P = kalkulert arbeidspris", a4, f.pst(sP * 100), true),
+      rad("Materiell + påslag + P", m2, pM ? f.pst(pM * 100) + " + " + f.pst(sP * 100) : f.pst(sP * 100)),
+      rad("Kundepris eks. mva", a4 + m2, "", true)]));
+    bokBoks.replaceChildren(tab([
+      rad("Direkte lønnskostnader", dl, `${f.kr(lonn)} + S`), rad("+ direkte materialkostnader", s.mat),
+      rad("+ indirekte kostnader", indJ, s.nokkel === "lonn" ? f.pst(pL * 100) + " av direkte lønn" : f.pst(s2 * 100) + " av alt direkte"),
+      rad("= Selvkost", selv, "", true), rad("+ fortjeneste", fj, f.pst(sP * 100) + " av selvkost"), rad("= Pris u/mva.", pris, "", true)]),
+      el("p", { class: "kilder" }, Math.abs(a4 + m2 - pris) < 1 ? "Eldata og boka gir samme pris, til kronen. Bokas tilleggssats er D og F slått sammen." : "Avvik mellom oppstillingene — sjekk tallene."));
+    const jobb = (dlx, mx) => ({ n1: dlx + mx + dlx * till, n2: (dlx + mx) * (1 + s2) });
     const A = jobb(5000, 40000), B_ = jobb(20000, 2000);
-    nokBoks.replaceChildren(H().tab(el, [{ navn: "Jobb", nokkel: "j" }, { navn: "Selvkost, nøkkel 1 (lønn)", nokkel: "n1", num: true, fmt: f.kr }, { navn: "Selvkost, nøkkel 2 (alt direkte)", nokkel: "n2", num: true, fmt: f.kr }],
-      [{ j: "A: materielltung (5 000 lønn + 40 000 materiell)", n1: A.n1, n2: A.n2 }, { j: "B: lønnstung (20 000 lønn + 2 000 materiell)", n1: B_.n1, n2: B_.n2 }], { sorterbar: false }),
-      el("div", { class: "tips" }, "Begge nøklene dekker de samme kronene over året, men enkeltjobbene får helt ulik pris. Budsjettet bestemmer hvor mye som skal dekkes; bedriften bestemmer hvordan det fordeles. Eldata og KlarCalc har eget påslag for materiell og for arbeid — det tilsvarer to tilleggssatser (boka kap. 5.3)."));
+    nokBoks.replaceChildren(H().tab(el, [{ navn: "Jobb", nokkel: "j" }, { navn: "Påslag bare på timene", nokkel: "n1", num: true, fmt: f.kr }, { navn: "Påslag på timer og materiell", nokkel: "n2", num: true, fmt: f.kr }],
+      [{ j: "Tavle: 5 000 lønn + 40 000 materiell", n1: A.n1, n2: A.n2 }, { j: "Service: 20 000 lønn + 2 000 materiell", n1: B_.n1, n2: B_.n2 }], { sorterbar: false }),
+      el("div", { class: "tips" }, "Begge valgene dekker de samme kronene over året, men enkeltjobbene får ulik pris. Derfor har Eldata egne påslag for arbeid og for materiell."));
   }
   tegn(); return wrap;
 };
