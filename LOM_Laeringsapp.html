@@ -989,7 +989,8 @@ body.utskrift details.dypere{border:0;background:transparent} body.utskrift deta
 .soft-akse{display:block;margin-top:6px;opacity:.85;text-transform:uppercase;font-size:.75rem;letter-spacing:.05em}
 .soft-sp{margin:6px 0;font-style:italic} .soft-eks{margin:0;font-size:.92rem;background:rgba(0,0,0,.18);border-radius:8px;padding:6px 8px}
 .soft-lister{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;font-size:.95rem}
-@media (max-width:640px){.soft-matrise{grid-template-columns:1fr}.soft-tom,.soft-kol,.soft-rad{display:none}.soft-lister,@media print{.soft-rute{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:640px){.soft-matrise{grid-template-columns:1fr}.soft-tom,.soft-kol,.soft-rad{display:none}.soft-lister{grid-template-columns:1fr}}
+@media print{.soft-rute{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
 /* Personene bak teoriene (00_teoretikere.js) og bedre linjebryting · 2.18.1 */
 p,li,td,.g-rad span,.soft-sp,.soft-eks{text-wrap:pretty}
@@ -1020,6 +1021,13 @@ h1,h2,h3{text-wrap:balance}
 .person-nett a{overflow-wrap:anywhere}
 @media (max-width:640px){.g-rad.g-personrad{grid-template-columns:1fr}.persontab tr{display:block;border-bottom:1px solid var(--linje)}.persontab th{border:0;padding-bottom:0}}
 table.tab.persontab{min-width:0}
+
+/* Tallgrunnlag: «Brukt i kort nr.» som trykkbare nummer · 2.18.3 */
+.tg-forklaring{font-size:.9rem;color:var(--tekst2);margin:4px 0 10px}
+.tg-kortnr{display:inline-flex;flex-wrap:wrap;gap:4px}
+button.kortnr{min-width:28px;height:28px;padding:0 7px;border:1px solid var(--aksent);border-radius:14px;background:var(--aksent-lys);color:var(--aksent);font-weight:650;font-size:.85rem;cursor:pointer;line-height:1}
+button.kortnr:hover,button.kortnr:focus-visible{background:var(--aksent);color:#fff;outline:none}
+.tg-ingen{color:var(--tekst2)}
 
 </style>
 </head>
@@ -3145,7 +3153,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 27.10.2026 21:39. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 29.10.2026 12:50. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -20001,7 +20009,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.18.2 · 27. oktober 2026",
+  versjon: "2.18.3 · 29. oktober 2026",
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -55365,13 +55373,37 @@ LOM.pwa = (function () {
       R.konklusjon ? el("p", { class: "g-konklusjon" }, el("b", null, "Hva det betyr: "), R.konklusjon) : null) : null;
     return [formel, mer];
   }
+  /* «Brukes i kort» i tallgrunnlaget: kolonnen viser hvilke begrepskort som regner med tallet.
+     Gjøres om til «Brukt i kort nr.» med ett trykkbart nummer per kort, venstrestilt (Glenn 29.10.2026). */
+  function kortNumre(tekst) {
+    const t = String(tekst || "").trim(); if (!t || /^ingen$/i.test(t)) return [];
+    const ut = [];
+    t.split(/\s*,\s*/).forEach(del => {
+      const m = del.match(/^(\d+)\s*(?:–|-|til)\s*(\d+)$/);
+      if (m) for (let n = +m[1]; n <= +m[2]; n++) ut.push(n);
+      else if (/^\d+$/.test(del)) ut.push(+del);
+    });
+    return ut;
+  }
+  function kortKolonne(t, kap) {
+    const i = (t.kolonner || []).findIndex(k => /^Brukes i kort$/i.test(k));
+    if (i < 0) return t;
+    const grunn = ((LOM.innhold || {})[kap] || {}).grunn || [];
+    const lenker = (c) => {
+      const nr = kortNumre(c);
+      if (!nr.length) return el("span", { class: "tg-ingen" }, String(c || "").trim() || "–");
+      return el("span", { class: "tg-kortnr" }, nr.map(n => el("button", { class: "kortnr", title: grunn[n - 1] ? `Kort ${n}: ${grunn[n - 1].overskrift}` : `Kort ${n}`, "aria-label": `Gå til kort ${n}`, onclick: (e) => { e.stopPropagation(); gaaTilDel(kap, { kort: n }); } }, String(n))));
+    };
+    return { ...t, kolonner: t.kolonner.map((k, j) => j === i ? "Brukt i kort nr." : k), rader: t.rader.map(r => r.map((c, j) => j === i ? lenker(c) : c)) };
+  }
   function tallgrunnlag(id) {
     const T = ((LOM.regning || {})[id] || {}).tallgrunnlag;
     if (!T || !T.tabeller || !T.tabeller.length) return null;
     return el("details", { class: "kort tallgrunnlag", open: "open" },
       el("summary", null, el("span", { class: "dypere-tittel" }, T.tittel || "Tallene kapitlet bygger på"), el("span", { class: "dypere-under" }, "Oppstillingene kortene under regner med. Klikk for å lukke.")),
       T.ingress ? el("p", { class: "kilder" }, T.ingress) : null,
-      T.tabeller.map(t => el("div", { class: "tg-tabell" }, el("h3", null, t.tittel), regnTabell(t),
+      T.tabeller.some(t => (t.kolonner || []).some(k => /^Brukes i kort$/i.test(k))) ? el("p", { class: "tg-forklaring" }, el("b", null, "Brukt i kort nr.: "), "tallene i siste kolonne er numrene på kortene under «Det viktigste, enkelt forklart» som regner med tallet. Trykk på et nummer for å gå rett til kortet.") : null,
+      T.tabeller.map(t => el("div", { class: "tg-tabell" }, el("h3", null, t.tittel), regnTabell(kortKolonne(t, id)),
         t.sjekk && t.sjekk.length ? el("p", { class: "tg-sjekk" }, t.sjekk.map(st => el("span", null, st.tekst + " = " + regnTall(st.svar, st.desimaler) + (st.enhet ? " " + st.enhet : "")))) : null,
         t.kilde ? el("p", { class: "kilder" }, "Kilde: " + t.kilde) : null)));
   }
