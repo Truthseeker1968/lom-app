@@ -1109,6 +1109,16 @@ body.pk-aktiv{padding-bottom:96px}
 :root[data-theme="dark"] .pk-tips summary{color:#b9a6ff}
 .pk-tips p{margin:8px 0 0;font-size:.92rem}
 
+/* 2.21.2: fortsett der du slapp */
+.pk-fortsett{display:flex;gap:14px;align-items:center;border:2px solid #7a5af0}
+.pk-fortsett-tekst{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.pk-fortsett-tekst small{text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;font-weight:700;color:#5b3fd1}
+:root[data-theme="dark"] .pk-fortsett-tekst small{color:#b9a6ff}
+.pk-fortsett-tekst span{font-size:.85rem;color:var(--tekst2)}
+.pk-mini{height:6px;border-radius:3px;background:var(--flate2);overflow:hidden;margin-top:6px}
+.pk-mini i{display:block;height:100%;background:#7a5af0}
+@media(max-width:520px){.pk-fortsett{flex-wrap:wrap}.pk-fortsett .knapp{width:100%}}
+
 </style>
 </head>
 <body>
@@ -3233,7 +3243,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 19:52. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 20:24. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -21188,7 +21198,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.21.1 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.21.2 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -62590,7 +62600,10 @@ LOM.pwa = (function () {
     const studieplanUrl = (/^https?:$/.test(location.protocol) ? "" : (O.nettadresse || "")) + "studieplan/";
     const studieplan = el("a", { class: "hero-knapp sekundaer", href: studieplanUrl, target: "_blank", rel: "noopener", onclick: () => { LOM.telling && LOM.telling.hendelse("studieplan"); } },
       el("span", null, el("small", null, "Uke for uke, per klasse"), "LØM studieplan"), ikon("kal"));
-    const podkast = (LOM.podkast && LOM.podkast.episoder.length) ? el("a", { class: "hero-knapp sekundaer", href: "#/podkast" }, el("span", null, el("small", null, `${LOM.podkast.episoder.length} episoder å lytte til`), "LØM-podkast"), ikon("lyd")) : null;
+    const pkS = (typeof pkSiste === "function") ? pkSiste() : null, pkSPos = pkS ? pkPos(pkS.fil) : 0;
+    const podkast = (LOM.podkast && LOM.podkast.episoder.length) ? (pkS && pkSPos
+      ? el("a", { class: "hero-knapp sekundaer", href: "#/podkast", onclick: (ev) => { ev.preventDefault(); const l = pkFor(pkS.kap); pkSpill(l, l.indexOf(pkS)); } }, el("span", null, el("small", null, `Fortsett å lytte · ${pkTid(pkSPos)}`), pkS.tittel.length > 34 ? pkS.tittel.slice(0, 33) + "…" : pkS.tittel), ikon("lyd"))
+      : el("a", { class: "hero-knapp sekundaer", href: "#/podkast" }, el("span", null, el("small", null, `${LOM.podkast.episoder.length} episoder å lytte til`), "LØM-podkast"), ikon("lyd"))) : null;
     const nyStudent = ferdige + paab === 0;
     const fremdrift = nyStudent
       ? el("p", { class: "hero-fakta" }, `${T.kapitler} kapitler · ${T.flervalg} flervalg · ${T.refleksjon} vurderingsoppgaver · ${antVerktoy} verktøy`)
@@ -63655,16 +63668,29 @@ LOM.pwa = (function () {
     document.body.append(pkBar);
     return pkBar;
   }
-  function pkSpill(liste, i) {
-    const forrige = pkNaa(); if (forrige) pkLagrePos(forrige.fil, pkLyd.currentTime);
+  /* Siste episode huskes i nettleseren («lom_pk_siste»). Når appen åpnes igjen, ligger spilleren klar på samme sted,
+     og forsiden og podkastsiden viser «Fortsett der du slapp». Posisjonen per episode ligger i «lom_pk_<fil>». */
+  const pkSiste = () => { try { const f = localStorage.getItem("lom_pk_siste"); return PK.episoder.find(e => e.fil === f) || null; } catch (x) { return null; } };
+  const pkMerkSiste = (e) => { try { localStorage.setItem("lom_pk_siste", e.fil); } catch (x) { } };
+  function pkFortsettKort() {
+    const e = pkSiste(); if (!e) return null; const pos = pkPos(e.fil); if (!pos) return null;
+    return el("div", { class: "kort pk-fortsett" }, el("span", { class: "pk-boks-ik", "aria-hidden": "true" }, "🎧"),
+      el("div", { class: "pk-fortsett-tekst" }, el("small", null, "Fortsett der du slapp"), el("b", null, e.tittel), el("span", null, `${pkKapNavn(e)} · økt ${e.okt} · ${pkTid(pos)} av ${pkTid(e.sek)}`),
+        el("div", { class: "pk-mini" }, el("i", { style: `width:${Math.min(100, Math.round(100 * pos / (e.sek || 1)))}%` }))),
+      el("button", { class: "knapp primar", type: "button", onclick: () => { const l = pkFor(e.kap); pkSpill(l, l.indexOf(e)); } }, "▶ Fortsett"));
+  }
+  function pkSpill(liste, i, bareKlar) {
+    const forrige = pkNaa(); if (forrige && !pkLyd.paused) pkLagrePos(forrige.fil, pkLyd.currentTime);
     pkKo = liste; pkI = i; const e = pkNaa(); if (!e) return;
+    pkMerkSiste(e);
     const b = pkLagBar(); b.classList.remove("skjult"); document.body.classList.add("pk-aktiv");
     b._.tittel.textContent = e.tittel; b._.under.textContent = `${pkKapNavn(e)} · økt ${e.okt} · ${pkMin(e.sek)}`;
     b._.kapLenke.textContent = pkKapNavn(e); b._.kapLenke.href = `#/kap/${e.kap}/les`;
     pkLyd.src = pkUrl(e); pkLyd.playbackRate = pkFart();
     const start = pkPos(e.fil); const settStart = () => { if (start && start < (pkLyd.duration || e.sek) - 10) pkLyd.currentTime = start; pkLyd.removeEventListener("loadedmetadata", settStart); };
     pkLyd.addEventListener("loadedmetadata", settStart);
-    pkLyd.play().catch(() => melding("Trykk ▶ i spilleren for å starte lyden"));
+    if (bareKlar) { b._.tid.textContent = pkTid(start) + " / " + pkTid(e.sek); b._.linje.value = String(Math.round(1000 * start / (e.sek || 1))); b._.spill.textContent = "▶"; pkLyd.preload = "metadata"; pkOppdaterKnapper(); }
+    else pkLyd.play().catch(() => melding("Trykk ▶ i spilleren for å starte lyden"));
     if ("mediaSession" in navigator) { try { navigator.mediaSession.metadata = new MediaMetadata({ title: e.tittel, artist: "LØM-podkast · " + pkKapNavn(e), album: e.bok, artwork: [{ src: "ikon-512.png", sizes: "512x512", type: "image/png" }, { src: "ikon-192.png", sizes: "192x192", type: "image/png" }] }); } catch (x) { } }
     LOM.telling && LOM.telling.hendelse("podkast-" + e.kap + "-" + e.okt);
   }
@@ -63676,6 +63702,7 @@ LOM.pwa = (function () {
   });
   ["play", "pause"].forEach(n => pkLyd.addEventListener(n, () => { if (pkBar) pkBar._.spill.textContent = pkLyd.paused ? "▶" : "❚❚"; pkOppdaterKnapper(); try { if ("mediaSession" in navigator) navigator.mediaSession.playbackState = pkLyd.paused ? "paused" : "playing"; } catch (x) { } pkPosisjon(); }));
   ["loadedmetadata", "ratechange", "seeked"].forEach(n => pkLyd.addEventListener(n, pkPosisjon));
+  ["pause", "seeked"].forEach(n => pkLyd.addEventListener(n, () => { const e = pkNaa(); if (e && pkLyd.currentTime > 0) pkLagrePos(e.fil, pkLyd.currentTime); }));
   /* Lagre posisjonen når appen legges i bakgrunnen eller lukkes, så «fortsett der du slapp» stemmer. */
   document.addEventListener("visibilitychange", () => { const e = pkNaa(); if (e && document.visibilityState === "hidden") pkLagrePos(e.fil, pkLyd.currentTime); });
   window.addEventListener("pagehide", () => { const e = pkNaa(); if (e) pkLagrePos(e.fil, pkLyd.currentTime); });
@@ -63737,6 +63764,7 @@ LOM.pwa = (function () {
       el("section", { class: "pk-hero" }, el("span", { class: "pk-hero-ik", "aria-hidden": "true" }, "🎧"),
         el("div", null, el("h1", null, "LØM-podkast"), el("p", null, `${PK.episoder.length} episoder · ${Math.round(sum / 3600)} timer lyd. Lytt på bussen, i bilen eller mellom jobbene. Hver episode følger én økt i kapitlet. Lyden er laget med KI-stemmer fra manusene til øktene og er et supplement til lærebøkene.`))),
       el("div", { class: "faner pk-faner", role: "tablist" }, boker.map(([k, n]) => el("button", { class: k === valgt ? "aktiv" : "", role: "tab", "aria-selected": k === valgt ? "true" : "false", onclick: () => gaaTil("/podkast/" + (k === "alle" ? "" : encodeURIComponent(k))) }, n))),
+      pkFortsettKort(),
       pkTips(),
       el("label", { class: "hero-sok pk-sokfelt" }, ikon("sok"), sokFelt),
       liste,
@@ -63744,6 +63772,8 @@ LOM.pwa = (function () {
       varsel(), bunn());
     tegn();
   }
+
+  (function pkGjenopprett() { const e = pkSiste(); if (e && pkPos(e.fil)) { const l = pkFor(e.kap); pkSpill(l, l.indexOf(e), true); } })();
 
   /* ---------- oppstart ---------- */
   $("#topp-tittel").textContent = O.tittel;
