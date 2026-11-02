@@ -1022,12 +1022,82 @@ h1,h2,h3{text-wrap:balance}
 @media (max-width:640px){.g-rad.g-personrad{grid-template-columns:1fr}.persontab tr{display:block;border-bottom:1px solid var(--linje)}.persontab th{border:0;padding-bottom:0}}
 table.tab.persontab{min-width:0}
 
-/* Tallgrunnlag: «Brukt i kort nr.» som trykkbare nummer · 2.18.3 */
-.tg-forklaring{font-size:.9rem;color:var(--tekst2);margin:4px 0 10px}
-.tg-kortnr{display:inline-flex;flex-wrap:wrap;gap:4px}
-button.kortnr{min-width:28px;height:28px;padding:0 7px;border:1px solid var(--aksent);border-radius:14px;background:var(--aksent-lys);color:var(--aksent);font-weight:650;font-size:.85rem;cursor:pointer;line-height:1}
-button.kortnr:hover,button.kortnr:focus-visible{background:var(--aksent);color:#fff;outline:none}
-.tg-ingen{color:var(--tekst2)}
+/* ============ 2.21.0: tydeligere navigasjon, faner og knapper (Glenn 02.11.2026) ============ */
+:root{--fokus:#1f6fd1;--knapp-h:42px}
+:root[data-theme="dark"]{--fokus:#7fb2ff}
+:focus-visible{outline:3px solid var(--fokus);outline-offset:2px}
+/* Topplinja: tydelig skille, knappene ser ut som knapper */
+.topp{box-shadow:0 2px 10px rgba(0,0,0,.06);border-bottom:2px solid var(--linje)}
+.toppknapp{height:var(--knapp-h);background:var(--flate);border:2px solid var(--linje);font-weight:650}
+.toppknapp:hover{border-color:var(--aksent);color:var(--aksent)}
+.toppknapp.aktiv{background:var(--aksent);border-color:var(--aksent);color:#fff}
+.toppknapp.podkastknapp{border-color:#7a5af0;color:#5b3fd1}
+:root[data-theme="dark"] .toppknapp.podkastknapp{color:#b9a6ff}
+.toppknapp.podkastknapp.aktiv{background:#7a5af0;color:#fff}
+.topp .sti span{color:var(--aksent);font-weight:600}
+/* Fanene i kapitlet: segmentert kontroll som følger med når du ruller */
+.faner{position:sticky;top:60px;z-index:15;gap:6px;padding:6px;margin:0 0 22px;border:2px solid var(--linje);border-radius:14px;background:var(--flate2);box-shadow:var(--skygge);scrollbar-width:thin}
+.faner button{flex:1 0 auto;min-height:44px;margin:0;padding:10px 18px;border:2px solid transparent;border-radius:10px;font-size:1.02rem;font-weight:650;color:var(--tekst);background:transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.faner button:hover{background:var(--flate);border-color:var(--linje)}
+.faner button.aktiv{background:var(--aksent);color:#fff;border-color:var(--aksent);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.faner button .prikk{box-shadow:0 0 0 2px var(--flate)}
+.faner button.aktiv .prikk{background:#fff;box-shadow:none}
+/* Vanlige knapper: større, tydelig kant og trykkflate */
+.knapp{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:var(--knapp-h);padding:8px 16px;border:2px solid var(--linje);border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,transform .1s}
+.knapp:hover{border-color:var(--aksent);background:var(--aksent-lys)}
+.knapp:active{transform:translateY(1px)}
+.knapp.primar{border-color:var(--aksent);box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.knapp.primar:hover{background:var(--aksent);filter:brightness(1.08)}
+.knapp.liten{min-height:36px;padding:5px 12px;font-size:.88rem}
+.verktoylinje{padding:8px 0;border-bottom:1px dashed var(--linje)}
+@media(max-width:640px){.faner{top:54px;border-radius:12px}.faner button{padding:9px 13px;font-size:.95rem}.knapp{min-height:40px}}
+@media print{.pk-bar,.pk-boks{display:none!important}}
+
+/* ============ Podkast ============ */
+body.pk-aktiv{padding-bottom:96px}
+.pk-bar{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(980px,calc(100% - 20px));z-index:40;display:grid;grid-template-columns:minmax(0,1.3fr) auto minmax(0,1fr) auto;align-items:center;gap:12px 16px;padding:10px 14px;background:var(--flate);border:2px solid #7a5af0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.pk-bar.skjult{display:none}
+.pk-info{display:flex;gap:10px;align-items:center;min-width:0}
+.pk-merke{font-size:1.5rem}
+.pk-tekst{min-width:0}
+.pk-tittel{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk-under{font-size:.8rem;color:var(--tekst2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk-kontroll{display:flex;gap:6px;align-items:center}
+.pk-hoved{width:48px;height:48px;border-radius:50%;border:0;background:#7a5af0;color:#fff;font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(122,90,240,.45)}
+.pk-hoved:hover{filter:brightness(1.1)}
+.pk-liten{min-width:40px;height:36px;padding:0 8px;border-radius:10px;border:2px solid var(--linje);background:var(--flate2);color:var(--tekst);font:inherit;font-size:.85rem;font-weight:650;cursor:pointer}
+.pk-liten:hover{border-color:#7a5af0}
+.pk-fremdrift{display:flex;align-items:center;gap:10px;min-width:0}
+.pk-linje{flex:1;min-width:60px;accent-color:#7a5af0}
+.pk-tid{font-size:.8rem;color:var(--tekst2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pk-ekstra{display:flex;align-items:center;gap:8px}
+.pk-kap{font-size:.82rem;color:#5b3fd1;font-weight:600;max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+:root[data-theme="dark"] .pk-kap{color:#b9a6ff}
+@media(max-width:820px){.pk-bar{grid-template-columns:1fr auto;bottom:8px}.pk-fremdrift{grid-column:1/-1;order:3}.pk-ekstra{order:2}.pk-kontroll{grid-column:1/-1;justify-content:center;order:4}.pk-kap{display:none}body.pk-aktiv{padding-bottom:190px}}
+.pk-boks{border:2px solid #7a5af0;background:linear-gradient(135deg,rgba(122,90,240,.08),transparent 60%),var(--flate)}
+.pk-boks-topp{display:flex;gap:14px;align-items:flex-start}
+.pk-boks-ik,.pk-hero-ik{font-size:2rem;line-height:1}
+.pk-boks h3{margin:0 0 4px}
+.pk-liste{list-style:none;margin:12px 0;padding:0;display:grid;gap:8px}
+.pk-rad{display:flex;gap:12px;align-items:center;padding:8px 10px;border:1px solid var(--linje);border-radius:12px;background:var(--flate)}
+.pk-rad:hover{border-color:#7a5af0}
+.pk-rad-tekst{display:flex;flex-direction:column;min-width:0}
+.pk-rad-tekst small{color:var(--tekst2)}
+.pk-spill{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:2px solid #7a5af0;background:var(--flate);color:#7a5af0;font-size:.95rem;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.pk-spill:hover,.pk-spill.valgt{background:#7a5af0;color:#fff}
+.pk-spill.spiller{animation:pkpuls 1.6s ease-in-out infinite}
+@keyframes pkpuls{50%{box-shadow:0 0 0 6px rgba(122,90,240,.25)}}
+.pk-hero{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;margin-bottom:18px;border-radius:var(--radius);background:linear-gradient(135deg,#7a5af0,#4b2fb8);color:#fff;box-shadow:var(--skygge)}
+.pk-hero h1{margin:0 0 6px;color:#fff}
+.pk-hero p{margin:0;opacity:.95;max-width:760px}
+.pk-faner{position:static}
+.pk-sokfelt{display:flex;align-items:center;gap:8px;margin-bottom:18px;padding:0 12px;border:2px solid var(--linje);border-radius:12px;background:var(--flate)}
+.pk-sokfelt input{flex:1;border:0;background:transparent;min-height:46px;font:inherit;color:var(--tekst)}
+.pk-sokfelt input:focus{outline:none}
+.pk-kapittel{border-left:6px solid var(--farge,#7a5af0)}
+.pk-kap-topp{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.pk-kap-topp small{color:var(--tekst2);text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;font-weight:650}
+.pk-kap-topp h3{margin:2px 0 0}
 
 </style>
 </head>
@@ -1037,7 +1107,7 @@ button.kortnr:hover,button.kortnr:focus-visible{background:var(--aksent);color:#
   <div class="logo" id="logo" title="Teknisk kommunikasjon og ledelse (LØM)"><span class="merke"></span><span id="topp-tittel">LØM</span></div>
   <button class="toppknapp tilbakeknapp skjult" id="tilbake" type="button" title="Tilbake dit du var"><span class="ik" aria-hidden="true">‹</span><span class="tb-a">Tilbake</span><span class="tb-b"></span></button>
   <div class="sti" id="sti"></div>
-  <div class="hoyre"><span class="merkelapp laerer skjult" id="laerer-merke">Lærermodus</span><span class="merkelapp kr skjult" id="kr-merke"></span><button class="toppknapp installknapp skjult" id="installer" title="Installer appen på denne enheten"><span class="ik">⤓</span><span class="tk">Installer appen</span></button><button class="toppknapp spillknapp" id="spill" title="Bytt mellom normal og spillmodus"><span class="ik">🎮</span><span class="tk">Spill</span></button><button class="toppknapp" id="hjem" title="Til forsiden" aria-label="Forside"><span class="ik">⌂</span><span class="tk">Forside</span></button><button class="toppknapp" id="tema" title="Bytt mellom lyst og mørkt oppsett" aria-label="Bytt tema"><span class="ik">◐</span><span class="tk">Mørkt</span></button></div>
+  <div class="hoyre"><span class="merkelapp laerer skjult" id="laerer-merke">Lærermodus</span><span class="merkelapp kr skjult" id="kr-merke"></span><button class="toppknapp installknapp skjult" id="installer" title="Installer appen på denne enheten"><span class="ik">⤓</span><span class="tk">Installer appen</span></button><button class="toppknapp spillknapp" id="spill" title="Bytt mellom normal og spillmodus"><span class="ik">🎮</span><span class="tk">Spill</span></button><button class="toppknapp podkastknapp" id="podkast" type="button" title="Podkast – lytt til øktene" aria-label="Podkast"><span class="ik">🎧</span><span class="tk">Podkast</span></button><button class="toppknapp" id="hjem" title="Til forsiden" aria-label="Forside"><span class="ik">⌂</span><span class="tk">Forside</span></button><button class="toppknapp" id="tema" title="Bytt mellom lyst og mørkt oppsett" aria-label="Bytt tema"><span class="ik">◐</span><span class="tk">Mørkt</span></button></div>
 </div>
 <main class="side" id="app"></main>
 <div class="melding" id="melding"></div>
@@ -3153,7 +3223,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 11:12. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 19:20. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -6343,6 +6413,607 @@ LOM.modeller = {
       tekst: "SOFT og SWOT er samme analyse med samme fire ruter. Bruk ordet oppgaven eller faget bruker, og si gjerne at det er det samme. Får du en forklaring der S betyr «satisfactory» og radene er nåtid og framtid, er det den opprinnelige versjonen fra 1960-tallet, ikke lærebokas."
     }
   }
+};
+
+
+/* Podkastepisoder til LØM-appen. Lydfilene ligger i eget GitHub Pages-repo (Truthseeker1968/lom-lyd), 64 kbit/s mono.
+   Kilde: Gbrain/Klassemateriell/LOM_Lyd/episoder_v7/lyd (NotebookLM). Ny episode: legg mp3 i LOM_Lyd/lom-lyd, push, og legg en linje her. */
+LOM.podkast = {
+ "base": "https://truthseeker1968.github.io/lom-lyd/",
+ "episoder": [
+  {
+   "kap": "ok01",
+   "okt": 1,
+   "tittel": "Etablering – selskapsform og ansvar",
+   "bok": "Økonomistyring",
+   "fil": "ok01_okt1.mp3",
+   "sek": 996
+  },
+  {
+   "kap": "ok01",
+   "okt": 2,
+   "tittel": "Etablering – registrene og faglig ansvarlig",
+   "bok": "Økonomistyring",
+   "fil": "ok01_okt2.mp3",
+   "sek": 991
+  },
+  {
+   "kap": "ok01",
+   "okt": 3,
+   "tittel": "Etablering – skatt og merverdiavgift",
+   "bok": "Økonomistyring",
+   "fil": "ok01_okt3.mp3",
+   "sek": 1401
+  },
+  {
+   "kap": "ok02",
+   "okt": 1,
+   "tittel": "Utgift, utbetaling og kostnad",
+   "bok": "Økonomistyring",
+   "fil": "ok02_okt1.mp3",
+   "sek": 1027
+  },
+  {
+   "kap": "ok02",
+   "okt": 2,
+   "tittel": "Faste, variable, direkte og indirekte kostnader",
+   "bok": "Økonomistyring",
+   "fil": "ok02_okt2.mp3",
+   "sek": 974
+  },
+  {
+   "kap": "ok02",
+   "okt": 3,
+   "tittel": "Lønnskostnad, pris og avskrivning",
+   "bok": "Økonomistyring",
+   "fil": "ok02_okt3.mp3",
+   "sek": 1892
+  },
+  {
+   "kap": "ok03",
+   "okt": 1,
+   "tittel": "Resultatregnskapet",
+   "bok": "Økonomistyring",
+   "fil": "ok03_okt1.mp3",
+   "sek": 1027
+  },
+  {
+   "kap": "ok03",
+   "okt": 2,
+   "tittel": "Eiendel eller kostnad",
+   "bok": "Økonomistyring",
+   "fil": "ok03_okt2.mp3",
+   "sek": 1611
+  },
+  {
+   "kap": "ok03",
+   "okt": 3,
+   "tittel": "Balansen",
+   "bok": "Økonomistyring",
+   "fil": "ok03_okt3.mp3",
+   "sek": 1635
+  },
+  {
+   "kap": "ok04",
+   "okt": 1,
+   "tittel": "Regnskapsanalyse – lønnsomhet",
+   "bok": "Økonomistyring",
+   "fil": "ok04_okt1.mp3",
+   "sek": 1376
+  },
+  {
+   "kap": "ok10",
+   "okt": 3,
+   "tittel": "Investering – internrenten og beslutningen",
+   "bok": "Økonomistyring",
+   "fil": "ok10_okt3.mp3",
+   "sek": 1645
+  },
+  {
+   "kap": "ma01",
+   "okt": 1,
+   "tittel": "Markedsføring – hva det er, og hva et marked er",
+   "bok": "Markedsføring",
+   "fil": "ma01_okt1.mp3",
+   "sek": 1037
+  },
+  {
+   "kap": "ma01",
+   "okt": 2,
+   "tittel": "Markedsføring – de fem hovedmarkedene",
+   "bok": "Markedsføring",
+   "fil": "ma01_okt2.mp3",
+   "sek": 1397
+  },
+  {
+   "kap": "ma01",
+   "okt": 3,
+   "tittel": "Markedsføring – hvor starter tilbudet",
+   "bok": "Markedsføring",
+   "fil": "ma01_okt3.mp3",
+   "sek": 1078
+  },
+  {
+   "kap": "ma02",
+   "okt": 1,
+   "tittel": "Kjøpsatferd – hvordan privatkunden bestemmer seg",
+   "bok": "Markedsføring",
+   "fil": "ma02_okt1.mp3",
+   "sek": 1002
+  },
+  {
+   "kap": "ma02",
+   "okt": 2,
+   "tittel": "Kjøpsatferd – tre tilbud, ett valg og tvilen etterpå",
+   "bok": "Markedsføring",
+   "fil": "ma02_okt2.mp3",
+   "sek": 1037
+  },
+  {
+   "kap": "ma02",
+   "okt": 3,
+   "tittel": "Kjøpsatferd – hvordan bedriftskunden kjøper",
+   "bok": "Markedsføring",
+   "fil": "ma02_okt3.mp3",
+   "sek": 998
+  },
+  {
+   "kap": "ma03",
+   "okt": 1,
+   "tittel": "Markedsplanen – forretningsidé og situasjonsanalyse",
+   "bok": "Markedsføring",
+   "fil": "ma03_okt1.mp3",
+   "sek": 1406
+  },
+  {
+   "kap": "ma03",
+   "okt": 2,
+   "tittel": "Markedsplanen – markedsmålene",
+   "bok": "Markedsføring",
+   "fil": "ma03_okt2.mp3",
+   "sek": 1399
+  },
+  {
+   "kap": "ma03",
+   "okt": 3,
+   "tittel": "Markedsplanen – realistiske mål og strategien",
+   "bok": "Markedsføring",
+   "fil": "ma03_okt3.mp3",
+   "sek": 1326
+  },
+  {
+   "kap": "ma04",
+   "okt": 1,
+   "tittel": "Markedsundersøkelser – problemstilling, datakilder og metode",
+   "bok": "Markedsføring",
+   "fil": "ma04_okt1.mp3",
+   "sek": 1237
+  },
+  {
+   "kap": "ma04",
+   "okt": 2,
+   "tittel": "Markedsundersøkelser – populasjon, utvalg og svarprosent",
+   "bok": "Markedsføring",
+   "fil": "ma04_okt2.mp3",
+   "sek": 1035
+  },
+  {
+   "kap": "ma04",
+   "okt": 3,
+   "tittel": "Markedsundersøkelser – skjema, analyse, kvalitet og prognoser",
+   "bok": "Markedsføring",
+   "fil": "ma04_okt3.mp3",
+   "sek": 1423
+  },
+  {
+   "kap": "ma05",
+   "okt": 1,
+   "tittel": "Markedssegmentering – del markedet etter behov",
+   "bok": "Markedsføring",
+   "fil": "ma05_okt1.mp3",
+   "sek": 1053
+  },
+  {
+   "kap": "ma05",
+   "okt": 2,
+   "tittel": "Markedssegmentering – fra segment til målgruppe",
+   "bok": "Markedsføring",
+   "fil": "ma05_okt2.mp3",
+   "sek": 1507
+  },
+  {
+   "kap": "ma05",
+   "okt": 3,
+   "tittel": "Markedssegmentering – målgruppestrategiene",
+   "bok": "Markedsføring",
+   "fil": "ma05_okt3.mp3",
+   "sek": 936
+  },
+  {
+   "kap": "ma06",
+   "okt": 1,
+   "tittel": "Produkt – hva kunden egentlig kjøper",
+   "bok": "Markedsføring",
+   "fil": "ma06_okt1.mp3",
+   "sek": 1291
+  },
+  {
+   "kap": "ma06",
+   "okt": 2,
+   "tittel": "Produkt – egenskaper, kvalitet og garanti",
+   "bok": "Markedsføring",
+   "fil": "ma06_okt2.mp3",
+   "sek": 913
+  },
+  {
+   "kap": "ma06",
+   "okt": 3,
+   "tittel": "Produkt – vareutvalget og livssyklusen",
+   "bok": "Markedsføring",
+   "fil": "ma06_okt3.mp3",
+   "sek": 1086
+  },
+  {
+   "kap": "ma06",
+   "okt": 4,
+   "tittel": "Produkt – utvikling, sanering og merkevare",
+   "bok": "Markedsføring",
+   "fil": "ma06_okt4.mp3",
+   "sek": 1131
+  },
+  {
+   "kap": "ma07",
+   "okt": 1,
+   "tittel": "Pris – mål, markedsform og tre måter å sette pris på",
+   "bok": "Markedsføring",
+   "fil": "ma07_okt1.mp3",
+   "sek": 1205
+  },
+  {
+   "kap": "ma07",
+   "okt": 2,
+   "tittel": "Pris – hva en rabatt og et prisavslag koster",
+   "bok": "Markedsføring",
+   "fil": "ma07_okt2.mp3",
+   "sek": 937
+  },
+  {
+   "kap": "ma07",
+   "okt": 3,
+   "tittel": "Pris – ulik pris for samme jobb",
+   "bok": "Markedsføring",
+   "fil": "ma07_okt3.mp3",
+   "sek": 1305
+  },
+  {
+   "kap": "ma08",
+   "okt": 1,
+   "tittel": "Distribusjon – kanalen og mellomleddene",
+   "bok": "Markedsføring",
+   "fil": "ma08_okt1.mp3",
+   "sek": 877
+  },
+  {
+   "kap": "ma08",
+   "okt": 2,
+   "tittel": "Distribusjon – lageret og leveringstiden",
+   "bok": "Markedsføring",
+   "fil": "ma08_okt2.mp3",
+   "sek": 911
+  },
+  {
+   "kap": "ma08",
+   "okt": 3,
+   "tittel": "Distribusjon – å velge kanal",
+   "bok": "Markedsføring",
+   "fil": "ma08_okt3.mp3",
+   "sek": 902
+  },
+  {
+   "kap": "ma09",
+   "okt": 1,
+   "tittel": "Påvirkning – modellen og virkemidlene",
+   "bok": "Markedsføring",
+   "fil": "ma09_okt1.mp3",
+   "sek": 1170
+  },
+  {
+   "kap": "ma09",
+   "okt": 3,
+   "tittel": "Påvirkning – loven, omdømmet og personalet",
+   "bok": "Markedsføring",
+   "fil": "ma09_okt3.mp3",
+   "sek": 878
+  },
+  {
+   "kap": "ma10",
+   "okt": 1,
+   "tittel": "Markedsplanen – analyse, mål og strategi",
+   "bok": "Markedsføring",
+   "fil": "ma10_okt1.mp3",
+   "sek": 1227
+  },
+  {
+   "kap": "ma10",
+   "okt": 2,
+   "tittel": "Markedsplanen – handlingsplanen og budsjettet",
+   "bok": "Markedsføring",
+   "fil": "ma10_okt2.mp3",
+   "sek": 958
+  },
+  {
+   "kap": "ma10",
+   "okt": 3,
+   "tittel": "Markedsplanen – gjennomføring og evaluering",
+   "bok": "Markedsføring",
+   "fil": "ma10_okt3.mp3",
+   "sek": 776
+  },
+  {
+   "kap": "ol11",
+   "okt": 1,
+   "tittel": "Organisasjon – fra to over kaffen til atten",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol11_okt1.mp3",
+   "sek": 1517
+  },
+  {
+   "kap": "ol11",
+   "okt": 2,
+   "tittel": "Organisasjon – kartet og den som ikke kan mangle",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol11_okt2.mp3",
+   "sek": 1437
+  },
+  {
+   "kap": "ol11",
+   "okt": 3,
+   "tittel": "Organisasjon – maskin, fellesskap og åpent system",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol11_okt3.mp3",
+   "sek": 1144
+  },
+  {
+   "kap": "ol12",
+   "okt": 1,
+   "tittel": "Interne rammer – målene og folkene",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol12_okt1.mp3",
+   "sek": 922
+  },
+  {
+   "kap": "ol12",
+   "okt": 2,
+   "tittel": "Interne rammer – teknologien",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol12_okt2.mp3",
+   "sek": 742
+  },
+  {
+   "kap": "ol12",
+   "okt": 3,
+   "tittel": "Interne rammer – strukturen og økonomien",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol12_okt3.mp3",
+   "sek": 1869
+  },
+  {
+   "kap": "ol13",
+   "okt": 1,
+   "tittel": "Eksterne rammer – aktørene i markedet",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol13_okt1.mp3",
+   "sek": 1397
+  },
+  {
+   "kap": "ol13",
+   "okt": 2,
+   "tittel": "Eksterne rammer – regler, penger og lønn",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol13_okt2.mp3",
+   "sek": 974
+  },
+  {
+   "kap": "ol13",
+   "okt": 3,
+   "tittel": "Eksterne rammer – prosessene",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol13_okt3.mp3",
+   "sek": 838
+  },
+  {
+   "kap": "ol14",
+   "okt": 1,
+   "tittel": "Klassiske teorier – Taylor og normtiden",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol14_okt1.mp3",
+   "sek": 1154
+  },
+  {
+   "kap": "ol14",
+   "okt": 2,
+   "tittel": "Klassiske teorier – Fayol og organisasjonskartet",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol14_okt2.mp3",
+   "sek": 753
+  },
+  {
+   "kap": "ol14",
+   "okt": 3,
+   "tittel": "Klassiske teorier – Weber og effektiviteten",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol14_okt3.mp3",
+   "sek": 1448
+  },
+  {
+   "kap": "ol15",
+   "okt": 1,
+   "tittel": "Nyere teorier – mennesket i organisasjonen",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol15_okt1.mp3",
+   "sek": 868
+  },
+  {
+   "kap": "ol15",
+   "okt": 2,
+   "tittel": "Nyere teorier – beslutninger og systemer",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol15_okt2.mp3",
+   "sek": 1437
+  },
+  {
+   "kap": "ol15",
+   "okt": 3,
+   "tittel": "Nyere teorier – situasjonen avgjør formen",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol15_okt3.mp3",
+   "sek": 1074
+  },
+  {
+   "kap": "ol16",
+   "okt": 1,
+   "tittel": "Grupper – laget, rollene og de uskrevne reglene",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol16_okt1.mp3",
+   "sek": 1229
+  },
+  {
+   "kap": "ol16",
+   "okt": 2,
+   "tittel": "Kommunikasjon – beskjeden og leddene den går gjennom",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol16_okt2.mp3",
+   "sek": 922
+  },
+  {
+   "kap": "ol16",
+   "okt": 3,
+   "tittel": "Konflikt – makt, typer og strategier",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol16_okt3.mp3",
+   "sek": 1433
+  },
+  {
+   "kap": "ol17",
+   "okt": 1,
+   "tittel": "Lederen – hva en leder gjør",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol17_okt1.mp3",
+   "sek": 841
+  },
+  {
+   "kap": "ol17",
+   "okt": 2,
+   "tittel": "Lederstil – å lede hver enkelt",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol17_okt2.mp3",
+   "sek": 1143
+  },
+  {
+   "kap": "ol17",
+   "okt": 3,
+   "tittel": "Motivasjon – hva får folk til å yte og bli",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol17_okt3.mp3",
+   "sek": 931
+  },
+  {
+   "kap": "ol17",
+   "okt": 4,
+   "tittel": "Team, verdier og styring",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol17_okt4.mp3",
+   "sek": 819
+  },
+  {
+   "kap": "ol18",
+   "okt": 1,
+   "tittel": "Rekruttering – fra behov til annonse",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol18_okt1.mp3",
+   "sek": 698
+  },
+  {
+   "kap": "ol18",
+   "okt": 2,
+   "tittel": "Fra søknad til første arbeidsdag",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol18_okt2.mp3",
+   "sek": 842
+  },
+  {
+   "kap": "ol18",
+   "okt": 3,
+   "tittel": "Medarbeidersamtalen",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol18_okt3.mp3",
+   "sek": 704
+  },
+  {
+   "kap": "ol19",
+   "okt": 1,
+   "tittel": "Organisasjonskultur – hva den er, og hvor du ser den",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol19_okt1.mp3",
+   "sek": 984
+  },
+  {
+   "kap": "ol19",
+   "okt": 2,
+   "tittel": "Organisasjonskultur – hvor den kommer fra",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol19_okt2.mp3",
+   "sek": 1262
+  },
+  {
+   "kap": "ol19",
+   "okt": 3,
+   "tittel": "Organisasjonskultur – subkultur og gruppetenkning",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol19_okt3.mp3",
+   "sek": 1077
+  },
+  {
+   "kap": "ol20",
+   "okt": 1,
+   "tittel": "Noen viktige lover – arbeidsavtalen og arbeidsmiljøet",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol20_okt1.mp3",
+   "sek": 958
+  },
+  {
+   "kap": "ol20",
+   "okt": 2,
+   "tittel": "Noen viktige lover – arbeidstid og overtid",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol20_okt2.mp3",
+   "sek": 1403
+  },
+  {
+   "kap": "ol20",
+   "okt": 3,
+   "tittel": "Noen viktige lover – oppsigelsen",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol20_okt3.mp3",
+   "sek": 1323
+  },
+  {
+   "kap": "ol20",
+   "okt": 4,
+   "tittel": "Noen viktige lover – kunden og prisen",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol20_okt4.mp3",
+   "sek": 871
+  },
+  {
+   "kap": "ol20",
+   "okt": 5,
+   "tittel": "Noen viktige lover – annonsen og etikken",
+   "bok": "Organisasjon og ledelse",
+   "fil": "ol20_okt5.mp3",
+   "sek": 1111
+  }
+ ]
 };
 
 
@@ -20507,7 +21178,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.20.4 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.21.0 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -61444,6 +62115,7 @@ LOM.pwa = (function () {
     if (a === "daglig") return "Dagens oppgaver";
     if (a === "spill") return "Spillet";
     if (a === "velg") return "Velg kapittel";
+    if (a === "podkast") return "Podkast";
     return "Forsiden";
   }
   function oppdaterTilbake() {
@@ -61472,8 +62144,11 @@ LOM.pwa = (function () {
     else if (a === "eksamen" && LOM.eksamenTvers) visEksamenTvers(b);
     else if (a === "velg") visModusvelger(b || "ov");
     else if (a === "del") visDel(b);
+    else if (a === "podkast") visPodkast(b ? decodeURIComponent(b) : "alle");
     else visForside();
     pakkTabeller();
+    if (typeof pkOppdaterKnapper === "function") pkOppdaterKnapper();
+    $("#podkast") && $("#podkast").classList.toggle("aktiv", a === "podkast");
     if (typeof gjenopprettY === "number" && gjenopprettY > 0) {
       /* Tilbake: gå til samme sted som sist. Ett nytt forsøk etter at bildene har fått høyde. */
       window.scrollTo(0, gjenopprettY);
@@ -61822,6 +62497,7 @@ LOM.pwa = (function () {
       eks:  ["M2 9l10-5 10 5-10 5z", "M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5", "M22 9v6"],
       sok:  ["M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15z", "M16 16l5 5"],
       pil:  ["M5 12h14", "M13 6l6 6-6 6"],
+      lyd:  ["M4 14v-2a8 8 0 0 1 16 0v2", "M4 14h3v6H5.5A1.5 1.5 0 0 1 4 18.5z", "M20 14h-3v6h1.5a1.5 1.5 0 0 0 1.5-1.5z"],
       kal:  ["M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v12a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5z", "M4 10h16", "M8 3v4", "M16 3v4", "M8 14h3", "M13 14h3"]
     };
     (P[navn] || []).forEach(d => svg.append(sv("path", { d })));
@@ -61904,6 +62580,7 @@ LOM.pwa = (function () {
     const studieplanUrl = (/^https?:$/.test(location.protocol) ? "" : (O.nettadresse || "")) + "studieplan/";
     const studieplan = el("a", { class: "hero-knapp sekundaer", href: studieplanUrl, target: "_blank", rel: "noopener", onclick: () => { LOM.telling && LOM.telling.hendelse("studieplan"); } },
       el("span", null, el("small", null, "Uke for uke, per klasse"), "LØM studieplan"), ikon("kal"));
+    const podkast = (LOM.podkast && LOM.podkast.episoder.length) ? el("a", { class: "hero-knapp sekundaer", href: "#/podkast" }, el("span", null, el("small", null, `${LOM.podkast.episoder.length} episoder å lytte til`), "LØM-podkast"), ikon("lyd")) : null;
     const nyStudent = ferdige + paab === 0;
     const fremdrift = nyStudent
       ? el("p", { class: "hero-fakta" }, `${T.kapitler} kapitler · ${T.flervalg} flervalg · ${T.refleksjon} vurderingsoppgaver · ${antVerktoy} verktøy`)
@@ -61917,7 +62594,7 @@ LOM.pwa = (function () {
         el("span", { class: "hero-merke" }, O.undertittel),
         el("h1", null, O.tittel),
         el("p", { class: "hero-ingress" }, "Økonomistyring, organisasjon og ledelse og markedsforståelse — forklart med tall og situasjoner fra elektrobransjen, med kalkulatorer du kan leke med og øvelser som gir deg begrunnelsen, ikke bare fasiten."),
-        el("div", { class: "hero-knapper" }, cta, studieplan),
+        el("div", { class: "hero-knapper" }, cta, studieplan, podkast),
         el("label", { class: "hero-sok" }, ikon("sok"), sokFelt),
         fremdrift));
 
@@ -62462,6 +63139,7 @@ LOM.pwa = (function () {
   /* ---------- Les ---------- */
   function visLes(I, id, boks) {
     settInn(boks,
+      lytteboks(id),
       el("div", { class: "knapperad utskriftrad" }, el("button", { class: "knapp liten", title: "Åpner alle begreper og tallforklaringer og sender hele kapitlet til utskrift. Velg «Lagre som PDF» som skriver.", onclick: () => skrivUtKapittel(id, boks) }, "🖨 Skriv ut kapitlet (PDF)")),
       el("div", { class: "kort krok" }, el("h2", null, I.krok.tittel), I.krok.tekst.map(t => el("p", null, t))),
       el("div", { class: "kort maal" }, el("h3", null, "Etter dette kapitlet skal du kunne"), el("ol", null, I.laeringsmaal.map(m => el("li", null, m)))),
@@ -62831,6 +63509,7 @@ LOM.pwa = (function () {
   /* ---------- tema og hjem ---------- */
   $("#tema").addEventListener("click", () => { const naa = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", naa); try { localStorage.setItem("lom_tema", naa); } catch (e) { } oppdaterTemaknapp(); });
   $("#hjem").addEventListener("click", () => gaaTil("/"));
+  $("#podkast") && $("#podkast").addEventListener("click", () => gaaTil("/podkast"));
   $("#tilbake") && $("#tilbake").addEventListener("click", tilbake);
 
   /* Søket gjøres tilgjengelig for andre motorfiler (regnehjelpen i veiledning.js).
@@ -62884,6 +63563,137 @@ LOM.pwa = (function () {
     new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => { merkFelter(rot); lenkeKilder(rot); }, 120); })
       .observe(rot, { childList: true, subtree: true });
   })();
+
+
+  /* ---------- Podkast (2.21.0): episodene ligger på lom-lyd (egen GitHub Pages). Én felles spiller nederst
+     på skjermen som fortsetter når du bytter side. Posisjonen i hver episode huskes i nettleseren. ---------- */
+  const PK = LOM.podkast || { base: "", episoder: [] };
+  const pkUrl = (e) => PK.base + e.fil;
+  const pkTid = (s) => { s = Math.max(0, Math.floor(s || 0)); const t = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (t ? t + ":" + String(m).padStart(2, "0") : m) + ":" + String(x).padStart(2, "0"); };
+  const pkMin = (s) => Math.max(1, Math.round((s || 0) / 60)) + " min";
+  const pkFor = (kapId) => PK.episoder.filter(e => e.kap === kapId).sort((a, b) => a.okt - b.okt);
+  const pkPos = (f) => { try { return +localStorage.getItem("lom_pk_" + f) || 0; } catch (e) { return 0; } };
+  const pkLagrePos = (f, t) => { try { if (t > 5) localStorage.setItem("lom_pk_" + f, String(Math.floor(t))); else localStorage.removeItem("lom_pk_" + f); } catch (e) { } };
+  const pkFart = () => { try { return +localStorage.getItem("lom_pk_fart") || 1; } catch (e) { return 1; } };
+  const pkKapNavn = (e) => { const f = finnKap(e.kap); return f ? `Kap. ${f.kap.kap} ${f.kap.tittel}` : e.kap.toUpperCase(); };
+  const pkLyd = new Audio(); pkLyd.preload = "none";
+  let pkKo = [], pkI = -1, pkLagretT = 0, pkBar = null;
+  const pkNaa = () => pkKo[pkI] || null;
+  function pkOppdaterKnapper() {
+    const e = pkNaa(), spiller = e && !pkLyd.paused;
+    document.querySelectorAll("[data-pk]").forEach(b => {
+      const denne = e && b.getAttribute("data-pk") === e.fil;
+      b.classList.toggle("spiller", !!(denne && spiller)); b.classList.toggle("valgt", !!denne);
+      const i = b.querySelector(".pk-ik"); if (i) i.textContent = denne && spiller ? "❚❚" : "▶";
+      b.setAttribute("aria-label", (denne && spiller ? "Pause: " : "Spill: ") + (b.getAttribute("data-navn") || ""));
+    });
+  }
+  function pkLagBar() {
+    if (pkBar) return pkBar;
+    const tittel = el("div", { class: "pk-tittel" }), under = el("div", { class: "pk-under" });
+    const spill = el("button", { class: "pk-hoved", type: "button", "aria-label": "Spill eller pause", onclick: () => pkLyd.paused ? pkLyd.play().catch(() => { }) : pkLyd.pause() }, "▶");
+    const bak = el("button", { class: "pk-liten", type: "button", title: "15 sekunder tilbake", "aria-label": "15 sekunder tilbake", onclick: () => { pkLyd.currentTime = Math.max(0, pkLyd.currentTime - 15); } }, "↺ 15");
+    const frem = el("button", { class: "pk-liten", type: "button", title: "30 sekunder frem", "aria-label": "30 sekunder frem", onclick: () => { pkLyd.currentTime = Math.min(pkLyd.duration || 1e9, pkLyd.currentTime + 30); } }, "30 ↻");
+    const neste = el("button", { class: "pk-liten", type: "button", title: "Neste episode", "aria-label": "Neste episode", onclick: () => { if (pkI < pkKo.length - 1) pkSpill(pkKo, pkI + 1); } }, "⏭");
+    const fart = el("button", { class: "pk-liten pk-fart", type: "button", title: "Avspillingsfart", onclick: () => { const v = [1, 1.25, 1.5, 0.85]; const n = v[(v.indexOf(pkLyd.playbackRate) + 1) % v.length]; pkLyd.playbackRate = n; fart.textContent = String(n).replace(".", ",") + "×"; try { localStorage.setItem("lom_pk_fart", String(n)); } catch (e) { } } }, String(pkFart()).replace(".", ",") + "×");
+    const linje = el("input", { type: "range", class: "pk-linje", min: "0", max: "1000", value: "0", "aria-label": "Posisjon i episoden" });
+    linje.addEventListener("input", () => { if (pkLyd.duration) pkLyd.currentTime = pkLyd.duration * linje.value / 1000; });
+    const tid = el("span", { class: "pk-tid" }, "0:00");
+    const lukk = el("button", { class: "pk-liten pk-lukk", type: "button", title: "Lukk spilleren", "aria-label": "Lukk spilleren", onclick: () => { const e = pkNaa(); if (e) pkLagrePos(e.fil, pkLyd.currentTime); pkLyd.pause(); pkBar.classList.add("skjult"); document.body.classList.remove("pk-aktiv"); } }, "✕");
+    const kapLenke = el("a", { class: "pk-kap", href: "#/podkast" }, "Alle episoder");
+    pkBar = el("div", { class: "pk-bar skjult", role: "region", "aria-label": "Podkastspiller" },
+      el("div", { class: "pk-info" }, el("span", { class: "pk-merke", "aria-hidden": "true" }, "🎧"), el("div", { class: "pk-tekst" }, tittel, under)),
+      el("div", { class: "pk-kontroll" }, bak, spill, frem, neste, fart),
+      el("div", { class: "pk-fremdrift" }, linje, tid),
+      el("div", { class: "pk-ekstra" }, kapLenke, lukk));
+    pkBar._ = { tittel, under, spill, linje, tid, kapLenke };
+    document.body.append(pkBar);
+    return pkBar;
+  }
+  function pkSpill(liste, i) {
+    const forrige = pkNaa(); if (forrige) pkLagrePos(forrige.fil, pkLyd.currentTime);
+    pkKo = liste; pkI = i; const e = pkNaa(); if (!e) return;
+    const b = pkLagBar(); b.classList.remove("skjult"); document.body.classList.add("pk-aktiv");
+    b._.tittel.textContent = e.tittel; b._.under.textContent = `${pkKapNavn(e)} · økt ${e.okt} · ${pkMin(e.sek)}`;
+    b._.kapLenke.textContent = pkKapNavn(e); b._.kapLenke.href = `#/kap/${e.kap}/les`;
+    pkLyd.src = pkUrl(e); pkLyd.playbackRate = pkFart();
+    const start = pkPos(e.fil); const settStart = () => { if (start && start < (pkLyd.duration || e.sek) - 10) pkLyd.currentTime = start; pkLyd.removeEventListener("loadedmetadata", settStart); };
+    pkLyd.addEventListener("loadedmetadata", settStart);
+    pkLyd.play().catch(() => melding("Trykk ▶ i spilleren for å starte lyden"));
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({ title: e.tittel, artist: "LØM-podkast · " + pkKapNavn(e), album: e.bok });
+        navigator.mediaSession.setActionHandler("seekbackward", () => { pkLyd.currentTime = Math.max(0, pkLyd.currentTime - 15); });
+        navigator.mediaSession.setActionHandler("seekforward", () => { pkLyd.currentTime += 30; });
+        navigator.mediaSession.setActionHandler("nexttrack", () => { if (pkI < pkKo.length - 1) pkSpill(pkKo, pkI + 1); });
+        navigator.mediaSession.setActionHandler("previoustrack", () => { if (pkI > 0) pkSpill(pkKo, pkI - 1); });
+      } catch (x) { }
+    }
+    LOM.telling && LOM.telling.hendelse("podkast-" + e.kap + "-" + e.okt);
+  }
+  pkLyd.addEventListener("timeupdate", () => {
+    if (!pkBar) return; const d = pkLyd.duration || (pkNaa() || {}).sek || 0;
+    if (d) pkBar._.linje.value = String(Math.round(1000 * pkLyd.currentTime / d));
+    pkBar._.tid.textContent = pkTid(pkLyd.currentTime) + " / " + pkTid(d);
+    if (Math.abs(pkLyd.currentTime - pkLagretT) > 5) { pkLagretT = pkLyd.currentTime; const e = pkNaa(); if (e) pkLagrePos(e.fil, pkLyd.currentTime); }
+  });
+  ["play", "pause"].forEach(n => pkLyd.addEventListener(n, () => { if (pkBar) pkBar._.spill.textContent = pkLyd.paused ? "▶" : "❚❚"; pkOppdaterKnapper(); }));
+  pkLyd.addEventListener("ended", () => { const e = pkNaa(); if (e) pkLagrePos(e.fil, 0); if (pkI < pkKo.length - 1) pkSpill(pkKo, pkI + 1); else pkOppdaterKnapper(); });
+  pkLyd.addEventListener("error", () => { if (pkNaa()) melding("Fikk ikke hentet lyden. Sjekk nettet og prøv igjen."); });
+  function pkKnapp(e, liste) {
+    return el("button", { class: "pk-spill", type: "button", "data-pk": e.fil, "data-navn": e.tittel, "aria-label": "Spill: " + e.tittel,
+      onclick: () => { const n = pkNaa(); if (n && n.fil === e.fil) { pkLyd.paused ? pkLyd.play().catch(() => { }) : pkLyd.pause(); } else pkSpill(liste, liste.indexOf(e)); } },
+      el("span", { class: "pk-ik", "aria-hidden": "true" }, "▶"));
+  }
+  function pkRad(e, liste, medKap) {
+    const pos = pkPos(e.fil);
+    return el("li", { class: "pk-rad" }, pkKnapp(e, liste),
+      el("div", { class: "pk-rad-tekst" }, el("b", null, `Økt ${e.okt}: ${e.tittel}`),
+        el("small", null, (medKap ? pkKapNavn(e) + " · " : "") + pkMin(e.sek) + (pos ? ` · fortsetter fra ${pkTid(pos)}` : ""))));
+  }
+  function lytteboks(kapId) {
+    const liste = pkFor(kapId); if (!liste.length) return null;
+    const sum = liste.reduce((s, e) => s + (e.sek || 0), 0);
+    return el("div", { class: "kort pk-boks" },
+      el("div", { class: "pk-boks-topp" }, el("span", { class: "pk-boks-ik", "aria-hidden": "true" }, "🎧"),
+        el("div", null, el("h3", null, "Lytt til kapitlet"), el("p", { class: "kilder" }, `${liste.length} ${liste.length === 1 ? "episode" : "episoder"} · ${pkMin(sum)} til sammen. Lydversjonen av øktene, laget med KI-stemmer. Den er et supplement til læreboka, ikke en erstatning.`))),
+      el("ul", { class: "pk-liste" }, liste.map(e => pkRad(e, liste))),
+      el("div", { class: "knapperad" }, el("button", { class: "knapp primar", type: "button", onclick: () => pkSpill(liste, 0) }, "▶ Spill hele kapitlet"), el("a", { class: "knapp", href: "#/podkast" }, "Alle episoder")));
+  }
+  function visPodkast(filter) {
+    sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › ", "Podkast");
+    document.documentElement.style.setProperty("--aksent", "#7a5af0");
+    const sum = PK.episoder.reduce((s, e) => s + (e.sek || 0), 0);
+    const boker = [["alle", "Alle"], ...[...new Set(PK.episoder.map(e => e.bok))].map(b => [b, b])];
+    const valgt = boker.some(([k]) => k === filter) ? filter : "alle";
+    const sokFelt = el("input", { type: "search", class: "sok pk-sok", placeholder: "Søk i episodene, for eksempel «balansen» eller «motivasjon» …", "aria-label": "Søk i podkastepisodene" });
+    const liste = el("div");
+    const tegn = () => {
+      const q = norm(sokFelt.value);
+      const eps = PK.episoder.filter(e => (valgt === "alle" || e.bok === valgt) && (!q || norm(e.tittel + " " + pkKapNavn(e) + " " + e.bok).includes(q)));
+      const kapitler = alleKap().filter(x => eps.some(e => e.kap === x.kap.id));
+      liste.replaceChildren(...(kapitler.length ? kapitler.map(x => {
+        const k = eps.filter(e => e.kap === x.kap.id).sort((a, b) => a.okt - b.okt);
+        return el("div", { class: "kort pk-kapittel", style: "--farge:" + x.del.farge },
+          el("div", { class: "pk-kap-topp" }, el("div", null, el("small", null, x.del.navn), el("h3", null, `Kap. ${x.kap.kap} ${x.kap.tittel}`)),
+            el("div", { class: "knapperad" }, el("button", { class: "knapp primar liten", type: "button", onclick: () => pkSpill(k, 0) }, "▶ Spill kapitlet"), el("a", { class: "knapp liten", href: `#/kap/${x.kap.id}/les` }, "Åpne kapitlet"))),
+          el("ul", { class: "pk-liste" }, k.map(e => pkRad(e, k))));
+      }) : [el("p", { class: "kilder" }, "Ingen episoder passer søket.")]));
+      pkOppdaterKnapper();
+    };
+    sokFelt.addEventListener("input", tegn);
+    const mangler = alleKap().filter(x => LOM.innhold[x.kap.id] && !pkFor(x.kap.id).length).map(x => `${x.del.navn.split(" ")[0]} kap. ${x.kap.kap}`);
+    rot.replaceChildren(
+      verktoylinje([["← Forside", () => gaaTil("/")]]),
+      el("section", { class: "pk-hero" }, el("span", { class: "pk-hero-ik", "aria-hidden": "true" }, "🎧"),
+        el("div", null, el("h1", null, "LØM-podkast"), el("p", null, `${PK.episoder.length} episoder · ${Math.round(sum / 3600)} timer lyd. Lytt på bussen, i bilen eller mellom jobbene. Hver episode følger én økt i kapitlet. Lyden er laget med KI-stemmer fra manusene til øktene og er et supplement til lærebøkene.`))),
+      el("div", { class: "faner pk-faner", role: "tablist" }, boker.map(([k, n]) => el("button", { class: k === valgt ? "aktiv" : "", role: "tab", "aria-selected": k === valgt ? "true" : "false", onclick: () => gaaTil("/podkast/" + (k === "alle" ? "" : encodeURIComponent(k))) }, n))),
+      el("label", { class: "hero-sok pk-sokfelt" }, ikon("sok"), sokFelt),
+      liste,
+      mangler.length ? el("p", { class: "kilder" }, "Episoder til " + mangler.join(", ") + " kommer senere.") : null,
+      varsel(), bunn());
+    tegn();
+  }
 
   /* ---------- oppstart ---------- */
   $("#topp-tittel").textContent = O.tittel;
