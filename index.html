@@ -3153,7 +3153,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 10:08. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 02.11.2026 10:18. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -20507,7 +20507,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.20.2 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.20.3 · 2. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -60576,7 +60576,7 @@ LOM.kalkulatorer.nokkeltall = function (el, f) {
   const inn = (k, navn) => { const e = H().tallfelt(el, s[k], (v) => { s[k] = v; tegn(); }, { class: "celle" }); return el("div", null, el("label", null, navn), e); };
   const tabBoks = el("div"), graf = el("div"), konkl = el("div");
   const wrap = el("div", null,
-    el("div", { class: "kort" }, el("h2", null, "Nøkkeltallskalkulator — de sju nøkkeltallene"), el("p", { class: "kilder" }, "Endre regnskapspostene og se nøkkeltallene flytte seg mot bokas normtall. Rentabilitet regnes av gjennomsnittlig kapital, slik Økonomistyring for LØM-emnet, kap. 4.2 gjør. Bransjetall: NHO Elektro, Lønnsomhetsrapport 2025."),
+    el("div", { class: "kort" }, el("h2", null, "Nøkkeltallskalkulator — de sju nøkkeltallene"), el("p", { class: "kilder" }, "Endre regnskapspostene og se nøkkeltallene flytte seg mot bokas normtall. Rentabilitet regnes av gjennomsnittlig kapital, slik Økonomistyring for LØM-emnet, kap. 4.2 gjør. Normtallene: Økonomistyring for LØM-emnet, kap. 4, tabell 4.2 og 4.2.4."),
       el("div", { class: "tilbud-oppsett" }, inn("salg", "Salgsinntekt"), inn("vare", "Varekostnad"), inn("lonn", "Lønnskostnad"), inn("avskr", "Avskrivninger"), inn("andre", "Andre driftskostnader"), inn("rinn", "Renteinntekter"), inn("rkost", "Rentekostnader"), inn("skatt", "Skattekostnad"), inn("am", "Anleggsmidler"), inn("lager", "Varelager"), inn("fordr", "Kundefordringer"), inn("bank", "Bankinnskudd"), inn("ek", "Egenkapital 31.12."), inn("lg", "Langsiktig gjeld"), inn("kg", "Kortsiktig gjeld"), inn("tkStart", "Totalkapital 1.1.")),
       tabBoks, konkl),
     el("div", { class: "kort" }, el("h3", null, "Nordlys mot bokas normtall"), graf));
@@ -60986,7 +60986,7 @@ LOM.generator = (function () {
     ok04: [
       () => { const S = ri(10, 40, 1) * 1e6, D = ri(2, 12, 1) / 100 * S; return sp(`Salgsinntekt ${kr(S)}, driftsresultat ${kr(D)}. Hva er driftsmarginen?`, D / S * 100, [S / D, D / S * 1000, D / S * 100 * 1.25], `Driftsmargin = driftsresultat / salgsinntekt = ${pst(D / S * 100)}. (Økonomistyring for LØM-emnet, kap. 4.2)`, (v) => pst(v)); },
       () => { const OM = ri(3, 9, 1) * 1e6, KG = ri(2, 6, 1) * 1e6, L = ri(5, 20, 1) / 10 * 1e6; return sp(`Omløpsmidler ${kr(OM)}, varelager ${kr(L)}, kortsiktig gjeld ${kr(KG)}. Hva er likviditetsgrad 2?`, (OM - L) / KG * 100, [OM / KG * 100, (OM + L) / KG * 100, KG / (OM - L) * 100], `LG2 = (omløpsmidler − varelager) / kortsiktig gjeld = ${pst((OM - L) / KG * 100)}. Normtall 100 %. (Økonomistyring for LØM-emnet, kap. 4.2)`, (v) => pst(v)); },
-      () => { const EK = ri(2, 8, 1) * 1e6, TK = EK + ri(4, 12, 1) * 1e6; return sp(`Egenkapital ${kr(EK)}, totalkapital ${kr(TK)}. Hva er egenkapitalandelen?`, EK / TK * 100, [(TK - EK) / TK * 100, EK / (TK - EK) * 100, TK / EK], `Egenkapitalandel = egenkapital / totalkapital = ${pst(EK / TK * 100)}. Bransjen ligger på 36,4 %. (Økonomistyring for LØM-emnet, kap. 4.2)`, (v) => pst(v)); }
+      () => { const EK = ri(2, 8, 1) * 1e6, TK = EK + ri(4, 12, 1) * 1e6; return sp(`Egenkapital ${kr(EK)}, totalkapital ${kr(TK)}. Hva er egenkapitalandelen?`, EK / TK * 100, [(TK - EK) / TK * 100, EK / (TK - EK) * 100, TK / EK], `Egenkapitalandel = egenkapital / totalkapital = ${pst(EK / TK * 100)}. Læreboka sier at 35 % eller mer er godt. (Økonomistyring for LØM-emnet, kap. 4.2.4)`, (v) => pst(v)); }
     ],
     ok05: [
       () => { const m = ri(4, 20), tilgj = 1695, fakt = ri(1000, 1400, 50), sum = ri(4, 14, 1) * 1e6; return sp(`${m} montører har ${nf.format(tilgj)} tilgjengelige timer hver, men fakturerer ${nf.format(fakt)}. Timene skal hente inn ${kr(sum)}. Hva blir timeprisen?`, sum / (m * fakt), [sum / (m * tilgj), sum / (m * fakt) * 0.8, sum / fakt], `Del på fakturerte timer, ikke tilgjengelige: ${kr(sum)} / (${m} × ${nf.format(fakt)}) = ${kr(sum / (m * fakt))}. Deler du på tilgjengelige timer, blir prisen for lav. (Økonomistyring for LØM-emnet, kap. 5.2)`); },
