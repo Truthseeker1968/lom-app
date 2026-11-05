@@ -1119,6 +1119,30 @@ body.pk-aktiv{padding-bottom:96px}
 .pk-mini i{display:block;height:100%;background:#7a5af0}
 @media(max-width:520px){.pk-fortsett{flex-wrap:wrap}.pk-fortsett .knapp{width:100%}}
 
+/* ---------- Innspill (2.22.0) ---------- */
+.modal.innspill{max-width:540px;max-height:calc(100vh - 40px);overflow-y:auto}
+.innspill-ingress{font-size:.92rem;color:var(--tekst2);margin:4px 0 12px}
+.innspill-etikett{display:block;font-weight:600;font-size:.9rem;margin:10px 0 6px}
+.innspill-valg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.innspill-kat{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px 12px;border:1.5px solid var(--linje);border-radius:10px;background:var(--flate2);color:var(--tekst);font:inherit;cursor:pointer;min-height:44px}
+.innspill-kat small{color:var(--demp);font-size:.78rem;line-height:1.3}
+.innspill-kat:hover{border-color:var(--ok)}
+.innspill-kat.valgt{border-color:var(--ok);background:var(--flate);box-shadow:inset 0 0 0 1px var(--ok)}
+.innspill-kat:focus-visible{outline:3px solid var(--ok);outline-offset:2px}
+.modal.innspill textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid var(--linje);border-radius:8px;font:inherit;background:var(--flate);color:var(--tekst);resize:vertical;min-height:120px}
+.innspill-linje{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:6px 0 4px;font-size:.82rem;color:var(--tekst2)}
+.innspill-avkryss{display:flex;gap:6px;align-items:flex-start;word-break:break-all}
+.innspill-avkryss input{width:auto;margin:2px 0 0}
+.innspill-teller{white-space:nowrap;color:var(--demp)}
+.innspill-advarsel{font-size:.85rem;color:#b3261e;background:rgba(179,38,30,.08);border-radius:8px;padding:8px 10px;margin:6px 0}
+.innspill-advarsel.skjult{display:none}
+.innspill-personvern{font-size:.8rem;color:var(--demp);margin:10px 0 6px}
+.innspill-status{font-size:.88rem;min-height:1.2em;margin:4px 0 10px}
+.innspill-honning{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.bunn-innspill{color:var(--tekst2);text-decoration:underline}
+@media(max-width:480px){.innspill-kat small{display:none}.modal.innspill{padding:18px}}
+@media print{.innspillknapp,.innspill-bak{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -1127,7 +1151,7 @@ body.pk-aktiv{padding-bottom:96px}
   <div class="logo" id="logo" title="Teknisk kommunikasjon og ledelse (LØM)"><span class="merke"></span><span id="topp-tittel">LØM</span></div>
   <button class="toppknapp tilbakeknapp skjult" id="tilbake" type="button" title="Tilbake dit du var"><span class="ik" aria-hidden="true">‹</span><span class="tb-a">Tilbake</span><span class="tb-b"></span></button>
   <div class="sti" id="sti"></div>
-  <div class="hoyre"><span class="merkelapp laerer skjult" id="laerer-merke">Lærermodus</span><span class="merkelapp kr skjult" id="kr-merke"></span><button class="toppknapp installknapp skjult" id="installer" title="Installer appen på denne enheten"><span class="ik">⤓</span><span class="tk">Installer appen</span></button><button class="toppknapp spillknapp" id="spill" title="Bytt mellom normal og spillmodus"><span class="ik">🎮</span><span class="tk">Spill</span></button><button class="toppknapp podkastknapp" id="podkast" type="button" title="Podkast – lytt til øktene" aria-label="Podkast"><span class="ik">🎧</span><span class="tk">Podkast</span></button><button class="toppknapp" id="hjem" title="Til forsiden" aria-label="Forside"><span class="ik">⌂</span><span class="tk">Forside</span></button><button class="toppknapp" id="tema" title="Bytt mellom lyst og mørkt oppsett" aria-label="Bytt tema"><span class="ik">◐</span><span class="tk">Mørkt</span></button></div>
+  <div class="hoyre"><span class="merkelapp laerer skjult" id="laerer-merke">Lærermodus</span><span class="merkelapp kr skjult" id="kr-merke"></span><button class="toppknapp installknapp skjult" id="installer" title="Installer appen på denne enheten"><span class="ik">⤓</span><span class="tk">Installer appen</span></button><button class="toppknapp spillknapp" id="spill" title="Bytt mellom normal og spillmodus"><span class="ik">🎮</span><span class="tk">Spill</span></button><button class="toppknapp podkastknapp" id="podkast" type="button" title="Podkast – lytt til øktene" aria-label="Podkast"><span class="ik">🎧</span><span class="tk">Podkast</span></button><button class="toppknapp innspillknapp" id="innspill" type="button" title="Meld feil, gi tilbakemelding eller foreslå forbedringer" aria-label="Meld feil eller gi innspill"><span class="ik">✎</span><span class="tk">Innspill</span></button><button class="toppknapp" id="hjem" title="Til forsiden" aria-label="Forside"><span class="ik">⌂</span><span class="tk">Forside</span></button><button class="toppknapp" id="tema" title="Bytt mellom lyst og mørkt oppsett" aria-label="Bytt tema"><span class="ik">◐</span><span class="tk">Mørkt</span></button></div>
 </div>
 <main class="side" id="app"></main>
 <div class="melding" id="melding"></div>
@@ -3243,7 +3267,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 05.11.2026 14:20. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 05.11.2026 14:52. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -21302,7 +21326,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.21.8 · 5. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.22.0 · 5. november 2026",   // 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -62002,6 +62026,139 @@ LOM.telling = (function () {
 })();
 
 
+/* ===================== Innspill: meld feil, gi tilbakemelding, foreslå forbedringer =====================
+   Knapp i topplinja (#innspill) og lenke i bunnen av hver side åpner et skjema.
+   Innspillet lagres anonymt i Supabase-tabellen lom_innspill (RLS: bare innsetting for anon,
+   aldri lesing). Aion henter nye innspill i den daglige bruksrapporten, samler dem, foreslår
+   tiltak og sender oversikten til Glenn på e-post.
+   Det som sendes: kategori, fritekst (maks 1000 tegn), siden brukeren står på (valgfritt),
+   appversjon og grov enhetstype (mobil/nettbrett/pc). Ingen navn, e-post, øktnummer,
+   IP-logging fra appen eller informasjonskapsler.
+   Virker bare fra nettadressen (GitHub Pages), som tellingen. Fra nedlastet fil vises en
+   forklaring i stedet.
+   ======================================================================================================== */
+window.LOM = window.LOM || {};
+LOM.innspill = (function () {
+  const O = (LOM.oppsett && LOM.oppsett.telling) || {};
+  const paa = !!(O && O.url && O.nokkel) && /^https?:$/.test(location.protocol);
+  const versjon = String((LOM.oppsett && LOM.oppsett.versjon) || "").slice(0, 40);
+  const MAKS = 1000, MIN = 5, GRENSE_TIME = 5;
+  const KATEGORIER = [
+    ["feil-app", "Feil i appen", "Noe virker ikke: knapp, lyd, kalkulator, visning"],
+    ["feil-fag", "Feil i fagstoffet", "Tall, begrep, fasit eller tekst som ikke stemmer"],
+    ["forslag", "Forslag til forbedring", "Noe som kunne vært bedre eller som mangler"],
+    ["annet", "Annet", "Ros, spørsmål eller noe helt annet"]
+  ];
+  const lag = (tag, a, ...barn) => {
+    const e = document.createElement(tag);
+    if (a) for (const k in a) {
+      if (k === "class") e.className = a[k];
+      else if (k.startsWith("on")) e.addEventListener(k.slice(2), a[k]);
+      else if (a[k] !== null && a[k] !== undefined && a[k] !== false) e.setAttribute(k, a[k]);
+    }
+    for (const b of barn.flat()) if (b !== null && b !== undefined && b !== false) e.append(b.nodeType ? b : String(b));
+    return e;
+  };
+  const sti = () => { const h = (location.hash || "#/").slice(1); return (h.startsWith("/") ? h : "/" + h).slice(0, 120); };
+  const enhet = () => { const b = Math.min(screen.width || innerWidth, screen.height || innerHeight); const t = matchMedia("(pointer:coarse)").matches; return !t ? "pc" : b < 600 ? "mobil" : "nettbrett"; };
+  /* enkel vern mot dobbeltsending og søppel: maks 5 innspill per time fra samme nettleser */
+  const logg = () => { try { return JSON.parse(localStorage.getItem("lom_innspill_tid") || "[]").filter(t => Date.now() - t < 3600000); } catch (e) { return []; } };
+  const noter = () => { try { const l = logg(); l.push(Date.now()); localStorage.setItem("lom_innspill_tid", JSON.stringify(l)); } catch (e) { } };
+  /* grov sjekk etter e-postadresser og telefonnumre, slik at studenten blir minnet på anonymiteten */
+  const epost = (t) => /[^\s@]+@[^\s@]+\.[a-z]{2,}/i.test(t);
+  const telefon = (t) => /(?:\+47[\s-]?)?\b[49]\d{2}[\s-]?\d{2}[\s-]?\d{3}\b(?!\s*(?:kr|%|,|timer|t\b))/i.test(t);
+
+  function aapne(forvalg) {
+    if (document.querySelector(".innspill-bak")) return;
+    const bak = lag("div", { class: "modal-bak innspill-bak", role: "dialog", "aria-modal": "true", "aria-labelledby": "innspill-tittel" });
+    const lukk = () => { bak.remove(); removeEventListener("keydown", esc); };
+    const esc = (e) => { if (e.key === "Escape") lukk(); };
+    addEventListener("keydown", esc);
+    bak.addEventListener("click", (e) => { if (e.target === bak) lukk(); });
+
+    if (!paa) {
+      bak.append(lag("div", { class: "modal innspill" },
+        lag("h3", { id: "innspill-tittel" }, "Meld feil eller gi innspill"),
+        lag("p", { class: "innspill-ingress" }, "Innsending virker bare når appen er åpnet fra nettadressen truthseeker1968.github.io/lom-app. Du har åpnet en nedlastet kopi. Åpne appen på nett, eller ta det opp med læreren din i timen."),
+        lag("div", { class: "rad" }, lag("button", { class: "knapp primar", type: "button", onclick: lukk }, "Lukk"))));
+      document.body.append(bak); return;
+    }
+
+    let kat = forvalg && KATEGORIER.some(k => k[0] === forvalg) ? forvalg : null;
+    const valg = lag("div", { class: "innspill-valg", role: "radiogroup", "aria-label": "Hva gjelder det?" },
+      KATEGORIER.map(([id, navn, hint]) => lag("button", {
+        type: "button", class: "innspill-kat" + (id === kat ? " valgt" : ""), role: "radio", "aria-checked": id === kat ? "true" : "false", "data-id": id,
+        onclick: (e) => { kat = id; valg.querySelectorAll(".innspill-kat").forEach(b => { const v = b.dataset.id === id; b.classList.toggle("valgt", v); b.setAttribute("aria-checked", v ? "true" : "false"); }); oppdater(); }
+      }, lag("b", null, navn), lag("small", null, hint))));
+    const felt = lag("textarea", { id: "innspill-tekst", rows: "6", maxlength: String(MAKS), placeholder: "Beskriv kort hva du så, hvor det skjedde og hva du hadde ventet. For forslag: hva ville gjort appen mer nyttig for deg?" });
+    const teller = lag("span", { class: "innspill-teller" }, `0 / ${MAKS}`);
+    const medSide = lag("input", { type: "checkbox", id: "innspill-side", checked: "checked" });
+    const varselPers = lag("p", { class: "innspill-advarsel skjult" }, "");
+    const honning = lag("input", { type: "text", name: "nettsted", tabindex: "-1", autocomplete: "off", class: "innspill-honning", "aria-hidden": "true" });
+    const status = lag("p", { class: "innspill-status", role: "status", "aria-live": "polite" });
+    const send = lag("button", { class: "knapp primar", type: "button", disabled: "disabled" }, "Send innspill");
+    function oppdater() {
+      const n = felt.value.trim().length;
+      teller.textContent = `${felt.value.length} / ${MAKS}`;
+      const e = epost(felt.value), t = !e && telefon(felt.value);
+      varselPers.textContent = e ? "Teksten inneholder en e-postadresse. Fjern den før du sender, så innspillet forblir anonymt." : t ? "Det ser ut som teksten inneholder et telefonnummer. Er det ditt eller noen andres, fjern det før du sender." : "";
+      varselPers.classList.toggle("skjult", !(e || t));
+      send.disabled = !(kat && n >= MIN && !e);
+    }
+    felt.addEventListener("input", oppdater);
+
+    async function sendInn() {
+      if (send.disabled) return;
+      if (honning.value) { lukk(); return; }
+      if (logg().length >= GRENSE_TIME) { status.textContent = "Du har sendt mange innspill den siste timen. Prøv igjen senere."; return; }
+      send.disabled = true; status.textContent = "Sender …";
+      const rad = { kategori: kat, tekst: felt.value.trim().slice(0, MAKS), side: medSide.checked ? sti() : null, versjon: versjon || null, enhet: enhet() };
+      try {
+        const r = await fetch(O.url.replace(/\/$/, "") + "/rest/v1/lom_innspill", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "apikey": O.nokkel, "Authorization": "Bearer " + O.nokkel, "Prefer": "return=minimal" },
+          body: JSON.stringify(rad)
+        });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        noter();
+        LOM.telling && LOM.telling.hendelse("innspill-" + kat);
+        boks.replaceChildren(
+          lag("h3", { id: "innspill-tittel" }, "Takk, innspillet er sendt"),
+          lag("p", { class: "innspill-ingress" }, "Læreren får en samlet oversikt over nye innspill hver morgen på hverdager. Rettinger kommer i en senere versjon av appen; versjonsnummeret står nederst på hver side."),
+          lag("div", { class: "rad" }, lag("button", { class: "knapp primar", type: "button", onclick: lukk }, "Lukk")));
+      } catch (e) {
+        send.disabled = false;
+        status.textContent = "Innspillet kom ikke fram (" + (navigator.onLine ? "feil hos mottaker" : "ingen nettforbindelse") + "). Teksten din er beholdt. Prøv igjen om litt.";
+      }
+    }
+    send.addEventListener("click", sendInn);
+
+    const boks = lag("div", { class: "modal innspill" },
+      lag("h3", { id: "innspill-tittel" }, "Meld feil eller gi innspill"),
+      lag("p", { class: "innspill-ingress" }, "Fant du en feil, eller har du et forslag? Innspillet er anonymt og går til læreren, som bruker det til å forbedre appen."),
+      lag("p", { class: "innspill-etikett" }, "Hva gjelder det?"), valg,
+      lag("label", { class: "innspill-etikett", for: "innspill-tekst" }, "Beskrivelse"), felt,
+      lag("div", { class: "innspill-linje" }, lag("label", { class: "innspill-avkryss", for: "innspill-side" }, medSide, " Ta med hvilken side jeg står på (" + sti() + ")"), teller),
+      varselPers, honning,
+      lag("p", { class: "innspill-personvern" }, "Ikke skriv navn, e-post eller annet som kan identifisere deg eller andre. Det som lagres er kategori, teksten, eventuelt siden, appversjon og om du bruker mobil, nettbrett eller PC. Vil du ha svar, ta det opp med læreren i timen."),
+      status,
+      lag("div", { class: "rad" }, lag("button", { class: "knapp", type: "button", onclick: lukk }, "Avbryt"), send));
+    bak.append(boks);
+    document.body.append(bak);
+    oppdater();
+    setTimeout(() => (kat ? felt : valg.querySelector(".innspill-kat")).focus(), 30);
+  }
+
+  const knapp = document.getElementById("innspill");
+  if (knapp) knapp.addEventListener("click", () => aapne());
+  /* #/innspill i adressen åpner skjemaet direkte (lenke fra Teams o.l.); appen viser forsiden bak */
+  function sjekkHash() { if (/^#\/?innspill/.test(location.hash)) { history.replaceState(null, "", "#/"); dispatchEvent(new HashChangeEvent("hashchange")); aapne(); } }
+  addEventListener("hashchange", sjekkHash);
+  setTimeout(sjekkHash, 0);
+  return { aapne, paa };
+})();
+
+
 /* ===================== Installer appen (PWA) =====================
    Registrerer service worker (bare fra https/http, aldri fra fil på disk) og
    styrer knappen «Installer appen» øverst. Chrome/Edge/Android gir et ekte
@@ -62198,7 +62355,7 @@ LOM.pwa = (function () {
     return n === 3 ? "ferdig" : n > 0 ? "delvis" : null;
   };
   const bekreft = (t) => window.confirm(t);
-  const bunn = () => el("footer", { class: "bunn" }, `${O.tittel} · ${O.versjon}`);
+  const bunn = () => el("footer", { class: "bunn" }, `${O.tittel} · ${O.versjon}`, LOM.innspill ? [" · ", el("a", { href: "#", class: "bunn-innspill", onclick: (e) => { e.preventDefault(); LOM.innspill.aapne(); } }, "Meld feil eller gi innspill")] : null);
   const varsel = () => el("div", { class: "varsel" }, O.varsel);
 
   /* ---------- rammeverk ---------- */
