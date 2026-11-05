@@ -3243,7 +3243,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 04.11.2026 05:52. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 05.11.2026 07:08. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -21302,7 +21302,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.21.6 · 4. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.21.7 · 4. november 2026",   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -63744,16 +63744,12 @@ LOM.pwa = (function () {
      før neste starter. Stillheten spilles som lyd (ikke med en tidtaker), slik at overgangen virker også med
      skjermen av og telefonen i lomma. Stillheten lages i nettleseren som en liten WAV-fil. */
   const PK_PAUSE_SEK = 4;
-  function pkStille() {
-    if (pkStilleUrl) return pkStilleUrl;
-    const rate = 8000, n = rate * PK_PAUSE_SEK, b = new ArrayBuffer(44 + n), v = new DataView(b);
-    const s = (o, x) => { for (let i = 0; i < x.length; i++) v.setUint8(o + i, x.charCodeAt(i)); };
-    s(0, "RIFF"); v.setUint32(4, 36 + n, true); s(8, "WAVEfmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
-    v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true); s(36, "data"); v.setUint32(40, n, true);
-    new Uint8Array(b, 44).fill(128);
-    pkStilleUrl = URL.createObjectURL(new Blob([b], { type: "audio/wav" }));
-    return pkStilleUrl;
-  }
+  /* Stillheten ligger som en vanlig mp3-fil i lydrepoet (samme format som episodene). En WAV laget i nettleseren
+     ble ikke spilt av i alle Android-nettlesere, og da ble spilleren stående fast. */
+  const pkStille = () => PK.base + "stille4.mp3";
+  /* Liten hendelseslogg for feilsøking på telefonen: de siste 40 hendelsene i «lom_pk_logg». Vises under
+     «Lytte med skjermen av …» på podkastsiden. Inneholder bare episodenavn og tidspunkt, ingen personopplysninger. */
+  function pkLogg(h) { try { const l = JSON.parse(localStorage.getItem("lom_pk_logg") || "[]"); l.push(new Date().toTimeString().slice(0, 8) + " " + h + (document.visibilityState === "hidden" ? " (skjult)" : "")); localStorage.setItem("lom_pk_logg", JSON.stringify(l.slice(-40))); } catch (x) { } }
   const pkNaa = () => pkKo[pkI] || null;
   function pkOppdaterKnapper() {
     const e = pkNaa(), spiller = e && !pkLyd.paused;
@@ -63767,7 +63763,7 @@ LOM.pwa = (function () {
   function pkLagBar() {
     if (pkBar) return pkBar;
     const tittel = el("div", { class: "pk-tittel" }), under = el("div", { class: "pk-under" });
-    const spill = el("button", { class: "pk-hoved", type: "button", "aria-label": "Spill eller pause", onclick: () => pkLyd.paused ? pkLyd.play().catch(() => { }) : pkLyd.pause() }, "▶");
+    const spill = el("button", { class: "pk-hoved", type: "button", "aria-label": "Spill eller pause", onclick: () => { if (pkPause) { pkSpill(pkKo, pkI + 1); return; } pkLyd.paused ? pkLyd.play().catch(() => { }) : pkLyd.pause(); } }, "▶");
     const bak = el("button", { class: "pk-liten", type: "button", title: "15 sekunder tilbake", "aria-label": "15 sekunder tilbake", onclick: () => { pkLyd.currentTime = Math.max(0, pkLyd.currentTime - 15); } }, "↺ 15");
     const frem = el("button", { class: "pk-liten", type: "button", title: "30 sekunder frem", "aria-label": "30 sekunder frem", onclick: () => { pkLyd.currentTime = Math.min(pkLyd.duration || 1e9, pkLyd.currentTime + 30); } }, "30 ↻");
     const neste = el("button", { class: "pk-liten", type: "button", title: "Neste episode", "aria-label": "Neste episode", onclick: () => { if (pkI < pkKo.length - 1) pkSpill(pkKo, pkI + 1); } }, "⏭");
@@ -63808,7 +63804,7 @@ LOM.pwa = (function () {
     const start = pkPos(e.fil); const settStart = () => { if (start && start < (pkLyd.duration || e.sek) - 10) pkLyd.currentTime = start; pkLyd.removeEventListener("loadedmetadata", settStart); };
     pkLyd.addEventListener("loadedmetadata", settStart);
     if (bareKlar) { b._.tid.textContent = pkTid(start) + " / " + pkTid(e.sek); b._.linje.value = String(Math.round(1000 * start / (e.sek || 1))); b._.spill.textContent = "▶"; pkLyd.preload = "metadata"; pkOppdaterKnapper(); }
-    else pkLyd.play().catch(() => melding("Trykk ▶ i spilleren for å starte lyden"));
+    else { pkLogg("start " + e.fil); pkLyd.play().catch((x) => { pkLogg("play avvist " + e.fil + " " + (x && x.name)); melding("Trykk ▶ i spilleren for å starte lyden"); }); }
     if ("mediaSession" in navigator) { try { navigator.mediaSession.metadata = new MediaMetadata({ title: e.tittel, artist: "LØM-podkast · " + pkKapNavn(e), album: e.bok, artwork: [{ src: "ikon-512.png", sizes: "512x512", type: "image/png" }, { src: "ikon-192.png", sizes: "192x192", type: "image/png" }] }); } catch (x) { } }
     LOM.telling && LOM.telling.hendelse("podkast-" + e.kap + "-" + e.okt);
   }
@@ -63835,10 +63831,14 @@ LOM.pwa = (function () {
     if (pkI < pkKo.length - 1) {
       const neste = pkKo[pkI + 1]; pkPause = true;
       if (pkBar) { pkBar._.under.textContent = `Neste om ${PK_PAUSE_SEK} sekunder: økt ${neste.okt} · ${neste.tittel}`; pkBar._.linje.value = "1000"; }
-      pkLyd.playbackRate = 1; pkSluttSrc = null; pkLyd.src = pkStille(); pkLyd.play().catch(() => pkSpill(pkKo, pkI + 1));
+      pkLogg("pause før " + neste.fil);
+      pkLyd.playbackRate = 1; pkSluttSrc = null; pkLyd.src = pkStille(); pkLyd.play().catch((x) => { pkLogg("pause avvist " + (x && x.name)); if (pkPause) pkSpill(pkKo, pkI + 1); });
+      /* Vakthund: kommer ikke pausen i gang, gå rett til neste episode. */
+      const vakt = pkI; setTimeout(() => { if (pkPause && pkI === vakt && pkLyd.currentTime < 0.5) { pkLogg("vakthund"); pkSpill(pkKo, pkI + 1); } }, (PK_PAUSE_SEK + 3) * 1000);
     } else pkOppdaterKnapper();
   }
-  pkLyd.addEventListener("error", () => { if (pkNaa()) melding("Fikk ikke hentet lyden. Sjekk nettet og prøv igjen."); });
+  pkLyd.addEventListener("error", () => { pkLogg("feil " + ((pkLyd.error && pkLyd.error.code) || "") + (pkPause ? " i pausen" : "")); if (pkPause) { pkSpill(pkKo, pkI + 1); return; } if (pkNaa()) melding("Fikk ikke hentet lyden. Sjekk nettet og prøv igjen."); });
+  pkLyd.addEventListener("ended", () => pkLogg("slutt" + (pkPause ? " pause" : "")));
   function pkKnapp(e, liste) {
     return el("button", { class: "pk-spill", type: "button", "data-pk": e.fil, "data-navn": e.tittel, "aria-label": "Spill: " + e.tittel,
       onclick: () => { const n = pkNaa(); if (n && n.fil === e.fil) { pkLyd.paused ? pkLyd.play().catch(() => { }) : pkLyd.pause(); } else pkSpill(liste, liste.indexOf(e)); } },
@@ -63855,7 +63855,8 @@ LOM.pwa = (function () {
     return el("details", { class: "pk-tips" }, el("summary", null, "Lytte med skjermen av eller uten nett?"),
       el("p", null, "Start en episode og lås telefonen. Lyden fortsetter i lomma, og du styrer den fra låseskjermen eller hodetelefonene (spill, pause, 15 sekunder tilbake, 30 frem, neste episode). Når en episode er ferdig, starter neste i kapitlet."),
       el("p", null, "Skal du et sted uten dekning, trykk «Last ned» på episoden eller «Last ned kapitlet». Fila havner i Nedlastinger på telefonen og kan spilles av i telefonens egen lydspiller. Én episode er 6–11 MB."),
-      el("p", null, "På iPhone: bruk Safari. Hvis lyden stopper når skjermen slukkes i den installerte appen, åpne appen i Safari i stedet."));
+      el("p", null, "På iPhone: bruk Safari. Hvis lyden stopper når skjermen slukkes i den installerte appen, åpne appen i Safari i stedet."),
+      el("button", { class: "knapp liten", type: "button", onclick: (ev) => { let l = []; try { l = JSON.parse(localStorage.getItem("lom_pk_logg") || "[]"); } catch (x) { } ev.target.replaceWith(el("pre", { class: "pk-logg" }, (l.length ? l.join("\n") : "Ingen hendelser ennå.") + "\n" + navigator.userAgent)); } }, "Vis avspillingslogg (for feilsøking)"));
   }
   function lytteboks(kapId) {
     const liste = pkFor(kapId); if (!liste.length) return null;
