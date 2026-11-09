@@ -1144,6 +1144,10 @@ body.pk-aktiv{padding-bottom:96px}
 @media print{.innspillknapp,.innspill-bak{display:none!important}}
 .maal li{text-wrap:wrap}
 .innspill .knapp.primar.ikke-klar{opacity:.55}
+.at-tab td{white-space:normal}.at-tab td.num{white-space:nowrap;width:1%}
+table.tab.at-tab,table.tab.at-scen{min-width:0}
+table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphens:auto;overflow-wrap:anywhere}
+@media(max-width:520px){table.tab.at-scen{font-size:.8rem}table.tab.at-scen td,table.tab.at-scen th{padding:6px 4px}}
 
 </style>
 </head>
@@ -3269,7 +3273,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 08.11.2026 07:28. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 09.11.2026 12:26. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -3814,6 +3818,13 @@ LOM.filer = {
   },
   {
    "type": "tema",
+   "navn": "OK05_Kalkulasjon_Tema_Arbeidstimer_2026_og_2027.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_Tema_Arbeidstimer_2026_og_2027.pdf",
+   "dato": "09.11.2026",
+   "kb": 510
+  },
+  {
+   "type": "tema",
    "navn": "OK05_Tema_Fra_budsjett_til_kalkyle.xlsx",
    "fil": "pensum/ok05/OK05_Tema_Fra_budsjett_til_kalkyle.xlsx",
    "dato": "30.10.2026",
@@ -3954,8 +3965,8 @@ LOM.filer = {
    "type": "v7ark",
    "navn": "OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Okteark_v10.pdf",
    "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Okteark_v10.pdf",
-   "dato": "02.11.2026",
-   "kb": 56,
+   "dato": "08.11.2026",
+   "kb": 64,
    "okt": "økt 2 av 2: fra rangering til plan",
    "sp": "Timene strekker ikke til i april. Hvem må vike, og hva koster et unntak?"
   },
@@ -21328,7 +21339,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.22.2 · 6. november 2026",   // 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.23.0 · 9. november 2026",   // 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -21399,6 +21410,7 @@ LOM.deler = [
 LOM.oppsett.verktoy = [
   { id: "tilbud", ikon: "kr", navn: "Tilbudskalkulator", tekst: "Fra kalkyle til tilbud: timer, timepris, materiell med rabatt og påslag, rundsummer, vedlegg og selvkost.", ref: "Økonomistyring for LØM-emnet, kapittel 5" },
   { id: "budsjettkalkyle", ikon: "≡", navn: "Fra budsjett til kalkyle", tekst: "Budsjettet blir til påslag, påslagene til pris. Samme jobb oppstilt som i boka og som i kalkyleprogrammene, og hva valget av fordelingsnøkkel gjør.", ref: "Økonomistyring for LØM-emnet, kapittel 5" },
+  { id: "arbeidstimer", ikon: "▦", navn: "Arbeidstimer 2026 og 2027", tekst: "Fra 261 hverdager til fakturerbare timer: helligdager, ferie med og uten tariffavtale, ekstra ferieuke fra 60 år og uproduktiv tid. Med nedlastbar oversikt måned for måned.", ref: "Økonomistyring for LØM-emnet, kapittel 5 (faktureringsgrad); ferieloven § 5" },
   { id: "timepris", ikon: "t", navn: "Timepriskalkulator", tekst: "Hva må timen koste? Faktureringsgrad, selvkost og den vanligste feilen i faget.", ref: "Økonomistyring for LØM-emnet, kapittel 5" },
   { id: "nullpunkt", ikon: "⋈", navn: "Nullpunktskalkulator", tekst: "Hvor mange oppdrag må avdelingen ha før den går i null? Graf, risikomargin og de tre spakene.", ref: "Økonomistyring for LØM-emnet, kapittel 8" },
   { id: "regnskap", ikon: "=", navn: "Resultat og balanse", tekst: "Endre en post og se hvordan delsummer, årsresultat og balanse henger sammen.", ref: "Økonomistyring for LØM-emnet, kapittel 3" },
@@ -38654,7 +38666,9 @@ LOM.innhold.ok05 = {
     {"overskrift": "Prisen på én jobb: fire trinn", "hva": "Først det som hører jobben til: timer, materiell og kjøring. Så en andel av kontoret og bilene. Det er selvkost, der jobben går i null. Så fortjeneste. Så merverdiavgift til staten.", "hvem": "Kalkulatøren og prosjektlederen som gir tilbud.", "hvorfor": "Glemmer du ett trinn, er prisen for lav. Tar du fortjeneste av feil tall, blir den også for lav.", "eksempel": "Et sikringsskapbytte: 14 timer og materiell gir 19 560 kroner. Pluss 4 200 i andel av kontoret: selvkost 23 760. Pluss 12 prosent fortjeneste: 26 611 kroner. Pluss merverdiavgift: 33 264 kroner til privatkunden. Bruker montøren 18,5 timer i stedet for 14, er hele fortjenesten borte.", "husk": "Boka kaller det jobben koster, selvkost, og fortjenesten regnes av selvkost (5.2), ikke av timene alene."},
     {"overskrift": "Påslag: samme kroner, to ulike prosenter", "hva": "Nordlys legger 20 prosent på materiellet før det faktureres videre (casens tall; materialpåslag er bransjens ord, boka kaller det samlede påslaget avanse, 5.1). De 20 prosentene regnes av det materiellet kostet. Regner du de samme kronene av prisen kunden betaler, blir tallet mindre.", "hvem": "Den som kjøper inn og fakturerer videre materiell.", "hvorfor": "Selgere viser det største tallet. Du må vite hvilket tall du ser på, ellers tror du at du tjener mer enn du gjør.", "eksempel": "Downlights for 71 200 kroner selges for 85 440. Påslaget er 14 240 kroner. Det er 20 prosent av innkjøpet, men bare 16,7 prosent av prisen.", "husk": "Prosenter oppå prosenter ganges. 40 prosent pluss 12 prosent er 56,8, ikke 52."},
     {"overskrift": "Stille uke: ta jobben hvis den gir noe igjen", "hva": "Når montørene ellers ville stått ledige, er det nok at jobben dekker sine egne kostnader og gir noe igjen. Det som blir igjen, kalles dekningsbidrag.", "hvem": "Driftslederen som skal fylle en tom uke.", "hvorfor": "Litt er bedre enn ingenting når folkene er betalt uansett. Men priser du alle jobber slik, dekker du aldri husleia. Da kan ordreboka være full og bedriften gå konkurs.", "eksempel": "Et hasteoppdrag koster 18 000 kroner i timer og materiell. Kunden tilbyr 21 500. De 3 500 kronene er bedre enn en tom dag — og siden montørene får lønn uansett, gir jobben i virkeligheten enda mer.", "husk": "Boka kaller det som blir igjen over merkost, dekningsbidrag, og metoden bidragskalkyle (5.2, 5.2.2). Unntak i en stille uke. Aldri som vane."},
-    {"overskrift": "Etterpå: sjekk hva jobben faktisk kostet", "hva": "Prisen du ga på forhånd, er en forkalkyle. Når jobben er ferdig, setter du opp det samme regnestykket med timelistene og fakturaene. Det er etterkalkylen. Forskjellen er avviket.", "hvem": "Prosjektlederen etter hver jobb.", "hvorfor": "Uten etterkalkyle gjør du samme feil i neste tilbud. Tre skapbytter som alle tok 18 timer i stedet for 14, er ikke uflaks. Da må forkalkylen skrives om.", "eksempel": "Timene føres per jobb. Avviket regnes linje for linje, i kroner og prosent.", "husk": "Boka kaller dem forkalkyle og etterkalkyle (5.2.3). Avviket er ikke for å finne skyld. Det er for å prise riktig neste gang."}
+    {"overskrift": "Etterpå: sjekk hva jobben faktisk kostet", "hva": "Prisen du ga på forhånd, er en forkalkyle. Når jobben er ferdig, setter du opp det samme regnestykket med timelistene og fakturaene. Det er etterkalkylen. Forskjellen er avviket.", "hvem": "Prosjektlederen etter hver jobb.", "hvorfor": "Uten etterkalkyle gjør du samme feil i neste tilbud. Tre skapbytter som alle tok 18 timer i stedet for 14, er ikke uflaks. Da må forkalkylen skrives om.", "eksempel": "Timene føres per jobb. Avviket regnes linje for linje, i kroner og prosent.", "husk": "Boka kaller dem forkalkyle og etterkalkyle (5.2.3). Avviket er ikke for å finne skyld. Det er for å prise riktig neste gang."},
+    {"overskrift": "Arbeidstimer i 2026 og 2027: fra kalender til fakturerbar time", "hva": "Et år har 261 hverdager. Trekk fra røde dager som faller på en hverdag (8 i 2026, 6 i 2027), fem ukers ferie og julaften og nyttårsaften. Da står det igjen 226 arbeidsdager i 2026 og 228 i 2027. Med 7,5 timer om dagen blir det {{1 695|226 arbeidsdager × 7,5 timer = 1 695 tilgjengelige timer per montør i 2026. Arbeidstimer 2026 og 2027, utvidet oversikt, s. 3 (korrigert grunnlag)}} og {{1 710|228 arbeidsdager × 7,5 timer = 1 710 tilgjengelige timer per montør i 2027. Arbeidstimer 2026 og 2027, utvidet oversikt, s. 3}} tilgjengelige timer per montør. Så går en del av timene til sykefravær, kurs, møter, lager og venting. Det som er igjen, er de fakturerbare timene.", "hvem": "Daglig leder og kalkulatøren som legger kapasitetsplanen og setter timeprisen for neste år.", "hvorfor": "De faste kostnadene skal deles på de fakturerbare timene. Et år med færre arbeidsdager gir færre timer å fordele dem på, og da må hver time bære litt mer.", "eksempel": "Med 15 prosent uproduktiv tid blir 1 695 tilgjengelige timer til {{1 441|1 695 × 0,85 = 1 440,75, avrundet 1 441 fakturerbare timer per montør i 2026. Arbeidstimer 2026 og 2027, utvidet oversikt, s. 3}} fakturerbare per montør i 2026. Det er nivået til en godt drevet bedrift. Nordlys fakturerer 1 200 av 1 695, altså 70,8 prosent. Det betyr 29 prosent uproduktiv tid.", "husk": "Kalenderen gir de tilgjengelige timene; planleggingen av dagen avgjør hvor mange som blir fakturert. Forholdet mellom dem kaller boka faktureringsgrad (formelsamlingen). Kalenderdelen står ikke i boka; den bygger på Landsoverenskomsten for elektrofagene, ferieloven og NHO Elektros oversikt over arbeidstimer."},
+    {"overskrift": "Ferie: tariffavtale, bare ferieloven, og når montøren fyller 60", "hva": "Ferieloven gir 25 virkedager ferie. Fordi lørdag regnes som virkedag, er det fire uker og én dag. Landsoverenskomsten for elektrofagene gir i tillegg en femte uke. Den som fyller 60 år i løpet av året, har rett til en ekstra uke etter ferieloven.", "hvem": "Daglig leder som ansetter og velger om bedriften skal ha tariffavtale, og kalkulatøren som regner timeprisen.", "hvorfor": "Hver ferieuke er fem arbeidsdager, 37,5 timer, som bedriften betaler for gjennom feriepengene, men ikke kan fakturere. Hvor mange uker de ansatte har, endrer derfor både de tilgjengelige timene og lønnskostnaden.", "eksempel": "Per montør i 2026: med tariffavtale 1 695 timer. Med bare ferieloven 1 740 timer, fordi ferien er fire dager kortere og julaften og nyttårsaften som regel er vanlige arbeidsdager. Med tariffavtale og fylt 60 år 1 657,5 timer. Feriepengene er 10,2 prosent etter loven og 12 prosent med tariffavtalen; for den som er over 60 kommer 2,3 prosent i tillegg, beregnet av inntil seks ganger grunnbeløpet.", "husk": "Lønnskostnaden i boka (tabell 2.4) regner med 12 prosent feriepenger, altså tariffens femte uke. Bruker du Se og regn → Arbeidstimer, ser du hvordan ferieordningen flytter timene og timeprisen."},
   ],
 
   krok: {
@@ -38729,7 +38743,9 @@ LOM.innhold.ok05 = {
         "Slik henger det sammen hos Nordlys: 14 400 montørtimer ble fakturert til 890 kroner timen, og timene alene ga {{12 816 000|Timeinntekt: 14 400 fakturerte timer × 890 kr = 12 816 000 kr. Det er det samme som kostnadene timene må dekke, 11 472 000, pluss driftsresultatet 1 344 000. Sammendraget kap. 5, «Slik henger det sammen hos Nordlys»}} kroner. Resten av omsetningen på 22,4 millioner, {{9 584 000|Omsetning som ikke kommer fra timer: 22 400 000 − 12 816 000 = 9 584 000 kr materiell fakturert videre, det vil si 7 990 000 i innkjøp pluss 20 % påslag. Sammendraget kap. 5, «Slik henger det sammen hos Nordlys»}} kroner, er materiell fakturert videre. Lønnskostnaden var 10,66 millioner, som er {{740|Lønnskostnad per fakturert time: 10 660 000 / 14 400 = 740 kr. Sammendraget kap. 5, «Slik henger det sammen hos Nordlys»}} kroner per fakturert time når hele lønnsbudsjettet, administrasjonen medregnet, fordeles på de fakturerte timene. Montørlønnen alene, 8,44 millioner, er {{586|Produksjonslønn per fakturert time: 8 440 000 / 14 400 = 586 kr. Sammendraget kap. 5, «Slik henger det sammen hos Nordlys»}} kroner per fakturert time. Legg merke til at satsen Ida bruker for direkte arbeid i en oppdragskalkyle, 640 kroner, er noe annet enn disse gjennomsnittene. Det ene er en kalkylesats for én montørtime på ett oppdrag, satt litt over det montørtimen koster når ferie, kurs og de ufakturerte timene er fordelt; det andre er gjennomsnitt for hele bedriften hentet ut av regnskapet i etterkant. I en installasjonsbedrift løper montørlønnen uansett om timene blir fakturert eller ikke, og det er derfor faktureringsgraden avgjør om satsen holder. De svarer på hvert sitt spørsmål, og skal ikke forveksles."
       ],
       ref: "Økonomistyring for LØM-emnet, avsnitt 5.2.3 med eksempel 4 og tabell 5.1; tallene for Nordlys er casens"
-    }
+    },
+    {"overskrift": "Fra kalender til fakturerbare timer i 2026 og 2027", "avsnitt": ["NHO Elektro (tidligere Nelfo) lager hvert år en oversikt over arbeidstimer for installasjonsbedrifter. Metoden er enkel: ta hverdagene i året, trekk fra helligdager som faller på en hverdag, trekk fra antatt ferie og gang med 7,5 timer, som er normal arbeidsdag etter Landsoverenskomsten for elektrofagene (37,5 timer i uka). Etterpå trekkes en prosent uproduktiv tid fra, og resten er produktive, fakturerbare timer. For 2026 gir metoden 231 arbeidsdager og 1 733 timer, for 2027 232 dager og 1 740 timer.", "Metoden har to svakheter. Den teller julaften og nyttårsaften som arbeidsdager, men de er tariffestede fridager med lønn. Og den regner med 22 og 23 feriedager, mens tariffavtalen gir fem uker, 25 hverdager. Retter du for det, får du {{1 695|261 hverdager − 8 helligdager − 25 feriedager − 2 (julaften og nyttårsaften) = 226 dager × 7,5 = 1 695 timer. Arbeidstimer 2026 og 2027, utvidet oversikt, s. 3}} tilgjengelige timer per montør i 2026 og {{1 710|261 − 6 − 25 − 2 = 228 dager × 7,5 = 1 710 timer. Samme kilde}} i 2027. Det er tallet en kapasitetsplan bør bygge på, og det er det Nordlys bruker.", "Den uproduktive tiden er betalt tid som ikke kan faktureres: sykefravær i arbeidsgiverperioden, kurs og den årlige opplæringen som forskrift om sikkerhet ved arbeid i og drift av elektriske anlegg (FSE) krever, møter og vernearbeid, arbeid på lageret og i servicebilen, reisetid som ikke kan belastes kunden, ventetid, og utbedring av egne feil. Verken tariffavtalen eller NHO Elektro fastsetter en prosent. En god bedrift ligger rundt 10 til 20 prosent; med 15 prosent blir det 1 441 fakturerbare timer per montør i 2026, i tråd med erfaringen om at rundt 1 500 timer er et realistisk øvre nivå. Nordlys har 29 prosent og fakturerer 1 200.", "Last ned hele oversikten måned for måned (PDF) under Se og regn → Arbeidstimer, eller under Filer til kapitlet."], "ref": "Kalenderdelen står ikke i boka. Bygger på NHO Elektro: Arbeidstimer 2024 (samme metode), Landsoverenskomsten for elektrofagene 2026–2028 § 7 og ferieloven § 5. Faktureringsgrad: Økonomistyring for LØM-emnet, formelsamlingen."},
+    {"overskrift": "Ferien og timeprisen: tariffavtale, ferieloven og ansatte over 60", "avsnitt": ["Ferieloven § 5 gir alle arbeidstakere 25 virkedager ferie. Loven regner alle dager unntatt søndager og helligdager som virkedager, så 25 virkedager er fire uker og én dag. Landsoverenskomsten for elektrofagene gir en avtalefestet femte ferieuke, og feriepengene blir 12 prosent i stedet for lovens 10,2. Den delen av landsoverenskomsten som er gjort gjeldende for hele bransjen gjennom forskriften om allmenngjøring, gjelder lønn, reise, kost og losji, ikke ferien. En elektrobedrift uten tariffavtale kan derfor lovlig gi fire uker og én dag.", "For kalkylen betyr det at en montør uten tariffavtale har om lag {{45|1 740 − 1 695 = 45 timer per montør i 2026: fire feriedager og julaften og nyttårsaften, 6 dager × 7,5 timer. Regnet her}} flere tilgjengelige timer i året, og at feriepengene er 1,8 prosentpoeng lavere. Med 85 prosent faktureringsgrad og 890 kroner timen er de ekstra timene verdt om lag {{34 000|45 × 0,85 = 38,25 fakturerbare timer × 890 kr = 34 042 kr per montør. Regnet her}} kroner i året. Det ser ut som en konkurransefordel, men regnestykket har en annen side: kortere ferie gir mer slitasje og fravær, bedriften er mindre attraktiv for fagarbeidere og lærlinger, og kundene i offentlige anbud stiller ofte krav om lønns- og arbeidsvilkår. Som leder må du kunne regne på begge deler.", "Ferieloven gir den som fyller 60 år i løpet av året en ekstra uke ferie, seks virkedager, og et tillegg på 2,3 prosent i feriepenger, beregnet av inntil seks ganger grunnbeløpet. For bedriften betyr det fem færre arbeidsdager, 37,5 timer, for hver ansatt over 60. Med tariffavtale går en montør på 60 fra 1 695 til 1 657,5 tilgjengelige timer i 2026. Det er ikke lov å la være å ansette noen på grunn av alder (arbeidsmiljøloven kapittel 13); det riktige svaret er å ta timene med i kapasitetsplanen og i timeprisen, og å se erfaringen som en ressurs, for eksempel som fadder for lærlinger.", "Sjekk deg selv: hvorfor gir 25 virkedager bare fire uker og én dag? Og hvor mange timer mister en bedrift med åtte montører over 60 i løpet av et år?"], "ref": "Står ikke i boka. Ferieloven § 5 og § 10 (Lovdata); Landsoverenskomsten for elektrofagene 2026–2028; forskrift om delvis allmenngjøring av Landsoverenskomsten for elektrofagene (Arbeidstilsynet); arbeidsmiljøloven kapittel 13. Lønnskostnad med 12 % feriepenger: Økonomistyring for LØM-emnet, tabell 2.4."},
   ],
 
   begreper: [
@@ -38760,7 +38776,7 @@ LOM.innhold.ok05 = {
     { navn: "Dekningsbidrag og dekningsgrad", formel: "Dekningsbidrag = pris uten merverdiavgift − merkost; dekningsgrad = dekningsbidrag × 100 / pris uten merverdiavgift", eksempel: "Dekningsbidrag = 26 611,20 − 19 560 = 7 051,20 kr; dekningsgrad = 7 051,20 × 100 / 26 611,20 = 26,5 % (øvingsheftet kap. 5, oppgave 3b)" }
   ],
 
-  kalkulatorer: ["timepris", "tilbud"],
+  kalkulatorer: ["arbeidstimer", "timepris", "tilbud"],
 
   flervalg: [
     { sp: "En montør er tilgjengelig 1 695 timer i året og fakturerer 1 200. Hva er faktureringsgraden?", hint: "Faktureringsgrad = fakturerte timer delt på tilgjengelige timer. Svaret er en andel under 100 % — de fakturerte timene er alltid færre enn de tilgjengelige.", alt: ["70,8 %", "141 %", "29,2 %", "100 %"], riktig: 0, forklaring: "Faktureringsgrad = fakturerte timer / tilgjengelige timer = 1 200 / 1 695 = {{70,8 %|1 200 / 1 695 = 0,708, altså 70,8 %. Øvingsheftet kap. 5, oppgave 1a}}. De {{495|1 695 − 1 200 = 495 timer per montør. Øvingsheftet kap. 5, oppgave 1a}} timene som blir borte, går til kjøring, henting av materiell, opprydding, dokumentasjon og venting — og bedriften betaler lønn for dem. (Formelsamlingen, faktureringsgrad)" },
@@ -38783,7 +38799,9 @@ LOM.innhold.ok05 = {
     {"niva": "grunn", "sp": "Det blir et dårlig år med få jobber. Hva gjør du med timeprisen?", "alt": ["Holder den, og viser tapet som underdekning", "Setter den opp, så hver time dekker mer", "Setter den ned for å vinne alle jobber", "Fjerner fortjenesten"], "riktig": 0, "forklaring": "Faste kostnader deles på timene bedriften er bygd for. Et dårlig år er et kapasitetsproblem, ikke et prisproblem. (Bygger på 5.2.2 og 5.3; underdekning står ikke i boka)"},
     {"niva": "grunn", "sp": "Hva heter prisen der jobben verken tjener eller taper?", "alt": ["Inntakskost", "Dekningsbidrag", "Selvkost", "Avanse"], "riktig": 2, "forklaring": "Selvkost er alt jobben koster bedriften, før fortjeneste. (Kap. 5.1 og 5.2)"},
     {"niva": "grunn", "sp": "Nordlys legger 20 prosent på materiell som kostet 71 200 kroner. Hva blir prisen uten merverdiavgift?", "alt": ["71 200 kroner", "85 440 kroner", "89 000 kroner", "106 800 kroner"], "riktig": 1, "forklaring": "71 200 ganger 1,20 er 85 440 kroner. Med merverdiavgift blir det 106 800. (Kap. 5.1)"},
-    {"niva": "grunn", "sp": "Når er det riktig å ta en jobb som bare dekker sine egne kostnader og litt til?", "alt": ["Alltid, det gir jo noe", "Når ordreboka er full", "Aldri", "Når montørene ellers ville stått ledige"], "riktig": 3, "forklaring": "Bidragsmetoden er for ledig kapasitet og stille uker. Som vane dekker den aldri de faste kostnadene. (Kap. 5.2.2, regelen for pristilbud)"}
+    {"niva": "grunn", "sp": "Når er det riktig å ta en jobb som bare dekker sine egne kostnader og litt til?", "alt": ["Alltid, det gir jo noe", "Når ordreboka er full", "Aldri", "Når montørene ellers ville stått ledige"], "riktig": 3, "forklaring": "Bidragsmetoden er for ledig kapasitet og stille uker. Som vane dekker den aldri de faste kostnadene. (Kap. 5.2.2, regelen for pristilbud)"},
+    {"sp": "Ferieloven gir 25 virkedager ferie. Hvorfor blir det bare fire uker og én dag, og ikke fem uker?", "hint": "Tenk på hvilke dager i uka loven regner som virkedager.", "alt": ["Fordi loven regner lørdag som virkedag, så én uke er seks virkedager", "Fordi helligdager alltid trekkes fra ferien", "Fordi julaften og nyttårsaften regnes som ferie", "Fordi ferien bare gjelder for faste ansatte"], "riktig": 0, "forklaring": "Ferieloven regner alle dager unntatt søndager og helligdager som virkedager. En uke er da seks virkedager, og 25 virkedager blir fire uker og én dag. Den femte uka kommer fra tariffavtalen (Landsoverenskomsten for elektrofagene). (Ferieloven § 5)"},
+    {"sp": "En montør med tariffavtale har 1 695 tilgjengelige timer i 2026. Hun fyller 60 år i år. Hvor mange tilgjengelige timer har hun da?", "hint": "Den som fyller 60, får en ekstra uke ferie. Hvor mange arbeidsdager og timer er én uke?", "alt": ["1 657,5 timer", "1 695 timer", "1 732,5 timer", "1 620 timer"], "riktig": 0, "forklaring": "Den ekstra ferieuka er fem arbeidsdager × 7,5 timer = 37,5 timer. 1 695 − 37,5 = 1 657,5 timer. (Ferieloven § 5; arbeidstimer 2026, regnet her)"},
   ],
 
   regne: [
@@ -61772,6 +61790,67 @@ LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
     nokBoks.replaceChildren(H().tab(el, [{ navn: "Jobb", nokkel: "j" }, { navn: "Påslag på direkte lønn", nokkel: "n1", num: true, fmt: f.kr }, { navn: "Påslag på lønn og materiell", nokkel: "n2", num: true, fmt: f.kr }],
       [{ j: "Tavle: 5 000 lønn + 40 000 materiell", n1: A_.n1, n2: A_.n2 }, { j: "Service: 20 000 lønn + 2 000 materiell", n1: B_.n1, n2: B_.n2 }], { sorterbar: false }),
       el("div", { class: "tips" }, "Begge valgene dekker de samme kronene over året, men enkeltjobbene får ulik pris. Boka legger påslaget på direkte lønn (5.2.1); det gjorde vi også i august. Prisene er uten mva. og med fortjenesten."));
+  }
+  tegn(); return wrap;
+};
+
+/* ---------- Arbeidstimer 2026 og 2027 (Økonomistyring for LØM-emnet, kap. 5, faktureringsgrad) ----------
+   Kalenderdata: hverdager, helligdager på hverdag og julaften/nyttårsaften på hverdag. Kilde: «Arbeidstimer 2026 og 2027,
+   utvidet oversikt» (Fagskolen Oslo, 09.11.2026), samme metode som NHO Elektros «Arbeidstimer 2024».
+   Ferie: ferieloven § 5 (25 virkedager = 4 uker + 1 dag = 21 hverdager; 60 år: + 6 virkedager = 5 hverdager),
+   Landsoverenskomsten for elektrofagene (5 uker = 25 hverdager, julaften og nyttårsaften fri). Lagt til 09.11.2026. */
+LOM.kalkulatorer.arbeidstimer = function (el, f) {
+  const AAR = { 2026: { hverd: 261, hellig: 8, julnytt: 2 }, 2027: { hverd: 261, hellig: 6, julnytt: 2 } };
+  const ORDN = { tariff: { navn: "Tariffavtale: 5 uker", ferie: 25, julnytt: true, fp: 12 }, lov: { navn: "Bare ferieloven: 4 uker og 1 dag", ferie: 21, julnytt: false, fp: 10.2 } };
+  const s = { aar: 2026, ordn: "tariff", seksti: false, tpd: 7.5, uprod: 15, mont: 12, pris: 890 };
+  const en1 = (v) => v.toLocaleString("nb-NO", { maximumFractionDigits: 1 });
+  const PDF = "pensum/ok05/OK05_Kalkulasjon_Tema_Arbeidstimer_2026_og_2027.pdf";
+  const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
+  const velg = (k, valg) => { const e = el("select", { class: "celle", style: "width:100%;max-width:340px" }, valg.map(([v, t]) => el("option", { value: v }, t))); e.value = String(s[k]); e.addEventListener("change", () => { s[k] = k === "aar" ? +e.value : e.value; tegn(); }); return e; };
+  const seksti = el("input", { type: "checkbox", id: "at-seksti" }); seksti.addEventListener("change", () => { s.seksti = seksti.checked; tegn(); });
+  const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
+  const tabBoks = el("div"), tips = el("div");
+  const timer = (aar, ordn, seksti, tpd) => { const A = AAR[aar], O = ORDN[ordn]; const ferie = O.ferie + (seksti ? 5 : 0); const dager = A.hverd - A.hellig - ferie - (O.julnytt ? A.julnytt : 0); return { dager, ferie, tilgj: dager * tpd }; };
+  const wrap = el("div", { class: "kort" },
+    el("h2", null, "Arbeidstimer 2026 og 2027 — fra kalender til fakturerbar time"),
+    el("p", { class: "kilder" }, "Hvor mange timer har en montør egentlig å selge? Velg år og ferieordning, og se hvordan helligdager, ferie og uproduktiv tid gjør 261 hverdager om til fakturerbare timer. Faktureringsgrad: Økonomistyring for LØM-emnet, formelsamlingen. Kalender og ferie står ikke i boka; de bygger på Landsoverenskomsten for elektrofagene og ferieloven § 5."),
+    el("p", null, el("a", { class: "knapp", href: PDF, download: "" }, "↓ Last ned arbeidstimer 2026 og 2027 (PDF, måned for måned)"), " ", el("a", { class: "knapp", href: "https://www.nhoelektro.no/medlemskap/tall-og-fakta/arbeidstimer/", target: "_blank", rel: "noopener" }, "NHO Elektros oversikt ↗")),
+    el("div", { class: "kalk" },
+      el("div", { class: "inndata" },
+        el("div", null, el("label", null, "År"), velg("aar", [["2026", "2026"], ["2027", "2027"]])),
+        el("div", null, el("label", null, "Ferieordning"), velg("ordn", [["tariff", ORDN.tariff.navn], ["lov", ORDN.lov.navn]])),
+        el("div", null, el("label", { for: "at-seksti" }, seksti, " Montøren fyller 60 år i år (én uke ekstra ferie)")),
+        felt("Timer per dag", "tpd", 7, 8, 0.5, "7,5 i tariffavtalen"),
+        felt("Uproduktiv tid (%)", "uprod", 0, 40, 0.5, "sykefravær, kurs, møter, lager, venting"),
+        felt("Antall montører", "mont", 1, 40, 1),
+        felt("Timepris uten mva (kr)", "pris", 500, 1500, 10),
+        el("div", { class: "resultat" }, r("dager", "Arbeidsdager i året"), r("tilgj", "Tilgjengelige timer per montør"), r("fakt", "Fakturerbare timer per montør"), r("fg", "Faktureringsgrad"), r("alle", "Fakturerbare timer i bedriften"), r("verdi", "Verdien av timene i året")))),
+    tabBoks, tips);
+  function tegn() {
+    const T = timer(s.aar, s.ordn, s.seksti, s.tpd), fg = 1 - s.uprod / 100, fakt = T.tilgj * fg;
+    res.dager.firstChild.textContent = f.nf.format(T.dager); res.tilgj.firstChild.textContent = en1(T.tilgj);
+    res.fakt.firstChild.textContent = f.nf.format(Math.round(fakt)); res.fg.firstChild.textContent = f.pst(fg * 100);
+    res.alle.firstChild.textContent = f.nf.format(Math.round(fakt * s.mont)); res.verdi.firstChild.textContent = f.kr(fakt * s.mont * s.pris);
+    const A = AAR[s.aar];
+    const scen = [["Tariff", "tariff", false], ["Ferieloven", "lov", false], ["Tariff, 60 år", "tariff", true], ["Ferieloven, 60 år", "lov", true]].map(([n, o, sx]) => { const t = timer(s.aar, o, sx, s.tpd); return { n, o, sx, ...t, fakt: t.tilgj * fg, fp: ORDN[o].fp + (sx ? 2.3 : 0) }; });
+    const base = scen[0];
+    tabBoks.replaceChildren(
+      el("h3", null, `Oppbygningen i ${s.aar}`),
+      el("div", { class: "tab-wrap" }, el("table", { class: "tab kompakt at-tab", style: "width:100%" }, el("tbody", null,
+        el("tr", null, el("td", null, "Hverdager (mandag–fredag)"), el("td", { class: "num" }, f.nf.format(A.hverd))),
+        el("tr", null, el("td", null, "− helligdager på hverdager"), el("td", { class: "num" }, "−" + A.hellig)),
+        el("tr", null, el("td", null, `− ferie (${T.ferie} hverdager)`), el("td", { class: "num" }, "−" + T.ferie)),
+        el("tr", null, el("td", null, "− julaften og nyttårsaften (fri med tariffavtale)"), el("td", { class: "num" }, ORDN[s.ordn].julnytt ? "−" + A.julnytt : "0")),
+        el("tr", { class: "sum" }, el("td", null, "= Arbeidsdager"), el("td", { class: "num" }, f.nf.format(T.dager))),
+        el("tr", null, el("td", null, `× ${String(s.tpd).replace(".", ",")} timer = tilgjengelige timer`), el("td", { class: "num" }, en1(T.tilgj))),
+        el("tr", null, el("td", null, `× ${f.pst(fg * 100)} faktureringsgrad = fakturerbare timer`), el("td", { class: "num" }, f.nf.format(Math.round(fakt))))))),
+      el("h3", null, `Fire ferieordninger side om side (${s.aar}, ${f.pst(s.uprod)} uproduktiv tid)`),
+      el("div", { class: "tab-wrap" }, el("table", { class: "tab kompakt at-scen", style: "width:100%" },
+        el("thead", null, el("tr", null, el("th", null, "Ordning"), el("th", null, "Tilgj.\u00a0timer"), el("th", null, "Fakt.\u00a0timer"), el("th", null, "Ferie\u00adpenger"))),
+        el("tbody", null, scen.map(x => el("tr", { class: x.o === s.ordn && x.sx === s.seksti ? "hl" : "" }, el("td", null, x.n + " (" + x.ferie + ")"), el("td", { class: "num" }, en1(x.tilgj)), el("td", { class: "num" }, f.nf.format(Math.round(x.fakt)), x === base ? null : el("br"), x === base ? null : el("small", null, "(" + (x.fakt - base.fakt >= 0 ? "+" : "") + f.nf.format(Math.round(x.fakt - base.fakt)) + ")")), el("td", { class: "num" }, f.pst(x.fp))))))),
+      el("p", { class: "kilder" }, "Tariff = Landsoverenskomsten for elektrofagene, fem uker. Ferieloven = bare lovens fire uker og én dag. Tilgj. = tilgjengelige, fakt. = fakturerbare; tallet i parentes er forskjellen mot tariff. Feriedager er regnet i hverdager. Ferieloven gir 25 virkedager; lørdag er virkedag, så det blir fire uker og én dag. Tillegget på 2,3 % feriepenger for dem over 60 regnes av inntil seks ganger grunnbeløpet. Uten tariffavtale er julaften og nyttårsaften regnet som vanlige arbeidsdager; arbeidsavtalen kan si noe annet."));
+    const lov = scen[1], t60 = scen[2];
+    tips.replaceChildren(el("div", { class: "tips" }, `Uten tariffavtale har en montør ${f.nf.format(Math.round(lov.fakt - base.fakt))} flere fakturerbare timer i ${s.aar}, verdt ${f.kr((lov.fakt - base.fakt) * s.pris)} i året ved ${f.kr(s.pris)} timen. Feriepengene er 1,8 prosentpoeng lavere. Det ser ut som en konkurransefordel, men kortere ferie gir mer slitasje, og bedriften blir mindre attraktiv for fagarbeidere og lærlinger. En montør som fyller 60, har ${f.nf.format(Math.round(base.fakt - t60.fakt))} færre fakturerbare timer med tariffavtale: det hører hjemme i kapasitetsplanen og timeprisen, ikke i ansettelsen.`));
   }
   tegn(); return wrap;
 };
