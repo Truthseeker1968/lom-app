@@ -3273,7 +3273,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 11.11.2026 10:48. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 11.11.2026 11:12. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -3792,15 +3792,15 @@ LOM.filer = {
    "type": "v6ark",
    "navn": "OK05_Kalkulasjon_Oppgaver_v10.xlsx",
    "fil": "pensum/ok05/OK05_Kalkulasjon_Oppgaver_v10.xlsx",
-   "dato": "02.11.2026",
-   "kb": 55
+   "dato": "11.11.2026",
+   "kb": 52
   },
   {
    "type": "v6samm",
    "navn": "OK05_Kalkulasjon_Sammendrag_v6.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 241
+   "dato": "11.11.2026",
+   "kb": 257
   },
   {
    "type": "hefte",
@@ -3813,8 +3813,8 @@ LOM.filer = {
    "type": "regneark",
    "navn": "OK05_Kalkulasjon_Regneark_Timepris_og_kalkyle.xlsx",
    "fil": "pensum/ok05/OK05_Kalkulasjon_Regneark_Timepris_og_kalkyle.xlsx",
-   "dato": "23.10.2026",
-   "kb": 29
+   "dato": "11.11.2026",
+   "kb": 26
   },
   {
    "type": "tema",
@@ -3822,13 +3822,6 @@ LOM.filer = {
    "fil": "pensum/ok05/OK05_Kalkulasjon_Tema_Arbeidstimer_2026_og_2027.pdf",
    "dato": "09.11.2026",
    "kb": 510
-  },
-  {
-   "type": "tema",
-   "navn": "OK05_Tema_Fra_budsjett_til_kalkyle.xlsx",
-   "fil": "pensum/ok05/OK05_Tema_Fra_budsjett_til_kalkyle.xlsx",
-   "dato": "30.10.2026",
-   "kb": 24
   }
  ],
  "ok06": [
@@ -21339,7 +21332,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.24.0 · 11. november 2026",   // 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.24.1 · 11. november 2026",   // 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -39743,11 +39736,11 @@ LOM.innhold.ok05.klasseoppgaver = [
     tittel: "Fra budsjett til kalkyle: sats og tilleggssats fra bedriftens eget budsjett",
     ingress: "En timepris er mer enn timelønna. Boka bygger prisen opp i en selvkostkalkyle: direkte lønn, direkte materiell, indirekte kostnader som et påslag på lønna, og fortjeneste (5.2 og 5.2.1). Satsene henter du fra bedriftens eget budsjett eller regnskap. Dette temaet viser hvordan, med budsjettet til Nordlys Elektro: bare lønna til dem som jobber ute på oppdrag er direkte lønn. Lønna til administrasjonen hører ikke til én jobb, så den er en indirekte kostnad. Samme framgangsmåte bruker du på budsjettet i prosjektet ditt, med dine egne forutsetninger. Kalkulasjonsprogrammene i bransjen deler påslagene i flere felt, men kronene er de samme.",
     trinn: [
-      { navn: "Sorter budsjettet", hva: "Hver budsjettlinje plasseres i én gruppe: direkte materiell (med innleie og underentrepriser), direkte lønn (produksjonen) eller indirekte kostnader (alt annet). Driftsresultatet blir fortjenesten.", hvor: "Kap. 5.2.1 · regnearket fane 1" },
+      { navn: "Sorter budsjettet", hva: "Hver budsjettlinje plasseres i én gruppe: direkte materiell (med innleie og underentrepriser), direkte lønn (produksjonen) eller indirekte kostnader (alt annet). Driftsresultatet blir fortjenesten.", hvor: "Kap. 5.2.1 · budsjettkalkulatoren i Se og regn" },
       { navn: "Finn de fakturerte timene", hva: "Budsjettet er i kroner, kalkylen regner per time. Broen mellom dem er antall timer kunden betaler for. Antall montører finner du fra lønnslinjene i budsjettet, og timene per montør fra faktureringsgraden. Hos Nordlys: 12 montører × 1 200 timer.", hvor: "Formelsamlingen · faktureringsgrad" },
-      { navn: "Regn ut sats og tilleggssats", hva: "Satsen er direkte lønn per fakturert time. Tilleggssatsen er de indirekte kostnadene i prosent av direkte lønn.", hvor: "Formelsamlingen kap. 5 · fane 2" },
+      { navn: "Regn ut sats og tilleggssats", hva: "Satsen er direkte lønn per fakturert time. Tilleggssatsen er de indirekte kostnadene i prosent av direkte lønn.", hvor: "Formelsamlingen kap. 5" },
       { navn: "Legg på fortjenesten", hva: "Fortjenesten regnes i prosent av selvkost. Nordlys sitt budsjett gir 6,4 %.", hvor: "Kap. 5.2" },
-      { navn: "Kalkuler jobben", hva: "Jobbens egne timer og materiell, med tilleggssatsen og fortjenesten oppå, satt opp som bokas selvkostkalkyle.", hvor: "Kap. 5.2 eksempel 3 · fane 3 og 4" }
+      { navn: "Kalkuler jobben", hva: "Jobbens egne timer og materiell, med tilleggssatsen og fortjenesten oppå, satt opp som bokas selvkostkalkyle.", hvor: "Kap. 5.2 eksempel 3" }
     ],
     bolker: [
       { overskrift: "Selvkostkalkylen, linje for linje", avsnitt: [
