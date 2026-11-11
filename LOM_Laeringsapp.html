@@ -3273,7 +3273,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 10.11.2026 06:50. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 11.11.2026 10:48. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -3738,7 +3738,7 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v10.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v10.pdf",
-   "dato": "02.11.2026",
+   "dato": "11.11.2026",
    "kb": 975,
    "okt": "økt 1 av 3: timeprisen",
    "sp": "Hvor kommer 890 kroner timen fra?"
@@ -3747,8 +3747,8 @@ LOM.filer = {
    "type": "v7ark",
    "navn": "OK05_Kalkulasjon_M1_Timeprisen_Okteark_v10.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Okteark_v10.pdf",
-   "dato": "02.11.2026",
-   "kb": 61,
+   "dato": "11.11.2026",
+   "kb": 195,
    "okt": "økt 1 av 3: timeprisen",
    "sp": "Hvor kommer 890 kroner timen fra?"
   },
@@ -21339,7 +21339,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.23.1 · 10. november 2026",   // 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.24.0 · 11. november 2026",   // 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -38662,6 +38662,7 @@ LOM.innhold.ok05 = {
   grunn: [
     {"overskrift": "Faktureringsgrad: hvor mange av timene får kunden regning for?", "hva": "En montør er på jobb 1 695 timer i året. Kunden får regning for 1 200 av dem. Resten går til kjøring, henting, rydding og venting. 1 200 av 1 695 er 70,8 prosent. Det er faktureringsgraden.", "hvem": "Formannen og driftslederen som legger dagen for laget.", "hvorfor": "Bedriften betaler lønn for alle 1 695 timene. Bare 1 200 gir penger inn. Jo flere timer som ender på en faktura, jo bedre går bedriften.", "eksempel": "Ett prosentpoeng høyere faktureringsgrad er verdt 181 026 kroner i året (1 % av 20 340 timer × 890 kroner). Uten å sette opp prisen med én krone.", "husk": "Boka kaller andelen faktureringsgrad (formelsamlingen). De fleste gjetter over 80 prosent hos Nordlys; det riktige er rundt 70."},
     {"overskrift": "Timeprisen: regningen delt på timene kunden betaler for", "hva": "Ta alt bedriften bruker i året. Trekk fra materiellet kunden betaler for direkte. Det som er igjen, må timene dekke. Del det på timene kunden faktisk betaler for. Legg på fortjeneste.", "hvem": "Kalkulatøren og daglig leder, hver gang prisen settes.", "hvorfor": "Deler du på alle timene montøren er på jobb, blir prisen for lav. Da taper du litt på hver eneste jobb, og det ser du først ved nyttår.", "eksempel": "11 472 000 kroner skal dekkes. Delt på 14 400 fakturerte timer er det 796,67 kroner. Pluss 93,33 i fortjeneste gir 890 kroner timen. Men de 796,67 er bokas selvkost per time etter at materialpåslaget har betalt sin del. Når timene alene skal bære de indirekte kostnadene, koster en time Nordlys 13 066 000 / 14 400 = 907 kroner: selvkost per fakturert time. Hadde Ida delt på alle 20 340 timene, ble prisen 630 kroner, og det mangler 2,4 millioner på slutten av året.", "husk": "Del på timene som står på en faktura. Boka kaller summen av kostnadene selvkost (5.2); å bygge timeprisen slik er regnet her med bokas oppstilling."},
+    {"overskrift": "Fire tall som kalles timepris", "hva": "Lønnskost per time er det montøren koster. Selvkost per time er det timen koster bedriften med alt. Timepris er det kunden betaler for timen. Omsetning per time er alt bedriften får inn per fakturert time, materiell medregnet.", "hvem": "Alle som leser eller lager et tilbud, og alle som sammenligner seg med bransjen.", "hvorfor": "Blander du tallene, kan du tro at du tjener penger når du taper. Boka kaller kostnaden per time «timepris», bransjen bruker ordet om prisen til kunden.", "eksempel": "Nordlys: lønnskost 586, selvkost uten materiell 907, timepris 890 og omsetning 1 556 kroner per fakturert time. NHO Elektro oppgir 1 534 kroner for bransjen i 2025, men det er omsetning per time med materiell, ikke en timepris.", "husk": "Si alltid hvilket av de fire tallene du mener."},
     {"overskrift": "Et dårlig år: ikke sett opp prisen", "hva": "Husleie, forsikring og kontorlønn er like store uansett hvor mye dere selger. Boka kaller dem faste kostnader. Boka regner satsene i kalkylen ut fra en normalperiode (5.3), og sier at de faste kostnadene må dekkes gjennom alt arbeidet bedriften utfører i løpet av året (5.2.2). Ordene normalaktivitet og underdekning under er våre, ikke bokas.", "hvem": "Daglig leder og styret når markedet svikter.", "hvorfor": "Setter du opp prisen når det er lite å gjøre, mister du de siste kundene også. Da blir neste år enda dårligere.", "eksempel": "Bedriften er bygd for 14 400 timer. Et år med bare 10 000 timer ville presset timeprisen fra 890 til 1 007 kroner (de faste 3 840 000 gir 384 kroner per time i stedet for 267). Nordlys holder 890 og viser underdekningen. Med bokas forutsetning er den 1 173 333 kroner i faste kostnader; med fast ansatte montører kommer lønna for de usolgte timene i tillegg, og tapet blir 3 753 200 kroner (4 400 × (267 + 586)). Det er det det er: for mange folk til for få jobber.", "husk": "Et dårlig år er et kapasitetsproblem, ikke et prisproblem."},
     {"overskrift": "Prisen på én jobb: fire trinn", "hva": "Først det som hører jobben til: timer, materiell og kjøring. Så en andel av kontoret og bilene. Det er selvkost, der jobben går i null. Så fortjeneste. Så merverdiavgift til staten.", "hvem": "Kalkulatøren og prosjektlederen som gir tilbud.", "hvorfor": "Glemmer du ett trinn, er prisen for lav. Tar du fortjeneste av feil tall, blir den også for lav.", "eksempel": "Et sikringsskapbytte: 14 timer og materiell gir 19 560 kroner. Pluss 4 200 i andel av kontoret: selvkost 23 760. Pluss 12 prosent fortjeneste: 26 611 kroner. Pluss merverdiavgift: 33 264 kroner til privatkunden. Bruker montøren 18,5 timer i stedet for 14, er hele fortjenesten borte.", "husk": "Boka kaller det jobben koster, selvkost, og fortjenesten regnes av selvkost (5.2), ikke av timene alene."},
     {"overskrift": "Påslag: samme kroner, to ulike prosenter", "hva": "Nordlys legger 20 prosent på materiellet før det faktureres videre (casens tall; materialpåslag er bransjens ord, boka kaller det samlede påslaget avanse, 5.1). De 20 prosentene regnes av det materiellet kostet. Regner du de samme kronene av prisen kunden betaler, blir tallet mindre.", "hvem": "Den som kjøper inn og fakturerer videre materiell.", "hvorfor": "Selgere viser det største tallet. Du må vite hvilket tall du ser på, ellers tror du at du tjener mer enn du gjør.", "eksempel": "Downlights for 71 200 kroner selges for 85 440. Påslaget er 14 240 kroner. Det er 20 prosent av innkjøpet, men bare 16,7 prosent av prisen.", "husk": "Prosenter oppå prosenter ganges. 40 prosent pluss 12 prosent er 56,8, ikke 52."},
@@ -38693,10 +38694,40 @@ LOM.innhold.ok05 = {
       avsnitt: [
         "Timeprisen bygges som en selvkostkalkyle: en oppstilling som finner hva noe koster bedriften fullt ut, før fortjenesten legges på. Boka viser selvkostkalkylen for et oppdrag (5.2); her er den regnet for én fakturert time med casens tall. Å prise på denne måten kalles selvkostmetoden; kalkylen og metoden er det samme stoffet sett fra hver sin side, og du møter begge ordene i oppgavetekster. Du starter med alt bedriften bruker penger på i løpet av et år, trekker fra det kunden betaler for annet enn timer — materiellet som faktureres videre med påslag — og sitter igjen med den regningen timene må bære. Den deler du på timene som faktisk faktureres, og legger fortjeneste oppå.",
         "Hos Nordlys: sum driftskostnader 21 056 000 minus 9 584 000 i materiell fakturert videre gir {{11 472 000|Kostnader timeprisen må dekke, netto: sum driftskostnader 21 056 000 − materiell fakturert videre 9 584 000 = 11 472 000 kr. Øvingsheftet kap. 5, oppgave 1b}} kroner som timeprisen må dekke. Delt på {{14 400|Fakturerte timer i bedriften: 12 montører × 1 200 timer = 14 400 timer. Øvingsheftet kap. 5, oppgave 1}} fakturerte timer (12 montører × 1 200) blir bokas selvkost {{796,67|Bokas selvkost per time etter at materialpåslaget har betalt sin del = kostnader timeprisen må dekke delt på fakturerte timer: 11 472 000 / 14 400 = 796,67 kr. Øvingsheftet kap. 5, oppgave 1b}} kroner per time — her går du i null, så lenge materiellet bærer sitt påslag. Nordlys vil ha 1 344 000 kroner i driftsresultat, og fordelt på de samme timene gir det en fortjeneste på {{93,33|Fortjeneste per time = ønsket driftsresultat delt på fakturerte timer: 1 344 000 / 14 400 = 93,33 kr, som er 11,7 % av bokas selvkost 796,67. Øvingsheftet kap. 5, oppgave 1c}} kroner per time (11,7 % av bokas selvkost). Timeprisen blir dermed {{890|Timepris uten merverdiavgift = bokas selvkost per time + fortjeneste per time: 796,67 + 93,33 = 890 kr. Øvingsheftet kap. 5, oppgave 1c}} kroner uten merverdiavgift, og {{1 112,50|Timepris med merverdiavgift: 890 × 1,25 = 1 112,50 kr (merverdiavgiften utgjør 222,50 kr). Øvingsheftet kap. 5, oppgave 1c}} med 25 % merverdiavgift, som er det privatkunden ser.",
-        "Men les regnestykket nøye. De 11 472 000 kronene er driftskostnadene minus hele materiellinntekten, også de 1 594 000 kronene i påslag. Bokas selvkost på 796,67 gjelder altså etter at materialpåslaget har betalt sin del. Når timene alene skal bære de indirekte kostnadene, koster en time Nordlys {{907|Selvkost per fakturert time: driftskostnader 21 056 000 − materialkostnad 7 990 000 = 13 066 000 kr (montørlønn 8 440 000 + indirekte 4 226 000 + innleie 400 000), delt på 14 400 fakturerte timer = 907 kr}} kroner: montørlønn, sosiale kostnader, innleie og indirekte kostnader. Timeprisen på 890 ligger 17 kroner under det, og Nordlys lever av at materialpåslaget subsidierer timene. Slik skal det ikke være i elektrobransjen. I bransjens kalkyleprogrammer skal timeprisen dekke lønn, sosiale kostnader, indirekte kostnader og fortjeneste, mens påslaget på materiellet skal dekke lager, svinn, bestilling og kapitalbinding (bransjepraksis, ikke i boka). Med bokas regnestykke taper Nordlys penger på jobber med lite materiell, som service og feilsøking.",
+        "Men les regnestykket nøye. De 11 472 000 kronene er driftskostnadene minus hele materiellinntekten, også de 1 594 000 kronene i påslag. Bokas selvkost på 796,67 gjelder altså etter at materialpåslaget har betalt sin del. Når timene alene skal bære de indirekte kostnadene, koster en time Nordlys {{907|Selvkost per fakturert time: driftskostnader 21 056 000 − materialkostnad 7 990 000 = 13 066 000 kr (montørlønn 8 440 000 + indirekte 4 226 000 + innleie 400 000), delt på 14 400 fakturerte timer = 907 kr}} kroner: montørlønn, sosiale kostnader, innleie og indirekte kostnader. Timeprisen på 890 er salgsprisen for timen, ikke selvkost. Den ligger 17 kroner under selvkosten, og Nordlys lever av at materialpåslaget subsidierer timene. Slik skal det ikke være i elektrobransjen. I bransjens kalkyleprogrammer skal timeprisen dekke lønn, sosiale kostnader, indirekte kostnader og fortjeneste, mens påslaget på materiellet skal dekke lager, svinn, bestilling og kapitalbinding (bransjepraksis, ikke i boka). Med bokas regnestykke taper Nordlys penger på jobber med lite materiell, som service og feilsøking.",
         "Merk delelinja. Hadde Nordlys delt på alle {{20 340|Tilgjengelige timer i bedriften: 12 montører × 1 695 timer = 20 340 timer. Øvingsheftet kap. 5, oppgave 1}} tilgjengelige timene i stedet, ville prisen blitt {{630|Feil timepris: hele beløpet timene skal hente inn, 11 472 000 + 1 344 000 = 12 816 000 kr, delt på alle 20 340 tilgjengelige timer = 630,09 kr. Øvingsheftet kap. 5, oppgave 1d}} kroner. Men bedriften fakturerer fortsatt bare 14 400 timer, så den prisen henter inn {{9 073 274|Det den for lave prisen henter inn: 630,09 kr × 14 400 fakturerte timer = 9 073 274 kr. Øvingsheftet kap. 5, oppgave 1d}} kroner i året, mens regningen er 11 472 000. Det er {{2 398 726|Det som mangler bare for å dekke kostnadene: 11 472 000 − 9 073 274 = 2 398 726 kr. I tillegg er hele driftsresultatet på 1 344 000 kr borte. Øvingsheftet kap. 5, oppgave 1d}} kroner som mangler bare for å dekke kostnadene, og feilen ligger i hver eneste jobb."
       ],
       ref: "Økonomistyring for LØM-emnet, avsnitt 5.2 (selvkostkalkylen); timeprisen og materialpåslaget er casens tall, regnet her"
+    },
+    {
+      overskrift: "Fire tall som alle kalles timepris",
+      avsnitt: [
+        "Ordet timepris brukes om fire ulike tall, og det er den vanligste grunnen til at kalkyler blir feil. Boka bruker ordet om det en arbeidstime koster bedriften: i eksempel 3 (5.2.1) er «timepris kr 620» en kostnad, og 75 timer × 620 blir direkte lønnskostnader. I bransjen og i denne appen betyr timepris det kunden betaler for timen. Si derfor alltid hvilket tall du mener. Tabellen viser trappen, regnet med Nordlys sine tall per fakturert time.",
+        "Trinn 1 er lønnskost per time: lønna til montørene med tillegg og sosiale kostnader, delt på de fakturerte timene. Hos Nordlys er det {{586|Lønnskost per fakturert time: montørlønn inkl. sosiale kostnader 8 440 000 / 14 400 fakturerte timer = 586,11 kr}} kroner. Trinn 2 er selvkost per time uten materiell: lønnskost, innleie og indirekte kostnader. Hos Nordlys er det {{907|Selvkost per fakturert time uten materiell: (8 440 000 + 400 000 + 4 226 000) / 14 400 = 13 066 000 / 14 400 = 907,36 kr}} kroner. Trinn 3 er timeprisen kunden betaler, {{890|Timepris uten merverdiavgift: timeinntekt 12 816 000 / 14 400 = 890 kr}} kroner uten merverdiavgift. Trinn 4 er omsetning per fakturert time, der materiellet er med: {{1 556|Omsetning per fakturert time: 22 400 000 / 14 400 = 1 555,56 kr, regnet her}} kroner.",
+        "NHO Elektro regner på samme måte i lønnsomhetsundersøkelsen for 2025. Snittet for de rene installasjonsbedriftene var {{1 534|Omsetning per fakturert time inklusive materiell, 2025. NHO Elektro, Lønnsomhetsundersøkelsen 2025, kap. 12}} kroner per fakturert time inklusive materiell, og selvkost uten materiell var {{894|575 lønn inkl. sosiale + 26 innleie + 297 indirekte − 4 netto finans = 894 kr. NHO Elektro, Lønnsomhetsundersøkelsen 2025, kap. 12}} kroner. NHO understreker at tallene er etterkalkulerte gjennomsnitt og ikke en pris bedriften skal bruke. 1 534 er altså ikke en timepris i et tilbud, men det bedriftene i snitt fikk inn per fakturert time når alt var regnet med. Nordlys ligger svært nær bransjesnittet, så casen er realistisk.",
+        "Det som skiller Nordlys fra bransjens anbefaling, er trinn 3. Timeprisen på 890 er lavere enn selvkosten på 907, og differansen dekkes av påslaget på materiellet. Det går greit på jobber med mye materiell, men taper penger på service og feilsøking der det nesten ikke brukes materiell. Bransjens kalkulasjonsprogrammer setter derfor timeprisen slik at den alene dekker lønnskost, indirekte kostnader og fortjeneste (bransjepraksis, ikke i boka)."
+      ],
+      tabell: { tittel: "Hvor kronene i én fakturert time går (kroner per time)", hode: ["Post", "Nordlys", "NHO Elektro 2025"], rader: [
+        ["Lønn inkl. sosiale kostnader", "586", "575"],
+        ["Innleid arbeidskraft", "28", "26"],
+        ["Indirekte kostnader (NHO: 297 minus 4 i netto finansinntekt)", "293", "293"],
+        ["= Selvkost uten materiell", "907", "894"],
+        ["Materiell (innkjøpspris)", "555", "525"],
+        ["Resultat", "93", "115"],
+        ["= Omsetning per fakturert time", "1 556", "1 534"]
+      ] },
+      ref: "Økonomistyring for LØM-emnet, avsnitt 5.2 og 5.2.1 (eksempel 3); NHO Elektro, Lønnsomhetsundersøkelsen 2025, kap. 5 og 12; Nordlys-tallene er casens, regnet her"
+    },
+    {
+      overskrift: "Slik kalkulerer bransjen: fullkostkalkylen i kalkulasjonsprogrammet",
+      avsnitt: [
+        "I bransjen lages tilbud i et kalkulasjonsprogram. Det kalles ofte en fullkostkalkyle, og det er bokas selvkostkalkyle (5.2) delt i to strømmer: arbeid og materiell. Oppsettet under er bransjepraksis, ikke bokas tekst, men kronene og logikken er de samme.",
+        "Arbeidet starter med mengdene fra tegningen: antall punkter, meter kabel, utstyr. Programmet henter en normtid per enhet fra akkordtariffen i Landsoverenskomsten for elektrofagene. Summen er netto timer. Timene justeres for hvor effektivt jobben kan gjøres og for forholdene på stedet, og da får du brutto timer, altså timene du regner med å bruke.",
+        "Timene ganges med timeprisen. Den bygges fra bedriftens egne nøkkeltall: tarifflønn per time (fastlønn for fagarbeider {{282,95|Fastlønn per time for fagarbeider fra 1. mai 2026. EL og IT Forbundet og NHO Elektro, protokoll om nye lønnssatser i Landsoverenskomsten for elektrofagene, 22.05.2026, s. 1}} kroner fra 1. mai 2026) med tillegg, for eksempel bastillegg, pluss sosiale kostnader som feriepenger, arbeidsgiveravgift og pensjon. Det gir netto lønnskost per time. Så legges bedriftens andel felleskostnader (indirekte kostnader) og fortjeneste på. I bokas ord er netto lønnskost satsen, felleskostnadene tilleggssatsen og fortjenesten fortjeneste i prosent av selvkost.",
+        "Materiellet prises til nettopris fra grossisten, med påslag. Store poster som tavler, armaturer og føringsveier i store mengder får gjerne egen pris på forespørsel fra leverandøren, og ofte et lavere påslag, fordi beløpet er stort og risikoen liten.",
+        "Hvor kommer nøkkeltallene fra? Fra bedriftens eget regnskap og budsjett, og fra etterkalkylene på jobber som er ferdige (5.2.3). Lønnsomhetsundersøkelsen fra NHO Elektro er en sammenligning med bransjen, ikke en kilde til egne satser. Når prisen i markedet er lavere enn selvkosten og det er ledig kapasitet, er det bidragskalkylen som gjelder: prisen må minst dekke merkost, altså det jobben koster ekstra (5.2.2)."
+      ],
+      ref: "Økonomistyring for LØM-emnet, avsnitt 5.2, 5.2.1, 5.2.2 og 5.2.3; bransjepraksis i kalkulasjonsprogrammer (ikke i boka); Landsoverenskomsten for elektrofagene"
     },
     {
       overskrift: "Normalaktivitet: hvilket timetall de faste kostnadene skal deles på (bygger på 5.2.2 og 5.3)",
@@ -38779,6 +38810,9 @@ LOM.innhold.ok05 = {
   kalkulatorer: ["arbeidstimer", "timepris", "tilbud"],
 
   flervalg: [
+    { sp: "NHO Elektro oppgir 1 534 kroner per fakturert time for 2025. Hva er dette tallet?", hint: "Tenk på om materiellet er med i tallet, og om tallet er regnet før eller etter at året var over.", alt: ["Omsetning per fakturert time, med materiell", "Timeprisen kunden betaler for arbeidet", "Selvkost per time uten materiell", "Lønnskost per time for en montør"], riktig: 0, forklaring: "1 534 kroner er alt bedriftene i snitt fikk inn per fakturert time i 2025, materiell medregnet. Selvkost per time uten materiell var 894 kroner. NHO skriver at tallene er etterkalkulerte og ikke skal brukes som pris. (NHO Elektro, Lønnsomhetsundersøkelsen 2025, kap. 12)" },
+    { sp: "I eksempel 3 i boka står det timepris kr 620. Hva er de 620 kronene?", hint: "Se på hva boka gjør med tallet: 75 timer ganges med 620, og resultatet heter direkte lønnskostnader.", alt: ["Det en arbeidstime koster bedriften i lønn", "Prisen kunden betaler per time", "Selvkost per time", "Dekningsbidrag per time"], riktig: 0, forklaring: "Boka bruker timepris om kostnaden: 75 × 620 = 46 500 kroner i direkte lønnskostnader. Indirekte kostnader og fortjeneste kommer oppå. I bransjen betyr timepris det kunden betaler. (Økonomistyring for LØM-emnet, eksempel 3 i 5.2.1)" },
+    { sp: "Hos Nordlys er selvkost per time uten materiell 907 kroner, men kunden betaler 890 kroner for timen. Hva dekker forskjellen?", hint: "Nordlys har to inntekter: timene og materiellet som selges videre.", alt: ["Påslaget på materiellet", "Fortjenesten på timene", "Merverdiavgiften", "Bastillegget"], riktig: 0, forklaring: "Timene alene dekker ikke selvkosten, så påslaget på materiellet dekker resten. Det går bra på jobber med mye materiell, men gir tap på service med lite materiell. Bransjen setter derfor timeprisen så den alene dekker selvkost og fortjeneste (bransjepraksis, ikke i boka)." },
     { sp: "En montør er tilgjengelig 1 695 timer i året og fakturerer 1 200. Hva er faktureringsgraden?", hint: "Faktureringsgrad = fakturerte timer delt på tilgjengelige timer. Svaret er en andel under 100 % — de fakturerte timene er alltid færre enn de tilgjengelige.", alt: ["70,8 %", "141 %", "29,2 %", "100 %"], riktig: 0, forklaring: "Faktureringsgrad = fakturerte timer / tilgjengelige timer = 1 200 / 1 695 = {{70,8 %|1 200 / 1 695 = 0,708, altså 70,8 %. Øvingsheftet kap. 5, oppgave 1a}}. De {{495|1 695 − 1 200 = 495 timer per montør. Øvingsheftet kap. 5, oppgave 1a}} timene som blir borte, går til kjøring, henting av materiell, opprydding, dokumentasjon og venting — og bedriften betaler lønn for dem. (Formelsamlingen, faktureringsgrad)" },
     { sp: "Hva er den vanligste og dyreste feilen i faget når timeprisen regnes ut?", figur: { type: "soyler", data: [{ navn: "Regningen timene må dekke", verdi: 11472000 }, { navn: "Det 630 kr timen henter inn", verdi: 9073274 }], tekst: "Deler du på alle 20 340 tilgjengelige timer, blir prisen 630 kroner — og den henter inn 2 398 726 kroner mindre enn kostnadene." }, hint: "Skill mellom timene bedriften betaler lønn for, og timene som står på en faktura. Bare den ene av dem gir penger inn — hvilken skal regningen deles på?", alt: ["Å glemme merverdiavgiften", "Å dele kostnadene på timene montøren er på jobb i stedet for timene kunden betaler for", "Å bruke for høy fortjeneste", "Å regne materiellet inn i timeprisen"], riktig: 1, forklaring: "Deler du på alle {{20 340|12 montører × 1 695 tilgjengelige timer = 20 340 timer. Øvingsheftet kap. 5, oppgave 1}} tilgjengelige timer, blir prisen {{630|12 816 000 / 20 340 = 630,09 kr. Øvingsheftet kap. 5, oppgave 1d}} kroner i stedet for 890. Den prisen henter inn {{9 073 274|630,09 kr × 14 400 fakturerte timer = 9 073 274 kr. Øvingsheftet kap. 5, oppgave 1d}} kroner mot en regning på 11 472 000 — det mangler {{2 398 726|11 472 000 − 9 073 274 = 2 398 726 kr bare for å dekke kostnadene. Øvingsheftet kap. 5, oppgave 1d}} kroner, og feilen ligger i hver eneste jobb. (Økonomistyring for LØM-emnet, avsnitt 5.2)" },
     { sp: "Hva er inntakskost?", hint: "Tenk på hva det koster å få varen inn på lageret — ikke bare det leverandøren fakturerer, men også det som skal til for å få den fram.", alt: ["Innkjøpsprisen alene", "Selvkost minus fortjeneste", "Prisen uten merverdiavgift", "Innkjøpsprisen pluss innkjøpskostnader som frakt, forsikring og eventuell toll"], riktig: 3, forklaring: "Inntakskost er det samme som varekostnaden og er første trinn i handelskalkylen. I lærebokas eksempel: innkjøpspris 62 500 + frakt og forsikring 1 500 = {{64 000|Inntakskost = 62 500 + 1 500 = 64 000 kr. Økonomistyring for LØM-emnet, avsnitt 5.1, og øvingsheftet kap. 5, oppgave 2a}} kroner. (Økonomistyring for LØM-emnet, avsnitt 5.1)" },
@@ -39698,83 +39732,82 @@ LOM.innhold.ok05.klasseoppgaver = [
  }
 ];
 
-/* ---------- Tema: Fra budsjett til kalkyle (versjon 2.9.3, 20.10.2026; skrevet om 29.10.2026; skrevet om til augustløsningen 01.11.2026) ----------
-   Budsjett: Elektro AS 2026 (Prosjekt Bolig, identisk i 2EKA/2EKB og 3EKC/3EKD). Augustløsningen (Glenn, 28.08.2026, gjelder alle klasser):
-   bare produksjonslønna er direkte lønn, administrasjonen er indirekte. Produksjonslønn med sin andel av de ufordelte personalkostnadene
-   13 685 563 kr, indirekte kostnader 9 859 437 kr, 15 montører × 1 500 fakturerte timer = 22 500 timer.
-   Sats 608,25 kr per fakturert time, tilleggssats 72,04 % (brukt 72 %), fortjeneste 15 % av selvkost (budsjettet gir 11,6 %).
-   Regnet i sloyfe/v10/ok05_h01_august.py. Ingen produktnavn på kalkyleprogrammer (Glenn 27.10). */
+/* ---------- Tema: Fra budsjett til kalkyle (2.24.0, 11.11.2026: regnet om fra Elektro AS til Nordlys Elektro, Glenn 11.11.2026 «B») ----------
+   Elektro AS-budsjettet er prosjektbudsjett i Prosjekt Bolig og skal ikke løses i appen mens prosjektene pågår.
+   Nordlys: direkte materiell 7 990 000 + innleie 400 000 = 8 390 000; direkte lønn 8 440 000; indirekte 4 226 000; 12 × 1 200 = 14 400 fakturerte timer.
+   Sats 586,11, tilleggssats 50,07 % (brukt 50 %), fortjeneste 6,4 % av selvkost (1 344 000 / 21 056 000). Ingen produktnavn på kalkulasjonsprogrammer. */
 (function () {
   const I = LOM.innhold.ok05;
   I.kalkulatorer = (I.kalkulatorer || []).concat(["budsjettkalkyle"]);
   I.tema = {
     tittel: "Fra budsjett til kalkyle: sats og tilleggssats fra bedriftens eget budsjett",
-    ingress: "En timepris er mer enn timelønna. Boka bygger prisen opp i en selvkostkalkyle: direkte lønn, direkte materiell, indirekte kostnader som et påslag på lønna, og fortjeneste (5.2 og 5.2.1). Satsene henter du fra bedriftens eget budsjett eller regnskap. Dette temaet viser hvordan, med budsjettet til Elektro AS, slik vi regnet det i august: bare lønna til dem som jobber ute på oppdrag er direkte lønn. Lønna til administrasjonen hører ikke til én jobb, så den er en indirekte kostnad. Kalkyleprogrammene i bransjen deler påslagene i flere felt, men kronene er de samme.",
+    ingress: "En timepris er mer enn timelønna. Boka bygger prisen opp i en selvkostkalkyle: direkte lønn, direkte materiell, indirekte kostnader som et påslag på lønna, og fortjeneste (5.2 og 5.2.1). Satsene henter du fra bedriftens eget budsjett eller regnskap. Dette temaet viser hvordan, med budsjettet til Nordlys Elektro: bare lønna til dem som jobber ute på oppdrag er direkte lønn. Lønna til administrasjonen hører ikke til én jobb, så den er en indirekte kostnad. Samme framgangsmåte bruker du på budsjettet i prosjektet ditt, med dine egne forutsetninger. Kalkulasjonsprogrammene i bransjen deler påslagene i flere felt, men kronene er de samme.",
     trinn: [
-      { navn: "Sorter budsjettet", hva: "Hver budsjettlinje plasseres i én gruppe: direkte materiell, direkte lønn (produksjonen) eller indirekte kostnader (alt annet). Driftsresultatet blir fortjenesten.", hvor: "Kap. 5.2.1 · regnearket fane 1" },
-      { navn: "Finn de fakturerte timene", hva: "Budsjettet er i kroner, kalkylen regner per time. Broen mellom dem er antall timer kunden betaler for: 15 montører × 1 500 timer.", hvor: "Formelsamlingen · faktureringsgrad" },
+      { navn: "Sorter budsjettet", hva: "Hver budsjettlinje plasseres i én gruppe: direkte materiell (med innleie og underentrepriser), direkte lønn (produksjonen) eller indirekte kostnader (alt annet). Driftsresultatet blir fortjenesten.", hvor: "Kap. 5.2.1 · regnearket fane 1" },
+      { navn: "Finn de fakturerte timene", hva: "Budsjettet er i kroner, kalkylen regner per time. Broen mellom dem er antall timer kunden betaler for. Antall montører finner du fra lønnslinjene i budsjettet, og timene per montør fra faktureringsgraden. Hos Nordlys: 12 montører × 1 200 timer.", hvor: "Formelsamlingen · faktureringsgrad" },
       { navn: "Regn ut sats og tilleggssats", hva: "Satsen er direkte lønn per fakturert time. Tilleggssatsen er de indirekte kostnadene i prosent av direkte lønn.", hvor: "Formelsamlingen kap. 5 · fane 2" },
-      { navn: "Legg på fortjenesten", hva: "Fortjenesten regnes i prosent av selvkost. Budsjettet gir 11,6 %; i august valgte vi 15 %.", hvor: "Kap. 5.2" },
+      { navn: "Legg på fortjenesten", hva: "Fortjenesten regnes i prosent av selvkost. Nordlys sitt budsjett gir 6,4 %.", hvor: "Kap. 5.2" },
       { navn: "Kalkuler jobben", hva: "Jobbens egne timer og materiell, med tilleggssatsen og fortjenesten oppå, satt opp som bokas selvkostkalkyle.", hvor: "Kap. 5.2 eksempel 3 · fane 3 og 4" }
     ],
     bolker: [
       { overskrift: "Selvkostkalkylen, linje for linje", avsnitt: [
         "Direkte lønn er lønna til montørene for timene på jobben, med feriepenger, sykelønn, helligdager, arbeidsgiveravgift og pensjon. Boka kaller det direkte lønnskostnader (5.2.1).",
-        "Direkte materiell er det som går med på jobben, til innkjøpspris, med svinn.",
+        "Direkte materiell er det som går med på jobben, til innkjøpspris, med svinn. Innleid arbeidskraft og underentrepriser behandles på samme måte: de hører til jobben de brukes på.",
         "Indirekte kostnader er alt som holder bedriften i gang, men som ikke hører til én jobb: administrasjonen og lønna der, lokaler, servicebiler, verktøy, kontor, reklame og forsikringer. Boka legger dem på med en tilleggssats i prosent av direkte lønn (5.2.1).",
         "Fortjeneste er det bedriften skal sitte igjen med når alle kostnadene er dekket. Den regnes i prosent av selvkost.",
-        "Kalkyleprogrammene i bransjen deler påslaget i flere felt, for eksempel sosiale kostnader, driftsomkostninger og fellesomkostninger. Det er bransjens oppsett, ikke bokas. Kronene er de samme; vi bruker bokas oppstilling."],
+        "Kalkulasjonsprogrammene i bransjen deler påslaget i flere felt, for eksempel sosiale kostnader, driftsomkostninger og fellesomkostninger. Det er bransjens oppsett, ikke bokas. Kronene er de samme; vi bruker bokas oppstilling."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2 og 5.2.1" },
       { overskrift: "Det korte svaret", avsnitt: [
         "Satsene i en kalkyle er bedriftens egne. Kjenner du dem ikke, er regnskapsføreren den naturlige å spørre. Læreboka lærer deg å regne dem ut selv, av bedriftens egne tall.",
         "Det viktigste: jobbens egne kostnader regnes alltid for jobben selv. Det er de estimerte timene ganger satsen, materiell til nettopris med svinn, reise og underentrepriser. Bare tilleggssatsen og fortjenesten hentes fra bedriftens tall. Bransjen bruker som regel fjorårets regnskap. Boka viser at de også kan regnes fra budsjettet. Regnestykket er det samme."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2" },
       { overskrift: "Trinn 1: Budsjettet sortert i tre grupper", avsnitt: [
-        "Elektro AS budsjetterer med 50 millioner kroner i omsetning og 44 795 000 kroner i kostnader. Direkte materiell er innkjøp minus bonus pluss underentrepriser: {{21 250 000|21 000 000 − 750 000 + 1 000 000. Sumlinja «4500 Fremmedytelser» på rad 20}}.",
-        "Direkte lønn er lønna i produksjonen med alt som følger den: lønn, bastillegg, helligdager, sykelønn, feriepenger og arbeidsgiveravgift, {{12 700 000|9 000 000 + 200 000 + 400 000 + 300 000 + 1 200 000 + 1 600 000. Konto 5000, 5002, 5010, 5020, 5030 og 5400}}. Tre personalkostnader er ikke delt i budsjettet (fri mobil, pensjon og annen personalkostnad, 1 360 000 kr). De fordeles etter lønnsandelen, 72,47 % til produksjonen. Direkte lønn blir {{13 685 563|12 700 000 + 1 360 000 × 12 700 000 / 17 525 000}}.",
-        "Indirekte kostnader er resten: {{9 859 437|Sum kostnader 44 795 000 − materiell 21 250 000 − direkte lønn 13 685 563}}. Her ligger lønna til administrasjonen, 5 199 437 kr med sin andel, og biler, verktøy, lokaler, kontor, reklame, forsikring og tap. Det enkleste er å trekke fra, ikke å lete linje for linje: sumlinjene i budsjettet inneholder linjene over seg og telles ellers to ganger."],
-        ref: "Budsjett Elektro AS 2026; Økonomistyring for LØM-emnet, kap. 5.2.1" },
+        "Nordlys budsjetterer med {{22 400 000|Omsetning 2026, faktaarket for Nordlys Elektro}} kroner i omsetning og {{21 056 000|Sum driftskostnader 2026, faktaarket for Nordlys Elektro}} kroner i kostnader. Direkte materiell er innkjøpt materiell pluss innleid arbeidskraft: {{8 390 000|7 990 000 materiell + 400 000 innleie = 8 390 000 kr}}.",
+        "Direkte lønn er lønna i produksjonen med alt som følger den: lønn, tillegg, helligdager, sykelønn, feriepenger, arbeidsgiveravgift og pensjon, {{8 440 000|Montørlønn med sosiale kostnader, faktaarket for Nordlys Elektro}} kroner.",
+        "Indirekte kostnader er resten: {{4 226 000|21 056 000 − 8 390 000 − 8 440 000 = 4 226 000 kr}} kroner. Her ligger lønna til administrasjonen, og biler, verktøy, lokaler, kontor, reklame, forsikring og tap. Det enkleste er å trekke fra, ikke å lete linje for linje: sumlinjene i et budsjett inneholder linjene over seg og telles ellers to ganger."],
+        ref: "Faktaarket for Nordlys Elektro; Økonomistyring for LØM-emnet, kap. 5.2.1" },
       { overskrift: "Trinn 2: De fakturerte timene binder alt sammen", avsnitt: [
-        "Budsjettet har kroner, men ingen timer. Kalkylen regner per time. I august regnet vi med 15 montører som hver fakturerer 1 500 timer i året, {{22 500 fakturerte timer|15 × 1 500. Augustløsningens anslag; budsjettet sier ikke hvor mange timer som faktureres}}.",
-        "Bedriften betaler lønn for alle timene, også ferie, sykdom, helligdager og tid som ikke kan faktureres, men kunden betaler bare for de fakturerte. Alt som skal dekkes, må hentes inn på de 22 500 timene."],
+        "Budsjettet har kroner, men ingen timer. Kalkylen regner per time. Antall montører finner du fra lønnslinjene: lønnskostnaden i produksjonen delt på hva én montør koster i året. Kontroller mot salgslinjene for arbeid etterpå. Nordlys har 12 montører som hver fakturerer 1 200 timer i året, {{14 400|12 × 1 200 = 14 400 fakturerte timer}} fakturerte timer. Til sammenlikning fakturerte bransjen i snitt {{1 503|NHO Elektro, Lønnsomhetsundersøkelsen 2025, kap. 7}} timer per montør i 2025.",
+        "Bedriften betaler lønn for alle timene, også ferie, sykdom, helligdager og tid som ikke kan faktureres, men kunden betaler bare for de fakturerte. Alt som skal dekkes, må hentes inn på de 14 400 timene."],
         ref: "Økonomistyring for LØM-emnet, formelsamlingen (faktureringsgrad)" },
       { overskrift: "Trinn 3: Sats og tilleggssats", avsnitt: [
-        "Satsen er direkte lønn per fakturert time: {{608,25 kr|13 685 563 / 22 500 = 608,25}}. Den er mye høyere enn timelønna, fordi alt montøren koster bedriften, også timene som ikke faktureres, skal hentes inn på de fakturerte timene.",
-        "Tilleggssatsen er de indirekte kostnadene delt på direkte lønn: {{72 %|9 859 437 / 13 685 563 = 72,04 %, rundet til 72 %}}. Per fakturert time er det {{438 kr|9 859 437 / 22 500 = 438,20}}.",
-        "Fortjeneste: driftsresultatet delt på sum kostnader gir {{11,6 %|5 205 000 / 44 795 000}} av selvkost. I august valgte vi 15 %, noe over budsjettet. Begge er forsvarlige; si hvilken du bruker og hvorfor."],
-        ref: "Økonomistyring for LØM-emnet, formelsamlingen kap. 5: tilleggssats = indirekte kostnader / fordelingsgrunnlaget" },
+        "Satsen er direkte lønn per fakturert time: {{586,11 kr|8 440 000 / 14 400 = 586,11 kr}}. Den er mye høyere enn timelønna, fordi alt montøren koster bedriften, også timene som ikke faktureres, skal hentes inn på de fakturerte timene.",
+        "Tilleggssatsen er de indirekte kostnadene delt på direkte lønn: {{50 %|4 226 000 / 8 440 000 = 50,07 %, brukt 50 %}}. Per fakturert time er det {{293 kr|586,11 × 0,50 = 293,06 kr}}.",
+        "Fortjeneste: driftsresultatet delt på sum kostnader gir {{6,4 %|1 344 000 / 21 056 000 = 6,38 %}} av selvkost. Det er det budsjettet tåler. Velger du en annen prosent i prosjektet ditt, si hvilken og hvorfor."],
+        ref: "Økonomistyring for LØM-emnet, kap. 5.2.1 og formelsamlingen kap. 5" },
       { overskrift: "Trinn 4 og 5: Timeprisen og jobben", avsnitt: [
-        "Timen bygget opp: sats 608,25 + indirekte 72 % (437,94) = selvkost {{1 046,19 kr per time|608,25 × 1,72}}. + fortjeneste 15 % = {{1 203 kr per time uten merverdiavgift|1 046,19 × 1,15 = 1 203,12}}.",
-        "Jobben: 10 fakturerte timer og 10 000 kr i materiell. Direkte lønn 10 × 608,25 = 6 082,50. + materiell 10 000 = sum direkte kostnader 16 082,50. + indirekte 72 % av 6 082,50 = 4 379,40 gir selvkost {{20 461,90|6 082,50 + 10 000 + 4 379,40}}.",
-        "+ fortjeneste 15 % gir pris uten merverdiavgift {{23 531,19|20 461,90 × 1,15}}, og med 25 % merverdiavgift {{29 413,98|23 531,19 × 1,25}}. Laveste pris på kort sikt er de direkte kostnadene, 16 082,50 kr (bidragsmetoden, 5.2.2)."],
+        "Timen bygget opp: sats 586,11 + indirekte 50 % (293,06) = selvkost {{879,17 kr|586,11 × 1,50 = 879,17 kr}} per time. + fortjeneste 6,4 % = {{935 kr|879,17 × 1,064 = 935,43 kr}} per time uten merverdiavgift.",
+        "Jobben: 10 fakturerte timer og 10 000 kr i materiell. Direkte lønn 10 × 586,11 = 5 861,10. + materiell 10 000 = sum direkte kostnader 15 861,10. + indirekte 50 % av 5 861,10 = 2 930,55 gir selvkost {{18 791,65|15 861,10 + 2 930,55 = 18 791,65 kr}}.",
+        "+ fortjeneste 6,4 % gir pris uten merverdiavgift {{19 994,32|18 791,65 × 1,064 = 19 994,32 kr}}, og med 25 % merverdiavgift {{24 992,90|19 994,32 × 1,25 = 24 992,90 kr}}. Laveste pris på kort sikt er de direkte kostnadene, 15 861,10 kr (bidragsmetoden, 5.2.2)."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3 og 5.2.2" },
       { overskrift: "Fellen: «timepris» betyr to ting", avsnitt: [
-        "I eksempel 3 i boka er «timepris 620 kr» det timen koster bedriften. I kalkyleprogrammene er timepris som regel det kunden betaler. Hos Elektro AS koster timen 608,25 kr i direkte lønn og 1 046 kr i selvkost, mens kunden betaler 1 203 kr uten merverdiavgift. Si hvilken du mener."],
+        "I eksempel 3 i boka er «timepris 620 kr» det timen koster bedriften. I kalkulasjonsprogrammene er timepris som regel det kunden betaler. Hos Nordlys koster timen 586,11 kr i direkte lønn og 879 kr i selvkost, og med bokas metode betaler kunden 935 kr uten merverdiavgift. Si hvilken du mener.",
+        "I kapittelets andre eksempler tar Nordlys 890 kr for timen og legger 20 % på materiellet. Det er bransjens måte å fordele de samme kostnadene på. Begge måtene henter inn de samme 22,4 millionene over året, men enkeltjobbene får ulik pris."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2 eksempel 3" },
       { overskrift: "Fordelingen er et valg", avsnitt: [
-        "Budsjettet sier hvor store de indirekte kostnadene er, men ikke om de skal legges på lønna, på materiellet eller på begge. Hvordan de fordeles, kalles fordelingsnøkkelen. Elektro AS legger alt på direkte lønn. En tavlejobb med 5 000 kr i direkte lønn og 40 000 kr materiell får da selvkost {{48 600|5 000 + 40 000 + 5 000 × 0,72}}. Legges påslaget på alt direkte ({{28,2 %|9 859 437 / (13 685 563 + 21 250 000)}}), blir den {{57 700|45 000 × 1,282}}. For en servicejobb går det motsatt vei.",
+        "Budsjettet sier hvor store de indirekte kostnadene er, men ikke om de skal legges på lønna, på materiellet eller på begge. Hvordan de fordeles, kalles fordelingsnøkkelen. Boka legger alt på direkte lønn. En tavlejobb med 5 000 kr i direkte lønn og 40 000 kr materiell får da selvkost {{47 500|45 000 + 5 000 × 0,50 = 47 500 kr}}. Legges påslaget på alt direkte ({{25,1 %|4 226 000 / (8 440 000 + 8 390 000) = 25,11 %}}), blir den {{56 300|45 000 × 1,2511 = 56 299 kr}}. For en servicejobb går det motsatt vei.",
         "Etterkalkylen viser om satsene holdt. Ble det færre fakturerte timer enn forutsatt, dekker ikke satsene kostnadene. Er nedgangen varig, må satsene regnes om på et nytt normalt timetall. Er den midlertidig, skal satsene stå, og de usolgte timene vises som en underdekning (vårt ord; boka regner satsene ut fra en normalperiode, 5.3). Å sette opp prisen i en stille periode skremmer bort kundene som skulle fylt timene."],
         ref: "Økonomistyring for LØM-emnet, kap. 5.2.1, 5.2.3 og 5.3" }
     ],
-    kilde: "Hjertnes og Skorpen: Økonomistyring for LØM-emnet, kap. 5.2, 5.2.1, 5.2.2, 5.2.3, 5.3 og formelsamlingen. Budsjett Elektro AS 2026 (Prosjekt Bolig, 2EKA/2EKB og 3EKC/3EKD). Augustløsningen (Glenn, 28.08.2026): bare produksjonslønna er direkte lønn, 15 montører × 1 500 fakturerte timer, fortjeneste 15 %."
+    kilde: "Hjertnes og Skorpen: Økonomistyring for LØM-emnet, kap. 5.2, 5.2.1, 5.2.2, 5.2.3, 5.3 og formelsamlingen. Tallene er fra faktaarket for Nordlys Elektro 2026 (casen), regnet her. NHO Elektro, Lønnsomhetsundersøkelsen 2025, til sammenlikning."
   };
   I.begreper.push(
-    { begrep: "Direkte lønn i kalkylen", forklaring: "Lønna til dem som jobber ute på oppdrag, med feriepenger, sykelønn, helligdager, arbeidsgiveravgift og pensjon. Lønna til administrasjonen er ikke direkte lønn; den hører ikke til én jobb og er en indirekte kostnad (5.2.1).", nordlys: "Elektro AS: {{13 685 563 kr|12 700 000 + 72,47 % av 1 360 000}}, eller {{608,25 kr per fakturert time|13 685 563 / 22 500}}.", bruk: "Timene på jobben ganges med satsen per fakturert time.", felle: "Å regne med timelønna fra lønnsslippen. Satsen skal dekke alt montøren koster, fordelt på timene kunden betaler for." },
-    { begrep: "Tilleggssats", forklaring: "Bokas navn på påslaget for indirekte kostnader: de indirekte kostnadene i prosent av fordelingsgrunnlaget, her direkte lønn (5.2.1).", nordlys: "Elektro AS: {{72 % av direkte lønn|9 859 437 / 13 685 563 = 72,04 %}}.", bruk: "Legges på direkte lønnskostnader i selvkostkalkylen.", felle: "Å tro at satsen er gitt. Den bygger på et valg av fordelingsnøkkel og på hva som regnes som direkte lønn." },
-    { begrep: "Timekost og timepris", forklaring: "Timekost er det timen koster bedriften. Timepris er det kunden betaler: selvkost per time pluss fortjeneste.", nordlys: "Elektro AS: direkte lønn {{608,25 kr|13 685 563 / 22 500}}, selvkost {{1 046 kr|608,25 × 1,72}} og timepris {{1 203 kr uten merverdiavgift|1 046,19 × 1,15}}.", bruk: "Boka kaller timekosten «timepris» i eksempel 3. Kalkyleprogrammene bruker som regel timepris om kundens pris.", felle: "Å sammenlikne bokas 620 kr med en faktura på 1 203 kr og tro at én av dem er feil." }
+    { begrep: "Direkte lønn i kalkylen", forklaring: "Lønna til dem som jobber ute på oppdrag, med feriepenger, sykelønn, helligdager, arbeidsgiveravgift og pensjon. Lønna til administrasjonen er ikke direkte lønn; den hører ikke til én jobb og er en indirekte kostnad (5.2.1).", nordlys: "Nordlys: {{8 440 000 kr|Montørlønn med sosiale kostnader, faktaarket}}, eller {{586,11 kr per fakturert time|8 440 000 / 14 400}}.", bruk: "Timene på jobben ganges med satsen per fakturert time.", felle: "Å regne med timelønna fra lønnsslippen. Satsen skal dekke alt montøren koster, fordelt på timene kunden betaler for." },
+    { begrep: "Tilleggssats", forklaring: "Bokas navn på påslaget for indirekte kostnader: de indirekte kostnadene i prosent av fordelingsgrunnlaget, her direkte lønn (5.2.1).", nordlys: "Nordlys: {{50 % av direkte lønn|4 226 000 / 8 440 000 = 50,07 %}}.", bruk: "Legges på direkte lønnskostnader i selvkostkalkylen.", felle: "Å tro at satsen er gitt. Den bygger på et valg av fordelingsnøkkel og på hva som regnes som direkte lønn." },
+    { begrep: "Timekost og timepris", forklaring: "Timekost er det timen koster bedriften. Timepris er det kunden betaler: selvkost per time pluss fortjeneste.", nordlys: "Nordlys: direkte lønn {{586,11 kr|8 440 000 / 14 400}}, selvkost {{879 kr|586,11 × 1,50}} og timepris {{935 kr uten merverdiavgift|879,17 × 1,064, bokas metode}}. I bransjemodellen tar Nordlys 890 kr og 20 % påslag på materiellet.", bruk: "Boka kaller timekosten «timepris» i eksempel 3. Kalkulasjonsprogrammene bruker som regel timepris om kundens pris.", felle: "Å sammenlikne bokas 620 kr med en faktura på 935 kr og tro at én av dem er feil." }
   );
   I.flervalg.push(
-    { sp: "Elektro AS har indirekte kostnader på 9 859 437 kr og direkte lønnskostnader (produksjonslønna) på 13 685 563 kr. Hva er tilleggssatsen?", hint: "Tilleggssats = indirekte kostnader / fordelingsgrunnlaget.", alt: ["72 %", "139 %", "28 %", "20 %"], riktig: 0, forklaring: "9 859 437 / 13 685 563 = 72,04 %, rundet til 72 %. 139 % er brøken snudd, 28 % er satsen på alle direkte kostnader (lønn og materiell), og 20 % er indirekte delt på omsetningen. (Økonomistyring for LØM-emnet, formelsamlingen kap. 5)" },
-    { sp: "Hvor kommer satsene i en kalkyle fra, timesatsen og tilleggssatsen?", hint: "Er satsene like i alle bedrifter, eller bygger de på bedriftens egne kostnader?", alt: ["Fra bedriftens budsjett eller regnskap, regnet ut av regnskapsfører eller kalkulatør", "Fra bransjeforeningen, de er like for alle bedrifter", "Fra grossistens rabattfil", "Fra akkordtariffen"], riktig: 0, forklaring: "Satsene er bedriftens egne og regnes ut av budsjettet eller regnskapet (5.2.1). Akkordtariffen gir arbeidstid og tillegg, rabattfilen gir innkjøpspris." },
-    { sp: "Hvorfor er satsen per fakturert time hos Elektro AS (608,25 kr) så mye høyere enn timelønna til en montør?", hint: "Hvor mange av de betalte timene betaler kunden for, og hva kommer i tillegg til lønna?", alt: ["Fordi feriepenger, sykelønn, arbeidsgiveravgift og timene som ikke faktureres, også må hentes inn på de fakturerte timene", "Fordi fortjenesten ligger i satsen", "Fordi administrasjonslønna ligger i satsen", "Fordi materiellet har påslag"], riktig: 0, forklaring: "All produksjonslønn med det som følger den, 13 685 563 kr, deles på de 22 500 timene kunden betaler for. Administrasjonen og fortjenesten ligger ikke i satsen: administrasjonen er indirekte (tilleggssatsen), og fortjenesten kommer til slutt." },
-    { sp: "Hvorfor regnes lønna til administrasjonen hos Elektro AS som indirekte kostnad i kalkylen?", hint: "Kan du si hvilken jobb en time på kontoret hører til?", alt: ["Fordi den ikke kan knyttes til én bestemt jobb", "Fordi den er lavere enn produksjonslønna", "Fordi den ikke har arbeidsgiveravgift", "Fordi boka sier at all lønn er indirekte"], riktig: 0, forklaring: "Direkte kostnader kan knyttes direkte til ett oppdrag; indirekte kostnader kan ikke det og fordeles med en tilleggssats (5.2.1). Derfor er bare produksjonslønna direkte lønn i augustløsningen." },
-    { sp: "Antall fakturerte timer i året faller fra 22 500 til 20 000, mens lønnskostnadene er de samme. Hva skjer med satsen per fakturert time?", hint: "Den samme direkte lønna deles på færre timer.", alt: ["Den øker fra 608,25 til 684,28 kr", "Den faller fra 608,25 til 540,67 kr", "Den er uendret", "Den øker til 1 046 kr"], riktig: 0, forklaring: "13 685 563 / 20 000 = 684,28 kr. Færre fakturerte timer betyr at hver time må bære mer. Er nedgangen midlertidig, bør satsen likevel stå på normalt timetall, og de usolgte timene vises som underdekning (vårt ord; boka regner satsene ut fra en normalperiode, 5.3)." }
+    { sp: "Nordlys har indirekte kostnader på 4 226 000 kr og direkte lønnskostnader (produksjonslønna) på 8 440 000 kr. Hva er tilleggssatsen?", hint: "Tilleggssats = indirekte kostnader / fordelingsgrunnlaget.", alt: ["50 %", "200 %", "25 %", "19 %"], riktig: 0, forklaring: "4 226 000 / 8 440 000 = 50,07 %, rundet til 50 %. 200 % er brøken snudd, 25 % er satsen på alle direkte kostnader (lønn, materiell og innleie), og 19 % er indirekte delt på omsetningen. (Økonomistyring for LØM-emnet, formelsamlingen kap. 5)" },
+    { sp: "Hvor kommer satsene i en kalkyle fra, timesatsen og tilleggssatsen?", hint: "Er satsene like i alle bedrifter, eller bygger de på bedriftens egne kostnader?", alt: ["Fra bedriftens budsjett eller regnskap, regnet ut av regnskapsfører eller kalkulatør", "Fra bransjeforeningen, de er like for alle bedrifter", "Fra grossistens rabattfil", "Fra akkordtariffen"], riktig: 0, forklaring: "Satsene er bedriftens egne og regnes ut av budsjettet eller regnskapet (5.2.1). Akkordtariffen gir arbeidstid og tillegg, rabattfilen gir innkjøpspris. NHO Elektro sine tall er en sammenlikning med bransjen, ikke egne satser." },
+    { sp: "Hvorfor er satsen per fakturert time hos Nordlys (586,11 kr) så mye høyere enn timelønna til en montør?", hint: "Hvor mange av de betalte timene betaler kunden for, og hva kommer i tillegg til lønna?", alt: ["Fordi feriepenger, sykelønn, arbeidsgiveravgift og timene som ikke faktureres, også må hentes inn på de fakturerte timene", "Fordi fortjenesten ligger i satsen", "Fordi administrasjonslønna ligger i satsen", "Fordi materiellet har påslag"], riktig: 0, forklaring: "All produksjonslønn med det som følger den, 8 440 000 kr, deles på de 14 400 timene kunden betaler for. Administrasjonen og fortjenesten ligger ikke i satsen: administrasjonen er indirekte (tilleggssatsen), og fortjenesten kommer til slutt." },
+    { sp: "Hvorfor regnes lønna til administrasjonen som indirekte kostnad i kalkylen?", hint: "Kan du si hvilken jobb en time på kontoret hører til?", alt: ["Fordi den ikke kan knyttes til én bestemt jobb", "Fordi den er lavere enn produksjonslønna", "Fordi den ikke har arbeidsgiveravgift", "Fordi boka sier at all lønn er indirekte"], riktig: 0, forklaring: "Direkte kostnader kan knyttes direkte til ett oppdrag; indirekte kostnader kan ikke det og fordeles med en tilleggssats (5.2.1). Derfor er bare produksjonslønna direkte lønn." },
+    { sp: "Antall fakturerte timer i året faller fra 14 400 til 12 000, mens lønnskostnadene er de samme. Hva skjer med satsen per fakturert time?", hint: "Den samme direkte lønna deles på færre timer.", alt: ["Den øker fra 586,11 til 703,33 kr", "Den faller fra 586,11 til 488,43 kr", "Den er uendret", "Den øker til 879 kr"], riktig: 0, forklaring: "8 440 000 / 12 000 = 703,33 kr. Færre fakturerte timer betyr at hver time må bære mer. Er nedgangen midlertidig, bør satsen likevel stå på normalt timetall, og de usolgte timene vises som underdekning (vårt ord; boka regner satsene ut fra en normalperiode, 5.3)." }
   );
   [2, 1, 3, 0, 2].forEach((pos, i, a) => { const q = I.flervalg[I.flervalg.length - a.length + i]; const r = q.alt.splice(0, 1)[0]; q.alt.splice(pos, 0, r); q.riktig = pos; });
   I.regne.push(
-    { sp: "Elektro AS: direkte lønn (produksjonslønna med sin andel av de ufordelte personalkostnadene) er 13 685 563 kr, og 15 montører fakturerer 1 500 timer hver. Hva blir satsen per fakturert time? Svar med to desimaler.", svar: 608.25, toleranse: 0.5, enhet: "kr", losning: "Fakturerte timer 15 × 1 500 = 22 500. Sats = 13 685 563 / 22 500 = 608,25 kr per fakturert time." },
-    { sp: "En jobb har 30 000 kr i direkte lønnskostnader og 15 000 kr i materiell. Tilleggssatsen er 72 % av direkte lønn. Hva er selvkosten?", svar: 66600, toleranse: 60, enhet: "kr", losning: "30 000 + 15 000 + 30 000 × 0,72 = 30 000 + 15 000 + 21 600 = 66 600 kr." },
-    { sp: "Satsen er 608,25 kr per fakturert time, tilleggssatsen 72 % og fortjenesten 15 % av selvkost. Hva betaler kunden for én time, uten merverdiavgift? Svar i hele kroner.", svar: 1203, toleranse: 3, enhet: "kr", losning: "Selvkost per time 608,25 × 1,72 = 1 046,19. Med 15 % fortjeneste: 1 046,19 × 1,15 = 1 203,12, altså 1 203 kr uten merverdiavgift." }
+    { sp: "Nordlys: direkte lønn (produksjonslønna med sosiale kostnader) er 8 440 000 kr, og 12 montører fakturerer 1 200 timer hver. Hva blir satsen per fakturert time? Svar med to desimaler.", svar: 586.11, toleranse: 0.5, enhet: "kr", losning: "Fakturerte timer 12 × 1 200 = 14 400. Sats = 8 440 000 / 14 400 = 586,11 kr per fakturert time." },
+    { sp: "En jobb har 30 000 kr i direkte lønnskostnader og 15 000 kr i materiell. Tilleggssatsen er 50 % av direkte lønn. Hva er selvkosten?", svar: 60000, toleranse: 60, enhet: "kr", losning: "30 000 + 15 000 + 30 000 × 0,50 = 30 000 + 15 000 + 15 000 = 60 000 kr." },
+    { sp: "Satsen er 586,11 kr per fakturert time, tilleggssatsen 50 % og fortjenesten 6,4 % av selvkost. Hva betaler kunden for én time, uten merverdiavgift? Svar i hele kroner.", svar: 935, toleranse: 3, enhet: "kr", losning: "Selvkost per time 586,11 × 1,50 = 879,17. Med 6,4 % fortjeneste: 879,17 × 1,064 = 935,43, altså 935 kr uten merverdiavgift." }
   );
 })();
 
@@ -59730,7 +59763,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Timebasert bransje; indirekte kostnader fordeles normalt som tilleggssats på direkte lønn.",
    "bank": true,
-   "kilde": "Bok 1, kalkulasjon (Boligprosjekt-bank 2026-09-03)"
+   "kilde": "Økonomistyring for LØM-emnet, kalkulasjon (Boligprosjekt-bank 2026-09-03)"
   },
   {
    "sp": "I en «helhetlig prisvurdering» av et tilbud skal prisen på en jobb:",
@@ -59743,7 +59776,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Helhetlig prisvurdering kombinerer selvkost med marked, konkurranse og betalingsvilje.",
    "bank": true,
-   "kilde": "Bok 1, prissetting"
+   "kilde": "Økonomistyring for LØM-emnet, prissetting"
   },
   {
    "sp": "I kalkylen for et oppdrag, hvilke av disse kostnadene er direkte kostnader?",
@@ -59797,7 +59830,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Dekningsbidrag = salgsinntekt minus variable (direkte) kostnader.",
    "bank": true,
-   "kilde": "Bok 1, dekningsbidrag"
+   "kilde": "Økonomistyring for LØM-emnet, dekningsbidrag"
   }
  ],
  "ok04": [
@@ -59812,7 +59845,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Resultat og likviditet skiller lag når inn- og utbetalinger kommer på ulike tidspunkt.",
    "bank": true,
-   "kilde": "Bok 1, likviditet"
+   "kilde": "Økonomistyring for LØM-emnet, likviditet"
   }
  ],
  "ok10": [
@@ -59827,7 +59860,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Investeringer over flere år vurderes med nåverdimetoden.",
    "bank": true,
-   "kilde": "Bok 1, investeringsanalyse"
+   "kilde": "Økonomistyring for LØM-emnet, investeringsanalyse"
   }
  ],
  "ol17": [
@@ -59842,7 +59875,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Situasjonsbestemt ledelse: stilen tilpasses medarbeiderens modenhet.",
    "bank": true,
-   "kilde": "Bok 2, ledelse"
+   "kilde": "Markedsføring, organisasjon og ledelse for LØM-emnet, ledelse"
   }
  ],
  "ol16": [
@@ -59857,7 +59890,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Saksfremlegg = sak, bakgrunn/hensikt og forslag til vedtak/avklaring.",
    "bank": true,
-   "kilde": "Bok 2, møteledelse; LUB 00TX00A"
+   "kilde": "Markedsføring, organisasjon og ledelse for LØM-emnet, møteledelse; LUB 00TX00A"
   },
   {
    "sp": "Ved uenighet i et tverrfaglig prosjektteam er et anbefalt første steg, ifølge pensum om konflikthåndtering:",
@@ -59870,7 +59903,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Konflikt løses først direkte i teamet, sak fremfor person.",
    "bank": true,
-   "kilde": "Bok 2, konflikthåndtering"
+   "kilde": "Markedsføring, organisasjon og ledelse for LØM-emnet, konflikthåndtering"
   }
  ],
  "ol20": [
@@ -59900,7 +59933,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Forretningsplanen beskriver forretningsidé, mål, marked og økonomi.",
    "bank": true,
-   "kilde": "Bok 2, forretningsplan"
+   "kilde": "Markedsføring, organisasjon og ledelse for LØM-emnet, forretningsplan"
   },
   {
    "sp": "Hvorfor kan eieren av et enkeltpersonforetak (EPF/ENK) risikere å miste privat bolig hvis foretaket går dårlig?",
@@ -59957,7 +59990,7 @@ LOM.bank = {
    "riktig": 1,
    "forklaring": "Konkurransekraft handler også om leveringstid, kvalitet, referanser og kompetanse.",
    "bank": true,
-   "kilde": "Bok 2, tilbud og konkurransekraft"
+   "kilde": "Markedsføring, organisasjon og ledelse for LØM-emnet, tilbud og konkurransekraft"
   }
  ],
  "ok02": [
@@ -61717,21 +61750,21 @@ LOM.kalkulatorer.sosialekostnader = function (el, f) {
   tegn(); return wrap;
 };
 
-/* ---------- Fra budsjett til kalkyle: augustløsningen (Økonomistyring for LØM-emnet, kap. 5.2 og 5.2.1) ---------- */
+/* ---------- Fra budsjett til kalkyle: bokas framgangsmåte, Nordlys som eksempel (Økonomistyring for LØM-emnet, kap. 5.2 og 5.2.1) ---------- */
 LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
-  const s = { M: 21250000, P: 12700000, A: 4825000, U: 1360000, K: 44795000, res: 5205000, mont: 15, tpm: 1500, fp: 15, rund: "hel", jt: 10, mat: 10000, nokkel: "lonn" };
+  const s = { M: 8390000, P: 8440000, A: 0, U: 0, K: 21056000, res: 1344000, mont: 12, tpm: 1200, fp: 6.4, rund: "hel", jt: 10, mat: 10000, nokkel: "lonn" };
   const felt = (n, k, min, max, st, h) => H().felt(el, s, tegn, n, k, min, max, st, h);
   const res = {}; const r = (k, t) => { res[k] = el("div", null, el("b", null, "–"), el("small", null, t)); return res[k]; };
   const velgRund = el("select", { "aria-label": "Avrunding av tilleggssatsen", onchange: (e) => { s.rund = e.target.value; tegn(); } },
-    el("option", { value: "hel" }, "Tilleggssatsen avrundet til hel prosent (som i august)"),
+    el("option", { value: "hel" }, "Tilleggssatsen avrundet til hel prosent"),
     el("option", { value: "eksakt" }, "Tilleggssatsen uten avrunding"));
   const velg = el("select", { "aria-label": "Hvor legges påslaget?", onchange: (e) => { s.nokkel = e.target.value; tegn(); } },
-    el("option", { value: "lonn" }, "Påslaget legges på direkte lønn (som i boka og i august)"),
+    el("option", { value: "lonn" }, "Påslaget legges på direkte lønn (som i boka)"),
     el("option", { value: "alle" }, "Påslaget legges på både lønn og materiell"));
   const satsBoks = el("div"), graf = el("div"), bokBoks = el("div"), nokBoks = el("div"), tips = el("div");
   const wrap = el("div", null,
     el("div", { class: "kort" }, el("h2", null, "Fra budsjett til sats og tilleggssats, og prisen på én jobb"),
-      el("p", { class: "kilder" }, "Budsjettet til Elektro AS 2026 er fylt inn og sortert slik vi gjorde i august: bare lønna til dem som jobber ute på oppdrag er direkte lønn. Lønna til administrasjonen hører ikke til én jobb, så den er en indirekte kostnad. Kalkulatoren regner ut satsen (direkte lønn per fakturert time) og tilleggssatsen (indirekte kostnader i prosent av direkte lønn), og bruker dem på én jobb i bokas selvkostkalkyle. (Økonomistyring for LØM-emnet, kap. 5.2 og 5.2.1)"),
+      el("p", { class: "kilder" }, "Budsjettet til Nordlys Elektro 2026 er fylt inn som eksempel, sortert slik boka gjør: bare lønna til dem som jobber ute på oppdrag er direkte lønn, og innleie regnes sammen med materiellet. Lønna til administrasjonen ligger i de indirekte kostnadene. Bytt ut tallene med budsjettet du jobber med."),
       el("div", { class: "kalk" }, el("div", { class: "inndata" },
         el("h3", null, "Budsjettet sortert"),
         felt("Direkte materiell (4300 − 4302 + 4500)", "M", 0, 60000000, 50000),
@@ -61744,7 +61777,7 @@ LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
         felt("Montører", "mont", 1, 60, 1),
         felt("Fakturerte timer per montør i året", "tpm", 800, 1800, 10),
         el("div", null, el("label", null, "Tilleggssatsen"), velgRund),
-        felt("Fortjeneste i prosent av selvkost", "fp", 0, 40, 0.5, "august: 15 %"),
+        felt("Fortjeneste i prosent av selvkost", "fp", 0, 40, 0.1, "Nordlys sitt budsjett gir 6,4 %"),
         el("h3", null, "Jobben"),
         felt("Fakturerte timer på jobben", "jt", 1, 400, 1),
         felt("Direkte materiell på jobben", "mat", 0, 500000, 500),
@@ -61789,7 +61822,7 @@ LOM.kalkulatorer.budsjettkalkyle = function (el, f) {
     const A_ = jobb(5000, 40000), B_ = jobb(20000, 2000);
     nokBoks.replaceChildren(H().tab(el, [{ navn: "Jobb", nokkel: "j" }, { navn: "Påslag på direkte lønn", nokkel: "n1", num: true, fmt: f.kr }, { navn: "Påslag på lønn og materiell", nokkel: "n2", num: true, fmt: f.kr }],
       [{ j: "Tavle: 5 000 lønn + 40 000 materiell", n1: A_.n1, n2: A_.n2 }, { j: "Service: 20 000 lønn + 2 000 materiell", n1: B_.n1, n2: B_.n2 }], { sorterbar: false }),
-      el("div", { class: "tips" }, "Begge valgene dekker de samme kronene over året, men enkeltjobbene får ulik pris. Boka legger påslaget på direkte lønn (5.2.1); det gjorde vi også i august. Prisene er uten mva. og med fortjenesten."));
+      el("div", { class: "tips" }, "Begge valgene dekker de samme kronene over året, men enkeltjobbene får ulik pris. Boka legger påslaget på direkte lønn (5.2.1). Prisene er uten mva. og med fortjenesten."));
   }
   tegn(); return wrap;
 };
@@ -62419,6 +62452,8 @@ LOM.pwa = (function () {
     return mal;
   };
   const nf = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
+  /* Teoriavsnitt kan ha en enkel tabell: tabell: { tittel?, hode: [...], rader: [[...]] } (2.24.0) */
+  const teoriTabell = (t) => t && t.tabell ? el("div", { class: "tab-wrap" }, t.tabell.tittel ? el("p", { class: "kilder" }, t.tabell.tittel) : null, el("table", { class: "tab at-tab" }, el("thead", null, el("tr", null, t.tabell.hode.map((h, i) => el("th", { style: i ? "text-align:right" : "" }, h)))), el("tbody", null, t.tabell.rader.map(r => el("tr", { class: String(r[0]).startsWith("=") ? "hl" : "" }, r.map((v, i) => el("td", { style: i ? "text-align:right" : "" }, String(v)))))))) : null;
   const kr = (v) => nf.format(Math.round(v)) + " kr";
   const pst = (v, d = 1) => v.toLocaleString("nb-NO", { minimumFractionDigits: d, maximumFractionDigits: d }) + " %";
   const F = { kr, pst, nf };
@@ -63524,8 +63559,8 @@ LOM.pwa = (function () {
       ...modellBolker(id),
       I.grunn && I.grunn.length
         ? el("details", { class: "dypere", open: lager.laerer ? "open" : null }, el("summary", null, el("span", { class: "dypere-tittel" }, "Vil du dypere?"), el("span", { class: "dypere-under" }, `Hele teorien: ${I.teori.length} avsnitt, slik læreboka forklarer det.`)),
-            el("div", { class: "dypere-innhold" }, I.teori.map(t => el("div", { class: "kort", "data-teori": id, "data-overskrift": t.overskrift }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, personBoksTeori(id, t.overskrift), t.avsnitt.map(a => el("p", null, a))))))
-        : I.teori.map(t => el("div", { class: "kort", "data-teori": id, "data-overskrift": t.overskrift }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, personBoksTeori(id, t.overskrift), t.avsnitt.map(a => el("p", null, a)))),
+            el("div", { class: "dypere-innhold" }, I.teori.map(t => el("div", { class: "kort", "data-teori": id, "data-overskrift": t.overskrift }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, personBoksTeori(id, t.overskrift), t.avsnitt.map(a => el("p", null, a)), teoriTabell(t)))))
+        : I.teori.map(t => el("div", { class: "kort", "data-teori": id, "data-overskrift": t.overskrift }, el("h2", null, t.overskrift), t.ref ? el("div", { class: "ref" }, t.ref) : null, personBoksTeori(id, t.overskrift), t.avsnitt.map(a => el("p", null, a)), teoriTabell(t))),
       I.tema ? temaBolk(I.tema, id) : null,
       I.formler && I.formler.length ? el("div", { class: "kort" }, el("h2", null, "Formlene"), el("table", { class: "tab formeltab" }, el("thead", null, el("tr", null, el("th", null, "Hva"), el("th", null, "Formel"), el("th", null, "Regnet for Nordlys"))), el("tbody", null, I.formler.map(f => el("tr", null, el("td", null, f.navn), el("td", { class: "formel" }, f.formel), el("td", null, f.eksempel)))))) : null,
       el("div", { class: "kort" }, el("h2", null, "Begrepene på norsk"), el("p", { class: "kilder" }, "Klikk på et begrep. Én setning på norsk, en situasjon hos Nordlys, hva en leder bruker det til, og den vanligste fella."),
