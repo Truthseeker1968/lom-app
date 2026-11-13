@@ -4,7 +4,7 @@
    og lagres i cache; uten nett brukes siste lagrede kopi. Pensumfilene (pensum/…) lagres
    når de åpnes, så en åpnet PDF finnes også uten nett. Kall til andre domener
    (bruksstatistikk) går rett gjennom. */
-const VERSJON = "2.26.3-13.-november-2026";
+const VERSJON = "2.26.4-13.-november-2026";
 const CACHE = "lom-app-" + VERSJON;
 const FORHAAND = ["./", "./index.html", "./manifest.webmanifest", "./ikon-192.png", "./ikon-512.png"];
 
@@ -18,7 +18,7 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
-  if (e.request.method !== "GET" || url.origin !== location.origin || url.pathname.indexOf("/lom-lyd/") !== -1) return;   /* podkastlyden strømmes, lagres ikke */
+  if (e.request.method !== "GET" || url.origin !== location.origin || url.pathname.indexOf("/lom-lyd/") !== -1 || url.pathname.indexOf("/lom-video/") !== -1) return;   /* podkastlyden og videoene strømmes, lagres ikke */
   e.respondWith(
     fetch(e.request).then((svar) => {
       if (svar && svar.ok) { const kopi = svar.clone(); caches.open(CACHE).then((c) => c.put(e.request, kopi)).catch(() => {}); }
