@@ -1163,6 +1163,18 @@ table.tab.at-tab,table.tab.at-scen{min-width:0}
 table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphens:auto;overflow-wrap:anywhere}
 @media(max-width:520px){table.tab.at-scen{font-size:.8rem}table.tab.at-scen td,table.tab.at-scen th{padding:6px 4px}}
 
+/* ---------- Ukens drift (2.27.0) ---------- */
+.drift-topp h1{margin:.2em 0 .3em}
+.drift-tall{display:flex;flex-wrap:wrap;gap:22px;margin-top:10px} .drift-tall b{display:block;font-size:1.45rem;line-height:1.1;font-variant-numeric:tabular-nums} .drift-tall small{color:var(--tekst2);font-size:.8rem}
+.drift-sak{border-left:0;position:relative} .drift-sak.ok{box-shadow:inset 4px 0 0 var(--gronn)} .drift-sak.feil{box-shadow:inset 4px 0 0 var(--rod)}
+.drift-sak-topp{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--tekst2)}
+.drift-nr{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--flate2);color:var(--tekst);font-weight:700;letter-spacing:0}
+.drift-kap{margin-left:auto;text-transform:none;letter-spacing:0;font-size:.82rem}
+.drift-valg{display:grid;gap:8px;margin:10px 0 4px} .drift-valg .knapp{text-align:left;white-space:normal;justify-content:flex-start;min-height:44px;height:auto;padding:10px 14px;line-height:1.35}
+.drift-valg .knapp.riktig{background:var(--gronn);border-color:var(--gronn);color:#fff} .drift-valg .knapp.galt{background:var(--rod);border-color:var(--rod);color:#fff} .drift-valg .knapp.fasit{outline:2px solid var(--gronn)}
+.drift-valg .knapp:disabled{opacity:1;cursor:default}
+.drift-svar{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--flate2);font-size:.95rem} .drift-svar p{margin:.4em 0 0}
+
 </style>
 </head>
 <body>
@@ -3287,7 +3299,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 13.11.2026 10:44. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 13.11.2026 11:12. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -21049,7 +21061,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.26.4 · 13. november 2026",   // 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.27.0 · 13. november 2026",   // 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -21436,6 +21448,9 @@ LOM.video = {
   { "kap": "ok05", "nr": 3, "tittel": "Etterkalkyle og påslag", "fil": "ok05_video3.mp4", "bilde": "ok05_video3.jpg", "sek": 390, "om": "økt 3" },
   { "kap": "ok06", "nr": 1, "tittel": "Kapitalbehov og finansiering: holder 800 000 kroner?", "fil": "ok06_video1.mp4", "bilde": "ok06_video1.jpg", "sek": 343, "om": "hele kapitlet" },
   { "kap": "ok07", "nr": 1, "tittel": "Produktvalg: hvem skal ha de siste montørtimene?", "fil": "ok07_video1.mp4", "bilde": "ok07_video1.jpg", "sek": 317, "om": "hele kapitlet" },
+  { "kap": "ma03", "nr": 1, "tittel": "Markedsplanen: først idéen og analysen, så tallet", "fil": "ma03_video1.mp4", "bilde": "ma03_video1.jpg", "sek": 294, "om": "hele kapitlet" },
+  { "kap": "ma06", "nr": 1, "tittel": "Produktet: hva selger egentlig en elektrobedrift?", "fil": "ma06_video1.mp4", "bilde": "ma06_video1.jpg", "sek": 250, "om": "hele kapitlet" },
+  { "kap": "ma07", "nr": 1, "tittel": "Pris som konkurransemiddel: hva koster ti prosent rabatt?", "fil": "ma07_video1.mp4", "bilde": "ma07_video1.jpg", "sek": 304, "om": "hele kapitlet" },
   { "kap": "ol16", "nr": 1, "tittel": "Grupper, kommunikasjon og konflikt: tre ting som gikk galt", "fil": "ol16_video1.mp4", "bilde": "ol16_video1.jpg", "sek": 281, "om": "hele kapitlet" },
   { "kap": "ol17", "nr": 1, "tittel": "Ledelse og motivasjon: blir den beste montøren en god leder?", "fil": "ol17_video1.mp4", "bilde": "ol17_video1.jpg", "sek": 322, "om": "hele kapitlet" },
   { "kap": "ol18", "nr": 1, "tittel": "Rekruttering og medarbeidersamtale: få rett person, og hold på ham", "fil": "ol18_video1.mp4", "bilde": "ol18_video1.jpg", "sek": 259, "om": "hele kapitlet" }
@@ -61730,7 +61745,10 @@ LOM.spill = (function () {
     tverr: 8000,           // bestått prøve på tvers
     eksamen: 4000,         // skrevet eksamensnær oppgave (≥ 80 ord) og sett løsningsforslaget (én gang per kapittel)
     daglig: 3000,          // fullført dagens utfordring
-    strek: 1000            // per dag i sammenhengende strek (fra dag 2)
+    strek: 1000,           // per dag i sammenhengende strek (fra dag 2)
+    drift: 3000,           // levert ukens drift (én gang per uke)
+    driftRiktig: 500,      // per riktig valg i ukens drift
+    driftRad: 1000         // × uker på rad i ukens drift (fra uke 2)
   };
 
   /* ---- nivåer: rollen studenten «er» i Nordlys ---- */
@@ -61767,6 +61785,9 @@ LOM.spill = (function () {
     { id: "tverr", navn: "Eksamensklar", tekst: "Bestått prøve på tvers av kapitler", ikon: "🎯" },
     { id: "daglig5", navn: "Dagens mann", tekst: "Fem dagens utfordringer fullført", ikon: "⭐" },
     { id: "forbedret", navn: "Slo deg selv", tekst: "Forbedret egen rekord på en prøve", ikon: "📈" },
+    { id: "drift1", navn: "Første driftsuke", tekst: "Levert en uke i Ukens drift", ikon: "🏗" },
+    { id: "driftfeilfri", navn: "Feilfri drift", tekst: "Fem av fem riktige valg i én driftsuke", ikon: "🏆" },
+    { id: "drift4", navn: "Fire uker på rad", tekst: "Levert Ukens drift fire uker på rad", ikon: "📆" },
     { id: "eksamen5", navn: "Sensorklar", tekst: "Fem eksamensnære oppgaver skrevet og sammenliknet", ikon: "✍️" }
   ];
 
@@ -61808,6 +61829,8 @@ LOM.spill = (function () {
         S.beste["prove:" + d.id] = Math.max(best, d.prosent); tjen(sum, `Prøve ${d.tittel}: ${d.prosent} %`);
         if (d.kapmester) giMerke("kapmester"); if (d.delmester) giMerke("delmester"); break;
       }
+      case "drift": { if (S.beste["drift:" + d.uke]) break; S.beste["drift:" + d.uke] = d.riktig; giMerke("drift1"); if (d.riktig === d.antall) giMerke("driftfeilfri"); if (d.paRad >= 4) giMerke("drift4");
+        tjen(satser.drift + d.riktig * satser.driftRiktig + (d.paRad >= 2 ? d.paRad * satser.driftRad : 0), `Ukens drift: ${d.riktig} av ${d.antall} riktige` + (d.paRad >= 2 ? `, ${d.paRad} uker på rad` : "")); break; }
       case "tverr": { let sum = d.prosent * satser.provePerProsent; if (d.bestaatt) { sum += satser.tverr; giMerke("tverr"); } tjen(sum, `Prøve på tvers: ${d.prosent} %`); break; }
       case "daglig": { if (S.daglig[idag()]) break; S.daglig[idag()] = d.riktig; tjen(satser.daglig + d.riktig * satser.riktig, `Dagens utfordring: ${d.riktig} av ${d.antall}`); if (Object.keys(S.daglig).length >= 5) giMerke("daglig5"); break; }
     }
@@ -61827,6 +61850,128 @@ LOM.spill = (function () {
     paa: () => S.paa, sett: (o) => { Object.assign(S, o); lagre(); }, lytt: (f) => lyttere.push(f),
     nullstill: () => { Object.assign(S, { kr: 0, logg: [], dager: [], merker: {}, kalk: {}, beste: {}, daglig: {} }); lagre(); },
     oppnaadd: () => milepaeler.filter(m => m.kr <= S.kr) };
+})();
+
+
+/* ===================== Driftssimulator: «Ukens drift» (2.27.0) =====================
+   Studenten driver Nordlys Elektro én uke av gangen. Hver uke (ISO-uke, mandag–søndag) kommer fem saker:
+   prise en jobb, fordele de siste montørtimene, frigjøre penger, lede en medarbeider og vinne en kunde.
+   Hver sak bygger på et kapittel i bøkene. Riktig valg gir dekningsbidrag til Nordlys; feil valg koster,
+   og forklaringen viser hvorfor. Sakene er like for alle samme uke (tallene trekkes fra ukenummeret).
+   Mål (Glenn 13.11.2026): få studentene til å øve jevnt hver uke. Derfor: ny uke hver mandag,
+   «uker på rad», og ukesresultatet sammenlignes med beste mulige uke.
+   Tall fra Nordlys-faktaarket: timepris 890 kr, lønnskostnad 640 kr per montørtime, 20 % påslag på materiell,
+   25 % merverdiavgift, 360 dager i året (Økonomistyring for LØM-emnet, kapittel 4, 5 og 7).
+   Lagres lokalt (nøkkel lom_drift_v1). app.js tegner siden (visDrift) og kaller LOM.drift.
+   ================================================================================ */
+window.LOM = window.LOM || {};
+LOM.drift = (function () {
+  const NOKKEL = "lom_drift_v1";
+  let D = { uker: {} };   // uker: { "2026-U46": { valg: [indeks per sak], riktig, db, maks, ferdig: dato } }
+  try { const l = localStorage.getItem(NOKKEL); if (l) D = Object.assign(D, JSON.parse(l)); } catch (e) { }
+  const lagre = () => { try { localStorage.setItem(NOKKEL, JSON.stringify(D)); } catch (e) { } };
+  const nf = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
+  const kr = (v) => nf.format(Math.round(v)) + " kr";
+  const TP = 890, LK = 640, PAA = 0.20, MVA = 0.25;
+
+  /* ---- ISO-uke: «2026-U46» ---- */
+  function ukeId(dato) {
+    const d = new Date(Date.UTC((dato || new Date()).getFullYear(), (dato || new Date()).getMonth(), (dato || new Date()).getDate()));
+    const dag = d.getUTCDay() || 7; d.setUTCDate(d.getUTCDate() + 4 - dag);
+    const aar = d.getUTCFullYear(), start = new Date(Date.UTC(aar, 0, 1));
+    const nr = Math.ceil(((d - start) / 864e5 + 1) / 7);
+    return `${aar}-U${String(nr).padStart(2, "0")}`;
+  }
+  const forrigeUke = (id) => { const [a, u] = id.split("-U").map(Number); const d = new Date(Date.UTC(a, 0, 4 + (u - 1) * 7 - 7)); return ukeId(new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())); };
+
+  /* ---- tilfeldige, men like for alle samme uke ---- */
+  function rng(id) { let x = 0; for (const c of id) x = (x * 31 + c.charCodeAt(0)) & 0x7fffffff; x = x || 1;
+    return () => { x = (x * 1103515245 + 12345) & 0x7fffffff; return x / 0x7fffffff; }; }
+  const velg = (r, liste) => liste[Math.floor(r() * liste.length)];
+  const blandet = (r, liste) => liste.map(v => [r(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+  const rund = (v, til) => Math.round(v / til) * til;
+
+  /* ---- ukens fem saker ---- */
+  function saker(id) {
+    const r = rng(id); const ut = [];
+
+    /* 1 Prise jobben (OK05) */
+    { const jobb = velg(r, [["Varmekabler i nytt bad", "familien Berg"], ["Ny kurs og ladeboks", "familien Moen"], ["Utvidelse av sikringsskap", "en tannlegeklinikk"], ["Belysning i lager", "en grossist på Alnabru"], ["Stikk og lys i garasje", "Haugerud Bygg"]]);
+      const t = 2 + Math.floor(r() * 14), m = rund(1500 + r() * 18000, 100);
+      const riktig = t * TP + m * (1 + PAA), glemt = t * TP + m, selvkost = t * LK + m;
+      const valg = blandet(r, [{ t: kr(riktig), db: t * (TP - LK) + m * PAA, ok: true },
+        { t: kr(glemt), db: t * (TP - LK), ok: false, hvorfor: "Påslaget på materiellet er glemt. Jobben er vunnet, men Nordlys tjener ingenting på materiellet." },
+        { t: kr(selvkost), db: 0, ok: false, hvorfor: "Det er det jobben koster Nordlys. Til denne prisen jobber laget gratis." }]);
+      ut.push({ id: "pris", kap: "ok05", tema: "Prise en jobb", tittel: `${jobb[0]} for ${jobb[1]}`,
+        tekst: `Ida har regnet ${t} montørtimer og materiell for ${kr(m)} (innkjøpspris). Hva skal tilbudet være, uten merverdiavgift?`,
+        valg, forklaring: `${t} × 890 + ${kr(m)} × 1,20 = ${kr(riktig)}. Dekningsbidraget er det som er igjen etter lønn (640 kr per time) og materiell: ${kr(t * (TP - LK) + m * PAA)}.` }); }
+
+    /* 2 De siste montørtimene (OK07): rekkefølgen fra per-time-regelen, antallet fra kundene */
+    { const H = 20 + 2 * Math.floor(r() * 16);                                          // ledige timer
+      const sdb = rund(H * (120 + r() * 160), 100);                                       // garasjen: 120–280 kr per time
+      const lt = 2 + Math.floor(r() * 3), ldb = rund(lt * (650 + r() * 300), 50);        // ladepunkt: 650–950 kr per time
+      const ko = 1 + Math.floor(r() * 9), antall = Math.min(ko, Math.floor(H / lt)), ltot = antall * ldb, ledig = H - antall * lt;
+      const garasjeBest = sdb > ltot;
+      const valg = blandet(r, [{ t: `Garasjen: ${kr(sdb)} på alle ${H} timene`, db: sdb, ok: garasjeBest, hvorfor: `Bare ${kr(sdb / H)} per montørtime. Ladepunktene ga mer denne uka.` },
+        { t: `Ladepunktene: ${kr(ldb)} hver, ${lt} timer per stykk (${ko} i køen)`, db: ltot, ok: !garasjeBest, hvorfor: `Mest per time, men køen var for kort: ${antall} ladepunkter ga ${kr(ltot)}, og ${ledig} timer sto tomme. Garasjen ga mer i sum.` }]);
+      ut.push({ id: "knapp", kap: "ok07", tema: "Den knappe faktoren", tittel: `${H} ledige montørtimer`,
+        tekst: `Resten av uka er fullbooket bortsett fra ${H} montørtimer. Ronny vil ta garasjen, som trenger alle timene. Tom har ${ko} ladepunkter i kø. Hvem får timene?`,
+        valg, forklaring: `Per time: garasjen ${kr(sdb / H)}, ladepunktet ${kr(ldb / lt)}. Rangeringen sier rekkefølgen, men kundene sier hvor mange: ${antall} ladepunkter gir ${kr(ltot)}, garasjen ${kr(sdb)}.` }); }
+
+    /* 3 Penger på konto (OK04 og OK06) */
+    { const S = rund(18e6 + r() * 10e6, 100000), dager = velg(r, [5, 10, 15]);
+      const en = S * (1 + MVA) / 360, riktig = en * dager;
+      const valg = blandet(r, [{ t: kr(riktig), db: rund(riktig * 0.075 / 12, 10), ok: true },
+        { t: kr(S / 360 * dager), db: 0, ok: false, hvorfor: "Fakturaen kunden skylder, er med merverdiavgift. Salget må ganges med 1,25 først." },
+        { t: kr(S / 12 * dager / 30 * 0.8), db: 0, ok: false, hvorfor: "Regn én dags salg med merverdiavgift (salg × 1,25 / 360) og gang med dagene." }]);
+      ut.push({ id: "kreditt", kap: "ok04", tema: "Kredittid og likviditet", tittel: "Banken spør om kassekreditten",
+        tekst: `Salget er ${kr(S)} i året uten merverdiavgift. Kari vil fakturere samme dag og purre, så kundene betaler ${dager} dager raskere. Hvor mye mer står da på konto?`,
+        valg, forklaring: `Én dags salg med merverdiavgift er ${kr(S)} × 1,25 / 360 = ${kr(en)}. Ganger ${dager} dager blir det ${kr(riktig)}. Det sparer en måned med rente på kassekreditten, 7,5 % / 12 = ${kr(riktig * 0.075 / 12)}.` }); }
+
+    /* 4 Lede en medarbeider (OL17) */
+    { const p = velg(r, [["Lærlingen, første uke", "lite", "mye", 0], ["Montøren som skal montere sitt første solcelleanlegg", "lite", "mye", 1], ["Montøren som har mistet lysten etter en reklamasjon", "mye", "lite", 2], ["Den erfarne serviceteknikeren som vil ha mer ansvar", "mye", "mye", 3]]);
+      const stiler = ["Instruerende: tett styring, vis og følg opp", "Selgende: forklar hvorfor, og styr fortsatt", "Deltagende: mindre styring, mer støtte", "Delegerende: gi ansvaret, følg opp resultatet"];
+      const fasit = p[3] === 1 ? 1 : p[3];
+      const valg = blandet(r, stiler.map((s, i) => ({ t: s, db: i === fasit ? 2000 : 0, ok: i === fasit, hvorfor: "Stilen passer ikke modenheten. Spør: kan han det, og vil han det?" })));
+      ut.push({ id: "ledelse", kap: "ol17", tema: "Lederstil", tittel: p[0],
+        tekst: `Han kan ${p[1]} om oppgaven og vil ${p[2]}. Hvilken stil gir best resultat denne uka?`,
+        valg, forklaring: `Hersey og Blanchard: kan lite, vil mye → instruerende (helt ny) eller selgende (ivrig, men ny på oppgaven). Kan mye, vil lite → deltagende. Kan og vil → delegerende. Riktig stil sparer om lag tre timer med retting, 3 × (890 − 640) ≈ 2 000 kr.` }); }
+
+    /* 5 Vinne kunden (MA06) */
+    { const pris = rund(9000 + r() * 6000, 25), billig = rund(pris * (0.88 + r() * 0.06), 25), db = rund(pris * 0.18, 10);
+      const valg = blandet(r, [{ t: "Vis hva som følger med: kontroll av sikringsskapet, dokumentasjon og fem års garanti", db, ok: true },
+        { t: `Sett ned prisen til ${kr(billig)}`, db: db - (pris - billig), ok: false, hvorfor: "Du vinner jobben, men gir bort dekningsbidraget. Boksen er lik; det ytre laget av produktet er det kunden betaler for." },
+        { t: "Si at den andre installatøren er dårlig", db: 0, ok: false, hvorfor: "Kunden velger bort begge. Det uspesifiserte produktet, ryktet, er også ditt." }]);
+      ut.push({ id: "marked", kap: "ma06", tema: "Produktet", tittel: "Kunden har et billigere tilbud",
+        tekst: `Kunden har fått et tilbud på ${kr(billig)} for samme ladeboks. Nordlys tilbød ${kr(pris)}. Hva gjør du?`,
+        valg, forklaring: `Boka (kapittel 6) deler produktet i fire lag. Når boksen er lik, avgjør det utvidete produktet og ryktet. Jobben gir ${kr(db)} i dekningsbidrag til full pris.` }); }
+
+    return ut;
+  }
+
+  const maks = (ss) => ss.reduce((s, x) => s + Math.max(...x.valg.map(v => v.db)), 0);
+
+  /* ---- uker på rad (avsluttede uker, regnet bakover fra denne eller forrige uke) ---- */
+  function ukerPaaRad() { let id = ukeId(); if (!D.uker[id] || !D.uker[id].ferdig) id = forrigeUke(id); let n = 0; while (D.uker[id] && D.uker[id].ferdig) { n++; id = forrigeUke(id); } return n; }
+
+  function svar(id, nr, indeks) {
+    const u = D.uker[id] = D.uker[id] || { valg: [] };
+    if (u.ferdig || u.valg[nr] !== undefined) return null;
+    u.valg[nr] = indeks; lagre();
+    const ss = saker(id); if (u.valg.filter(v => v !== undefined).length === ss.length) {
+      u.riktig = ss.filter((s, i) => s.valg[u.valg[i]].ok).length;
+      u.db = ss.reduce((s, x, i) => s + x.valg[u.valg[i]].db, 0); u.maks = maks(ss); u.ferdig = new Date().toISOString().slice(0, 10); lagre();
+      LOM.spill && LOM.spill.hendelse && LOM.spill.hendelse("drift", { uke: id, riktig: u.riktig, antall: ss.length, db: u.db, maks: u.maks, paRad: ukerPaaRad() });
+      LOM.telling && LOM.telling.hendelse && LOM.telling.hendelse(`drift-${id}-${u.riktig}av${ss.length}`);
+    }
+    return u;
+  }
+
+  const sum = () => Object.values(D.uker).filter(u => u.ferdig).reduce((s, u) => s + u.db, 0);
+  const historikk = () => Object.entries(D.uker).filter(([, u]) => u.ferdig).sort((a, b) => a[0] < b[0] ? 1 : -1);
+
+  return { ukeId, saker, svar, maks, ukerPaaRad, sum, historikk, kr, uke: (id) => D.uker[id || ukeId()] || { valg: [] },
+    nullstill: () => { D = { uker: {} }; lagre(); } };
 })();
 
 
@@ -62262,6 +62407,7 @@ LOM.pwa = (function () {
     if (a === "velg") return "Velg kapittel";
     if (a === "podkast") return "Podkast";
     if (a === "video") return "Video";
+    if (a === "drift") return "Ukens drift";
     return "Forsiden";
   }
   function oppdaterTilbake() {
@@ -62292,6 +62438,7 @@ LOM.pwa = (function () {
     else if (a === "del") visDel(b);
     else if (a === "podkast") visPodkast(b ? decodeURIComponent(b) : "alle");
     else if (a === "video") visVideo(b ? decodeURIComponent(b) : "");
+    else if (a === "drift" && LOM.drift) visDrift();
     else visForside();
     pakkTabeller();
     if (typeof pkOppdaterKnapper === "function") pkOppdaterKnapper();
@@ -62749,7 +62896,7 @@ LOM.pwa = (function () {
         el("span", { class: "hero-merke" }, O.undertittel),
         el("h1", null, O.tittel),
         el("p", { class: "hero-ingress" }, "Økonomistyring, organisasjon og ledelse og markedsforståelse — forklart med tall og situasjoner fra elektrobransjen, med kalkulatorer du kan leke med og øvelser som gir deg begrunnelsen, ikke bare fasiten."),
-        el("div", { class: "hero-knapper" }, cta, studieplan, podkast, video),
+        el("div", { class: "hero-knapper" }, cta, driftKnapp(), studieplan, podkast, video),
         el("label", { class: "hero-sok" }, ikon("sok"), sokFelt),
         fremdrift));
 
@@ -62843,6 +62990,7 @@ LOM.pwa = (function () {
       mile ? el("p", { class: "kilder", style: "margin:6px 0 0" }, `Neste milepæl: ${mile.ikon} ${mile.navn} — mangler ${SP.kr(mile.kr - T.kr)}.`) : null,
       el("div", { class: "sp-kort-rad" },
         el("div", { class: "v", onclick: () => gaaTil("/daglig") }, el("span", { class: "ikon" }, dagensGjort ? "✓" : "⚡"), el("div", null, el("b", null, "Dagens utfordring"), el("small", null, dagensGjort ? `Gjort i dag: ${T.daglig[new Date().toISOString().slice(0, 10)]} av 5. Ny i morgen.` : `Fem spørsmål på tvers av pensum. ${SP.kr(SP.satser.daglig)} + bonus per riktig.`))),
+        LOM.drift ? el("div", { class: "v", onclick: () => gaaTil("/drift") }, el("span", { class: "ikon" }, LOM.drift.uke().ferdig ? "✓" : "🏗"), el("div", null, el("b", null, "Ukens drift"), el("small", null, LOM.drift.uke().ferdig ? `Uka er levert: ${LOM.drift.kr(LOM.drift.uke().db)}. Nye saker mandag.` : `Fem saker venter. ${LOM.drift.ukerPaaRad()} uker på rad.`))) : null,
         el("div", { class: "v", onclick: () => gaaTil("/spill") }, el("span", { class: "ikon" }, "🏅"), el("div", null, el("b", null, "Merker, rekorder og logg"), el("small", null, "Alt du har oppnådd, og hva som gir kroner.")))));
   }
   function navnModal(etter) {
@@ -62887,6 +63035,51 @@ LOM.pwa = (function () {
       el("div", { class: "kort" }, el("h3", null, "Slik tjener du kroner"), el("table", { class: "tab" }, el("tbody", null, [["Lese et kapittel", SP.satser.lest], ["Prøve en kalkulator (første gang)", SP.satser.kalkulator], ["Riktig svar i Øv", SP.satser.riktig], ["Galt svar i Øv — innsats", SP.satser.feil], ["Riktig regneoppgave", SP.satser.regne], ["Riktig generert spørsmål", SP.satser.generert], ["Bestått kapittelprøve", SP.satser.proveBestaatt], ["Per prosent riktig på prøve", SP.satser.provePerProsent], ["Slått egen rekord", SP.satser.proveForbedring], ["Bestått prøve på tvers", SP.satser.tverr], ["Eksamensnær oppgave skrevet og sammenliknet", SP.satser.eksamen], ["Dagens utfordring", SP.satser.daglig], ["Hver dag på rad (fra dag 2)", SP.satser.strek]].map(([t, v]) => el("tr", null, el("td", null, t), el("td", { class: "num" }, SP.kr(v))))))),
       el("div", { class: "kort" }, el("h3", null, "Siste hendelser"), T.logg.length ? el("table", { class: "tab" }, el("tbody", null, T.logg.slice(0, 15).map(l => el("tr", null, el("td", null, l.d), el("td", null, l.t), el("td", { class: "num" }, "+" + SP.kr(l.kr)))))) : el("p", { class: "kilder" }, "Ingenting ennå.")),
       bunn());
+  }
+
+  /* ---------- Ukens drift (2.27.0): driftssimulatoren, se motor/drift.js ---------- */
+  function driftKnapp() {
+    if (!LOM.drift) return null;
+    const u = LOM.drift.uke(), svart = (u.valg || []).filter(v => v !== undefined && v !== null).length;
+    const tekst = u.ferdig ? `Levert: ${LOM.drift.kr(u.db)} · nye saker mandag` : svart ? `${svart} av 5 saker løst denne uka` : `Fem nye saker · ${LOM.drift.ukerPaaRad()} uker på rad`;
+    return el("a", { class: "hero-knapp sekundaer drift-knapp", href: "#/drift" }, el("span", null, el("small", null, tekst), "Ukens drift"), ikon("pil"));
+  }
+  function visDrift() {
+    sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › Ukens drift");
+    const DR = LOM.drift, id = DR.ukeId(), ss = DR.saker(id), nr = Number(id.split("-U")[1]);
+    const tall = (v, t) => el("div", null, el("b", null, String(v)), el("small", null, t));
+    const kapNavn = (k) => { const f = finnKap(k); return f ? `${f.del.navn}, kapittel ${f.kap.kap}` : k; };
+    const pst = (u) => u.maks ? Math.round(100 * u.db / u.maks) : 0;
+    const boks = el("div");
+    const tegn = () => {
+      const u = DR.uke(id), valgt = u.valg || [];
+      const topp = el("div", { class: "kort drift-topp" },
+        el("div", { class: "merkelapp" }, `Uke ${nr} · Nordlys Elektro AS`),
+        el("h1", null, "Ukens drift"),
+        el("p", null, "Denne uka driver du Nordlys. Fem saker venter: en jobb som skal prises, montørtimer som skal fordeles, penger som står hos kundene, en medarbeider som skal ledes og en kunde som vurderer et billigere tilbud. Riktige valg gir dekningsbidrag. Feil valg koster, og du får vite hvorfor. Nye saker hver mandag."),
+        el("div", { class: "drift-tall" }, tall(DR.ukerPaaRad(), "uker på rad"), tall(DR.kr(DR.sum()), "tjent til Nordlys totalt"), tall(DR.kr(DR.maks(ss)), "beste mulige uke")),
+        SP.paa() ? null : el("p", { class: "kilder", style: "margin:10px 0 0" }, "Med spillmodus på (🎮 øverst) gir uka også kroner, nivå og merker."));
+      const sak = (s, i) => {
+        const v = valgt[i], svart = v !== undefined && v !== null, mitt = svart ? s.valg[v] : null, beste = Math.max(...s.valg.map(x => x.db));
+        return el("div", { class: "kort drift-sak" + (svart ? (mitt.ok ? " ok" : " feil") : "") },
+          el("div", { class: "drift-sak-topp" }, el("span", { class: "drift-nr" }, String(i + 1)), el("span", null, s.tema), el("a", { href: `#/kap/${s.kap}/les`, class: "drift-kap" }, kapNavn(s.kap))),
+          el("h3", null, s.tittel), el("p", null, s.tekst),
+          el("div", { class: "drift-valg" }, s.valg.map((x, j) => {
+            const b = el("button", { class: "knapp" + (svart && j === v ? (x.ok ? " riktig" : " galt") : "") + (svart && x.ok && j !== v ? " fasit" : ""),
+              onclick: () => { if (svart) return; DR.svar(id, i, j); const u2 = DR.uke(id); if (u2.ferdig) feiring(u2.riktig === ss.length ? "🏆 Feilfri uke" : `Uka er levert: ${DR.kr(u2.db)}`, `${u2.riktig} av ${ss.length} riktige valg. ${pst(u2)} % av beste mulige uke.`); tegn(); } }, x.t);
+            if (svart) b.disabled = true; return b; })),
+          svart ? el("div", { class: "drift-svar" }, el("b", null, mitt.ok ? `Riktig. +${DR.kr(mitt.db)} til Nordlys.` : `Ikke det beste valget: ${DR.kr(mitt.db)} (beste var ${DR.kr(beste)}).`), mitt.ok ? null : el("p", null, mitt.hvorfor), el("p", null, s.forklaring)) : null);
+      };
+      const resultat = u.ferdig ? el("div", { class: "kort resultatboks bestaatt" },
+        el("h2", null, `Uke ${nr}: ${DR.kr(u.db)} i dekningsbidrag`),
+        el("div", { class: "stolpe" }, el("i", { style: `width:${pst(u)}%` })),
+        el("p", null, `${u.riktig} av ${ss.length} riktige valg, ${pst(u)} % av beste mulige uke. Nye saker kommer mandag. ${DR.ukerPaaRad()} ${DR.ukerPaaRad() === 1 ? "uke" : "uker"} på rad så langt.`),
+        DR.historikk().length > 1 ? el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Uke"), el("th", null, "Riktige"), el("th", { class: "num" }, "Dekningsbidrag"), el("th", { class: "num" }, "Av beste"))),
+          el("tbody", null, DR.historikk().slice(0, 8).map(([k, x]) => el("tr", null, el("td", null, "Uke " + Number(k.split("-U")[1])), el("td", null, `${x.riktig} av 5`), el("td", { class: "num" }, DR.kr(x.db)), el("td", { class: "num" }, pst(x) + " %"))))) : null) : null;
+      boks.replaceChildren(topp, ...ss.map(sak), ...(resultat ? [resultat] : []));
+    };
+    rot.replaceChildren(verktoylinje([["← Forside", () => gaaTil("/")]]), boks, bunn());
+    tegn();
   }
 
   /* ---------- verktøy ---------- */
