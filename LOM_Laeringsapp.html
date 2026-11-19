@@ -1174,6 +1174,25 @@ table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphe
 .drift-valg .knapp.riktig{background:var(--gronn);border-color:var(--gronn);color:#fff} .drift-valg .knapp.galt{background:var(--rod);border-color:var(--rod);color:#fff} .drift-valg .knapp.fasit{outline:2px solid var(--gronn)}
 .drift-valg .knapp:disabled{opacity:1;cursor:default}
 .drift-svar{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--flate2);font-size:.95rem} .drift-svar p{margin:.4em 0 0}
+/* Se og lytt (2.28.0) */
+.sl-boks{border:2px solid #2a7b90;background:linear-gradient(135deg,rgba(42,123,144,.08),transparent 60%),var(--flate)}
+.sl-del{margin-top:14px}
+.sl-del h4{margin:0 0 8px;font-size:1rem}
+.sl-del h4 small{font-weight:400;color:var(--tekst2)}
+.sl-lytt h3{font-size:1rem}
+.sl-lytt .pk-boks-ik{display:none}
+.sl-spiller{width:100%;aspect-ratio:16/9;border-radius:12px;background:#1f2a33;display:block}
+.sl-naa{display:flex;flex-direction:column;gap:2px;margin:8px 0 4px}
+.sl-naa span{color:var(--tekst2);font-size:.85rem}
+.sl-liste{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.sl-rad{display:flex;gap:10px;align-items:center;width:100%;padding:6px 8px;border:1px solid var(--linje);border-radius:10px;background:var(--flate);text-align:left;cursor:pointer;color:inherit;font:inherit}
+.sl-rad:hover{border-color:#2a7b90}
+.sl-liste li.aktiv .sl-rad{border-color:#2a7b90;background:rgba(42,123,144,.10)}
+.sl-rad img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}
+.sl-rad-tekst{display:flex;flex-direction:column;min-width:0}
+.sl-rad-tekst small{color:var(--tekst2)}
+@media (min-width:900px){.sl-se{display:grid;grid-template-columns:1.6fr 1fr;column-gap:16px}.sl-se h4{grid-column:1/-1}.sl-se .sl-spiller,.sl-se .sl-naa{grid-column:1}.sl-se .sl-liste{grid-column:2;grid-row:2/4;margin:0;align-content:start}}
+@media print{.sl-boks{display:none!important}}
 
 </style>
 </head>
@@ -3299,7 +3318,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 16.11.2026 14:34. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 19.11.2026 09:10. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -3314,71 +3333,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK01_Etablering_og_oppstart_M1_Selskapsform_og_ansvar_Presentasjon_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M1_Selskapsform_og_ansvar_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 924,
-   "okt": "økt 1 av 3: selskapsform og ansvar",
-   "sp": "Hvem betaler når det går galt?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK01_Etablering_og_oppstart_M1_Selskapsform_og_ansvar_Okteark_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M1_Selskapsform_og_ansvar_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 1 av 3: selskapsform og ansvar",
-   "sp": "Hvem betaler når det går galt?"
+   "navn": "OK01_Etablering_M1_Starte_og_EPF_Presentasjon_v11.pdf",
+   "fil": "pensum/ok01/OK01_Etablering_M1_Starte_og_EPF_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2745,
+   "okt": "økt 1: å starte egen bedrift og enkeltpersonforetak",
+   "sp": "Kari og Tom valgte AS. Hva kunne skjedd med husene deres i et personlig selskap?"
   },
   {
    "type": "v7pres",
-   "navn": "OK01_Etablering_og_oppstart_M2_Registrering_og_faglig_ansvarlig_Presentasjon_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M2_Registrering_og_faglig_ansvarlig_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1028,
-   "okt": "økt 2 av 3: registrene og faglig ansvarlig",
-   "sp": "Kan vi sende første faktura?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK01_Etablering_og_oppstart_M2_Registrering_og_faglig_ansvarlig_Okteark_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M2_Registrering_og_faglig_ansvarlig_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 2 av 3: registrene og faglig ansvarlig",
-   "sp": "Kan vi sende første faktura?"
+   "navn": "OK01_Etablering_M2_ANS_DA_og_AS_Presentasjon_v11.pdf",
+   "fil": "pensum/ok01/OK01_Etablering_M2_ANS_DA_og_AS_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2121,
+   "okt": "økt 2: ansvarlig selskap og aksjeselskap",
+   "sp": "Nordlys går konkurs med 1 400 000 kr i udekket gjeld. Hva må eierne betale selv i ANS, DA og AS?"
   },
   {
    "type": "v7pres",
-   "navn": "OK01_Etablering_og_oppstart_M3_Skatt_og_merverdiavgift_Presentasjon_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M3_Skatt_og_merverdiavgift_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 915,
-   "okt": "økt 3 av 3: skatt og merverdiavgift",
-   "sp": "Hva på kontoen er egentlig vårt?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK01_Etablering_og_oppstart_M3_Skatt_og_merverdiavgift_Okteark_v10.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_M3_Skatt_og_merverdiavgift_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: skatt og merverdiavgift",
-   "sp": "Hva på kontoen er egentlig vårt?"
+   "navn": "OK01_Etablering_M3_Plikter_registrering_og_avvikling_Presentasjon_v11.pdf",
+   "fil": "pensum/ok01/OK01_Etablering_M3_Plikter_registrering_og_avvikling_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1557,
+   "okt": "økt 3: regnskapsplikt, revisjonsplikt, registrering og avvikling",
+   "sp": "Nordlys har 18 ansatte. Må de ha revisor, og hva skjer om regningene ikke kan betales?"
   },
   {
    "type": "v6ark",
-   "navn": "OK01_Etablering_og_oppstart_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 30
+   "navn": "OK01_Etablering_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok01/OK01_Etablering_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "OK01_Etablering_og_oppstart_Sammendrag_v6.pdf",
-   "fil": "pensum/ok01/OK01_Etablering_og_oppstart_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 214
+   "navn": "OK01_Etablering_Sammendrag_v11.pdf",
+   "fil": "pensum/ok01/OK01_Etablering_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 76
   },
   {
    "type": "hefte",
@@ -3435,71 +3427,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK02_Viktige_begreper_M1_Utgift_utbetaling_kostnad_Presentasjon_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M1_Utgift_utbetaling_kostnad_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1290,
-   "okt": "økt 1 av 3: utgift, utbetaling og kostnad",
-   "sp": "Hva kostet materiellet oss i mars?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK02_Viktige_begreper_M1_Utgift_utbetaling_kostnad_Okteark_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M1_Utgift_utbetaling_kostnad_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 1 av 3: utgift, utbetaling og kostnad",
-   "sp": "Hva kostet materiellet oss i mars?"
+   "navn": "OK02_Begreper_M1_Utgift_utbetaling_og_kostnad_Presentasjon_v11.pdf",
+   "fil": "pensum/ok02/OK02_Begreper_M1_Utgift_utbetaling_og_kostnad_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 3308,
+   "okt": "økt 1: ressurser, resultat, og utgift, utbetaling og kostnad",
+   "sp": "Kabelen er bestilt i mars, betalt i april og brukt i mai. Når blir den en kostnad?"
   },
   {
    "type": "v7pres",
-   "navn": "OK02_Viktige_begreper_M2_Faste_variable_direkte_indirekte_Presentasjon_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M2_Faste_variable_direkte_indirekte_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 839,
-   "okt": "økt 2 av 3: faste, variable, direkte og indirekte kostnader",
-   "sp": "Hva skjer med kostnadene i en stille juli?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK02_Viktige_begreper_M2_Faste_variable_direkte_indirekte_Okteark_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M2_Faste_variable_direkte_indirekte_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: faste, variable, direkte og indirekte kostnader",
-   "sp": "Hva skjer med kostnadene i en stille juli?"
+   "navn": "OK02_Begreper_M2_Faste_variable_direkte_og_indirekte_Presentasjon_v11.pdf",
+   "fil": "pensum/ok02/OK02_Begreper_M2_Faste_variable_direkte_og_indirekte_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2892,
+   "okt": "økt 2: faste og variable, direkte og indirekte kostnader",
+   "sp": "Bare 10 000 timer i stedet for 14 400: hva skjer med de faste kostnadene per time?"
   },
   {
    "type": "v7pres",
-   "navn": "OK02_Viktige_begreper_M3_Lonnskostnad_pris_avskrivning_Presentasjon_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M3_Lonnskostnad_pris_avskrivning_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 899,
-   "okt": "økt 3 av 3: lønnskostnad, pris og avskrivning",
-   "sp": "Hva koster en montørtime, og hva tåler prisen?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK02_Viktige_begreper_M3_Lonnskostnad_pris_avskrivning_Okteark_v10.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_M3_Lonnskostnad_pris_avskrivning_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: lønnskostnad, pris og avskrivning",
-   "sp": "Hva koster en montørtime, og hva tåler prisen?"
+   "navn": "OK02_Begreper_M3_Inntekt_lonnskostnad_og_avskrivning_Presentasjon_v11.pdf",
+   "fil": "pensum/ok02/OK02_Begreper_M3_Inntekt_lonnskostnad_og_avskrivning_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2886,
+   "okt": "økt 3: inntekt, priselastisitet, lønnskostnad og avskrivning",
+   "sp": "En montør har 40 000 kr i månedslønn. Hva koster han egentlig Nordlys?"
   },
   {
    "type": "v6ark",
-   "navn": "OK02_Viktige_begreper_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 41
+   "navn": "OK02_Begreper_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok02/OK02_Begreper_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "OK02_Viktige_begreper_Sammendrag_v6.pdf",
-   "fil": "pensum/ok02/OK02_Viktige_begreper_Sammendrag_v6.pdf",
-   "dato": "06.11.2026",
-   "kb": 263
+   "navn": "OK02_Begreper_Sammendrag_v11.pdf",
+   "fil": "pensum/ok02/OK02_Begreper_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 78
   },
   {
    "type": "hefte",
@@ -3528,71 +3493,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK03_Bedriftens_regnskap_M1_Resultatregnskapet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M1_Resultatregnskapet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 924,
-   "okt": "økt 1 av 3: resultatregnskapet",
-   "sp": "Hva tjente Nordlys i 2026, og hvilken linje sier mest?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK03_Bedriftens_regnskap_M1_Resultatregnskapet_Okteark_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M1_Resultatregnskapet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 53,
-   "okt": "økt 1 av 3: resultatregnskapet",
-   "sp": "Hva tjente Nordlys i 2026, og hvilken linje sier mest?"
+   "navn": "OK03_Regnskap_M1_Resultatregnskapet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok03/OK03_Regnskap_M1_Resultatregnskapet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1855,
+   "okt": "økt 1: resultatregnskapet",
+   "sp": "Nordlys fakturerte 22,4 mill. kr i 2026. Hvor mye av det ble igjen til eierne?"
   },
   {
    "type": "v7pres",
-   "navn": "OK03_Bedriftens_regnskap_M2_Eiendel_eller_kostnad_Presentasjon_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M2_Eiendel_eller_kostnad_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1367,
-   "okt": "økt 2 av 3: eiendel eller kostnad",
-   "sp": "Tom handlet for 533 500 kr i januar. Hvorfor er bare 138 500 kostnad?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK03_Bedriftens_regnskap_M2_Eiendel_eller_kostnad_Okteark_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M2_Eiendel_eller_kostnad_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 2 av 3: eiendel eller kostnad",
-   "sp": "Tom handlet for 533 500 kr i januar. Hvorfor er bare 138 500 kostnad?"
+   "navn": "OK03_Regnskap_M2_Balansen_og_regnskapssystemet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok03/OK03_Regnskap_M2_Balansen_og_regnskapssystemet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2877,
+   "okt": "økt 2: balansen og regnskapssystemet",
+   "sp": "Nordlys eier verktøy, biler, lager og kundefordringer for 10,2 mill. kr. Hvem har betalt for dem?"
   },
   {
    "type": "v7pres",
-   "navn": "OK03_Bedriftens_regnskap_M3_Balansen_Presentasjon_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M3_Balansen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 698,
-   "okt": "økt 3 av 3: balansen",
-   "sp": "Vi har 2,9 millioner i egenkapital. Har vi råd?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK03_Bedriftens_regnskap_M3_Balansen_Okteark_v10.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_M3_Balansen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 53,
-   "okt": "økt 3 av 3: balansen",
-   "sp": "Vi har 2,9 millioner i egenkapital. Har vi råd?"
+   "navn": "OK03_Regnskap_M3_Eiendel_penger_og_to_regnskap_Presentasjon_v11.pdf",
+   "fil": "pensum/ok03/OK03_Regnskap_M3_Eiendel_penger_og_to_regnskap_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2171,
+   "okt": "økt 3: eiendel eller kostnad, overskudd og penger, finans- og driftsregnskap",
+   "sp": "Nordlys fikk 910 650 kr i årsresultat. Hvorfor er det ikke 910 650 kr mer i banken?"
   },
   {
    "type": "v6ark",
-   "navn": "OK03_Bedriftens_regnskap_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 46
+   "navn": "OK03_Regnskap_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok03/OK03_Regnskap_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "OK03_Bedriftens_regnskap_Sammendrag_v6.pdf",
-   "fil": "pensum/ok03/OK03_Bedriftens_regnskap_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 270
+   "navn": "OK03_Regnskap_Sammendrag_v11.pdf",
+   "fil": "pensum/ok03/OK03_Regnskap_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 79
   },
   {
    "type": "hefte",
@@ -3621,71 +3559,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1131,
-   "okt": "økt 1 av 3: lønnsomhet",
-   "sp": "Tjener Nordlys nok, og hvorfor får eierne 47,9 %?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK04_Regnskapsanalyse_M1_Lonnsomhet_Okteark_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M1_Lonnsomhet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 1 av 3: lønnsomhet",
-   "sp": "Tjener Nordlys nok, og hvorfor får eierne 47,9 %?"
+   "navn": "OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1856,
+   "okt": "økt 1: regnskapsanalyse: lønnsomhet",
+   "sp": "All kapitalen i Nordlys tjente 14,3 %, men eierne fikk 47,9 %. Hvordan går det an?"
   },
   {
    "type": "v7pres",
-   "navn": "OK04_Regnskapsanalyse_M2_Likviditet_og_effektivitet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M2_Likviditet_og_effektivitet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 699,
-   "okt": "økt 2 av 3: likviditet og effektivitet",
-   "sp": "Tåler Nordlys 600 000 kr i utbytte?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK04_Regnskapsanalyse_M2_Likviditet_og_effektivitet_Okteark_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M2_Likviditet_og_effektivitet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: likviditet og effektivitet",
-   "sp": "Tåler Nordlys 600 000 kr i utbytte?"
+   "navn": "OK04_Regnskapsanalyse_M2_Likviditet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M2_Likviditet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2345,
+   "okt": "økt 2: regnskapsanalyse: likviditet",
+   "sp": "Kundene skylder Nordlys 4,2 mill. kr. Hvor mange dager venter Nordlys på pengene?"
   },
   {
    "type": "v7pres",
-   "navn": "OK04_Regnskapsanalyse_M3_Soliditet_og_finansiering_Presentasjon_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M3_Soliditet_og_finansiering_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1077,
-   "okt": "økt 3 av 3: soliditet og finansiering",
-   "sp": "Fjell Elektro vil låne til en tredje bil. Hva leser banken?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK04_Regnskapsanalyse_M3_Soliditet_og_finansiering_Okteark_v10.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M3_Soliditet_og_finansiering_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 3 av 3: soliditet og finansiering",
-   "sp": "Fjell Elektro vil låne til en tredje bil. Hva leser banken?"
+   "navn": "OK04_Regnskapsanalyse_M3_Finansiering_og_soliditet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_M3_Finansiering_og_soliditet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2738,
+   "okt": "økt 3: regnskapsanalyse: finansiering, soliditet og samlet vurdering",
+   "sp": "Banken vurderer et nytt lån til Nordlys. Tåler Nordlys et dårlig år?"
   },
   {
    "type": "v6ark",
-   "navn": "OK04_Regnskapsanalyse_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 30
+   "navn": "OK04_Regnskapsanalyse_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 23
   },
   {
    "type": "v6samm",
-   "navn": "OK04_Regnskapsanalyse_Sammendrag_v6.pdf",
-   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 223
+   "navn": "OK04_Regnskapsanalyse_Sammendrag_v11.pdf",
+   "fil": "pensum/ok04/OK04_Regnskapsanalyse_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 80
   },
   {
    "type": "hefte",
@@ -3714,71 +3625,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 977,
-   "okt": "økt 1 av 3: timeprisen",
-   "sp": "Hvor kommer 890 kroner timen fra?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK05_Kalkulasjon_M1_Timeprisen_Okteark_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 63,
-   "okt": "økt 1 av 3: timeprisen",
-   "sp": "Hvor kommer 890 kroner timen fra?"
+   "navn": "OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v11.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 3188,
+   "okt": "økt 1: kalkulasjon: timeprisen, fra lønn til fortjeneste",
+   "sp": "Fjell tar 890 kr timen. Hvor blir pengene av?"
   },
   {
    "type": "v7pres",
-   "navn": "OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1082,
-   "okt": "økt 2 av 3: prisen på én jobb",
-   "sp": "Fastpris til Hansen, og 20 skap til 22 000 kr: når tar vi jobben?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Okteark_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 64,
-   "okt": "økt 2 av 3: prisen på én jobb",
-   "sp": "Fastpris til Hansen, og 20 skap til 22 000 kr: når tar vi jobben?"
+   "navn": "OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v11.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2259,
+   "okt": "økt 2: kalkulasjon: prisen på en jobb",
+   "sp": "Borettslaget vil ha 20 nye sikringsskap til 22 000 kr stykket. Skal Fjell si ja?"
   },
   {
    "type": "v7pres",
-   "navn": "OK05_Kalkulasjon_M3_Etterkalkyle_og_paaslag_Presentasjon_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M3_Etterkalkyle_og_paaslag_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 842,
-   "okt": "økt 3 av 3: etterkalkylen og påslaget på materiellet",
-   "sp": "Holdt kalkylen, og hva tjener vi på materiellet?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK05_Kalkulasjon_M3_Etterkalkyle_og_paaslag_Okteark_v10.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_M3_Etterkalkyle_og_paaslag_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 3 av 3: etterkalkylen og påslaget på materiellet",
-   "sp": "Holdt kalkylen, og hva tjener vi på materiellet?"
+   "navn": "OK05_Kalkulasjon_M3_Etterkalkyle_og_materiell_Presentasjon_v11.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_M3_Etterkalkyle_og_materiell_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2768,
+   "okt": "økt 3: kalkulasjon: etterkalkyle, avvik og materiell over disk",
+   "sp": "Skapet er montert og fakturert. Tjente Fjell det Mona regnet med?"
   },
   {
    "type": "v6ark",
-   "navn": "OK05_Kalkulasjon_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 52
+   "navn": "OK05_Kalkulasjon_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "OK05_Kalkulasjon_Sammendrag_v6.pdf",
-   "fil": "pensum/ok05/OK05_Kalkulasjon_Sammendrag_v6.pdf",
-   "dato": "11.11.2026",
-   "kb": 257
+   "navn": "OK05_Kalkulasjon_Sammendrag_v11.pdf",
+   "fil": "pensum/ok05/OK05_Kalkulasjon_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 58
   },
   {
    "type": "hefte",
@@ -3814,53 +3698,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1371,
-   "okt": "økt 1 av 2: hvor mye penger må på plass?",
-   "sp": "Mona har 800 000 kr. Holder det?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Okteark_v10.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 1 av 2: hvor mye penger må på plass?",
-   "sp": "Mona har 800 000 kr. Holder det?"
+   "navn": "OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2699,
+   "okt": "økt 1: kapitalbehov: det du kjøper, og det som står og venter",
+   "sp": "Hvor mye kapital trengte Kari og Tom for å starte Nordlys i 2019?"
   },
   {
    "type": "v7pres",
-   "navn": "OK06_Kapitalbehov_og_finansiering_M2_Finansieringen_Presentasjon_v10.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M2_Finansieringen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 787,
-   "okt": "økt 2 av 2: hvem betaler, og hva koster lånet?",
-   "sp": "Sier banken ja til Fjells plan?"
+   "navn": "OK06_Kapitalbehov_og_finansiering_M2_Finansieringsplanen_Presentasjon_v11.pdf",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M2_Finansieringsplanen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1690,
+   "okt": "økt 2: finansieringsplan og åpningsbalanse",
+   "sp": "Hvordan skal Nordlys finansiere 2 250 000 kr?"
   },
   {
-   "type": "v7ark",
-   "navn": "OK06_Kapitalbehov_og_finansiering_M2_Finansieringen_Okteark_v10.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M2_Finansieringen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 2 av 2: hvem betaler, og hva koster lånet?",
-   "sp": "Sier banken ja til Fjells plan?"
+   "type": "v7pres",
+   "navn": "OK06_Kapitalbehov_og_finansiering_M3_Laan_og_kreditter_Presentasjon_v11.pdf",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M3_Laan_og_kreditter_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2525,
+   "okt": "økt 3: lån og kreditter: annuitet, serie, effektiv rente, kassekreditt, faktoring og leasing",
+   "sp": "Hvilket lån og hvilke kreditter bør Nordlys velge?"
   },
   {
    "type": "v6ark",
-   "navn": "OK06_Kapitalbehov_og_finansiering_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 28
+   "navn": "OK06_Kapitalbehov_og_finansiering_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 24
   },
   {
    "type": "v6samm",
-   "navn": "OK06_Kapitalbehov_og_finansiering_Sammendrag_v6.pdf",
-   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 201
+   "navn": "OK06_Kapitalbehov_og_finansiering_Sammendrag_v11.pdf",
+   "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 84
   },
   {
    "type": "hefte",
@@ -3889,53 +3764,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK07_Produktvalg_knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v10.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1152,
-   "okt": "økt 1 av 2: hvem får montørtimene?",
-   "sp": "50 montørtimer er ikke fordelt i mars. Ny garasje til 8 000 kr eller ladepunkt til 1 800?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK07_Produktvalg_knapp_faktor_M1_Flaskehalsen_og_regelen_Okteark_v10.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_M1_Flaskehalsen_og_regelen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 2: hvem får montørtimene?",
-   "sp": "50 montørtimer er ikke fordelt i mars. Ny garasje til 8 000 kr eller ladepunkt til 1 800?"
+   "navn": "OK07_Knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v11.pdf",
+   "fil": "pensum/ok07/OK07_Knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2173,
+   "okt": "økt 1: flaskehalsen, dekningsbidraget og regelen",
+   "sp": "En garasje til fastpris tar 50 montørtimer. Lønner den seg når kalenderen er full?"
   },
   {
    "type": "v7pres",
-   "navn": "OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v10.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 738,
-   "okt": "økt 2 av 2: fra rangering til plan",
-   "sp": "Timene strekker ikke til i april. Hvem må vike, og hva koster et unntak?"
+   "navn": "OK07_Knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v11.pdf",
+   "fil": "pensum/ok07/OK07_Knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2098,
+   "okt": "økt 2: fra rangering til plan",
+   "sp": "Kundene vil ha 1 332 montørtimer i mars. Nordlys har 1 200. Hvem skal få nei?"
   },
   {
-   "type": "v7ark",
-   "navn": "OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Okteark_v10.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_M2_Fra_rangering_til_plan_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 2 av 2: fra rangering til plan",
-   "sp": "Timene strekker ikke til i april. Hvem må vike, og hva koster et unntak?"
+   "type": "v7pres",
+   "navn": "OK07_Knapp_faktor_M3_Nar_flaskehalsen_flytter_seg_Presentasjon_v11.pdf",
+   "fil": "pensum/ok07/OK07_Knapp_faktor_M3_Nar_flaskehalsen_flytter_seg_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2684,
+   "okt": "økt 3: når flaskehalsen flytter seg, og hva avvik koster",
+   "sp": "Grossisten kan bare levere en begrenset mengde materiell i mai. Hvilke jobber skal prioriteres da?"
   },
   {
    "type": "v6ark",
-   "navn": "OK07_Produktvalg_knapp_faktor_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "OK07_Knapp_faktor_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok07/OK07_Knapp_faktor_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 22
   },
   {
    "type": "v6samm",
-   "navn": "OK07_Produktvalg_knapp_faktor_Sammendrag_v6.pdf",
-   "fil": "pensum/ok07/OK07_Produktvalg_knapp_faktor_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 173
+   "navn": "OK07_Knapp_faktor_Sammendrag_v11.pdf",
+   "fil": "pensum/ok07/OK07_Knapp_faktor_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 67
   },
   {
    "type": "hefte",
@@ -3964,53 +3830,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 947,
-   "okt": "økt 1 av 2: hvor mye må vi selge for å gå i null?",
-   "sp": "Hvor mange timer må Nordlys fakturere før det blir overskudd?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK08_Nullpunktsanalyse_M1_Nullpunktet_Okteark_v10.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M1_Nullpunktet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 1 av 2: hvor mye må vi selge for å gå i null?",
-   "sp": "Hvor mange timer må Nordlys fakturere før det blir overskudd?"
+   "navn": "OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2136,
+   "okt": "økt 1: nullpunktsanalyse: dekningsbidraget og nullpunktet",
+   "sp": "Hvor mange oppdrag må service ta for å gå i null?"
   },
   {
    "type": "v7pres",
-   "navn": "OK08_Nullpunktsanalyse_M2_Sikkerhetsmargin_og_spakene_Presentasjon_v10.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M2_Sikkerhetsmargin_og_spakene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 809,
-   "okt": "økt 2 av 2: sikkerhetsmarginen og spakene",
-   "sp": "Hvor mange timer kan Nordlys miste, og hva hjelper?"
+   "navn": "OK08_Nullpunktsanalyse_M2_Risikomarginen_Presentasjon_v11.pdf",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M2_Risikomarginen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2262,
+   "okt": "økt 2: nullpunktsanalyse: nullpunktet i kroner og risikomarginen",
+   "sp": "Hvor mye kan salget svikte før service taper penger?"
   },
   {
-   "type": "v7ark",
-   "navn": "OK08_Nullpunktsanalyse_M2_Sikkerhetsmargin_og_spakene_Okteark_v10.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M2_Sikkerhetsmargin_og_spakene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 53,
-   "okt": "økt 2 av 2: sikkerhetsmarginen og spakene",
-   "sp": "Hvor mange timer kan Nordlys miste, og hva hjelper?"
+   "type": "v7pres",
+   "navn": "OK08_Nullpunktsanalyse_M3_Spakene_Presentasjon_v11.pdf",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M3_Spakene_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1813,
+   "okt": "økt 3: nullpunktsanalyse: pris, variable og faste kostnader",
+   "sp": "Hvem har rett, Kari som vil selge mer, eller Tom som vil kutte?"
   },
   {
    "type": "v6ark",
-   "navn": "OK08_Nullpunktsanalyse_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 28
+   "navn": "OK08_Nullpunktsanalyse_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 24
   },
   {
    "type": "v6samm",
-   "navn": "OK08_Nullpunktsanalyse_Sammendrag_v6.pdf",
-   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 178
+   "navn": "OK08_Nullpunktsanalyse_Sammendrag_v11.pdf",
+   "fil": "pensum/ok08/OK08_Nullpunktsanalyse_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 77
   },
   {
    "type": "hefte",
@@ -4039,71 +3896,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK09_Budsjettering_M1_Resultat_og_likviditet_Presentasjon_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M1_Resultat_og_likviditet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 772,
-   "okt": "økt 1 av 3: resultatbudsjettet og likviditeten",
-   "sp": "Går Nordlys i pluss i 2027, og er det penger på kontoen?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK09_Budsjettering_M1_Resultat_og_likviditet_Okteark_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M1_Resultat_og_likviditet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 61,
-   "okt": "økt 1 av 3: resultatbudsjettet og likviditeten",
-   "sp": "Går Nordlys i pluss i 2027, og er det penger på kontoen?"
+   "navn": "OK09_Budsjettering_M1_Resultatbudsjettet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok09/OK09_Budsjettering_M1_Resultatbudsjettet_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2230,
+   "okt": "økt 1: budsjettering: resultatbudsjettet",
+   "sp": "Går Nordlys i pluss i 2027?"
   },
   {
    "type": "v7pres",
-   "navn": "OK09_Budsjettering_M2_Likviditetsbudsjett_Presentasjon_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M2_Likviditetsbudsjett_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 727,
-   "okt": "økt 2 av 3: likviditetsbudsjettet",
-   "sp": "Har vi penger til lønn den 15.?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK09_Budsjettering_M2_Likviditetsbudsjett_Okteark_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M2_Likviditetsbudsjett_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 53,
-   "okt": "økt 2 av 3: likviditetsbudsjettet",
-   "sp": "Har vi penger til lønn den 15.?"
+   "navn": "OK09_Budsjettering_M2_Likviditetsbudsjettet_Presentasjon_v11.pdf",
+   "fil": "pensum/ok09/OK09_Budsjettering_M2_Likviditetsbudsjettet_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2421,
+   "okt": "økt 2: budsjettering: likviditetsbudsjettet",
+   "sp": "Har Nordlys penger på konto 31. mars?"
   },
   {
    "type": "v7pres",
-   "navn": "OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 747,
-   "okt": "økt 3 av 3: budsjettkontroll og avvik",
-   "sp": "Hva gikk annerledes, og hvor skal vi lete?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK09_Budsjettering_M3_Budsjettkontroll_Okteark_v10.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_M3_Budsjettkontroll_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 50,
-   "okt": "økt 3 av 3: budsjettkontroll og avvik",
-   "sp": "Hva gikk annerledes, og hvor skal vi lete?"
+   "navn": "OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v11.pdf",
+   "fil": "pensum/ok09/OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2386,
+   "okt": "økt 3: budsjettering: budsjettkontroll og avviksanalyse",
+   "sp": "Salget ble høyere enn budsjettert. Hvorfor ble resultatet lavere?"
   },
   {
    "type": "v6ark",
-   "navn": "OK09_Budsjettering_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok09/OK09_Budsjettering_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 52
+   "navn": "OK09_Budsjettering_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok09/OK09_Budsjettering_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 30
   },
   {
    "type": "v6samm",
-   "navn": "OK09_Budsjettering_Sammendrag_v6.pdf",
-   "fil": "pensum/ok09/OK09_Budsjettering_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 290
+   "navn": "OK09_Budsjettering_Sammendrag_v11.pdf",
+   "fil": "pensum/ok09/OK09_Budsjettering_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 131
   },
   {
    "type": "hefte",
@@ -4139,71 +3969,44 @@ LOM.filer = {
   },
   {
    "type": "v7pres",
-   "navn": "OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1063,
-   "okt": "økt 1 av 3: kontantstrømmen og tilbakebetalingstiden",
-   "sp": "Er pengene tilbake innen tre år?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK10_Investeringsanalyse_M1_Kontantstrom_Okteark_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M1_Kontantstrom_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 1 av 3: kontantstrømmen og tilbakebetalingstiden",
-   "sp": "Er pengene tilbake innen tre år?"
+   "navn": "OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v11.pdf",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2264,
+   "okt": "økt 1: investeringsanalyse: kontantstrømmen og tilbakebetalingstiden",
+   "sp": "Nordlys vil kjøpe eget termokamera for 480 000 kr. Lønner det seg?"
   },
   {
    "type": "v7pres",
-   "navn": "OK10_Investeringsanalyse_M2_Naaverdi_Presentasjon_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M2_Naaverdi_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 636,
-   "okt": "økt 2 av 3: pengenes tidsverdi og nåverdien",
-   "sp": "Hva er 170 000 kr om fire år verdt i dag?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK10_Investeringsanalyse_M2_Naaverdi_Okteark_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M2_Naaverdi_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 2 av 3: pengenes tidsverdi og nåverdien",
-   "sp": "Hva er 170 000 kr om fire år verdt i dag?"
+   "navn": "OK10_Investeringsanalyse_M2_Naverdi_Presentasjon_v11.pdf",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_M2_Naverdi_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1812,
+   "okt": "økt 2: investeringsanalyse: nåverdien",
+   "sp": "Tom sa 200 000 kr. Hva er termokameraet egentlig verdt i dag?"
   },
   {
    "type": "v7pres",
-   "navn": "OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 731,
-   "okt": "økt 3 av 3: internrenten og beslutningen",
-   "sp": "Hva gir utstyret selv, og hva sier vi til styret?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OK10_Investeringsanalyse_M3_Beslutningen_Okteark_v10.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_M3_Beslutningen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 3 av 3: internrenten og beslutningen",
-   "sp": "Hva gir utstyret selv, og hva sier vi til styret?"
+   "navn": "OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v11.pdf",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2111,
+   "okt": "økt 3: investeringsanalyse: internrenten og beslutningen",
+   "sp": "Kari har råd til ett kjøp. Termokamera eller kabelfeilsøker?"
   },
   {
    "type": "v6ark",
-   "navn": "OK10_Investeringsanalyse_Oppgaver_v10.xlsx",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 28
+   "navn": "OK10_Investeringsanalyse_Oppgaver_v11.xlsx",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "OK10_Investeringsanalyse_Sammendrag_v6.pdf",
-   "fil": "pensum/ok10/OK10_Investeringsanalyse_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 178
+   "navn": "OK10_Investeringsanalyse_Sammendrag_v11.pdf",
+   "fil": "pensum/ok10/OK10_Investeringsanalyse_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 56
   },
   {
    "type": "hefte",
@@ -4223,71 +4026,44 @@ LOM.filer = {
  "ma01": [
   {
    "type": "v7pres",
-   "navn": "MA01_Hva_er_markedsforing_M1_Markedsforing_og_marked_Presentasjon_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M1_Markedsforing_og_marked_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 825,
-   "okt": "økt 1 av 3: hva det er, og hva et marked er",
-   "sp": "«Vi har nok å gjøre.» Trenger vi markedsføring?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA01_Hva_er_markedsforing_M1_Markedsforing_og_marked_Okteark_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M1_Markedsforing_og_marked_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 1 av 3: hva det er, og hva et marked er",
-   "sp": "«Vi har nok å gjøre.» Trenger vi markedsføring?"
+   "navn": "MA01_Markedsforing_M1_Markedsforing_og_marked_Presentasjon_v11.pdf",
+   "fil": "pensum/ma01/MA01_Markedsforing_M1_Markedsforing_og_marked_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2409,
+   "okt": "økt 1: markedsføring og marked",
+   "sp": "«Vi trenger ikke markedsføring, vi har nok å gjøre.» Stemmer det?"
   },
   {
    "type": "v7pres",
-   "navn": "MA01_Hva_er_markedsforing_M2_Hovedmarkedene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M2_Hovedmarkedene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 647,
-   "okt": "økt 2 av 3: de fem hovedmarkedene",
-   "sp": "Hvem er kunden, og hvorfor kjøper den?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA01_Hva_er_markedsforing_M2_Hovedmarkedene_Okteark_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M2_Hovedmarkedene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 2 av 3: de fem hovedmarkedene",
-   "sp": "Hvem er kunden, og hvorfor kjøper den?"
+   "navn": "MA01_Markedsforing_M2_Grunnholdningene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma01/MA01_Markedsforing_M2_Grunnholdningene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2260,
+   "okt": "økt 2: kjøpers og selgers marked, og de fem grunnholdningene",
+   "sp": "Kalenderen er full. Skal Nordlys ta jobbene i den rekkefølgen de kommer, eller velge?"
   },
   {
    "type": "v7pres",
-   "navn": "MA01_Hva_er_markedsforing_M3_Grunnholdningene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M3_Grunnholdningene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 856,
-   "okt": "økt 3 av 3: hvor starter tilbudet?",
-   "sp": "Hvorfor vant ikke det gode anlegget?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA01_Hva_er_markedsforing_M3_Grunnholdningene_Okteark_v10.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_M3_Grunnholdningene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 62,
-   "okt": "økt 3 av 3: hvor starter tilbudet?",
-   "sp": "Hvorfor vant ikke det gode anlegget?"
+   "navn": "MA01_Markedsforing_M3_Hovedmarkedene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma01/MA01_Markedsforing_M3_Hovedmarkedene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2655,
+   "okt": "økt 3: hva kan markedsføres, og de fem hovedmarkedene",
+   "sp": "Nordlys selger til huseiere, kommunen og entreprenører. Er det ett marked eller flere?"
   },
   {
    "type": "v6ark",
-   "navn": "MA01_Hva_er_markedsforing_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 26
+   "navn": "MA01_Markedsforing_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma01/MA01_Markedsforing_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 23
   },
   {
    "type": "v6samm",
-   "navn": "MA01_Hva_er_markedsforing_Sammendrag_v6.pdf",
-   "fil": "pensum/ma01/MA01_Hva_er_markedsforing_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 192
+   "navn": "MA01_Markedsforing_Sammendrag_v11.pdf",
+   "fil": "pensum/ma01/MA01_Markedsforing_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 68
   },
   {
    "type": "hefte",
@@ -4300,71 +4076,44 @@ LOM.filer = {
  "ma02": [
   {
    "type": "v7pres",
-   "navn": "MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 726,
-   "okt": "økt 1 av 3: hvordan privatkunden bestemmer seg",
-   "sp": "Hvorfor vinner Ida 6 av 10 tilbud hos boligeierne?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA02_Kjopsatferd_M1_Privatkunden_Okteark_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M1_Privatkunden_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 3: hvordan privatkunden bestemmer seg",
-   "sp": "Hvorfor vinner Ida 6 av 10 tilbud hos boligeierne?"
+   "navn": "MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v11.pdf",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2368,
+   "okt": "økt 1: kjøpsatferd: privatkunden bestemmer seg",
+   "sp": "Familien Lunde fikk tre tilbud på nytt sikringsskap og valgte det dyreste. Hvorfor?"
   },
   {
    "type": "v7pres",
-   "navn": "MA02_Kjopsatferd_M2_Kjopet_og_familien_Presentasjon_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M2_Kjopet_og_familien_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 776,
-   "okt": "økt 2 av 3: tre tilbud, ett valg og tvilen etterpå",
-   "sp": "Nordlys var dyrest. Hvorfor fikk de jobben?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA02_Kjopsatferd_M2_Kjopet_og_familien_Okteark_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M2_Kjopet_og_familien_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: tre tilbud, ett valg og tvilen etterpå",
-   "sp": "Nordlys var dyrest. Hvorfor fikk de jobben?"
+   "navn": "MA02_Kjopsatferd_M2_Kjopet_tvilen_og_rollene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_M2_Kjopet_tvilen_og_rollene_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1924,
+   "okt": "økt 2: kjøpet, tvilen etterpå og rollene i familien",
+   "sp": "Familien Lunde har sagt ja. Hva avgjør om de ringer Nordlys igjen, og hvem må vi overbevise neste gang?"
   },
   {
    "type": "v7pres",
-   "navn": "MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1040,
-   "okt": "økt 3 av 3: hvordan bedriftskunden kjøper",
-   "sp": "Hvorfor vinner Ida bare 2 av 10 anbud?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA02_Kjopsatferd_M3_Bedriftskunden_Okteark_v10.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_M3_Bedriftskunden_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 64,
-   "okt": "økt 3 av 3: hvordan bedriftskunden kjøper",
-   "sp": "Hvorfor vinner Ida bare 2 av 10 anbud?"
+   "navn": "MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v11.pdf",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2743,
+   "okt": "økt 3: bedriftskunden: formalisert kjøp i åtte trinn",
+   "sp": "Nordlys vinner seks av ti tilbud til huseiere, men bare ett av fem anbud til bedrifter. Hva gjør bedriftskunden annerledes?"
   },
   {
    "type": "v6ark",
-   "navn": "MA02_Kjopsatferd_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 26
+   "navn": "MA02_Kjopsatferd_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "MA02_Kjopsatferd_Sammendrag_v6.pdf",
-   "fil": "pensum/ma02/MA02_Kjopsatferd_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 199
+   "navn": "MA02_Kjopsatferd_Sammendrag_v11.pdf",
+   "fil": "pensum/ma02/MA02_Kjopsatferd_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 71
   },
   {
    "type": "hefte",
@@ -4377,71 +4126,44 @@ LOM.filer = {
  "ma03": [
   {
    "type": "v7pres",
-   "navn": "MA03_Markedsplanen_M1_Analysen_Presentasjon_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M1_Analysen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1002,
-   "okt": "økt 1 av 3: forretningsidé og situasjonsanalyse",
-   "sp": "«Vi skal vokse 20 %.» Hva vet vi om avdelingen?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA03_Markedsplanen_M1_Analysen_Okteark_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M1_Analysen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 3: forretningsidé og situasjonsanalyse",
-   "sp": "«Vi skal vokse 20 %.» Hva vet vi om avdelingen?"
+   "navn": "MA03_Markedsplanen_M1_Analysen_Presentasjon_v11.pdf",
+   "fil": "pensum/ma03/MA03_Markedsplanen_M1_Analysen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2375,
+   "okt": "økt 1: markedsplanen: overordnet mål, forretningsidé og situasjonsanalyse",
+   "sp": "Kari vil skrive 20 % vekst i budsjettet. Kan Nordlys love det?"
   },
   {
    "type": "v7pres",
-   "navn": "MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1030,
-   "okt": "økt 2 av 3: markedsmålene",
-   "sp": "Er «20 % vekst» et mål eller et ønske?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA03_Markedsplanen_M2_Markedsmaalene_Okteark_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M2_Markedsmaalene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 2 av 3: markedsmålene",
-   "sp": "Er «20 % vekst» et mål eller et ønske?"
+   "navn": "MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma03/MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1728,
+   "okt": "økt 2: markedsplanen: markedsmålene",
+   "sp": "Kari sier «20 % vekst». Er det et mål eller et ønske?"
   },
   {
    "type": "v7pres",
-   "navn": "MA03_Markedsplanen_M3_Strategien_Presentasjon_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M3_Strategien_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 944,
-   "okt": "økt 3 av 3: realistiske mål og strategien",
-   "sp": "Holder målene, og hvilken vei skal avdelingen gå?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA03_Markedsplanen_M3_Strategien_Okteark_v10.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_M3_Strategien_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: realistiske mål og strategien",
-   "sp": "Holder målene, og hvilken vei skal avdelingen gå?"
+   "navn": "MA03_Markedsplanen_M3_Strategien_Presentasjon_v11.pdf",
+   "fil": "pensum/ma03/MA03_Markedsplanen_M3_Strategien_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2022,
+   "okt": "økt 3: markedsplanen: realistiske mål og strategien",
+   "sp": "Ida har regnet. Tom tviler. Holder målet, og hvilken vei går vi?"
   },
   {
    "type": "v6ark",
-   "navn": "MA03_Markedsplanen_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma03/MA03_Markedsplanen_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "MA03_Markedsplanen_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma03/MA03_Markedsplanen_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "MA03_Markedsplanen_Sammendrag_v6.pdf",
-   "fil": "pensum/ma03/MA03_Markedsplanen_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 248
+   "navn": "MA03_Markedsplanen_Sammendrag_v11.pdf",
+   "fil": "pensum/ma03/MA03_Markedsplanen_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 99
   },
   {
    "type": "hefte",
@@ -4461,71 +4183,44 @@ LOM.filer = {
  "ma04": [
   {
    "type": "v7pres",
-   "navn": "MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1174,
-   "okt": "økt 1 av 3: problemstilling, datakilder og metode",
-   "sp": "Kan Tom stole på 94,4 %?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Okteark_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 61,
-   "okt": "økt 1 av 3: problemstilling, datakilder og metode",
-   "sp": "Kan Tom stole på 94,4 %?"
+   "navn": "MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v11.pdf",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2214,
+   "okt": "økt 1: markedsundersøkelser: problemstilling, kilder og metode",
+   "sp": "Tom spør: «Er kundene våre fornøyde?» Hvordan finner han det ut?"
   },
   {
    "type": "v7pres",
-   "navn": "MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 978,
-   "okt": "økt 2 av 3: populasjon, utvalg og svarprosent",
-   "sp": "Hvem skal vi spørre, og hvor mange?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Okteark_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 2 av 3: populasjon, utvalg og svarprosent",
-   "sp": "Hvem skal vi spørre, og hvor mange?"
+   "navn": "MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v11.pdf",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2371,
+   "okt": "økt 2: markedsundersøkelser: utvalg og svarprosent",
+   "sp": "17 av 18 svarte «fornøyd». Kan Tom skrive «94 % fornøyde kunder» på nettsiden?"
   },
   {
    "type": "v7pres",
-   "navn": "MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1003,
-   "okt": "økt 3 av 3: skjema, analyse, kvalitet og prognoser",
-   "sp": "Hva sier svarene, og kan vi stole på dem?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Okteark_v10.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 63,
-   "okt": "økt 3 av 3: skjema, analyse, kvalitet og prognoser",
-   "sp": "Hva sier svarene, og kan vi stole på dem?"
+   "navn": "MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v11.pdf",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1959,
+   "okt": "økt 3: markedsundersøkelser: analyse, kvalitet, rapport og prognoser",
+   "sp": "77,4 % er fornøyde. Hvor ligger problemet, og hva skal Nordlys gjøre?"
   },
   {
    "type": "v6ark",
-   "navn": "MA04_Markedsundersokelser_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "MA04_Markedsundersokelser_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "MA04_Markedsundersokelser_Sammendrag_v6.pdf",
-   "fil": "pensum/ma04/MA04_Markedsundersokelser_Sammendrag_v6.pdf",
-   "dato": "01.11.2026",
-   "kb": 222
+   "navn": "MA04_Markedsundersokelser_Sammendrag_v11.pdf",
+   "fil": "pensum/ma04/MA04_Markedsundersokelser_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 99
   },
   {
    "type": "hefte",
@@ -4545,71 +4240,44 @@ LOM.filer = {
  "ma05": [
   {
    "type": "v7pres",
-   "navn": "MA05_Markedssegmentering_M1_Segmentering_og_kriterier_Presentasjon_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M1_Segmentering_og_kriterier_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1137,
-   "okt": "økt 1 av 3: del markedet etter behov",
-   "sp": "Hvorfor tapte Ida tre anbud med det beste anlegget?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA05_Markedssegmentering_M1_Segmentering_og_kriterier_Okteark_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M1_Segmentering_og_kriterier_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 1 av 3: del markedet etter behov",
-   "sp": "Hvorfor tapte Ida tre anbud med det beste anlegget?"
+   "navn": "MA05_Markedssegmentering_M1_Segmenter_og_kriterier_Presentasjon_v11.pdf",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_M1_Segmenter_og_kriterier_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2568,
+   "okt": "økt 1: markedssegmentering: segmenter og kriterier",
+   "sp": "Nordlys selger til alle som ringer. Hvem bør Nordlys være best for?"
   },
   {
    "type": "v7pres",
-   "navn": "MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 892,
-   "okt": "økt 2 av 3: fra segment til målgruppe",
-   "sp": "Er borettslagene verdt 22 tilbud?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Okteark_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 54,
-   "okt": "økt 2 av 3: fra segment til målgruppe",
-   "sp": "Er borettslagene verdt 22 tilbud?"
+   "navn": "MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v11.pdf",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2041,
+   "okt": "økt 2: fra segment til målgruppe",
+   "sp": "Byggherrene gir nesten halve salget. Bør Nordlys likevel satse på borettslagene?"
   },
   {
    "type": "v7pres",
-   "navn": "MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1190,
-   "okt": "økt 3 av 3: målgruppestrategiene",
-   "sp": "Hvem skal Nordlys være best for?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA05_Markedssegmentering_M3_Malgruppestrategier_Okteark_v10.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_M3_Malgruppestrategier_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 52,
-   "okt": "økt 3 av 3: målgruppestrategiene",
-   "sp": "Hvem skal Nordlys være best for?"
+   "navn": "MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v11.pdf",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2520,
+   "okt": "økt 3: målgruppestrategier",
+   "sp": "Skal Nordlys gi alle kunder samme tilbud, lage ulike tilbud eller satse på ett segment?"
   },
   {
    "type": "v6ark",
-   "navn": "MA05_Markedssegmentering_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "MA05_Markedssegmentering_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 24
   },
   {
    "type": "v6samm",
-   "navn": "MA05_Markedssegmentering_Sammendrag_v6.pdf",
-   "fil": "pensum/ma05/MA05_Markedssegmentering_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 174
+   "navn": "MA05_Markedssegmentering_Sammendrag_v11.pdf",
+   "fil": "pensum/ma05/MA05_Markedssegmentering_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 70
   },
   {
    "type": "hefte",
@@ -4629,57 +4297,30 @@ LOM.filer = {
  "ma06": [
   {
    "type": "v7pres",
-   "navn": "MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1091,
-   "okt": "økt 1 av 4: hva kunden egentlig kjøper",
-   "sp": "Hvorfor betalte familien Lunde 1 075 kroner mer for samme ladeboks?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA06_Produkt_M1_Produktet_og_nivaene_Okteark_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M1_Produktet_og_nivaene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 1 av 4: hva kunden egentlig kjøper",
-   "sp": "Hvorfor betalte familien Lunde 1 075 kroner mer for samme ladeboks?"
+   "navn": "MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma06/MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2960,
+   "okt": "økt 1: produktet, produktkategorier og produktnivåer",
+   "sp": "Kunden kan sjekke prisen på panelene selv. Hva er det egentlig kunden kjøper av Nordlys?"
   },
   {
    "type": "v7pres",
-   "navn": "MA06_Produkt_M2_Kvalitet_og_garanti_Presentasjon_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M2_Kvalitet_og_garanti_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 947,
-   "okt": "økt 2 av 4: egenskaper, kvalitet og garanti",
-   "sp": "Hva er en garanti verdt når loven gir kunden fem år?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA06_Produkt_M2_Kvalitet_og_garanti_Okteark_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M2_Kvalitet_og_garanti_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 2 av 4: egenskaper, kvalitet og garanti",
-   "sp": "Hva er en garanti verdt når loven gir kunden fem år?"
+   "navn": "MA06_Produkt_M2_Egenskaper_kvalitet_og_sortiment_Presentasjon_v11.pdf",
+   "fil": "pensum/ma06/MA06_Produkt_M2_Egenskaper_kvalitet_og_sortiment_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2832,
+   "okt": "økt 2: produktegenskaper, kvalitet, vareutvalg og emballasje",
+   "sp": "Nordlys har seks tjenestegrupper og tolv montører. Er sortimentet for bredt?"
   },
   {
    "type": "v7pres",
-   "navn": "MA06_Produkt_M3_Vareutvalg_og_livssyklus_Presentasjon_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M3_Vareutvalg_og_livssyklus_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1243,
-   "okt": "økt 3 av 4: vareutvalget og livssyklusen",
-   "sp": "Hva skal Nordlys tilby, og hvor er hver tjeneste på vei?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA06_Produkt_M3_Vareutvalg_og_livssyklus_Okteark_v10.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_M3_Vareutvalg_og_livssyklus_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 4: vareutvalget og livssyklusen",
-   "sp": "Hva skal Nordlys tilby, og hvor er hver tjeneste på vei?"
+   "navn": "MA06_Produkt_M3_Livssyklus_sanering_og_merkevare_Presentasjon_v11.pdf",
+   "fil": "pensum/ma06/MA06_Produkt_M3_Livssyklus_sanering_og_merkevare_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2333,
+   "okt": "økt 3: livssyklus, produktutvikling og -sanering, merkevarebygging",
+   "sp": "Antenneoppdragene har falt fra 96 til 22 på fire år. Bør Nordlys slutte med dem?"
   },
   {
    "type": "v7pres",
@@ -4701,17 +4342,17 @@ LOM.filer = {
   },
   {
    "type": "v6ark",
-   "navn": "MA06_Produkt_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma06/MA06_Produkt_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 46
+   "navn": "MA06_Produkt_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma06/MA06_Produkt_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 27
   },
   {
    "type": "v6samm",
-   "navn": "MA06_Produkt_Sammendrag_v6.pdf",
-   "fil": "pensum/ma06/MA06_Produkt_Sammendrag_v6.pdf",
-   "dato": "23.10.2026",
-   "kb": 231
+   "navn": "MA06_Produkt_Sammendrag_v11.pdf",
+   "fil": "pensum/ma06/MA06_Produkt_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 80
   },
   {
    "type": "hefte",
@@ -4731,71 +4372,44 @@ LOM.filer = {
  "ma07": [
   {
    "type": "v7pres",
-   "navn": "MA07_Pris_M1_Prispolitikk_og_metodene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M1_Prispolitikk_og_metodene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1053,
-   "okt": "økt 1 av 3: mål, markedsform og tre måter å sette pris på",
-   "sp": "Hva er jobb 2614 verdt?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA07_Pris_M1_Prispolitikk_og_metodene_Okteark_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M1_Prispolitikk_og_metodene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 1 av 3: mål, markedsform og tre måter å sette pris på",
-   "sp": "Hva er jobb 2614 verdt?"
+   "navn": "MA07_Pris_M1_Prispolitikken_Presentasjon_v11.pdf",
+   "fil": "pensum/ma07/MA07_Pris_M1_Prispolitikken_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2236,
+   "okt": "økt 1: pris som konkurransevirkemiddel: prispolitikken",
+   "sp": "Samme sikringsskap kan få to ulike priser hos Nordlys. Hvem bestemmer hvilken?"
   },
   {
    "type": "v7pres",
-   "navn": "MA07_Pris_M2_Rabatt_og_elastisitet_Presentasjon_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M2_Rabatt_og_elastisitet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 850,
-   "okt": "økt 2 av 3: hva en rabatt og et prisavslag koster",
-   "sp": "«Ti prosent, så signerer jeg i dag.» Hva svarer Kari?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA07_Pris_M2_Rabatt_og_elastisitet_Okteark_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M2_Rabatt_og_elastisitet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: hva en rabatt og et prisavslag koster",
-   "sp": "«Ti prosent, så signerer jeg i dag.» Hva svarer Kari?"
+   "navn": "MA07_Pris_M2_Prissettingsmetodene_Presentasjon_v11.pdf",
+   "fil": "pensum/ma07/MA07_Pris_M2_Prissettingsmetodene_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 1637,
+   "okt": "økt 2: prissettingsmetodene: kostnad, konkurrent og betalingsvilje",
+   "sp": "Den billigste konkurrenten tilbyr skapet for 30 500 kr. Skal Nordlys senke prisen?"
   },
   {
    "type": "v7pres",
-   "navn": "MA07_Pris_M3_Prisdifferensiering_Presentasjon_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M3_Prisdifferensiering_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 832,
-   "okt": "økt 3 av 3: ulik pris for samme jobb",
-   "sp": "Når er en lavere pris lur, og når er den bare lavere?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA07_Pris_M3_Prisdifferensiering_Okteark_v10.pdf",
-   "fil": "pensum/ma07/MA07_Pris_M3_Prisdifferensiering_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: ulik pris for samme jobb",
-   "sp": "Når er en lavere pris lur, og når er den bare lavere?"
+   "navn": "MA07_Pris_M3_Prisdifferensiering_og_rabatter_Presentasjon_v11.pdf",
+   "fil": "pensum/ma07/MA07_Pris_M3_Prisdifferensiering_og_rabatter_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2588,
+   "okt": "økt 3: prisdifferensiering og rabatter",
+   "sp": "Styrelederen i et borettslag ber om 10 % rabatt. Hva koster det Nordlys?"
   },
   {
    "type": "v6ark",
-   "navn": "MA07_Pris_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma07/MA07_Pris_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "MA07_Pris_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma07/MA07_Pris_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "MA07_Pris_Sammendrag_v6.pdf",
-   "fil": "pensum/ma07/MA07_Pris_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 205
+   "navn": "MA07_Pris_Sammendrag_v11.pdf",
+   "fil": "pensum/ma07/MA07_Pris_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 70
   },
   {
    "type": "hefte",
@@ -4815,71 +4429,44 @@ LOM.filer = {
  "ma08": [
   {
    "type": "v7pres",
-   "navn": "MA08_Distribusjon_M1_Kanal_og_mellomledd_Presentasjon_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M1_Kanal_og_mellomledd_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1306,
-   "okt": "økt 1 av 3: kanalen og mellomleddene",
-   "sp": "Er grossisten et fordyrende mellomledd?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA08_Distribusjon_M1_Kanal_og_mellomledd_Okteark_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M1_Kanal_og_mellomledd_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 3: kanalen og mellomleddene",
-   "sp": "Er grossisten et fordyrende mellomledd?"
+   "navn": "MA08_Distribusjon_M1_Mal_og_oppgaver_Presentasjon_v11.pdf",
+   "fil": "pensum/ma08/MA08_Distribusjon_M1_Mal_og_oppgaver_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 3695,
+   "okt": "økt 1: distribusjon: mål og oppgaver",
+   "sp": "Kabelen Nordlys bruker i dag, ble laget langt unna. Hvem har sørget for at den ligger på lageret når montøren trenger den?"
   },
   {
    "type": "v7pres",
-   "navn": "MA08_Distribusjon_M2_Lager_og_leveringstid_Presentasjon_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M2_Lager_og_leveringstid_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 958,
-   "okt": "økt 2 av 3: lageret og leveringstiden",
-   "sp": "Hva koster dagene på lageret, og timene montørene venter?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA08_Distribusjon_M2_Lager_og_leveringstid_Okteark_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M2_Lager_og_leveringstid_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: lageret og leveringstiden",
-   "sp": "Hva koster dagene på lageret, og timene montørene venter?"
+   "navn": "MA08_Distribusjon_M2_Form_grad_og_kanal_Presentasjon_v11.pdf",
+   "fil": "pensum/ma08/MA08_Distribusjon_M2_Form_grad_og_kanal_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 3171,
+   "okt": "økt 2: distribusjonsform, distribusjonsgrad og kanal",
+   "sp": "Produsenten tilbyr 10 % rabatt hvis Nordlys kjøper direkte og hopper over grossisten. Lønner det seg?"
   },
   {
    "type": "v7pres",
-   "navn": "MA08_Distribusjon_M3_Velge_kanal_Presentasjon_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M3_Velge_kanal_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1050,
-   "okt": "økt 3 av 3: å velge kanal",
-   "sp": "Hvem eier kunden, og hva gir mest?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA08_Distribusjon_M3_Velge_kanal_Okteark_v10.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_M3_Velge_kanal_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 3 av 3: å velge kanal",
-   "sp": "Hvem eier kunden, og hva gir mest?"
+   "navn": "MA08_Distribusjon_M3_Tjenester_Presentasjon_v11.pdf",
+   "fil": "pensum/ma08/MA08_Distribusjon_M3_Tjenester_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2371,
+   "okt": "økt 3: distribusjon av tjenester",
+   "sp": "Nordlys kan ikke sende en jobb med posten. Hvordan distribuerer en installatør det den selger?"
   },
   {
    "type": "v6ark",
-   "navn": "MA08_Distribusjon_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma08/MA08_Distribusjon_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 27
+   "navn": "MA08_Distribusjon_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma08/MA08_Distribusjon_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "MA08_Distribusjon_Sammendrag_v6.pdf",
-   "fil": "pensum/ma08/MA08_Distribusjon_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 187
+   "navn": "MA08_Distribusjon_Sammendrag_v11.pdf",
+   "fil": "pensum/ma08/MA08_Distribusjon_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 68
   },
   {
    "type": "hefte",
@@ -4899,71 +4486,44 @@ LOM.filer = {
  "ma09": [
   {
    "type": "v7pres",
-   "navn": "MA09_Pavirkning_M1_Modellen_og_formene_Presentasjon_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M1_Modellen_og_formene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1365,
-   "okt": "økt 1 av 3: modellen og formene",
-   "sp": "Hvorfor ringer ingen, og hva koster det å nå én kunde?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA09_Pavirkning_M1_Modellen_og_formene_Okteark_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M1_Modellen_og_formene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 3: modellen og formene",
-   "sp": "Hvorfor ringer ingen, og hva koster det å nå én kunde?"
+   "navn": "MA09_Pavirkning_M1_Kommunikasjonsmodellen_Presentasjon_v11.pdf",
+   "fil": "pensum/ma09/MA09_Pavirkning_M1_Kommunikasjonsmodellen_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2743,
+   "okt": "økt 1: kommunikasjonsmodellen",
+   "sp": "Nordlys har aldri kjøpt en annonse. Kommuniserer de med markedet likevel?"
   },
   {
    "type": "v7pres",
-   "navn": "MA09_Pavirkning_M2_Personlig_salg_og_kampanjen_Presentasjon_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M2_Personlig_salg_og_kampanjen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1443,
-   "okt": "økt 2 av 3: personlig salg, mediet og kampanjen",
-   "sp": "Hvor skal Kari begynne?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA09_Pavirkning_M2_Personlig_salg_og_kampanjen_Okteark_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M2_Personlig_salg_og_kampanjen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 61,
-   "okt": "økt 2 av 3: personlig salg, mediet og kampanjen",
-   "sp": "Hvor skal Kari begynne?"
+   "navn": "MA09_Pavirkning_M2_Personlig_og_massekommunikasjon_Presentasjon_v11.pdf",
+   "fil": "pensum/ma09/MA09_Pavirkning_M2_Personlig_og_massekommunikasjon_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2245,
+   "okt": "økt 2: personlig og massekommunikasjon",
+   "sp": "Ett styrebesøk koster like mye som en annonse til nesten 5 000 personer. Hvorfor besøke?"
   },
   {
    "type": "v7pres",
-   "navn": "MA09_Pavirkning_M3_Personalet_og_intern_markedsforing_Presentasjon_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M3_Personalet_og_intern_markedsforing_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1127,
-   "okt": "økt 3 av 3: personalet og intern markedsføring",
-   "sp": "Hvem holder det Nordlys lover?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA09_Pavirkning_M3_Personalet_og_intern_markedsforing_Okteark_v10.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_M3_Personalet_og_intern_markedsforing_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 3 av 3: personalet og intern markedsføring",
-   "sp": "Hvem holder det Nordlys lover?"
+   "navn": "MA09_Pavirkning_M3_Kampanjen_og_personalet_Presentasjon_v11.pdf",
+   "fil": "pensum/ma09/MA09_Pavirkning_M3_Kampanjen_og_personalet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2080,
+   "okt": "økt 3: kampanjen og personalet",
+   "sp": "Nordlys vil ha én kontrakt på et ladeanlegg før 30. juni. Hva må være på plass før første brev går ut?"
   },
   {
    "type": "v6ark",
-   "navn": "MA09_Pavirkning_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma09/MA09_Pavirkning_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
+   "navn": "MA09_Pavirkning_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma09/MA09_Pavirkning_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
    "kb": 26
   },
   {
    "type": "v6samm",
-   "navn": "MA09_Pavirkning_Sammendrag_v6.pdf",
-   "fil": "pensum/ma09/MA09_Pavirkning_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 190
+   "navn": "MA09_Pavirkning_Sammendrag_v11.pdf",
+   "fil": "pensum/ma09/MA09_Pavirkning_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 75
   },
   {
    "type": "hefte",
@@ -4983,71 +4543,44 @@ LOM.filer = {
  "ma10": [
   {
    "type": "v7pres",
-   "navn": "MA10_Markedsplanen_oppsummert_M1_Analyse_mal_og_strategi_Presentasjon_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M1_Analyse_mal_og_strategi_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 898,
-   "okt": "økt 1 av 3: analyse, mål og strategi",
-   "sp": "Er Karis lapp en markedsplan?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA10_Markedsplanen_oppsummert_M1_Analyse_mal_og_strategi_Okteark_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M1_Analyse_mal_og_strategi_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 66,
-   "okt": "økt 1 av 3: analyse, mål og strategi",
-   "sp": "Er Karis lapp en markedsplan?"
+   "navn": "MA10_Markedsplanen_M1_Ide_situasjon_og_mal_Presentasjon_v11.pdf",
+   "fil": "pensum/ma10/MA10_Markedsplanen_M1_Ide_situasjon_og_mal_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2084,
+   "okt": "økt 1: idé, situasjon og mål",
+   "sp": "Kari vil ha 20 % vekst i 2027. Er det et markedsmål?"
   },
   {
    "type": "v7pres",
-   "navn": "MA10_Markedsplanen_oppsummert_M2_Handlingsplan_og_budsjett_Presentasjon_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M2_Handlingsplan_og_budsjett_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 972,
-   "okt": "økt 2 av 3: handlingsplanen og budsjettet",
-   "sp": "Hvem gjør hva, i hvilken uke, og hva koster det?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA10_Markedsplanen_oppsummert_M2_Handlingsplan_og_budsjett_Okteark_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M2_Handlingsplan_og_budsjett_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 2 av 3: handlingsplanen og budsjettet",
-   "sp": "Hvem gjør hva, i hvilken uke, og hva koster det?"
+   "navn": "MA10_Markedsplanen_M2_Markedsstrategien_Presentasjon_v11.pdf",
+   "fil": "pensum/ma10/MA10_Markedsplanen_M2_Markedsstrategien_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2021,
+   "okt": "økt 2: markedsstrategien",
+   "sp": "Ida vil selge 4 færre solcelleanlegg i 2027. Er det dårlig strategi?"
   },
   {
    "type": "v7pres",
-   "navn": "MA10_Markedsplanen_oppsummert_M3_Gjennomforing_og_evaluering_Presentasjon_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M3_Gjennomforing_og_evaluering_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 884,
-   "okt": "økt 3 av 3: gjennomføring og evaluering",
-   "sp": "Hvordan vet Kari i mars at juni går bra?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "MA10_Markedsplanen_oppsummert_M3_Gjennomforing_og_evaluering_Okteark_v10.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_M3_Gjennomforing_og_evaluering_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: gjennomføring og evaluering",
-   "sp": "Hvordan vet Kari i mars at juni går bra?"
+   "navn": "MA10_Markedsplanen_M3_Handling_gjennomforing_og_evaluering_Presentasjon_v11.pdf",
+   "fil": "pensum/ma10/MA10_Markedsplanen_M3_Handling_gjennomforing_og_evaluering_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2087,
+   "okt": "økt 3: handling, gjennomføring og evaluering",
+   "sp": "Handlingsplanen koster 40 400 kr. Er det mye når målet gir 139 200 kr i ekstra dekningsbidrag?"
   },
   {
    "type": "v6ark",
-   "navn": "MA10_Markedsplanen_oppsummert_Oppgaver_v10.xlsx",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 32
+   "navn": "MA10_Markedsplanen_Oppgaver_v11.xlsx",
+   "fil": "pensum/ma10/MA10_Markedsplanen_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "MA10_Markedsplanen_oppsummert_Sammendrag_v6.pdf",
-   "fil": "pensum/ma10/MA10_Markedsplanen_oppsummert_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 241
+   "navn": "MA10_Markedsplanen_Sammendrag_v11.pdf",
+   "fil": "pensum/ma10/MA10_Markedsplanen_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 65
   },
   {
    "type": "hefte",
@@ -5067,71 +4600,44 @@ LOM.filer = {
  "ol11": [
   {
    "type": "v7pres",
-   "navn": "OL11_Hva_er_en_organisasjon_M1_Formell_eller_uformell_Presentasjon_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M1_Formell_eller_uformell_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1288,
-   "okt": "økt 1 av 3: fra to over kaffen til atten",
-   "sp": "Hva er en organisasjon, og hva skiller en formell fra en uformell?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL11_Hva_er_en_organisasjon_M1_Formell_eller_uformell_Okteark_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M1_Formell_eller_uformell_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 1 av 3: fra to over kaffen til atten",
-   "sp": "Hva er en organisasjon, og hva skiller en formell fra en uformell?"
+   "navn": "OL11_Organisasjon_M1_Formell_eller_uformell_Presentasjon_v11.pdf",
+   "fil": "pensum/ol11/OL11_Organisasjon_M1_Formell_eller_uformell_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2514,
+   "okt": "økt 1: formell eller uformell organisasjon",
+   "sp": "Kari og Tom startet med et håndtrykk. Holder det med 18 ansatte?"
   },
   {
    "type": "v7pres",
-   "navn": "OL11_Hva_er_en_organisasjon_M2_Kartet_Presentasjon_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M2_Kartet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 747,
-   "okt": "økt 2 av 3: kartet og den som ikke kan mangle",
-   "sp": "Hvem rapporterer til hvem, og hvor er hullet?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL11_Hva_er_en_organisasjon_M2_Kartet_Okteark_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M2_Kartet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 2 av 3: kartet og den som ikke kan mangle",
-   "sp": "Hvem rapporterer til hvem, og hvor er hullet?"
+   "navn": "OL11_Organisasjon_M2_Kartet_Presentasjon_v11.pdf",
+   "fil": "pensum/ol11/OL11_Organisasjon_M2_Kartet_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2571,
+   "okt": "økt 2: kartet",
+   "sp": "Montøren på solcelle ringer Kari fire ganger uten svar. Hvem skulle han ringt?"
   },
   {
    "type": "v7pres",
-   "navn": "OL11_Hva_er_en_organisasjon_M3_Tre_briller_Presentasjon_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M3_Tre_briller_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 959,
-   "okt": "økt 3 av 3: maskin, fellesskap og åpent system",
-   "sp": "Hva skjedde egentlig den fredagen?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL11_Hva_er_en_organisasjon_M3_Tre_briller_Okteark_v10.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_M3_Tre_briller_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: maskin, fellesskap og åpent system",
-   "sp": "Hva skjedde egentlig den fredagen?"
+   "navn": "OL11_Organisasjon_M3_Tre_perspektiver_Presentasjon_v11.pdf",
+   "fil": "pensum/ol11/OL11_Organisasjon_M3_Tre_perspektiver_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2671,
+   "okt": "økt 3: tre perspektiver på organisasjonen",
+   "sp": "Vekselretteren kom ikke, og anlegget ble ikke ferdig fredag. Hvem sin feil var det?"
   },
   {
    "type": "v6ark",
-   "navn": "OL11_Hva_er_en_organisasjon_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 28
+   "navn": "OL11_Organisasjon_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol11/OL11_Organisasjon_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 22
   },
   {
    "type": "v6samm",
-   "navn": "OL11_Hva_er_en_organisasjon_Sammendrag_v6.pdf",
-   "fil": "pensum/ol11/OL11_Hva_er_en_organisasjon_Sammendrag_v6.pdf",
-   "dato": "05.11.2026",
-   "kb": 205
+   "navn": "OL11_Organisasjon_Sammendrag_v11.pdf",
+   "fil": "pensum/ol11/OL11_Organisasjon_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 57
   },
   {
    "type": "hefte",
@@ -5144,71 +4650,44 @@ LOM.filer = {
  "ol12": [
   {
    "type": "v7pres",
-   "navn": "OL12_Interne_rammebetingelser_M1_Rammene_og_folkene_Presentasjon_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M1_Rammene_og_folkene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 975,
-   "okt": "økt 1 av 3: målene og folkene",
-   "sp": "Hva inne i bedriften avgjør hva den klarer?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL12_Interne_rammebetingelser_M1_Rammene_og_folkene_Okteark_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M1_Rammene_og_folkene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 62,
-   "okt": "økt 1 av 3: målene og folkene",
-   "sp": "Hva inne i bedriften avgjør hva den klarer?"
+   "navn": "OL12_Interne_rammer_M1_Rammene_og_folkene_Presentasjon_v11.pdf",
+   "fil": "pensum/ol12/OL12_Interne_rammer_M1_Rammene_og_folkene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2424,
+   "okt": "økt 1: rammene og folkene",
+   "sp": "Nordlys sa nei til en jobb på 1,87 mill. kr. Var det kunden, markedet eller Nordlys selv?"
   },
   {
    "type": "v7pres",
-   "navn": "OL12_Interne_rammebetingelser_M2_Teknologien_Presentasjon_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M2_Teknologien_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1454,
-   "okt": "økt 2 av 3: teknologien",
-   "sp": "Er verktøyet og rutinene verdt det de koster?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL12_Interne_rammebetingelser_M2_Teknologien_Okteark_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M2_Teknologien_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 2 av 3: teknologien",
-   "sp": "Er verktøyet og rutinene verdt det de koster?"
+   "navn": "OL12_Interne_rammer_M2_Teknologien_Presentasjon_v11.pdf",
+   "fil": "pensum/ol12/OL12_Interne_rammer_M2_Teknologien_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2326,
+   "okt": "økt 2: teknologien",
+   "sp": "Kontoret taster timelistene inn på nytt, 6 timer i uka. Er det teknologi?"
   },
   {
    "type": "v7pres",
-   "navn": "OL12_Interne_rammebetingelser_M3_Struktur_og_okonomi_Presentasjon_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M3_Struktur_og_okonomi_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 727,
-   "okt": "økt 3 av 3: strukturen og økonomien",
-   "sp": "Hvem bestemmer, og tåler økonomien jobben?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL12_Interne_rammebetingelser_M3_Struktur_og_okonomi_Okteark_v10.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_M3_Struktur_og_okonomi_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 3 av 3: strukturen og økonomien",
-   "sp": "Hvem bestemmer, og tåler økonomien jobben?"
+   "navn": "OL12_Interne_rammer_M3_Struktur_og_okonomi_Presentasjon_v11.pdf",
+   "fil": "pensum/ol12/OL12_Interne_rammer_M3_Struktur_og_okonomi_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1531,
+   "okt": "økt 3: struktur og økonomi",
+   "sp": "Jobben gir 371 250 kr i dekningsbidrag. Hvorfor sa banken nei?"
   },
   {
    "type": "v6ark",
-   "navn": "OL12_Interne_rammebetingelser_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "OL12_Interne_rammer_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol12/OL12_Interne_rammer_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 23
   },
   {
    "type": "v6samm",
-   "navn": "OL12_Interne_rammebetingelser_Sammendrag_v6.pdf",
-   "fil": "pensum/ol12/OL12_Interne_rammebetingelser_Sammendrag_v6.pdf",
-   "dato": "05.11.2026",
-   "kb": 178
+   "navn": "OL12_Interne_rammer_Sammendrag_v11.pdf",
+   "fil": "pensum/ol12/OL12_Interne_rammer_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 62
   },
   {
    "type": "hefte",
@@ -5221,71 +4700,44 @@ LOM.filer = {
  "ol13": [
   {
    "type": "v7pres",
-   "navn": "OL13_Eksterne_rammebetingelser_M1_Markedet_Presentasjon_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M1_Markedet_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 976,
-   "okt": "økt 1 av 3: aktørene i markedet",
-   "sp": "Hvem utenfor kan Kari ringe, og hvem har makten?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL13_Eksterne_rammebetingelser_M1_Markedet_Okteark_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M1_Markedet_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 62,
-   "okt": "økt 1 av 3: aktørene i markedet",
-   "sp": "Hvem utenfor kan Kari ringe, og hvem har makten?"
+   "navn": "OL13_Eksterne_rammer_M1_Aktorene_naer_bedriften_Presentasjon_v11.pdf",
+   "fil": "pensum/ol13/OL13_Eksterne_rammer_M1_Aktorene_naer_bedriften_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2908,
+   "okt": "økt 1: aktørene nær bedriften",
+   "sp": "Grossisten hever prisene på kabel. Kan Nordlys gjøre noe med det?"
   },
   {
    "type": "v7pres",
-   "navn": "OL13_Eksterne_rammebetingelser_M2_Regler_penger_lonn_Presentasjon_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M2_Regler_penger_lonn_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 721,
-   "okt": "økt 2 av 3: regler, penger og lønn",
-   "sp": "Hvem setter reglene, renta og lønna?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL13_Eksterne_rammebetingelser_M2_Regler_penger_lonn_Okteark_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M2_Regler_penger_lonn_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 2 av 3: regler, penger og lønn",
-   "sp": "Hvem setter reglene, renta og lønna?"
+   "navn": "OL13_Eksterne_rammer_M2_Myndigheter_bank_og_arbeidsliv_Presentasjon_v11.pdf",
+   "fil": "pensum/ol13/OL13_Eksterne_rammer_M2_Myndigheter_bank_og_arbeidsliv_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1241,
+   "okt": "økt 2: myndigheter, bank, arbeidsliv og medier",
+   "sp": "Lønna til montørene avtales utenfor bedriften. Hvem bestemmer egentlig over Nordlys?"
   },
   {
    "type": "v7pres",
-   "navn": "OL13_Eksterne_rammebetingelser_M3_Prosessene_Presentasjon_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M3_Prosessene_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1047,
-   "okt": "økt 3 av 3: prosessene",
-   "sp": "Hva endrer seg sakte, uten noen å ringe?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL13_Eksterne_rammebetingelser_M3_Prosessene_Okteark_v10.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_M3_Prosessene_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 62,
-   "okt": "økt 3 av 3: prosessene",
-   "sp": "Hva endrer seg sakte, uten noen å ringe?"
+   "navn": "OL13_Eksterne_rammer_M3_Prosessene_Presentasjon_v11.pdf",
+   "fil": "pensum/ol13/OL13_Eksterne_rammer_M3_Prosessene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2577,
+   "okt": "økt 3: prosessene",
+   "sp": "En montør slutter, og det finnes ingen å ansette. Hva gjør Nordlys med en ramme de ikke kan endre?"
   },
   {
    "type": "v6ark",
-   "navn": "OL13_Eksterne_rammebetingelser_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 30
+   "navn": "OL13_Eksterne_rammer_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol13/OL13_Eksterne_rammer_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 21
   },
   {
    "type": "v6samm",
-   "navn": "OL13_Eksterne_rammebetingelser_Sammendrag_v6.pdf",
-   "fil": "pensum/ol13/OL13_Eksterne_rammebetingelser_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 179
+   "navn": "OL13_Eksterne_rammer_Sammendrag_v11.pdf",
+   "fil": "pensum/ol13/OL13_Eksterne_rammer_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 50
   },
   {
    "type": "hefte",
@@ -5298,71 +4750,44 @@ LOM.filer = {
  "ol14": [
   {
    "type": "v7pres",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M1_Taylor_Presentasjon_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M1_Taylor_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1221,
-   "okt": "økt 1 av 3: Taylor og normtiden",
-   "sp": "Hvem har bestemt at et skapbytte tar 14 timer?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M1_Taylor_Okteark_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M1_Taylor_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 3: Taylor og normtiden",
-   "sp": "Hvem har bestemt at et skapbytte tar 14 timer?"
+   "navn": "OL14_Klassiske_teorier_M1_Taylor_Presentasjon_v11.pdf",
+   "fil": "pensum/ol14/OL14_Klassiske_teorier_M1_Taylor_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2902,
+   "okt": "økt 1: vitenskapelig ledelse",
+   "sp": "Akkordlaget bytter et sikringsskap på 11 timer. Normtiden er 14. Hvem tjener på det?"
   },
   {
    "type": "v7pres",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M2_Fayol_Presentasjon_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M2_Fayol_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1131,
-   "okt": "økt 2 av 3: Fayol og organisasjonskartet",
-   "sp": "Hvem gir ordre til hvem, og hvor mange kan én leder ha?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M2_Fayol_Okteark_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M2_Fayol_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 2 av 3: Fayol og organisasjonskartet",
-   "sp": "Hvem gir ordre til hvem, og hvor mange kan én leder ha?"
+   "navn": "OL14_Klassiske_teorier_M2_Fayol_linje_og_stab_Presentasjon_v11.pdf",
+   "fil": "pensum/ol14/OL14_Klassiske_teorier_M2_Fayol_linje_og_stab_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2362,
+   "okt": "økt 2: fayol, linje og stab",
+   "sp": "Ida setter normtidene, men kan ikke gi Ronny ordre. Er det et problem?"
   },
   {
    "type": "v7pres",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M3_Weber_Presentasjon_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M3_Weber_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 992,
-   "okt": "økt 3 av 3: Weber og effektiviteten",
-   "sp": "Er papirene byråkrati, eller grunnen til at anlegget er trygt?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL14_Klassiske_organisasjonsteorier_M3_Weber_Okteark_v10.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_M3_Weber_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: Weber og effektiviteten",
-   "sp": "Er papirene byråkrati, eller grunnen til at anlegget er trygt?"
+   "navn": "OL14_Klassiske_teorier_M3_Weber_effektivitet_og_varianter_Presentasjon_v11.pdf",
+   "fil": "pensum/ol14/OL14_Klassiske_teorier_M3_Weber_effektivitet_og_varianter_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1621,
+   "okt": "økt 3: weber, effektivitet og varianter",
+   "sp": "Nordlys fakturerer 70,8 % av montørtimene. Er bedriften effektiv?"
   },
   {
    "type": "v6ark",
-   "navn": "OL14_Klassiske_organisasjonsteorier_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 28
+   "navn": "OL14_Klassiske_teorier_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol14/OL14_Klassiske_teorier_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 23
   },
   {
    "type": "v6samm",
-   "navn": "OL14_Klassiske_organisasjonsteorier_Sammendrag_v6.pdf",
-   "fil": "pensum/ol14/OL14_Klassiske_organisasjonsteorier_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 177
+   "navn": "OL14_Klassiske_teorier_Sammendrag_v11.pdf",
+   "fil": "pensum/ol14/OL14_Klassiske_teorier_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 52
   },
   {
    "type": "hefte",
@@ -5375,71 +4800,44 @@ LOM.filer = {
  "ol15": [
   {
    "type": "v7pres",
-   "navn": "OL15_Nyere_organisasjonsteorier_M1_Mennesket_Presentasjon_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M1_Mennesket_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1033,
-   "okt": "økt 1 av 3: mennesket i organisasjonen",
-   "sp": "Virker timeregistreringen, eller er det noen som følger med?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL15_Nyere_organisasjonsteorier_M1_Mennesket_Okteark_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M1_Mennesket_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 63,
-   "okt": "økt 1 av 3: mennesket i organisasjonen",
-   "sp": "Virker timeregistreringen, eller er det noen som følger med?"
+   "navn": "OL15_Nyere_teorier_M1_Mennesket_Presentasjon_v11.pdf",
+   "fil": "pensum/ol15/OL15_Nyere_teorier_M1_Mennesket_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2581,
+   "okt": "økt 1: mennesket i organisasjonen",
+   "sp": "Tom begynte å følge med på serviceoppdragene. Tiden falt fra 6 til 5 timer. Hvorfor?"
   },
   {
    "type": "v7pres",
-   "navn": "OL15_Nyere_organisasjonsteorier_M2_Beslutninger_Presentasjon_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M2_Beslutninger_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 688,
-   "okt": "økt 2 av 3: beslutninger og systemer",
-   "sp": "Når er et valg godt nok, og når er et system tatt i bruk?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL15_Nyere_organisasjonsteorier_M2_Beslutninger_Okteark_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M2_Beslutninger_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 61,
-   "okt": "økt 2 av 3: beslutninger og systemer",
-   "sp": "Når er et valg godt nok, og når er et system tatt i bruk?"
+   "navn": "OL15_Nyere_teorier_M2_Beslutningene_Presentasjon_v11.pdf",
+   "fil": "pensum/ol15/OL15_Nyere_teorier_M2_Beslutningene_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1889,
+   "okt": "økt 2: beslutningene",
+   "sp": "Ida hadde 2 timer og rakk 3 av 14 laderfabrikater. Var valget hennes dårlig?"
   },
   {
    "type": "v7pres",
-   "navn": "OL15_Nyere_organisasjonsteorier_M3_Situasjonen_Presentasjon_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M3_Situasjonen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1175,
-   "okt": "økt 3 av 3: situasjonen avgjør formen",
-   "sp": "Hvorfor kan ikke service og prosjekt ledes likt?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL15_Nyere_organisasjonsteorier_M3_Situasjonen_Okteark_v10.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_M3_Situasjonen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 3 av 3: situasjonen avgjør formen",
-   "sp": "Hvorfor kan ikke service og prosjekt ledes likt?"
+   "navn": "OL15_Nyere_teorier_M3_Situasjonen_Presentasjon_v11.pdf",
+   "fil": "pensum/ol15/OL15_Nyere_teorier_M3_Situasjonen_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2325,
+   "okt": "økt 3: situasjonen avgjør formen",
+   "sp": "Service og prosjekt er så ulike. Bør de organiseres likt?"
   },
   {
    "type": "v6ark",
-   "navn": "OL15_Nyere_organisasjonsteorier_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 29
+   "navn": "OL15_Nyere_teorier_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol15/OL15_Nyere_teorier_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 22
   },
   {
    "type": "v6samm",
-   "navn": "OL15_Nyere_organisasjonsteorier_Sammendrag_v6.pdf",
-   "fil": "pensum/ol15/OL15_Nyere_organisasjonsteorier_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 182
+   "navn": "OL15_Nyere_teorier_Sammendrag_v11.pdf",
+   "fil": "pensum/ol15/OL15_Nyere_teorier_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 51
   },
   {
    "type": "hefte",
@@ -5452,71 +4850,44 @@ LOM.filer = {
  "ol16": [
   {
    "type": "v7pres",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_Presentasjon_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1365,
-   "okt": "økt 1 av 3: laget, rollene og de uskrevne reglene",
-   "sp": "Hvorfor sa ikke lærlingen fra?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_Okteark_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 1 av 3: laget, rollene og de uskrevne reglene",
-   "sp": "Hvorfor sa ikke lærlingen fra?"
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_roller_normer_Presentasjon_v11.pdf",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_roller_normer_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2750,
+   "okt": "økt 1: grupper, roller og normer",
+   "sp": "Hvem bestemmer egentlig på kontoret i Molde?"
   },
   {
    "type": "v7pres",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 912,
-   "okt": "økt 2 av 3: beskjeden og leddene den går gjennom",
-   "sp": "Hvor stoppet beskjeden?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Okteark_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 59,
-   "okt": "økt 2 av 3: beskjeden og leddene den går gjennom",
-   "sp": "Hvor stoppet beskjeden?"
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v11.pdf",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2191,
+   "okt": "økt 2: kommunikasjon i organisasjoner",
+   "sp": "Hvorfor forstår ikke de eldre når de yngre spøker?"
   },
   {
    "type": "v7pres",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 813,
-   "okt": "økt 3 av 3: makt, typer og strategier",
-   "sp": "Hva gjør du når uenigheten blir til en person?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Okteark_v10.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 3 av 3: makt, typer og strategier",
-   "sp": "Hva gjør du når uenigheten blir til en person?"
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v11.pdf",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2035,
+   "okt": "økt 3: konflikt og konflikthåndtering",
+   "sp": "Hvordan bør Bernt Roald håndtere konfliktene i Molde?"
   },
   {
    "type": "v6ark",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 30
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 24
   },
   {
    "type": "v6samm",
-   "navn": "OL16_Grupper_kommunikasjon_konflikt_Sammendrag_v6.pdf",
-   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 222
+   "navn": "OL16_Grupper_kommunikasjon_konflikt_Sammendrag_v11.pdf",
+   "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 75
   },
   {
    "type": "hefte",
@@ -5529,57 +4900,30 @@ LOM.filer = {
  "ol17": [
   {
    "type": "v7pres",
-   "navn": "OL17_Ledelse_og_motivasjon_M1_Lederen_Presentasjon_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M1_Lederen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1068,
-   "okt": "økt 1 av 4: hva en leder gjør",
-   "sp": "Blir den beste montøren en god leder?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL17_Ledelse_og_motivasjon_M1_Lederen_Okteark_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M1_Lederen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 1 av 4: hva en leder gjør",
-   "sp": "Blir den beste montøren en god leder?"
+   "navn": "OL17_Ledelse_M1_Ledelse_og_lederroller_Presentasjon_v11.pdf",
+   "fil": "pensum/ol17/OL17_Ledelse_M1_Ledelse_og_lederroller_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2495,
+   "okt": "økt 1: ledelse og lederroller",
+   "sp": "Ronny er formann og montør samtidig. Er han leder?"
   },
   {
    "type": "v7pres",
-   "navn": "OL17_Ledelse_og_motivasjon_M2_Lederstil_Presentasjon_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M2_Lederstil_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 965,
-   "okt": "økt 2 av 4: å lede hver enkelt",
-   "sp": "Hvordan leder du lærlingen, og hvordan leder du den erfarne?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL17_Ledelse_og_motivasjon_M2_Lederstil_Okteark_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M2_Lederstil_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 2 av 4: å lede hver enkelt",
-   "sp": "Hvordan leder du lærlingen, og hvordan leder du den erfarne?"
+   "navn": "OL17_Ledelse_M2_Egenskaper_og_lederstil_Presentasjon_v11.pdf",
+   "fil": "pensum/ol17/OL17_Ledelse_M2_Egenskaper_og_lederstil_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 2650,
+   "okt": "økt 2: egenskaper og lederstil",
+   "sp": "Ronny leder lærlingen og den mest erfarne montøren på samme måte. Er det riktig?"
   },
   {
    "type": "v7pres",
-   "navn": "OL17_Ledelse_og_motivasjon_M3_Motivasjon_Presentasjon_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M3_Motivasjon_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 949,
-   "okt": "økt 3 av 4: hva får folk til å yte og bli?",
-   "sp": "Hvorfor sluttet montøren som fikk 2 000 kr mer?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL17_Ledelse_og_motivasjon_M3_Motivasjon_Okteark_v10.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_M3_Motivasjon_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 3 av 4: hva får folk til å yte og bli?",
-   "sp": "Hvorfor sluttet montøren som fikk 2 000 kr mer?"
+   "navn": "OL17_Ledelse_M3_Verdier_motivasjon_og_styring_Presentasjon_v11.pdf",
+   "fil": "pensum/ol17/OL17_Ledelse_M3_Verdier_motivasjon_og_styring_Presentasjon_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 1793,
+   "okt": "økt 3: verdier, motivasjon og styring",
+   "sp": "En erfaren montør vil ha 2 000 kr mer i måneden, ellers slutter han. Er det verdt det?"
   },
   {
    "type": "v7pres",
@@ -5601,17 +4945,17 @@ LOM.filer = {
   },
   {
    "type": "v6ark",
-   "navn": "OL17_Ledelse_og_motivasjon_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 44
+   "navn": "OL17_Ledelse_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol17/OL17_Ledelse_Oppgaver_v11.xlsx",
+   "dato": "19.11.2026",
+   "kb": 22
   },
   {
    "type": "v6samm",
-   "navn": "OL17_Ledelse_og_motivasjon_Sammendrag_v6.pdf",
-   "fil": "pensum/ol17/OL17_Ledelse_og_motivasjon_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 265
+   "navn": "OL17_Ledelse_Sammendrag_v11.pdf",
+   "fil": "pensum/ol17/OL17_Ledelse_Sammendrag_v11.pdf",
+   "dato": "19.11.2026",
+   "kb": 51
   },
   {
    "type": "hefte",
@@ -5624,71 +4968,44 @@ LOM.filer = {
  "ol18": [
   {
    "type": "v7pres",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M1_Rekruttering_Presentasjon_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M1_Rekruttering_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 787,
-   "okt": "økt 1 av 3: fra behov til annonse",
-   "sp": "Hva koster det å fylle én stilling?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M1_Rekruttering_Okteark_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M1_Rekruttering_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 61,
-   "okt": "økt 1 av 3: fra behov til annonse",
-   "sp": "Hva koster det å fylle én stilling?"
+   "navn": "OL18_Personalpolitikk_M1_Rekruttering_Presentasjon_v11.pdf",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_M1_Rekruttering_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2883,
+   "okt": "økt 1: personalpolitikk og rekruttering",
+   "sp": "Nordlys trenger en servicemontør til. Hvor begynner Kari?"
   },
   {
    "type": "v7pres",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M2_Introduksjon_Presentasjon_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M2_Introduksjon_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1015,
-   "okt": "økt 2 av 3: Fra søknad til første arbeidsdag",
-   "sp": "Hvordan får den nye en god start?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M2_Introduksjon_Okteark_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M2_Introduksjon_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 60,
-   "okt": "økt 2 av 3: Fra søknad til første arbeidsdag",
-   "sp": "Hvordan får den nye en god start?"
+   "navn": "OL18_Personalpolitikk_M2_Intervju_og_introduksjon_Presentasjon_v11.pdf",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_M2_Intervju_og_introduksjon_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2080,
+   "okt": "økt 2: rekruttering: intervju, tilbud og introduksjon",
+   "sp": "Hvem skal Nordlys ansette, og hva skjer den første uka?"
   },
   {
    "type": "v7pres",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M3_Medarbeidersamtalen_Presentasjon_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M3_Medarbeidersamtalen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 972,
-   "okt": "økt 3 av 3: Medarbeidersamtalen",
-   "sp": "Hvordan holder du på folkene du har?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_M3_Medarbeidersamtalen_Okteark_v10.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_M3_Medarbeidersamtalen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 3: Medarbeidersamtalen",
-   "sp": "Hvordan holder du på folkene du har?"
+   "navn": "OL18_Personalpolitikk_M3_Medarbeidersamtalen_Presentasjon_v11.pdf",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_M3_Medarbeidersamtalen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2413,
+   "okt": "økt 3: medarbeidersamtalen",
+   "sp": "Hvordan bør Anders Hestad forberede samtalen med Jon Berg?"
   },
   {
    "type": "v6ark",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 27
+   "navn": "OL18_Personalpolitikk_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 26
   },
   {
    "type": "v6samm",
-   "navn": "OL18_Personalpolitikk_og_rekruttering_Sammendrag_v6.pdf",
-   "fil": "pensum/ol18/OL18_Personalpolitikk_og_rekruttering_Sammendrag_v6.pdf",
-   "dato": "23.10.2026",
-   "kb": 188
+   "navn": "OL18_Personalpolitikk_Sammendrag_v11.pdf",
+   "fil": "pensum/ol18/OL18_Personalpolitikk_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 77
   },
   {
    "type": "hefte",
@@ -5708,71 +5025,44 @@ LOM.filer = {
  "ol19": [
   {
    "type": "v7pres",
-   "navn": "OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1227,
-   "okt": "økt 1 av 3: hva den er, og hvor du ser den",
-   "sp": "Samme perm, samme sjef. Hvorfor melder ett lag 5 av 6 egne feil, et annet 2 av 9?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL19_Organisasjonskultur_M1_Hva_kultur_er_Okteark_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M1_Hva_kultur_er_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 56,
-   "okt": "økt 1 av 3: hva den er, og hvor du ser den",
-   "sp": "Samme perm, samme sjef. Hvorfor melder ett lag 5 av 6 egne feil, et annet 2 av 9?"
+   "navn": "OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v11.pdf",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 3076,
+   "okt": "økt 1: hva organisasjonskultur er",
+   "sp": "Samme skjema og samme sjef. Hvorfor melder én avdeling nesten alle egne feil, og en annen nesten ingen?"
   },
   {
    "type": "v7pres",
-   "navn": "OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1321,
-   "okt": "økt 2 av 3: hvor den kommer fra",
-   "sp": "Hva lærer lærlingen de første ukene, og hvem bestemmer det?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Okteark_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 2 av 3: hvor den kommer fra",
-   "sp": "Hva lærer lærlingen de første ukene, og hvem bestemmer det?"
+   "navn": "OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v11.pdf",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2533,
+   "okt": "økt 2: hvor kulturen kommer fra",
+   "sp": "Hvorfor ble feilen i prosjekt funnet først etter elleve uker, og hva kan Kari gjøre med det?"
   },
   {
    "type": "v7pres",
-   "navn": "OL19_Organisasjonskultur_M3_Subkultur_og_gruppetenkning_Presentasjon_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M3_Subkultur_og_gruppetenkning_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 1493,
-   "okt": "økt 3 av 3: subkultur og gruppetenkning",
-   "sp": "Er det et problem at avdelingene gjør det ulikt, og når blir enighet farlig?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL19_Organisasjonskultur_M3_Subkultur_og_gruppetenkning_Okteark_v10.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_M3_Subkultur_og_gruppetenkning_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 3 av 3: subkultur og gruppetenkning",
-   "sp": "Er det et problem at avdelingene gjør det ulikt, og når blir enighet farlig?"
+   "navn": "OL19_Organisasjonskultur_M3_Subkulturer_og_gruppetenkning_Presentasjon_v11.pdf",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_M3_Subkulturer_og_gruppetenkning_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2500,
+   "okt": "økt 3: subkulturer og gruppetenkning",
+   "sp": "Prosjekt har sin egen kultur. Er det et problem, og når blir en sterk kultur farlig?"
   },
   {
    "type": "v6ark",
-   "navn": "OL19_Organisasjonskultur_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 30
+   "navn": "OL19_Organisasjonskultur_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 25
   },
   {
    "type": "v6samm",
-   "navn": "OL19_Organisasjonskultur_Sammendrag_v6.pdf",
-   "fil": "pensum/ol19/OL19_Organisasjonskultur_Sammendrag_v6.pdf",
-   "dato": "22.10.2026",
-   "kb": 180
+   "navn": "OL19_Organisasjonskultur_Sammendrag_v11.pdf",
+   "fil": "pensum/ol19/OL19_Organisasjonskultur_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 74
   },
   {
    "type": "hefte",
@@ -5785,57 +5075,30 @@ LOM.filer = {
  "ol20": [
   {
    "type": "v7pres",
-   "navn": "OL20_Noen_viktige_lover_M1_Arbeidsavtalen_Presentasjon_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M1_Arbeidsavtalen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 999,
-   "okt": "økt 1 av 5: arbeidsavtalen og arbeidsmiljøet",
-   "sp": "Montøren begynte 1. august. Avtalen ble signert 20. august. Holder den?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL20_Noen_viktige_lover_M1_Arbeidsavtalen_Okteark_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M1_Arbeidsavtalen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 58,
-   "okt": "økt 1 av 5: arbeidsavtalen og arbeidsmiljøet",
-   "sp": "Montøren begynte 1. august. Avtalen ble signert 20. august. Holder den?"
+   "navn": "OL20_Lover_og_etikk_M1_Kunden_og_prisen_Presentasjon_v11.pdf",
+   "fil": "pensum/ol20/OL20_Lover_og_etikk_M1_Kunden_og_prisen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2250,
+   "okt": "økt 1: kunden og prisen: håndverkertjenesteloven",
+   "sp": "Kunden fikk et prisoverslag på 25 000 kr og en faktura på 29 500 kr. Hvor mye må hun betale?"
   },
   {
    "type": "v7pres",
-   "navn": "OL20_Noen_viktige_lover_M2_Arbeidstid_og_overtid_Presentasjon_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M2_Arbeidstid_og_overtid_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 870,
-   "okt": "økt 2 av 5: arbeidstid og overtid",
-   "sp": "52 timer på én uke. Hva er lov, og hva skal betales?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL20_Noen_viktige_lover_M2_Arbeidstid_og_overtid_Okteark_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M2_Arbeidstid_og_overtid_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 55,
-   "okt": "økt 2 av 5: arbeidstid og overtid",
-   "sp": "52 timer på én uke. Hva er lov, og hva skal betales?"
+   "navn": "OL20_Lover_og_etikk_M2_Arbeidsavtalen_og_oppsigelsen_Presentasjon_v11.pdf",
+   "fil": "pensum/ol20/OL20_Lover_og_etikk_M2_Arbeidsavtalen_og_oppsigelsen_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2389,
+   "okt": "økt 2: arbeidsavtalen og oppsigelsen: arbeidsmiljøloven",
+   "sp": "Hva må Kari ha på plass når hun ansetter, og hva må til før hun kan si opp noen?"
   },
   {
    "type": "v7pres",
-   "navn": "OL20_Noen_viktige_lover_M3_Oppsigelsen_Presentasjon_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M3_Oppsigelsen_Presentasjon_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 924,
-   "okt": "økt 3 av 5: oppsigelsen",
-   "sp": "En kunde går konkurs, og Kari må si opp en montør. Hvordan gjør hun det riktig?"
-  },
-  {
-   "type": "v7ark",
-   "navn": "OL20_Noen_viktige_lover_M3_Oppsigelsen_Okteark_v10.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_M3_Oppsigelsen_Okteark_v10.pdf",
-   "dato": "12.11.2026",
-   "kb": 57,
-   "okt": "økt 3 av 5: oppsigelsen",
-   "sp": "En kunde går konkurs, og Kari må si opp en montør. Hvordan gjør hun det riktig?"
+   "navn": "OL20_Lover_og_etikk_M3_Annonsen_og_etikken_Presentasjon_v11.pdf",
+   "fil": "pensum/ol20/OL20_Lover_og_etikk_M3_Annonsen_og_etikken_Presentasjon_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 2213,
+   "okt": "økt 3: annonsen og etikken: markedsføringsloven, etikk og etisk vurdering",
+   "sp": "Nordlys vil love kundene 40 prosent lavere strømregning, og en montør har jobbet overtid hele året. Er det lov, og er det rett?"
   },
   {
    "type": "v7pres",
@@ -5875,17 +5138,17 @@ LOM.filer = {
   },
   {
    "type": "v6ark",
-   "navn": "OL20_Noen_viktige_lover_Oppgaver_v10.xlsx",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_Oppgaver_v10.xlsx",
-   "dato": "12.11.2026",
-   "kb": 45
+   "navn": "OL20_Lover_og_etikk_Oppgaver_v11.xlsx",
+   "fil": "pensum/ol20/OL20_Lover_og_etikk_Oppgaver_v11.xlsx",
+   "dato": "18.11.2026",
+   "kb": 26
   },
   {
    "type": "v6samm",
-   "navn": "OL20_Noen_viktige_lover_Sammendrag_v6.pdf",
-   "fil": "pensum/ol20/OL20_Noen_viktige_lover_Sammendrag_v6.pdf",
-   "dato": "16.11.2026",
-   "kb": 248
+   "navn": "OL20_Lover_og_etikk_Sammendrag_v11.pdf",
+   "fil": "pensum/ol20/OL20_Lover_og_etikk_Sammendrag_v11.pdf",
+   "dato": "18.11.2026",
+   "kb": 78
   },
   {
    "type": "hefte",
@@ -21065,7 +20328,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.27.13 · 16. november 2026",   // 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.28.0 · 19. november 2026",   // 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -64019,7 +63282,7 @@ LOM.pwa = (function () {
   /* ---------- Les ---------- */
   function visLes(I, id, boks) {
     settInn(boks,
-      lytteboks(id),
+      seOgLytt(id),
       el("div", { class: "knapperad utskriftrad" }, el("button", { class: "knapp liten", title: "Åpner alle begreper og tallforklaringer og sender hele kapitlet til utskrift. Velg «Lagre som PDF» som skriver.", onclick: () => skrivUtKapittel(id, boks) }, "🖨 Skriv ut kapitlet (PDF)")),
       el("div", { class: "kort krok" }, el("h2", null, I.krok.tittel), I.krok.tekst.map(t => el("p", null, t))),
       el("div", { class: "kort maal" }, el("h3", null, "Etter dette kapitlet skal du"), el("ol", null, I.laeringsmaal.map(m => el("li", null, maalTekst(m))))),
@@ -64573,6 +63836,7 @@ LOM.pwa = (function () {
   function pkSpill(liste, i, bareKlar) {
     const forrige = pkNaa(); if (forrige && !pkLyd.paused && !pkPause) pkLagrePos(forrige.fil, pkLyd.currentTime);
     pkPause = false; pkKo = liste; pkI = i; const e = pkNaa(); if (!e) return;
+    if (!bareKlar) document.querySelectorAll("video").forEach(v => { if (!v.paused) v.pause(); });
     pkMerkSiste(e);
     const b = pkLagBar(); b.classList.remove("skjult"); document.body.classList.add("pk-aktiv");
     b._.tittel.textContent = e.tittel; b._.under.textContent = `${pkKapNavn(e)} · økt ${e.okt} · ${pkMin(e.sek)}`;
@@ -64635,15 +63899,51 @@ LOM.pwa = (function () {
       el("p", null, "På iPhone: bruk Safari. Hvis lyden stopper når skjermen slukkes i den installerte appen, åpne appen i Safari i stedet."),
       el("button", { class: "knapp liten", type: "button", onclick: (ev) => { let l = []; try { l = JSON.parse(localStorage.getItem("lom_pk_logg") || "[]"); } catch (x) { } ev.target.replaceWith(el("pre", { class: "pk-logg" }, (l.length ? l.join("\n") : "Ingen hendelser ennå.") + "\n" + navigator.userAgent)); } }, "Vis avspillingslogg (for feilsøking)"));
   }
-  function lytteboks(kapId) {
+  function lytteboks(kapId, inne) {
     const liste = pkFor(kapId); if (!liste.length) return null;
     const sum = liste.reduce((s, e) => s + (e.sek || 0), 0);
-    return el("div", { class: "kort pk-boks" },
+    return el("div", { class: inne ? "sl-del sl-lytt" : "kort pk-boks" },
       el("div", { class: "pk-boks-topp" }, el("span", { class: "pk-boks-ik", "aria-hidden": "true" }, "🎧"),
         el("div", null, el("h3", null, "Lytt til kapitlet"), el("p", { class: "kilder" }, `${liste.length} ${liste.length === 1 ? "episode" : "episoder"} · ${pkMin(sum)} til sammen. Lydversjonen av øktene, laget med KI-stemmer. Den er et supplement til læreboka, ikke en erstatning.`))),
       el("ul", { class: "pk-liste" }, liste.map(e => pkRad(e, liste))),
       el("div", { class: "knapperad" }, el("button", { class: "knapp primar", type: "button", onclick: () => pkSpill(liste, 0) }, "▶ Spill hele kapitlet"), el("button", { class: "knapp", type: "button", onclick: () => pkLastNedFlere(liste) }, "↓ Last ned kapitlet (mp3)"), el("a", { class: "knapp", href: "#/podkast" }, "Alle episoder")),
       pkTips());
+  }
+  /* ---------- Se og lytt (2.28.0): videoene og podkasten for kapitlet i én boks øverst på Les-siden.
+     Én stor videospiller med spilleliste (neste video starter når en er ferdig) og podkastepisodene under.
+     Video og podkast er hver sin liste; starter den ene, pauses den andre. Glenn 19.11.2026. */
+  function videospilleliste(kapId) {
+    const VDx = LOM.video || { base: "", videoer: [] };
+    const vs = VDx.videoer.filter(v => v.kap === kapId).sort((a, b) => a.nr - b.nr); if (!vs.length) return null;
+    let n = 0;
+    const tittel = el("b", null), info = el("span", null);
+    const spiller = el("video", { controls: "", preload: "metadata", playsinline: "", class: "sl-spiller" });
+    const rader = vs.map((v, i) => el("li", null, el("button", { type: "button", class: "sl-rad", onclick: () => velg(i, true) },
+      el("img", { src: VDx.base + v.bilde, alt: "", loading: "lazy" }),
+      el("span", { class: "sl-rad-tekst" }, el("b", null, v.tittel), el("small", null, `${Math.round((v.sek || 0) / 60)} min` + (v.om ? " · " + v.om : ""))))));
+    function velg(i, spill) {
+      n = i; const v = vs[i];
+      spiller.poster = VDx.base + v.bilde; spiller.src = VDx.base + v.fil;
+      tittel.textContent = v.tittel; info.textContent = `Video ${i + 1} av ${vs.length} · ${Math.round((v.sek || 0) / 60)} min`;
+      rader.forEach((r, j) => r.classList.toggle("aktiv", j === i));
+      if (spill) spiller.play().catch(() => { });
+    }
+    spiller.addEventListener("play", () => { if (typeof pkLyd !== "undefined" && pkLyd && !pkLyd.paused) pkLyd.pause(); document.querySelectorAll("video").forEach(m => { if (m !== spiller && !m.paused) m.pause(); }); LOM.telling && LOM.telling.hendelse("video-" + vs[n].kap + "-" + vs[n].nr); });
+    spiller.addEventListener("ended", () => { if (n < vs.length - 1) velg(n + 1, true); });
+    velg(0, false);
+    const sum = vs.reduce((s, v) => s + (v.sek || 0), 0);
+    return el("div", { class: "sl-del sl-se" },
+      el("h4", null, "🎬 Se", el("small", null, ` · ${vs.length} ${vs.length === 1 ? "video" : "videoer"} · ${Math.round(sum / 60)} min`)),
+      spiller, el("div", { class: "sl-naa" }, tittel, info),
+      vs.length > 1 ? el("ol", { class: "sl-liste" }, rader) : null);
+  }
+  function seOgLytt(kapId) {
+    const se = videospilleliste(kapId), lytt = lytteboks(kapId, true);
+    if (!se && !lytt) return null;
+    return el("div", { class: "kort sl-boks" },
+      el("div", { class: "pk-boks-topp" }, el("span", { class: "pk-boks-ik", "aria-hidden": "true" }, "▶"),
+        el("div", null, el("h3", null, "Se og lytt"), el("p", { class: "kilder" }, "Videoene og podkasten til kapitlet. De oppsummerer hovedpoengene og erstatter ikke læreboka."))),
+      se, lytt);
   }
   function visPodkast(filter) {
     sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › ", "Podkast");
