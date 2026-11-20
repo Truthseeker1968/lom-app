@@ -1194,6 +1194,9 @@ table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphe
 @media (min-width:900px){.sl-se{display:grid;grid-template-columns:1.6fr 1fr;column-gap:16px}.sl-se h4{grid-column:1/-1}.sl-se .sl-spiller,.sl-se .sl-naa{grid-column:1}.sl-se .sl-liste{grid-column:2;grid-row:2/4;margin:0;align-content:start}}
 @media print{.sl-boks{display:none!important}}
 
+/* Video i en sak i Ukens drift (forsøk med Genie 4, 20.11.2026) */
+.drift-video{margin:8px 0 12px} .drift-video video{width:100%;max-width:720px;aspect-ratio:16/9;border-radius:var(--radius);background:#000;display:block} .drift-video figcaption{color:var(--tekst2);font-size:.8rem;margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -3318,7 +3321,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 19.11.2026 09:45. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 20.11.2026 09:01. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -20328,7 +20331,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.28.1 · 19. november 2026",   // 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.29.0 · 20. november 2026",   // 2.29.0: Ukens drift har en sjette sak, hasteoppdraget fra kapittel 7, med en kort video laget med Google Genie 4 (forsøk); 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -61581,7 +61584,7 @@ LOM.spill = (function () {
     { id: "daglig5", navn: "Dagens mann", tekst: "Fem dagens utfordringer fullført", ikon: "⭐" },
     { id: "forbedret", navn: "Slo deg selv", tekst: "Forbedret egen rekord på en prøve", ikon: "📈" },
     { id: "drift1", navn: "Første driftsuke", tekst: "Levert en uke i Ukens drift", ikon: "🏗" },
-    { id: "driftfeilfri", navn: "Feilfri drift", tekst: "Fem av fem riktige valg i én driftsuke", ikon: "🏆" },
+    { id: "driftfeilfri", navn: "Feilfri drift", tekst: "Alle riktige valg i én driftsuke", ikon: "🏆" },
     { id: "drift4", navn: "Fire uker på rad", tekst: "Levert Ukens drift fire uker på rad", ikon: "📆" },
     { id: "eksamen5", navn: "Sensorklar", tekst: "Fem eksamensnære oppgaver skrevet og sammenliknet", ikon: "✍️" }
   ];
@@ -61649,8 +61652,9 @@ LOM.spill = (function () {
 
 
 /* ===================== Driftssimulator: «Ukens drift» (2.27.0) =====================
-   Studenten driver Nordlys Elektro én uke av gangen. Hver uke (ISO-uke, mandag–søndag) kommer fem saker:
-   prise en jobb, fordele de siste montørtimene, frigjøre penger, lede en medarbeider og vinne en kunde.
+   Studenten driver Nordlys Elektro én uke av gangen. Hver uke (ISO-uke, mandag–søndag) kommer seks saker:
+   prise en jobb, fordele de siste montørtimene, frigjøre penger, lede en medarbeider, vinne en kunde og
+   prise et hasteoppdrag (fra 20.11.2026, med en kort Genie 4-video som forsøk).
    Hver sak bygger på et kapittel i bøkene. Riktig valg gir dekningsbidrag til Nordlys; feil valg koster,
    og forklaringen viser hvorfor. Sakene er like for alle samme uke (tallene trekkes fra ukenummeret).
    Mål (Glenn 13.11.2026): få studentene til å øve jevnt hver uke. Derfor: ny uke hver mandag,
@@ -61741,6 +61745,17 @@ LOM.drift = (function () {
         tekst: `Kunden har fått et tilbud på ${kr(billig)} for samme ladeboks. Nordlys tilbød ${kr(pris)}. Hva gjør du?`,
         valg, forklaring: `Boka (kapittel 6) deler produktet i fire lag. Når boksen er lik, avgjør det utvidete produktet og ryktet. Jobben gir ${kr(db)} i dekningsbidrag til full pris.` }); }
 
+    /* 6 Hasteoppdraget (MA07), med en kort Genie-video øverst (forsøk 20.11.2026) */
+    { const t = 3 + Math.floor(r() * 6), HAST = Math.round(TP * 1.30), SK = 797;   // 890 × 1,30 = 1 157; selvkost per fakturert time 797 (Økonomistyring 5.2.1)
+      const kunde = velg(r, ["familien Haugen", "en barnehage på Lambertseter", "en frisørsalong på Grünerløkka", "et borettslag på Ammerud"]);
+      const valg = blandet(r, [{ t: `${kr(HAST)} per time, med 30 % hastetillegg`, db: t * (HAST - LK), ok: true },
+        { t: `${kr(TP)} per time, som vanlig`, db: t * (TP - LK), ok: false, hvorfor: `Kunden betaler for å slippe å vente, og den planlagte jobben må flyttes. Med vanlig pris gir Nordlys bort ${kr(HAST - TP)} per time.` },
+        { t: `${kr(SK)} per time, bare selvkosten`, db: t * (SK - LK), ok: false, hvorfor: "797 kr er det timen koster Nordlys når påslaget på materiellet har tatt sin del. Prisen dekker da bare kostnadene, og fortjenesten på timene blir null." }]);
+      ut.push({ id: "haste", kap: "ma07", tema: "Prisdifferensiering", tittel: `Strømløst hos ${kunde}`,
+        video: { fil: "ma07_genie1.mp4", bilde: "ma07_genie1.jpg", merknad: "Videoen er laget med Google Genie 4, en KI-modell, og viser stemningen. Tallene står i saken." },
+        tekst: `Kunden ringer klokka sju og vil ha strømmen tilbake i dag. Jobben tar om lag ${t} timer, og Ronnys lag må flytte en planlagt jobb. Hvilken timepris gir du, uten merverdiavgift?`,
+        valg, forklaring: `Boka (kapittel 7) kaller dette prisdifferensiering etter tidspunkt: samme jobb, høyere pris når kunden vil ha den nå. 890 × 1,30 = ${kr(HAST)}. Over selvkosten på 797 kr gir hastetimen ${kr(HAST - SK)}, mot ${kr(TP - SK)} for en vanlig time. Dekningsbidraget etter lønn (640 kr per time) er ${t} × (1 157 − 640) = ${kr(t * (HAST - LK))}.` }); }
+
     return ut;
   }
 
@@ -61754,7 +61769,7 @@ LOM.drift = (function () {
     if (u.ferdig || u.valg[nr] !== undefined) return null;
     u.valg[nr] = indeks; lagre();
     const ss = saker(id); if (u.valg.filter(v => v !== undefined).length === ss.length) {
-      u.riktig = ss.filter((s, i) => s.valg[u.valg[i]].ok).length;
+      u.riktig = ss.filter((s, i) => s.valg[u.valg[i]].ok).length; u.antall = ss.length;
       u.db = ss.reduce((s, x, i) => s + x.valg[u.valg[i]].db, 0); u.maks = maks(ss); u.ferdig = new Date().toISOString().slice(0, 10); lagre();
       LOM.spill && LOM.spill.hendelse && LOM.spill.hendelse("drift", { uke: id, riktig: u.riktig, antall: ss.length, db: u.db, maks: u.maks, paRad: ukerPaaRad() });
       LOM.telling && LOM.telling.hendelse && LOM.telling.hendelse(`drift-${id}-${u.riktig}av${ss.length}`);
@@ -62785,7 +62800,7 @@ LOM.pwa = (function () {
       mile ? el("p", { class: "kilder", style: "margin:6px 0 0" }, `Neste milepæl: ${mile.ikon} ${mile.navn} — mangler ${SP.kr(mile.kr - T.kr)}.`) : null,
       el("div", { class: "sp-kort-rad" },
         el("div", { class: "v", onclick: () => gaaTil("/daglig") }, el("span", { class: "ikon" }, dagensGjort ? "✓" : "⚡"), el("div", null, el("b", null, "Dagens utfordring"), el("small", null, dagensGjort ? `Gjort i dag: ${T.daglig[new Date().toISOString().slice(0, 10)]} av 5. Ny i morgen.` : `Fem spørsmål på tvers av pensum. ${SP.kr(SP.satser.daglig)} + bonus per riktig.`))),
-        LOM.drift ? el("div", { class: "v", onclick: () => gaaTil("/drift") }, el("span", { class: "ikon" }, LOM.drift.uke().ferdig ? "✓" : "🏗"), el("div", null, el("b", null, "Ukens drift"), el("small", null, LOM.drift.uke().ferdig ? `Uka er levert: ${LOM.drift.kr(LOM.drift.uke().db)}. Nye saker mandag.` : `Fem saker venter. ${LOM.drift.ukerPaaRad()} uker på rad.`))) : null,
+        LOM.drift ? el("div", { class: "v", onclick: () => gaaTil("/drift") }, el("span", { class: "ikon" }, LOM.drift.uke().ferdig ? "✓" : "🏗"), el("div", null, el("b", null, "Ukens drift"), el("small", null, LOM.drift.uke().ferdig ? `Uka er levert: ${LOM.drift.kr(LOM.drift.uke().db)}. Nye saker mandag.` : `${LOM.drift.saker(LOM.drift.ukeId()).length} saker venter. ${LOM.drift.ukerPaaRad()} uker på rad.`))) : null,
         el("div", { class: "v", onclick: () => gaaTil("/spill") }, el("span", { class: "ikon" }, "🏅"), el("div", null, el("b", null, "Merker, rekorder og logg"), el("small", null, "Alt du har oppnådd, og hva som gir kroner.")))));
   }
   function navnModal(etter) {
@@ -62836,7 +62851,7 @@ LOM.pwa = (function () {
   function driftKnapp() {
     if (!LOM.drift) return null;
     const u = LOM.drift.uke(), svart = (u.valg || []).filter(v => v !== undefined && v !== null).length;
-    const tekst = u.ferdig ? `Levert: ${LOM.drift.kr(u.db)} · nye saker mandag` : svart ? `${svart} av 5 saker løst denne uka` : `Fem nye saker · ${LOM.drift.ukerPaaRad()} uker på rad`;
+    const tekst = u.ferdig ? `Levert: ${LOM.drift.kr(u.db)} · nye saker mandag` : svart ? `${svart} av ${LOM.drift.saker(LOM.drift.ukeId()).length} saker løst denne uka` : `${LOM.drift.saker(LOM.drift.ukeId()).length} nye saker · ${LOM.drift.ukerPaaRad()} uker på rad`;
     return el("a", { class: "hero-knapp sekundaer drift-knapp", href: "#/drift" }, el("span", null, el("small", null, tekst), "Ukens drift"), ikon("pil"));
   }
   function visDrift() {
@@ -62851,14 +62866,17 @@ LOM.pwa = (function () {
       const topp = el("div", { class: "kort drift-topp" },
         el("div", { class: "merkelapp" }, `Uke ${nr} · Nordlys Elektro AS`),
         el("h1", null, "Ukens drift"),
-        el("p", null, "Denne uka driver du Nordlys. Fem saker venter: en jobb som skal prises, montørtimer som skal fordeles, penger som står hos kundene, en medarbeider som skal ledes og en kunde som vurderer et billigere tilbud. Riktige valg gir dekningsbidrag. Feil valg koster, og du får vite hvorfor. Nye saker hver mandag."),
+        el("p", null, "Denne uka driver du Nordlys. Seks saker venter: en jobb som skal prises, montørtimer som skal fordeles, penger som står hos kundene, en medarbeider som skal ledes, en kunde som vurderer et billigere tilbud og et hasteoppdrag. Riktige valg gir dekningsbidrag. Feil valg koster, og du får vite hvorfor. Nye saker hver mandag."),
         el("div", { class: "drift-tall" }, tall(DR.ukerPaaRad(), "uker på rad"), tall(DR.kr(DR.sum()), "tjent til Nordlys totalt"), tall(DR.kr(DR.maks(ss)), "beste mulige uke")),
         SP.paa() ? null : el("p", { class: "kilder", style: "margin:10px 0 0" }, "Med spillmodus på (🎮 øverst) gir uka også kroner, nivå og merker."));
       const sak = (s, i) => {
         const v = valgt[i], svart = v !== undefined && v !== null, mitt = svart ? s.valg[v] : null, beste = Math.max(...s.valg.map(x => x.db));
         return el("div", { class: "kort drift-sak" + (svart ? (mitt.ok ? " ok" : " feil") : "") },
           el("div", { class: "drift-sak-topp" }, el("span", { class: "drift-nr" }, String(i + 1)), el("span", null, s.tema), el("a", { href: `#/kap/${s.kap}/les`, class: "drift-kap" }, kapNavn(s.kap))),
-          el("h3", null, s.tittel), el("p", null, s.tekst),
+          el("h3", null, s.tittel),
+          s.video && LOM.video ? el("figure", { class: "drift-video" }, (() => { const v = el("video", { controls: "", playsinline: "", preload: "metadata", src: LOM.video.base + s.video.fil, poster: LOM.video.base + s.video.bilde });
+            v.onerror = () => { const f = v.parentNode; if (f) f.remove(); }; return v; })(), el("figcaption", null, s.video.merknad)) : null,
+          el("p", null, s.tekst),
           el("div", { class: "drift-valg" }, s.valg.map((x, j) => {
             const b = el("button", { class: "knapp" + (svart && j === v ? (x.ok ? " riktig" : " galt") : "") + (svart && x.ok && j !== v ? " fasit" : ""),
               onclick: () => { if (svart) return; DR.svar(id, i, j); const u2 = DR.uke(id); if (u2.ferdig) feiring(u2.riktig === ss.length ? "🏆 Feilfri uke" : `Uka er levert: ${DR.kr(u2.db)}`, `${u2.riktig} av ${ss.length} riktige valg. ${pst(u2)} % av beste mulige uke.`); tegn(); } }, x.t);
@@ -62870,7 +62888,7 @@ LOM.pwa = (function () {
         el("div", { class: "stolpe" }, el("i", { style: `width:${pst(u)}%` })),
         el("p", null, `${u.riktig} av ${ss.length} riktige valg, ${pst(u)} % av beste mulige uke. Nye saker kommer mandag. ${DR.ukerPaaRad()} ${DR.ukerPaaRad() === 1 ? "uke" : "uker"} på rad så langt.`),
         DR.historikk().length > 1 ? el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Uke"), el("th", null, "Riktige"), el("th", { class: "num" }, "Dekningsbidrag"), el("th", { class: "num" }, "Av beste"))),
-          el("tbody", null, DR.historikk().slice(0, 8).map(([k, x]) => el("tr", null, el("td", null, "Uke " + Number(k.split("-U")[1])), el("td", null, `${x.riktig} av 5`), el("td", { class: "num" }, DR.kr(x.db)), el("td", { class: "num" }, pst(x) + " %"))))) : null) : null;
+          el("tbody", null, DR.historikk().slice(0, 8).map(([k, x]) => el("tr", null, el("td", null, "Uke " + Number(k.split("-U")[1])), el("td", null, `${x.riktig} av ${x.antall || 5}`), el("td", { class: "num" }, DR.kr(x.db)), el("td", { class: "num" }, pst(x) + " %"))))) : null) : null;
       boks.replaceChildren(topp, ...ss.map(sak), ...(resultat ? [resultat] : []));
     };
     rot.replaceChildren(verktoylinje([["← Forside", () => gaaTil("/")]]), boks, bunn());
