@@ -1249,6 +1249,7 @@ table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphe
 @media (max-width:640px){.bo-trinn{grid-template-columns:60px 1fr;padding-right:12px} .bo-pil{grid-column:2;justify-self:start} .bo-stige::before{left:29px} .bo-kode{width:100%}}
 @media (prefers-reduced-motion:reduce){.bo-trinn.aapen .bo-node,.bo-feil{animation:none}}
 .bo-konk h2{margin-top:0} .bo-tavle{margin:6px 0 10px;overflow-x:auto} .bo-tavle tr.bo-mitt td{background:var(--aksent-lys);font-weight:700}
+.bo-lagvelger{display:flex;flex-direction:column;gap:4px;flex:1 1 260px} .bo-navnevalg{display:flex;flex-wrap:wrap;gap:8px} .bo-navnevalg select{border:1px solid var(--linje);background:var(--flate);color:var(--tekst);border-radius:8px;padding:10px 12px;font:inherit;min-height:44px}
 
 </style>
 </head>
@@ -3374,7 +3375,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 25.11.2026 09:23. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 25.11.2026 10:01. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -20384,7 +20385,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.30.0 · 25. november 2026",   // 2.30.0: ny øvelse «Breakout», seks rom med låser på tvers av fagene, fra montør til konserndirektør, bygd for lag på tre rundt én skjerm, med lagkonkurranse på klassekode (motor/breakout.js, tabellen lom_breakout); 2.29.0: Ukens drift har en sjette sak, hasteoppdraget fra kapittel 7, med en kort video laget med Google Genie 4 (forsøk); 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.30.1 · 25. november 2026",   // 2.30.1: lagnavn i Breakout velges fra en fast liste pluss nummer, så ingen personnavn kan havne på lagtavla; 2.30.0: ny øvelse «Breakout», seks rom med låser på tvers av fagene, fra montør til konserndirektør, bygd for lag på tre rundt én skjerm, med lagkonkurranse på klassekode (motor/breakout.js, tabellen lom_breakout); 2.29.0: Ukens drift har en sjette sak, hasteoppdraget fra kapittel 7, med en kort video laget med Google Genie 4 (forsøk); 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -62239,7 +62240,9 @@ LOM.breakout = (function () {
     2: [["A leser og forklarer", "B regner"], ["B leser og forklarer", "A regner"]], 1: [[]] };
 
   /* ---- lagkonkurranse: sentral lagtavle ---- */
-  const renLag = (s) => String(s || "").replace(/[^A-Za-zÆØÅæøå0-9 _-]/g, "").replace(/\s+/g, " ").trim().slice(0, 24);
+  /* Lagnavn velges fra en fast liste pluss et nummer (2.30.1). Da kan verken personnavn eller upassende navn havne på tavla. Samme liste står i databasen. */
+  const LAGNAVN = ["Kortslutning", "Jordfeil", "Fasevender", "Lysbue", "Sikringsskap", "Effektbryter", "Jordingsklemme", "Kabelstige", "Nullpunkt", "Overspenning", "Vernebryter", "Ladepunkt", "Solcelle", "Transformator", "Stikkontakt", "Koblingsboks", "Måleklemme", "Spenningstester", "Kontaktor", "Dimmer"];
+  const renLag = (s) => { const m = /^(\S+) ([1-9][0-9]?)$/.exec(String(s || "").trim()); return m && LAGNAVN.includes(m[1]) ? `${m[1]} ${m[2]}` : ""; };
   const renKode = (s) => String(s || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 16);
   const nett = () => { const O = (LOM.oppsett && LOM.oppsett.telling) || {}; return O.url && O.nokkel ? O : null; };
   const kanSende = () => !!nett() && renKode(B.klasse).length >= 3 && renLag(B.lag).length >= 2;
@@ -62281,8 +62284,14 @@ LOM.breakout = (function () {
 
     function visStige() {
       const t = tittelNaa();
-      const navn = el("input", { class: "felt", type: "text", maxlength: "24", placeholder: "Lagnavn, for eksempel Kortslutning", value: B.lag || "" });
-      navn.addEventListener("change", () => { B.lag = renLag(navn.value); navn.value = B.lag; lagre(); visStige(); });
+      if (B.lag && !renLag(B.lag)) { B.lag = ""; lagre(); }
+      const [naaNavn, naaNr] = B.lag ? B.lag.split(" ") : ["", ""];
+      const navnValg = el("select", { class: "felt", "aria-label": "Lagnavn" }, el("option", { value: "" }, "Velg lagnavn"), LAGNAVN.map(n => { const o = el("option", { value: n }, n); if (n === naaNavn) o.selected = true; return o; }));
+      const nrValg = el("select", { class: "felt", "aria-label": "Lagnummer" }, Array.from({ length: 30 }, (_, i) => { const o = el("option", { value: String(i + 1) }, String(i + 1)); if (String(i + 1) === naaNr) o.selected = true; return o; }));
+      const settLag = () => { B.lag = navnValg.value ? `${navnValg.value} ${nrValg.value}` : ""; lagre(); visStige(); };
+      navnValg.addEventListener("change", settLag); nrValg.addEventListener("change", settLag);
+      const trekk = el("button", { class: "knapp", onclick: () => { B.lag = `${LAGNAVN[Math.floor(Math.random() * LAGNAVN.length)]} ${1 + Math.floor(Math.random() * 30)}`; lagre(); visStige(); } }, "Trekk et navn");
+      const navn = el("div", { class: "bo-navnevalg" }, navnValg, nrValg, trekk);
       const kodeFelt = el("input", { class: "felt", type: "text", maxlength: "16", placeholder: "Klassekode, for eksempel 3EKD-H26", value: B.klasse || "", autocapitalize: "characters" });
       kodeFelt.addEventListener("change", () => { B.klasse = renKode(kodeFelt.value); kodeFelt.value = B.klasse; lagre(); visStige(); });
       const tavleBoks = el("div", { class: "bo-tavle" });
@@ -62304,9 +62313,9 @@ LOM.breakout = (function () {
         el("p", null, harKode ? `Dere konkurrerer på koden ${renKode(B.klasse)}. Hver gang dere løser et rom, sendes lagnavn, rom, poeng og antall hint til tavla.` : "Skriv inn en klassekode for å konkurrere mot andre lag. Læreren velger koden, eller dere lager en selv og deler lenka."),
         el("div", { class: "bo-lag" }, el("label", null, el("small", null, "Klassekode (3 til 16 tegn: bokstaver, tall og bindestrek)"), kodeFelt),
           harKode ? el("div", { class: "knapperad" }, el("button", { class: "knapp", onclick: delLenke }, "Kopier lenke til klassen"), el("button", { class: "knapp", onclick: lastTavle }, "Oppdater tavla")) : null),
-        harKode && renLag(B.lag).length < 2 ? el("p", { class: "bo-feil" }, "Skriv inn et lagnavn øverst, ellers kommer dere ikke på tavla.") : null,
+        harKode && renLag(B.lag).length < 2 ? el("p", { class: "bo-feil" }, "Velg et lagnavn øverst, ellers kommer dere ikke på tavla.") : null,
         harKode ? tavleBoks : null,
-        el("p", { class: "kilder" }, "Tavla viser lagnavn og poeng for alle som har koden. Bruk et lagnavn, ikke egne navn. Uten klassekode sendes ingenting om laget.")) : null;
+        el("p", { class: "kilder" }, "Tavla viser lagnavn og poeng for alle som har koden. Lagnavnene er faste, så ingen personnavn lagres. Poengene meldes av appen og er til konkurranse i klassen, ikke til vurdering. Uten klassekode sendes ingenting om laget.")) : null;
       if (konkurranse && harKode) lastTavle();
       const antKnapper = [1, 2, 3].map(n => el("button", { class: "knapp" + (B.antall === n ? " primar" : ""), onclick: () => { B.antall = n; lagre(); visStige(); } }, n === 1 ? "Alene" : `${n} på laget`));
       const topp = el("div", { class: "kort bo-topp" },
@@ -62318,7 +62327,7 @@ LOM.breakout = (function () {
           el("div", null, el("b", null, "2 Hint koster"), el("span", null, `Hvert hint koster ${POENG.hint} av ${POENG.laas} poeng. Det første er et stikkord, det andre sier hvor i boka, det tredje viser framgangsmåten.`)),
           el("div", null, el("b", null, "3 Lær det bort"), el("span", null, "Hvert rom ender med at én forklarer for de andre. Det du kan forklare uten boka, sitter."))),
         el("div", { class: "bo-lag" },
-          el("label", null, el("small", null, "Lagnavn (bruk ikke egne navn)"), navn),
+          el("div", { class: "bo-lagvelger" }, el("small", null, "Lagnavn: velg fra lista og ta et nummer"), navn),
           el("div", { class: "knapperad" }, antKnapper)),
         el("div", { class: "drift-tall" },
           el("div", null, el("b", null, t ? t.rolle : "Lærling"), el("small", null, "tittelen deres nå")),
@@ -62449,7 +62458,7 @@ LOM.breakout = (function () {
     }
   }
 
-  return { vis, trinn, _ren: [renLag, renKode], status, antallFerdig, sumPoeng, tittelNaa, _rom: rom, _rng: rng, _lesTall: lesTall };
+  return { vis, trinn, _ren: [renLag, renKode], LAGNAVN, status, antallFerdig, sumPoeng, tittelNaa, _rom: rom, _rng: rng, _lesTall: lesTall };
 })();
 
 
