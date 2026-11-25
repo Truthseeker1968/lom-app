@@ -1197,6 +1197,59 @@ table.tab.at-scen th{text-transform:none;letter-spacing:0;font-size:.78rem;hyphe
 /* Video i en sak i Ukens drift (forsøk med Genie 4, 20.11.2026) */
 .drift-video{margin:8px 0 12px} .drift-video video{width:100%;max-width:720px;aspect-ratio:16/9;border-radius:var(--radius);background:#000;display:block} .drift-video figcaption{color:var(--tekst2);font-size:.8rem;margin-top:6px}
 
+/* Breakout (2.30.0, 25.11.2026): stigen, rommene og låsene. Se motor/breakout.js */
+.bo-topp h1{margin:.2em 0 .3em}
+.bo-regler{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:14px 0}
+.bo-regler > div{background:var(--flate2);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.bo-regler span{color:var(--tekst2);font-size:.9rem;line-height:1.4}
+.bo-lag{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:6px 0 14px}
+.bo-lag label{display:flex;flex-direction:column;gap:4px;flex:1 1 260px} .bo-lag small{color:var(--tekst2)}
+.bo-lag input,.bo-kode{border:1px solid var(--linje);background:var(--flate);color:var(--tekst);border-radius:8px;padding:10px 12px;font:inherit;min-height:44px;box-sizing:border-box}
+.bo-stige{position:relative;display:grid;gap:12px;margin:0 0 18px;padding-left:0}
+.bo-stige::before{content:"";position:absolute;left:35px;top:30px;bottom:30px;width:4px;border-radius:4px;background:linear-gradient(var(--linje),var(--linje))}
+.bo-trinn{position:relative;display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;background:var(--flate);border:1px solid var(--linje);border-radius:var(--radius);padding:14px 16px 14px 0;box-shadow:var(--skygge);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.bo-trinn.aapen:hover,.bo-trinn.ferdig:hover{transform:translateX(4px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.bo-trinn.laast{cursor:default;opacity:.62;box-shadow:none}
+.bo-trinn.aapen{border-color:var(--f)}
+.bo-node{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--flate2);border:3px solid var(--linje);justify-self:center;position:relative;z-index:1}
+.bo-trinn.aapen .bo-node{border-color:var(--f);background:var(--flate);animation:bo-puls 2.2s ease-in-out infinite}
+.bo-trinn.ferdig .bo-node{background:var(--f);border-color:var(--f);color:#fff;font-weight:700}
+.bo-node.stor{width:76px;height:76px;font-size:2.2rem;margin:0 auto 6px;background:var(--f);border-color:var(--f)}
+@keyframes bo-puls{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--f) 45%,transparent)}50%{box-shadow:0 0 0 10px transparent}}
+.bo-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.bo-t small{font-weight:700;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--f)}
+.bo-trinn.laast .bo-t small{color:var(--demp)}
+.bo-t b{font-size:1.08rem} .bo-t > span{color:var(--tekst2);font-size:.92rem;line-height:1.4} .bo-t em{font-style:normal;color:var(--demp);font-size:.8rem}
+.bo-res{margin-top:4px;font-size:.9rem;color:var(--gul);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bo-pil{font-weight:700;font-size:.86rem;color:#fff;background:var(--f);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.bo-trinn.ferdig .bo-pil{background:transparent;color:var(--f);border:1px solid var(--f)}
+.bo-hode{border-top:5px solid var(--f)} .bo-hode h1{margin:.25em 0 .3em}
+.bo-hode-rad{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bo-poeng{font-weight:700;font-variant-numeric:tabular-nums;color:var(--f)}
+.bo-laaser{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.bo-laas{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:1.15rem;background:var(--flate2);border:2px solid transparent;opacity:.55}
+.bo-laas.naa{border-color:var(--f);opacity:1;transform:scale(1.08)} .bo-laas.aapen{background:var(--gronn-lys);opacity:1}
+.bo-sak.ok{border-color:var(--gronn)}
+.bo-verdi{margin-left:auto;font-weight:600;color:var(--tekst2);font-size:.84rem}
+.bo-roller{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px} .bo-roller span{background:var(--aksent-lys);color:var(--aksent);border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600}
+.bo-historie{background:var(--flate2);border-radius:10px;padding:12px 14px;line-height:1.5;margin:0 0 10px}
+.bo-sp{font-weight:600;font-size:1.04rem;margin:0 0 10px}
+.bo-inn{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bo-kode{font-family:var(--mono);font-size:1.25rem;letter-spacing:.06em;width:11em;max-width:100%;text-align:center;border-width:2px}
+.bo-kode:focus{outline:none;border-color:var(--aksent)} .bo-enhet{color:var(--tekst2);font-weight:600}
+.bo-feil{margin:10px 0 0;background:var(--rod-lys);color:var(--rod);border-radius:8px;padding:9px 12px;font-size:.93rem;animation:bo-rist .3s}
+@keyframes bo-rist{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bo-hint{margin-top:12px;display:grid;gap:6px;justify-items:start} .bo-hint p{margin:0;background:var(--gul-lys);color:var(--tekst);border-radius:8px;padding:8px 12px;font-size:.92rem}
+:root[data-theme="dark"] .bo-hint p{background:#2b2410;color:#e6d39a}
+.bo-rekke{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;min-height:44px;align-items:center}
+.bo-brikke{min-height:44px} .bo-brikke.valgt{background:var(--aksent-lys);color:var(--aksent);border-radius:8px;padding:9px 13px;font-weight:600}
+.bo-moment{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--linje);line-height:1.4} .bo-moment input{width:20px;height:20px;margin-top:2px;flex:none}
+.bo-riktig .knapp{margin-top:8px} .bo-forklar{font-weight:600}
+.bo-slutt{text-align:center} .bo-stjerner{font-size:2rem;color:#e0a100;letter-spacing:.1em} .bo-slutt .knapperad{justify-content:center}
+@media (max-width:640px){.bo-trinn{grid-template-columns:60px 1fr;padding-right:12px} .bo-pil{grid-column:2;justify-self:start} .bo-stige::before{left:29px} .bo-kode{width:100%}}
+@media (prefers-reduced-motion:reduce){.bo-trinn.aapen .bo-node,.bo-feil{animation:none}}
+.bo-konk h2{margin-top:0} .bo-tavle{margin:6px 0 10px;overflow-x:auto} .bo-tavle tr.bo-mitt td{background:var(--aksent-lys);font-weight:700}
+
 </style>
 </head>
 <body>
@@ -3321,7 +3374,7 @@ LOM.muntlig = {
 
 
 /* Fillista til «Filer til kapitlet». Skrives av pensum_publiser.py — ikke rediger for hånd.
-   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 20.11.2026 09:01. Lenkene er relative til index.html på GitHub Pages. */
+   Kilde: LOM_Pensum_2026_v4, v5 og v6 (v6: presentasjon, arbeidsbok og sammendrag der kapitlet finnes), speilet 25.11.2026 09:23. Lenkene er relative til index.html på GitHub Pages. */
 window.LOM = window.LOM || {};
 LOM.filer = {
  "ok01": [
@@ -3338,8 +3391,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK01_Etablering_M1_Starte_og_EPF_Presentasjon_v11.pdf",
    "fil": "pensum/ok01/OK01_Etablering_M1_Starte_og_EPF_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2745,
+   "dato": "23.11.2026",
+   "kb": 2245,
    "okt": "økt 1: å starte egen bedrift og enkeltpersonforetak",
    "sp": "Kari og Tom valgte AS. Hva kunne skjedd med husene deres i et personlig selskap?"
   },
@@ -3347,8 +3400,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK01_Etablering_M2_ANS_DA_og_AS_Presentasjon_v11.pdf",
    "fil": "pensum/ok01/OK01_Etablering_M2_ANS_DA_og_AS_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2121,
+   "dato": "23.11.2026",
+   "kb": 1395,
    "okt": "økt 2: ansvarlig selskap og aksjeselskap",
    "sp": "Nordlys går konkurs med 1 400 000 kr i udekket gjeld. Hva må eierne betale selv i ANS, DA og AS?"
   },
@@ -3356,8 +3409,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK01_Etablering_M3_Plikter_registrering_og_avvikling_Presentasjon_v11.pdf",
    "fil": "pensum/ok01/OK01_Etablering_M3_Plikter_registrering_og_avvikling_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1557,
+   "dato": "23.11.2026",
+   "kb": 1641,
    "okt": "økt 3: regnskapsplikt, revisjonsplikt, registrering og avvikling",
    "sp": "Nordlys har 18 ansatte. Må de ha revisor, og hva skjer om regningene ikke kan betales?"
   },
@@ -3432,8 +3485,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK02_Begreper_M1_Utgift_utbetaling_og_kostnad_Presentasjon_v11.pdf",
    "fil": "pensum/ok02/OK02_Begreper_M1_Utgift_utbetaling_og_kostnad_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 3308,
+   "dato": "23.11.2026",
+   "kb": 1710,
    "okt": "økt 1: ressurser, resultat, og utgift, utbetaling og kostnad",
    "sp": "Kabelen er bestilt i mars, betalt i april og brukt i mai. Når blir den en kostnad?"
   },
@@ -3441,8 +3494,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK02_Begreper_M2_Faste_variable_direkte_og_indirekte_Presentasjon_v11.pdf",
    "fil": "pensum/ok02/OK02_Begreper_M2_Faste_variable_direkte_og_indirekte_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2892,
+   "dato": "23.11.2026",
+   "kb": 1890,
    "okt": "økt 2: faste og variable, direkte og indirekte kostnader",
    "sp": "Bare 10 000 timer i stedet for 14 400: hva skjer med de faste kostnadene per time?"
   },
@@ -3450,8 +3503,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK02_Begreper_M3_Inntekt_lonnskostnad_og_avskrivning_Presentasjon_v11.pdf",
    "fil": "pensum/ok02/OK02_Begreper_M3_Inntekt_lonnskostnad_og_avskrivning_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2886,
+   "dato": "23.11.2026",
+   "kb": 1818,
    "okt": "økt 3: inntekt, priselastisitet, lønnskostnad og avskrivning",
    "sp": "En montør har 40 000 kr i månedslønn. Hva koster han egentlig Nordlys?"
   },
@@ -3498,8 +3551,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK03_Regnskap_M1_Resultatregnskapet_Presentasjon_v11.pdf",
    "fil": "pensum/ok03/OK03_Regnskap_M1_Resultatregnskapet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1855,
+   "dato": "23.11.2026",
+   "kb": 1867,
    "okt": "økt 1: resultatregnskapet",
    "sp": "Nordlys fakturerte 22,4 mill. kr i 2026. Hvor mye av det ble igjen til eierne?"
   },
@@ -3507,8 +3560,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK03_Regnskap_M2_Balansen_og_regnskapssystemet_Presentasjon_v11.pdf",
    "fil": "pensum/ok03/OK03_Regnskap_M2_Balansen_og_regnskapssystemet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2877,
+   "dato": "23.11.2026",
+   "kb": 1994,
    "okt": "økt 2: balansen og regnskapssystemet",
    "sp": "Nordlys eier verktøy, biler, lager og kundefordringer for 10,2 mill. kr. Hvem har betalt for dem?"
   },
@@ -3516,8 +3569,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK03_Regnskap_M3_Eiendel_penger_og_to_regnskap_Presentasjon_v11.pdf",
    "fil": "pensum/ok03/OK03_Regnskap_M3_Eiendel_penger_og_to_regnskap_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2171,
+   "dato": "23.11.2026",
+   "kb": 1891,
    "okt": "økt 3: eiendel eller kostnad, overskudd og penger, finans- og driftsregnskap",
    "sp": "Nordlys fikk 910 650 kr i årsresultat. Hvorfor er det ikke 910 650 kr mer i banken?"
   },
@@ -3564,8 +3617,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v11.pdf",
    "fil": "pensum/ok04/OK04_Regnskapsanalyse_M1_Lonnsomhet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1856,
+   "dato": "23.11.2026",
+   "kb": 1098,
    "okt": "økt 1: regnskapsanalyse: lønnsomhet",
    "sp": "All kapitalen i Nordlys tjente 14,3 %, men eierne fikk 47,9 %. Hvordan går det an?"
   },
@@ -3573,8 +3626,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK04_Regnskapsanalyse_M2_Likviditet_Presentasjon_v11.pdf",
    "fil": "pensum/ok04/OK04_Regnskapsanalyse_M2_Likviditet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2345,
+   "dato": "23.11.2026",
+   "kb": 1355,
    "okt": "økt 2: regnskapsanalyse: likviditet",
    "sp": "Kundene skylder Nordlys 4,2 mill. kr. Hvor mange dager venter Nordlys på pengene?"
   },
@@ -3582,8 +3635,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK04_Regnskapsanalyse_M3_Finansiering_og_soliditet_Presentasjon_v11.pdf",
    "fil": "pensum/ok04/OK04_Regnskapsanalyse_M3_Finansiering_og_soliditet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2738,
+   "dato": "23.11.2026",
+   "kb": 1394,
    "okt": "økt 3: regnskapsanalyse: finansiering, soliditet og samlet vurdering",
    "sp": "Banken vurderer et nytt lån til Nordlys. Tåler Nordlys et dårlig år?"
   },
@@ -3630,8 +3683,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v11.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_M1_Timeprisen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 3188,
+   "dato": "23.11.2026",
+   "kb": 1762,
    "okt": "økt 1: kalkulasjon: timeprisen, fra lønn til fortjeneste",
    "sp": "Fjell tar 890 kr timen. Hvor blir pengene av?"
   },
@@ -3639,8 +3692,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v11.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_M2_Prisen_paa_en_jobb_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2259,
+   "dato": "23.11.2026",
+   "kb": 1133,
    "okt": "økt 2: kalkulasjon: prisen på en jobb",
    "sp": "Borettslaget vil ha 20 nye sikringsskap til 22 000 kr stykket. Skal Fjell si ja?"
   },
@@ -3648,8 +3701,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK05_Kalkulasjon_M3_Etterkalkyle_og_materiell_Presentasjon_v11.pdf",
    "fil": "pensum/ok05/OK05_Kalkulasjon_M3_Etterkalkyle_og_materiell_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2768,
+   "dato": "23.11.2026",
+   "kb": 1510,
    "okt": "økt 3: kalkulasjon: etterkalkyle, avvik og materiell over disk",
    "sp": "Skapet er montert og fakturert. Tjente Fjell det Mona regnet med?"
   },
@@ -3703,8 +3756,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v11.pdf",
    "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M1_Kapitalbehovet_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2699,
+   "dato": "23.11.2026",
+   "kb": 1052,
    "okt": "økt 1: kapitalbehov: det du kjøper, og det som står og venter",
    "sp": "Hvor mye kapital trengte Kari og Tom for å starte Nordlys i 2019?"
   },
@@ -3712,8 +3765,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK06_Kapitalbehov_og_finansiering_M2_Finansieringsplanen_Presentasjon_v11.pdf",
    "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M2_Finansieringsplanen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1690,
+   "dato": "23.11.2026",
+   "kb": 1010,
    "okt": "økt 2: finansieringsplan og åpningsbalanse",
    "sp": "Hvordan skal Nordlys finansiere 2 250 000 kr?"
   },
@@ -3721,8 +3774,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK06_Kapitalbehov_og_finansiering_M3_Laan_og_kreditter_Presentasjon_v11.pdf",
    "fil": "pensum/ok06/OK06_Kapitalbehov_og_finansiering_M3_Laan_og_kreditter_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2525,
+   "dato": "23.11.2026",
+   "kb": 1631,
    "okt": "økt 3: lån og kreditter: annuitet, serie, effektiv rente, kassekreditt, faktoring og leasing",
    "sp": "Hvilket lån og hvilke kreditter bør Nordlys velge?"
   },
@@ -3769,8 +3822,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK07_Knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v11.pdf",
    "fil": "pensum/ok07/OK07_Knapp_faktor_M1_Flaskehalsen_og_regelen_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2173,
+   "dato": "23.11.2026",
+   "kb": 1013,
    "okt": "økt 1: flaskehalsen, dekningsbidraget og regelen",
    "sp": "En garasje til fastpris tar 50 montørtimer. Lønner den seg når kalenderen er full?"
   },
@@ -3778,8 +3831,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK07_Knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v11.pdf",
    "fil": "pensum/ok07/OK07_Knapp_faktor_M2_Fra_rangering_til_plan_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2098,
+   "dato": "23.11.2026",
+   "kb": 1134,
    "okt": "økt 2: fra rangering til plan",
    "sp": "Kundene vil ha 1 332 montørtimer i mars. Nordlys har 1 200. Hvem skal få nei?"
   },
@@ -3787,8 +3840,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK07_Knapp_faktor_M3_Nar_flaskehalsen_flytter_seg_Presentasjon_v11.pdf",
    "fil": "pensum/ok07/OK07_Knapp_faktor_M3_Nar_flaskehalsen_flytter_seg_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2684,
+   "dato": "23.11.2026",
+   "kb": 1619,
    "okt": "økt 3: når flaskehalsen flytter seg, og hva avvik koster",
    "sp": "Grossisten kan bare levere en begrenset mengde materiell i mai. Hvilke jobber skal prioriteres da?"
   },
@@ -3835,8 +3888,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v11.pdf",
    "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M1_Nullpunktet_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2136,
+   "dato": "23.11.2026",
+   "kb": 1144,
    "okt": "økt 1: nullpunktsanalyse: dekningsbidraget og nullpunktet",
    "sp": "Hvor mange oppdrag må service ta for å gå i null?"
   },
@@ -3844,8 +3897,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK08_Nullpunktsanalyse_M2_Risikomarginen_Presentasjon_v11.pdf",
    "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M2_Risikomarginen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2262,
+   "dato": "23.11.2026",
+   "kb": 1270,
    "okt": "økt 2: nullpunktsanalyse: nullpunktet i kroner og risikomarginen",
    "sp": "Hvor mye kan salget svikte før service taper penger?"
   },
@@ -3853,8 +3906,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK08_Nullpunktsanalyse_M3_Spakene_Presentasjon_v11.pdf",
    "fil": "pensum/ok08/OK08_Nullpunktsanalyse_M3_Spakene_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1813,
+   "dato": "23.11.2026",
+   "kb": 851,
    "okt": "økt 3: nullpunktsanalyse: pris, variable og faste kostnader",
    "sp": "Hvem har rett, Kari som vil selge mer, eller Tom som vil kutte?"
   },
@@ -3901,8 +3954,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK09_Budsjettering_M1_Resultatbudsjettet_Presentasjon_v11.pdf",
    "fil": "pensum/ok09/OK09_Budsjettering_M1_Resultatbudsjettet_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2230,
+   "dato": "23.11.2026",
+   "kb": 1155,
    "okt": "økt 1: budsjettering: resultatbudsjettet",
    "sp": "Går Nordlys i pluss i 2027?"
   },
@@ -3910,8 +3963,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK09_Budsjettering_M2_Likviditetsbudsjettet_Presentasjon_v11.pdf",
    "fil": "pensum/ok09/OK09_Budsjettering_M2_Likviditetsbudsjettet_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2421,
+   "dato": "23.11.2026",
+   "kb": 1030,
    "okt": "økt 2: budsjettering: likviditetsbudsjettet",
    "sp": "Har Nordlys penger på konto 31. mars?"
   },
@@ -3919,8 +3972,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v11.pdf",
    "fil": "pensum/ok09/OK09_Budsjettering_M3_Budsjettkontroll_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2386,
+   "dato": "23.11.2026",
+   "kb": 935,
    "okt": "økt 3: budsjettering: budsjettkontroll og avviksanalyse",
    "sp": "Salget ble høyere enn budsjettert. Hvorfor ble resultatet lavere?"
   },
@@ -3974,8 +4027,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v11.pdf",
    "fil": "pensum/ok10/OK10_Investeringsanalyse_M1_Kontantstrom_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2264,
+   "dato": "23.11.2026",
+   "kb": 1069,
    "okt": "økt 1: investeringsanalyse: kontantstrømmen og tilbakebetalingstiden",
    "sp": "Nordlys vil kjøpe eget termokamera for 480 000 kr. Lønner det seg?"
   },
@@ -3983,8 +4036,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK10_Investeringsanalyse_M2_Naverdi_Presentasjon_v11.pdf",
    "fil": "pensum/ok10/OK10_Investeringsanalyse_M2_Naverdi_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1812,
+   "dato": "23.11.2026",
+   "kb": 1010,
    "okt": "økt 2: investeringsanalyse: nåverdien",
    "sp": "Tom sa 200 000 kr. Hva er termokameraet egentlig verdt i dag?"
   },
@@ -3992,8 +4045,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v11.pdf",
    "fil": "pensum/ok10/OK10_Investeringsanalyse_M3_Beslutningen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2111,
+   "dato": "23.11.2026",
+   "kb": 1114,
    "okt": "økt 3: investeringsanalyse: internrenten og beslutningen",
    "sp": "Kari har råd til ett kjøp. Termokamera eller kabelfeilsøker?"
   },
@@ -4031,8 +4084,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA01_Markedsforing_M1_Markedsforing_og_marked_Presentasjon_v11.pdf",
    "fil": "pensum/ma01/MA01_Markedsforing_M1_Markedsforing_og_marked_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2409,
+   "dato": "23.11.2026",
+   "kb": 1725,
    "okt": "økt 1: markedsføring og marked",
    "sp": "«Vi trenger ikke markedsføring, vi har nok å gjøre.» Stemmer det?"
   },
@@ -4040,8 +4093,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA01_Markedsforing_M2_Grunnholdningene_Presentasjon_v11.pdf",
    "fil": "pensum/ma01/MA01_Markedsforing_M2_Grunnholdningene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2260,
+   "dato": "23.11.2026",
+   "kb": 1436,
    "okt": "økt 2: kjøpers og selgers marked, og de fem grunnholdningene",
    "sp": "Kalenderen er full. Skal Nordlys ta jobbene i den rekkefølgen de kommer, eller velge?"
   },
@@ -4049,8 +4102,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA01_Markedsforing_M3_Hovedmarkedene_Presentasjon_v11.pdf",
    "fil": "pensum/ma01/MA01_Markedsforing_M3_Hovedmarkedene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2655,
+   "dato": "23.11.2026",
+   "kb": 1568,
    "okt": "økt 3: hva kan markedsføres, og de fem hovedmarkedene",
    "sp": "Nordlys selger til huseiere, kommunen og entreprenører. Er det ett marked eller flere?"
   },
@@ -4081,8 +4134,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v11.pdf",
    "fil": "pensum/ma02/MA02_Kjopsatferd_M1_Privatkunden_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2368,
+   "dato": "23.11.2026",
+   "kb": 1482,
    "okt": "økt 1: kjøpsatferd: privatkunden bestemmer seg",
    "sp": "Familien Lunde fikk tre tilbud på nytt sikringsskap og valgte det dyreste. Hvorfor?"
   },
@@ -4090,8 +4143,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA02_Kjopsatferd_M2_Kjopet_tvilen_og_rollene_Presentasjon_v11.pdf",
    "fil": "pensum/ma02/MA02_Kjopsatferd_M2_Kjopet_tvilen_og_rollene_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1924,
+   "dato": "23.11.2026",
+   "kb": 1102,
    "okt": "økt 2: kjøpet, tvilen etterpå og rollene i familien",
    "sp": "Familien Lunde har sagt ja. Hva avgjør om de ringer Nordlys igjen, og hvem må vi overbevise neste gang?"
   },
@@ -4099,8 +4152,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v11.pdf",
    "fil": "pensum/ma02/MA02_Kjopsatferd_M3_Bedriftskunden_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2743,
+   "dato": "23.11.2026",
+   "kb": 1287,
    "okt": "økt 3: bedriftskunden: formalisert kjøp i åtte trinn",
    "sp": "Nordlys vinner seks av ti tilbud til huseiere, men bare ett av fem anbud til bedrifter. Hva gjør bedriftskunden annerledes?"
   },
@@ -4131,8 +4184,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA03_Markedsplanen_M1_Analysen_Presentasjon_v11.pdf",
    "fil": "pensum/ma03/MA03_Markedsplanen_M1_Analysen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2375,
+   "dato": "23.11.2026",
+   "kb": 1039,
    "okt": "økt 1: markedsplanen: overordnet mål, forretningsidé og situasjonsanalyse",
    "sp": "Kari vil skrive 20 % vekst i budsjettet. Kan Nordlys love det?"
   },
@@ -4140,8 +4193,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v11.pdf",
    "fil": "pensum/ma03/MA03_Markedsplanen_M2_Markedsmaalene_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1728,
+   "dato": "23.11.2026",
+   "kb": 982,
    "okt": "økt 2: markedsplanen: markedsmålene",
    "sp": "Kari sier «20 % vekst». Er det et mål eller et ønske?"
   },
@@ -4149,8 +4202,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA03_Markedsplanen_M3_Strategien_Presentasjon_v11.pdf",
    "fil": "pensum/ma03/MA03_Markedsplanen_M3_Strategien_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2022,
+   "dato": "23.11.2026",
+   "kb": 898,
    "okt": "økt 3: markedsplanen: realistiske mål og strategien",
    "sp": "Ida har regnet. Tom tviler. Holder målet, og hvilken vei går vi?"
   },
@@ -4188,8 +4241,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v11.pdf",
    "fil": "pensum/ma04/MA04_Markedsundersokelser_M1_Problemstilling_og_metode_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2214,
+   "dato": "23.11.2026",
+   "kb": 1193,
    "okt": "økt 1: markedsundersøkelser: problemstilling, kilder og metode",
    "sp": "Tom spør: «Er kundene våre fornøyde?» Hvordan finner han det ut?"
   },
@@ -4197,8 +4250,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v11.pdf",
    "fil": "pensum/ma04/MA04_Markedsundersokelser_M2_Utvalg_og_svarprosent_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2371,
+   "dato": "23.11.2026",
+   "kb": 1008,
    "okt": "økt 2: markedsundersøkelser: utvalg og svarprosent",
    "sp": "17 av 18 svarte «fornøyd». Kan Tom skrive «94 % fornøyde kunder» på nettsiden?"
   },
@@ -4206,8 +4259,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v11.pdf",
    "fil": "pensum/ma04/MA04_Markedsundersokelser_M3_Analyse_og_prognoser_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1959,
+   "dato": "23.11.2026",
+   "kb": 1152,
    "okt": "økt 3: markedsundersøkelser: analyse, kvalitet, rapport og prognoser",
    "sp": "77,4 % er fornøyde. Hvor ligger problemet, og hva skal Nordlys gjøre?"
   },
@@ -4245,8 +4298,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA05_Markedssegmentering_M1_Segmenter_og_kriterier_Presentasjon_v11.pdf",
    "fil": "pensum/ma05/MA05_Markedssegmentering_M1_Segmenter_og_kriterier_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2568,
+   "dato": "23.11.2026",
+   "kb": 1533,
    "okt": "økt 1: markedssegmentering: segmenter og kriterier",
    "sp": "Nordlys selger til alle som ringer. Hvem bør Nordlys være best for?"
   },
@@ -4254,8 +4307,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v11.pdf",
    "fil": "pensum/ma05/MA05_Markedssegmentering_M2_Fra_segment_til_malgruppe_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2041,
+   "dato": "23.11.2026",
+   "kb": 856,
    "okt": "økt 2: fra segment til målgruppe",
    "sp": "Byggherrene gir nesten halve salget. Bør Nordlys likevel satse på borettslagene?"
   },
@@ -4263,8 +4316,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v11.pdf",
    "fil": "pensum/ma05/MA05_Markedssegmentering_M3_Malgruppestrategier_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2520,
+   "dato": "23.11.2026",
+   "kb": 791,
    "okt": "økt 3: målgruppestrategier",
    "sp": "Skal Nordlys gi alle kunder samme tilbud, lage ulike tilbud eller satse på ett segment?"
   },
@@ -4302,8 +4355,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v11.pdf",
    "fil": "pensum/ma06/MA06_Produkt_M1_Produktet_og_nivaene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2960,
+   "dato": "23.11.2026",
+   "kb": 1783,
    "okt": "økt 1: produktet, produktkategorier og produktnivåer",
    "sp": "Kunden kan sjekke prisen på panelene selv. Hva er det egentlig kunden kjøper av Nordlys?"
   },
@@ -4311,8 +4364,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA06_Produkt_M2_Egenskaper_kvalitet_og_sortiment_Presentasjon_v11.pdf",
    "fil": "pensum/ma06/MA06_Produkt_M2_Egenskaper_kvalitet_og_sortiment_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2832,
+   "dato": "23.11.2026",
+   "kb": 1846,
    "okt": "økt 2: produktegenskaper, kvalitet, vareutvalg og emballasje",
    "sp": "Nordlys har seks tjenestegrupper og tolv montører. Er sortimentet for bredt?"
   },
@@ -4320,8 +4373,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA06_Produkt_M3_Livssyklus_sanering_og_merkevare_Presentasjon_v11.pdf",
    "fil": "pensum/ma06/MA06_Produkt_M3_Livssyklus_sanering_og_merkevare_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2333,
+   "dato": "23.11.2026",
+   "kb": 1317,
    "okt": "økt 3: livssyklus, produktutvikling og -sanering, merkevarebygging",
    "sp": "Antenneoppdragene har falt fra 96 til 22 på fire år. Bør Nordlys slutte med dem?"
   },
@@ -4377,8 +4430,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA07_Pris_M1_Prispolitikken_Presentasjon_v11.pdf",
    "fil": "pensum/ma07/MA07_Pris_M1_Prispolitikken_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2236,
+   "dato": "23.11.2026",
+   "kb": 1584,
    "okt": "økt 1: pris som konkurransevirkemiddel: prispolitikken",
    "sp": "Samme sikringsskap kan få to ulike priser hos Nordlys. Hvem bestemmer hvilken?"
   },
@@ -4386,8 +4439,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA07_Pris_M2_Prissettingsmetodene_Presentasjon_v11.pdf",
    "fil": "pensum/ma07/MA07_Pris_M2_Prissettingsmetodene_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 1637,
+   "dato": "23.11.2026",
+   "kb": 870,
    "okt": "økt 2: prissettingsmetodene: kostnad, konkurrent og betalingsvilje",
    "sp": "Den billigste konkurrenten tilbyr skapet for 30 500 kr. Skal Nordlys senke prisen?"
   },
@@ -4395,8 +4448,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA07_Pris_M3_Prisdifferensiering_og_rabatter_Presentasjon_v11.pdf",
    "fil": "pensum/ma07/MA07_Pris_M3_Prisdifferensiering_og_rabatter_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2588,
+   "dato": "23.11.2026",
+   "kb": 1311,
    "okt": "økt 3: prisdifferensiering og rabatter",
    "sp": "Styrelederen i et borettslag ber om 10 % rabatt. Hva koster det Nordlys?"
   },
@@ -4434,8 +4487,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA08_Distribusjon_M1_Mal_og_oppgaver_Presentasjon_v11.pdf",
    "fil": "pensum/ma08/MA08_Distribusjon_M1_Mal_og_oppgaver_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 3695,
+   "dato": "23.11.2026",
+   "kb": 1835,
    "okt": "økt 1: distribusjon: mål og oppgaver",
    "sp": "Kabelen Nordlys bruker i dag, ble laget langt unna. Hvem har sørget for at den ligger på lageret når montøren trenger den?"
   },
@@ -4443,8 +4496,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA08_Distribusjon_M2_Form_grad_og_kanal_Presentasjon_v11.pdf",
    "fil": "pensum/ma08/MA08_Distribusjon_M2_Form_grad_og_kanal_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 3171,
+   "dato": "23.11.2026",
+   "kb": 1765,
    "okt": "økt 2: distribusjonsform, distribusjonsgrad og kanal",
    "sp": "Produsenten tilbyr 10 % rabatt hvis Nordlys kjøper direkte og hopper over grossisten. Lønner det seg?"
   },
@@ -4452,8 +4505,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA08_Distribusjon_M3_Tjenester_Presentasjon_v11.pdf",
    "fil": "pensum/ma08/MA08_Distribusjon_M3_Tjenester_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2371,
+   "dato": "23.11.2026",
+   "kb": 1291,
    "okt": "økt 3: distribusjon av tjenester",
    "sp": "Nordlys kan ikke sende en jobb med posten. Hvordan distribuerer en installatør det den selger?"
   },
@@ -4491,8 +4544,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA09_Pavirkning_M1_Kommunikasjonsmodellen_Presentasjon_v11.pdf",
    "fil": "pensum/ma09/MA09_Pavirkning_M1_Kommunikasjonsmodellen_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2743,
+   "dato": "23.11.2026",
+   "kb": 1946,
    "okt": "økt 1: kommunikasjonsmodellen",
    "sp": "Nordlys har aldri kjøpt en annonse. Kommuniserer de med markedet likevel?"
   },
@@ -4500,8 +4553,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA09_Pavirkning_M2_Personlig_og_massekommunikasjon_Presentasjon_v11.pdf",
    "fil": "pensum/ma09/MA09_Pavirkning_M2_Personlig_og_massekommunikasjon_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2245,
+   "dato": "23.11.2026",
+   "kb": 1203,
    "okt": "økt 2: personlig og massekommunikasjon",
    "sp": "Ett styrebesøk koster like mye som en annonse til nesten 5 000 personer. Hvorfor besøke?"
   },
@@ -4509,8 +4562,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA09_Pavirkning_M3_Kampanjen_og_personalet_Presentasjon_v11.pdf",
    "fil": "pensum/ma09/MA09_Pavirkning_M3_Kampanjen_og_personalet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2080,
+   "dato": "23.11.2026",
+   "kb": 1274,
    "okt": "økt 3: kampanjen og personalet",
    "sp": "Nordlys vil ha én kontrakt på et ladeanlegg før 30. juni. Hva må være på plass før første brev går ut?"
   },
@@ -4548,8 +4601,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA10_Markedsplanen_M1_Ide_situasjon_og_mal_Presentasjon_v11.pdf",
    "fil": "pensum/ma10/MA10_Markedsplanen_M1_Ide_situasjon_og_mal_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2084,
+   "dato": "23.11.2026",
+   "kb": 1405,
    "okt": "økt 1: idé, situasjon og mål",
    "sp": "Kari vil ha 20 % vekst i 2027. Er det et markedsmål?"
   },
@@ -4557,8 +4610,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA10_Markedsplanen_M2_Markedsstrategien_Presentasjon_v11.pdf",
    "fil": "pensum/ma10/MA10_Markedsplanen_M2_Markedsstrategien_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2021,
+   "dato": "23.11.2026",
+   "kb": 1825,
    "okt": "økt 2: markedsstrategien",
    "sp": "Ida vil selge 4 færre solcelleanlegg i 2027. Er det dårlig strategi?"
   },
@@ -4566,8 +4619,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "MA10_Markedsplanen_M3_Handling_gjennomforing_og_evaluering_Presentasjon_v11.pdf",
    "fil": "pensum/ma10/MA10_Markedsplanen_M3_Handling_gjennomforing_og_evaluering_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2087,
+   "dato": "23.11.2026",
+   "kb": 1366,
    "okt": "økt 3: handling, gjennomføring og evaluering",
    "sp": "Handlingsplanen koster 40 400 kr. Er det mye når målet gir 139 200 kr i ekstra dekningsbidrag?"
   },
@@ -4605,8 +4658,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL11_Organisasjon_M1_Formell_eller_uformell_Presentasjon_v11.pdf",
    "fil": "pensum/ol11/OL11_Organisasjon_M1_Formell_eller_uformell_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2514,
+   "dato": "23.11.2026",
+   "kb": 1150,
    "okt": "økt 1: formell eller uformell organisasjon",
    "sp": "Kari og Tom startet med et håndtrykk. Holder det med 18 ansatte?"
   },
@@ -4614,8 +4667,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL11_Organisasjon_M2_Kartet_Presentasjon_v11.pdf",
    "fil": "pensum/ol11/OL11_Organisasjon_M2_Kartet_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2571,
+   "dato": "23.11.2026",
+   "kb": 1251,
    "okt": "økt 2: kartet",
    "sp": "Montøren på solcelle ringer Kari fire ganger uten svar. Hvem skulle han ringt?"
   },
@@ -4623,8 +4676,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL11_Organisasjon_M3_Tre_perspektiver_Presentasjon_v11.pdf",
    "fil": "pensum/ol11/OL11_Organisasjon_M3_Tre_perspektiver_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2671,
+   "dato": "23.11.2026",
+   "kb": 1837,
    "okt": "økt 3: tre perspektiver på organisasjonen",
    "sp": "Vekselretteren kom ikke, og anlegget ble ikke ferdig fredag. Hvem sin feil var det?"
   },
@@ -4655,8 +4708,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL12_Interne_rammer_M1_Rammene_og_folkene_Presentasjon_v11.pdf",
    "fil": "pensum/ol12/OL12_Interne_rammer_M1_Rammene_og_folkene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2424,
+   "dato": "23.11.2026",
+   "kb": 1454,
    "okt": "økt 1: rammene og folkene",
    "sp": "Nordlys sa nei til en jobb på 1,87 mill. kr. Var det kunden, markedet eller Nordlys selv?"
   },
@@ -4664,8 +4717,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL12_Interne_rammer_M2_Teknologien_Presentasjon_v11.pdf",
    "fil": "pensum/ol12/OL12_Interne_rammer_M2_Teknologien_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2326,
+   "dato": "23.11.2026",
+   "kb": 1500,
    "okt": "økt 2: teknologien",
    "sp": "Kontoret taster timelistene inn på nytt, 6 timer i uka. Er det teknologi?"
   },
@@ -4673,8 +4726,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL12_Interne_rammer_M3_Struktur_og_okonomi_Presentasjon_v11.pdf",
    "fil": "pensum/ol12/OL12_Interne_rammer_M3_Struktur_og_okonomi_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1531,
+   "dato": "23.11.2026",
+   "kb": 886,
    "okt": "økt 3: struktur og økonomi",
    "sp": "Jobben gir 371 250 kr i dekningsbidrag. Hvorfor sa banken nei?"
   },
@@ -4705,8 +4758,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL13_Eksterne_rammer_M1_Aktorene_naer_bedriften_Presentasjon_v11.pdf",
    "fil": "pensum/ol13/OL13_Eksterne_rammer_M1_Aktorene_naer_bedriften_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2908,
+   "dato": "23.11.2026",
+   "kb": 1619,
    "okt": "økt 1: aktørene nær bedriften",
    "sp": "Grossisten hever prisene på kabel. Kan Nordlys gjøre noe med det?"
   },
@@ -4714,8 +4767,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL13_Eksterne_rammer_M2_Myndigheter_bank_og_arbeidsliv_Presentasjon_v11.pdf",
    "fil": "pensum/ol13/OL13_Eksterne_rammer_M2_Myndigheter_bank_og_arbeidsliv_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1241,
+   "dato": "23.11.2026",
+   "kb": 913,
    "okt": "økt 2: myndigheter, bank, arbeidsliv og medier",
    "sp": "Lønna til montørene avtales utenfor bedriften. Hvem bestemmer egentlig over Nordlys?"
   },
@@ -4723,8 +4776,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL13_Eksterne_rammer_M3_Prosessene_Presentasjon_v11.pdf",
    "fil": "pensum/ol13/OL13_Eksterne_rammer_M3_Prosessene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2577,
+   "dato": "23.11.2026",
+   "kb": 1632,
    "okt": "økt 3: prosessene",
    "sp": "En montør slutter, og det finnes ingen å ansette. Hva gjør Nordlys med en ramme de ikke kan endre?"
   },
@@ -4755,8 +4808,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL14_Klassiske_teorier_M1_Taylor_Presentasjon_v11.pdf",
    "fil": "pensum/ol14/OL14_Klassiske_teorier_M1_Taylor_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2902,
+   "dato": "23.11.2026",
+   "kb": 1664,
    "okt": "økt 1: vitenskapelig ledelse",
    "sp": "Akkordlaget bytter et sikringsskap på 11 timer. Normtiden er 14. Hvem tjener på det?"
   },
@@ -4764,8 +4817,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL14_Klassiske_teorier_M2_Fayol_linje_og_stab_Presentasjon_v11.pdf",
    "fil": "pensum/ol14/OL14_Klassiske_teorier_M2_Fayol_linje_og_stab_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2362,
+   "dato": "23.11.2026",
+   "kb": 1031,
    "okt": "økt 2: fayol, linje og stab",
    "sp": "Ida setter normtidene, men kan ikke gi Ronny ordre. Er det et problem?"
   },
@@ -4773,8 +4826,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL14_Klassiske_teorier_M3_Weber_effektivitet_og_varianter_Presentasjon_v11.pdf",
    "fil": "pensum/ol14/OL14_Klassiske_teorier_M3_Weber_effektivitet_og_varianter_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1621,
+   "dato": "23.11.2026",
+   "kb": 917,
    "okt": "økt 3: weber, effektivitet og varianter",
    "sp": "Nordlys fakturerer 70,8 % av montørtimene. Er bedriften effektiv?"
   },
@@ -4805,8 +4858,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL15_Nyere_teorier_M1_Mennesket_Presentasjon_v11.pdf",
    "fil": "pensum/ol15/OL15_Nyere_teorier_M1_Mennesket_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2581,
+   "dato": "23.11.2026",
+   "kb": 1388,
    "okt": "økt 1: mennesket i organisasjonen",
    "sp": "Tom begynte å følge med på serviceoppdragene. Tiden falt fra 6 til 5 timer. Hvorfor?"
   },
@@ -4814,8 +4867,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL15_Nyere_teorier_M2_Beslutningene_Presentasjon_v11.pdf",
    "fil": "pensum/ol15/OL15_Nyere_teorier_M2_Beslutningene_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1889,
+   "dato": "23.11.2026",
+   "kb": 908,
    "okt": "økt 2: beslutningene",
    "sp": "Ida hadde 2 timer og rakk 3 av 14 laderfabrikater. Var valget hennes dårlig?"
   },
@@ -4823,8 +4876,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL15_Nyere_teorier_M3_Situasjonen_Presentasjon_v11.pdf",
    "fil": "pensum/ol15/OL15_Nyere_teorier_M3_Situasjonen_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2325,
+   "dato": "23.11.2026",
+   "kb": 1554,
    "okt": "økt 3: situasjonen avgjør formen",
    "sp": "Service og prosjekt er så ulike. Bør de organiseres likt?"
   },
@@ -4855,8 +4908,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_roller_normer_Presentasjon_v11.pdf",
    "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M1_Grupper_roller_normer_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2750,
+   "dato": "23.11.2026",
+   "kb": 2113,
    "okt": "økt 1: grupper, roller og normer",
    "sp": "Hvem bestemmer egentlig på kontoret i Molde?"
   },
@@ -4864,8 +4917,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v11.pdf",
    "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M2_Kommunikasjon_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2191,
+   "dato": "23.11.2026",
+   "kb": 1634,
    "okt": "økt 2: kommunikasjon i organisasjoner",
    "sp": "Hvorfor forstår ikke de eldre når de yngre spøker?"
   },
@@ -4873,8 +4926,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v11.pdf",
    "fil": "pensum/ol16/OL16_Grupper_kommunikasjon_konflikt_M3_Konflikt_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2035,
+   "dato": "23.11.2026",
+   "kb": 1321,
    "okt": "økt 3: konflikt og konflikthåndtering",
    "sp": "Hvordan bør Bernt Roald håndtere konfliktene i Molde?"
   },
@@ -4905,8 +4958,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL17_Ledelse_M1_Ledelse_og_lederroller_Presentasjon_v11.pdf",
    "fil": "pensum/ol17/OL17_Ledelse_M1_Ledelse_og_lederroller_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2495,
+   "dato": "23.11.2026",
+   "kb": 2314,
    "okt": "økt 1: ledelse og lederroller",
    "sp": "Ronny er formann og montør samtidig. Er han leder?"
   },
@@ -4914,8 +4967,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL17_Ledelse_M2_Egenskaper_og_lederstil_Presentasjon_v11.pdf",
    "fil": "pensum/ol17/OL17_Ledelse_M2_Egenskaper_og_lederstil_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 2650,
+   "dato": "23.11.2026",
+   "kb": 1232,
    "okt": "økt 2: egenskaper og lederstil",
    "sp": "Ronny leder lærlingen og den mest erfarne montøren på samme måte. Er det riktig?"
   },
@@ -4923,8 +4976,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL17_Ledelse_M3_Verdier_motivasjon_og_styring_Presentasjon_v11.pdf",
    "fil": "pensum/ol17/OL17_Ledelse_M3_Verdier_motivasjon_og_styring_Presentasjon_v11.pdf",
-   "dato": "19.11.2026",
-   "kb": 1793,
+   "dato": "23.11.2026",
+   "kb": 1322,
    "okt": "økt 3: verdier, motivasjon og styring",
    "sp": "En erfaren montør vil ha 2 000 kr mer i måneden, ellers slutter han. Er det verdt det?"
   },
@@ -4973,8 +5026,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL18_Personalpolitikk_M1_Rekruttering_Presentasjon_v11.pdf",
    "fil": "pensum/ol18/OL18_Personalpolitikk_M1_Rekruttering_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2883,
+   "dato": "23.11.2026",
+   "kb": 1921,
    "okt": "økt 1: personalpolitikk og rekruttering",
    "sp": "Nordlys trenger en servicemontør til. Hvor begynner Kari?"
   },
@@ -4982,8 +5035,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL18_Personalpolitikk_M2_Intervju_og_introduksjon_Presentasjon_v11.pdf",
    "fil": "pensum/ol18/OL18_Personalpolitikk_M2_Intervju_og_introduksjon_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2080,
+   "dato": "23.11.2026",
+   "kb": 1450,
    "okt": "økt 2: rekruttering: intervju, tilbud og introduksjon",
    "sp": "Hvem skal Nordlys ansette, og hva skjer den første uka?"
   },
@@ -4991,8 +5044,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL18_Personalpolitikk_M3_Medarbeidersamtalen_Presentasjon_v11.pdf",
    "fil": "pensum/ol18/OL18_Personalpolitikk_M3_Medarbeidersamtalen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2413,
+   "dato": "23.11.2026",
+   "kb": 1528,
    "okt": "økt 3: medarbeidersamtalen",
    "sp": "Hvordan bør Anders Hestad forberede samtalen med Jon Berg?"
   },
@@ -5030,8 +5083,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v11.pdf",
    "fil": "pensum/ol19/OL19_Organisasjonskultur_M1_Hva_kultur_er_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 3076,
+   "dato": "23.11.2026",
+   "kb": 1973,
    "okt": "økt 1: hva organisasjonskultur er",
    "sp": "Samme skjema og samme sjef. Hvorfor melder én avdeling nesten alle egne feil, og en annen nesten ingen?"
   },
@@ -5039,8 +5092,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v11.pdf",
    "fil": "pensum/ol19/OL19_Organisasjonskultur_M2_Hvor_kulturen_kommer_fra_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2533,
+   "dato": "23.11.2026",
+   "kb": 1561,
    "okt": "økt 2: hvor kulturen kommer fra",
    "sp": "Hvorfor ble feilen i prosjekt funnet først etter elleve uker, og hva kan Kari gjøre med det?"
   },
@@ -5048,8 +5101,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL19_Organisasjonskultur_M3_Subkulturer_og_gruppetenkning_Presentasjon_v11.pdf",
    "fil": "pensum/ol19/OL19_Organisasjonskultur_M3_Subkulturer_og_gruppetenkning_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2500,
+   "dato": "23.11.2026",
+   "kb": 1282,
    "okt": "økt 3: subkulturer og gruppetenkning",
    "sp": "Prosjekt har sin egen kultur. Er det et problem, og når blir en sterk kultur farlig?"
   },
@@ -5080,8 +5133,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL20_Lover_og_etikk_M1_Kunden_og_prisen_Presentasjon_v11.pdf",
    "fil": "pensum/ol20/OL20_Lover_og_etikk_M1_Kunden_og_prisen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2250,
+   "dato": "23.11.2026",
+   "kb": 1436,
    "okt": "økt 1: kunden og prisen: håndverkertjenesteloven",
    "sp": "Kunden fikk et prisoverslag på 25 000 kr og en faktura på 29 500 kr. Hvor mye må hun betale?"
   },
@@ -5089,8 +5142,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL20_Lover_og_etikk_M2_Arbeidsavtalen_og_oppsigelsen_Presentasjon_v11.pdf",
    "fil": "pensum/ol20/OL20_Lover_og_etikk_M2_Arbeidsavtalen_og_oppsigelsen_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2389,
+   "dato": "23.11.2026",
+   "kb": 1374,
    "okt": "økt 2: arbeidsavtalen og oppsigelsen: arbeidsmiljøloven",
    "sp": "Hva må Kari ha på plass når hun ansetter, og hva må til før hun kan si opp noen?"
   },
@@ -5098,8 +5151,8 @@ LOM.filer = {
    "type": "v7pres",
    "navn": "OL20_Lover_og_etikk_M3_Annonsen_og_etikken_Presentasjon_v11.pdf",
    "fil": "pensum/ol20/OL20_Lover_og_etikk_M3_Annonsen_og_etikken_Presentasjon_v11.pdf",
-   "dato": "18.11.2026",
-   "kb": 2213,
+   "dato": "23.11.2026",
+   "kb": 1585,
    "okt": "økt 3: annonsen og etikken: markedsføringsloven, etikk og etisk vurdering",
    "sp": "Nordlys vil love kundene 40 prosent lavere strømregning, og en montør har jobbet overtid hele året. Er det lov, og er det rett?"
   },
@@ -20331,7 +20384,7 @@ window.LOM = window.LOM || {};
 LOM.oppsett = {
   tittel: "Teknisk kommunikasjon og ledelse (LØM)",
   undertittel: "Øve- og læringsapp · emne 10TE13I · Fagskolen Oslo, Avdeling Elkraft",
-  versjon: "2.29.0 · 20. november 2026",   // 2.29.0: Ukens drift har en sjette sak, hasteoppdraget fra kapittel 7, med en kort video laget med Google Genie 4 (forsøk); 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
+  versjon: "2.30.0 · 25. november 2026",   // 2.30.0: ny øvelse «Breakout», seks rom med låser på tvers av fagene, fra montør til konserndirektør, bygd for lag på tre rundt én skjerm, med lagkonkurranse på klassekode (motor/breakout.js, tabellen lom_breakout); 2.29.0: Ukens drift har en sjette sak, hasteoppdraget fra kapittel 7, med en kort video laget med Google Genie 4 (forsøk); 2.28.1: kapittel 7 regner prisdifferensiering og rabatt med bokas selvkost per time, 797 kr (Økonomistyring 5.2.1), så 890 kr gir 93 kr over selvkost; 2.28.0: «Se og lytt» øverst i hvert kapittel med videospilleliste og podkast; videoene kodet om til yuv420p så de spilles i nettleseren; 2.27.13: serielån og annuitetslån sagt likt i app, lysbilder, øktark og sammendrag; tallforklaringer i hele setninger; 2.27.12: kapittel 6 økt 1, lysbilde 10 regnet i fire steg; 2.27.11: kapittel 6 økt 1 og 2 forklarer hvert tall i regnestykkene på lysbildet; 2.27.10: kapittel 4 viser hvor hvert tall i regnestykkene kommer fra, bransjetallet fra NHO Elektro er tatt ut; 2.27.9: kapittel 6 økt 1, lysbilde 14–15 viser hvor hvert tall kommer fra; 2.27.8: øvingshefte og regneark i kapittel 6 med Fjell Elektro som eksempel; 2.27.7: kapittel 6 med Fjell Elektro som eksempel overalt, rettede sammendrag; 2.27.6: hjelpeteksten på videoknappen uten «prøveversjon»; 2.27.5: videosiden uten prøvemerket; 2.27.4: videoer OK01, OK02, MA01, MA02, OL11 og OL12; 2.27.3: videoer OK10, MA09, OL19 og OL20; 2.27.2: samme innhold som 2.27.1, publisert på nytt fordi GitHub Pages-utrullingen av 2.27.1 ble stående i kø; 2.27.1: videoer OK08, OK09, MA08 og OL15; 2.27.0: Ukens drift (#/drift, motor/drift.js), en ukentlig driftssimulator med fem saker fra OK04, OK05, OK07, OL17 og MA06, nye merker og spillkroner; videoer MA03, MA06 og MA07; 2.26.4: videoene flyttet til eget repo lom-video (GitHub Pages), service worker lar dem strømme; 2.26.3: videoer OL17 og OL18; 2.26.2: videoer OK04, OK06 og OL16; 2.26.1: videoer OK03 og OK07 (hele kapitlet), studieplanene synket fra planleggeren 13.11 med fulle boknavn; 2.26.0: Video-knapp i topplinja og på forsiden, videoside #/video (prøveversjon) med Glenns tre OK05-videoer; 2.25.5: podkast OK04 økt 3 med 36,4 %; 2.25.4: bransjens egenkapitalandel 36,4 % (ok04, OK04 M3, faktaarket), OL20-regnearket og -heftet med tariffens overtid, OL15 1B, MA06/MA09 v6-arbeidsbøker arkivert; 2.25.3: podkasten komplett (91), 11 episoder fra v10-øktarkene; 2.25.0: kø 12.11 (OK06/OK01 materialandel, OK05 økt 1–2, bunntekst, hefter, pensumkart) og fire funn: ok09 varekostnad og skattetrekk, ma07 direkte materialkostnad, ok07 sats 640 forklart; 2.23.1: kvalitetssikring, sju rettinger i kap. 4, 11, 14, 18, 19; 2.23.0: OK05 arbeidstimer 2026/2027, ferie med og uten tariffavtale og fra 60 år, ny kalkulator Arbeidstimer; 2.22.2: fasit MA06 A3 c (50 600), OK07 B2 e (20 ladere), OL13 (13,1 %), MA08 (tredje P); OK02-vedleggene rettet; 2.22.1: OK02 språk- og konsistensretting, læringsmålsoverskrift, forfatterinitialer; 2.22.0: Innspill-knapp (meld feil, tilbakemelding, forslag) til lom_innspill;   // 2.20.0: appinnhold versjon 10 i 29 kapitler (bokas mål og begreper) og kalkulatoren i kap. 5 etter augustløsningen; 2.19.1: MA04 tro mot boka
   nettadresse: "https://truthseeker1968.github.io/lom-app/",   // nettutgaven (GitHub Pages) — brukes i lenker fra nedlastet fil
 
   // Anonym bruksstatistikk (Supabase, insert-only). Tom url = av. Teller kun fra nettadresse, aldri fra nedlastet fil.
@@ -61546,7 +61599,10 @@ LOM.spill = (function () {
     strek: 1000,           // per dag i sammenhengende strek (fra dag 2)
     drift: 3000,           // levert ukens drift (én gang per uke)
     driftRiktig: 500,      // per riktig valg i ukens drift
-    driftRad: 1000         // × uker på rad i ukens drift (fra uke 2)
+    driftRad: 1000,        // × uker på rad i ukens drift (fra uke 2)
+    breakout: 4000,        // løst et rom i Breakout (første gang per rom)
+    breakoutPoeng: 10,     // × poeng i rommet (første gang per rom)
+    breakoutRep: 2000      // spilt et rom igjen en senere dag (én gang per rom)
   };
 
   /* ---- nivåer: rollen studenten «er» i Nordlys ---- */
@@ -61586,6 +61642,9 @@ LOM.spill = (function () {
     { id: "drift1", navn: "Første driftsuke", tekst: "Levert en uke i Ukens drift", ikon: "🏗" },
     { id: "driftfeilfri", navn: "Feilfri drift", tekst: "Alle riktige valg i én driftsuke", ikon: "🏆" },
     { id: "drift4", navn: "Fire uker på rad", tekst: "Levert Ukens drift fire uker på rad", ikon: "📆" },
+    { id: "breakout1", navn: "Første lås", tekst: "Løst et rom i Breakout", ikon: "🔓" },
+    { id: "breakoutrep", navn: "Kom tilbake", tekst: "Spilt et rom i Breakout igjen en senere dag", ikon: "🔁" },
+    { id: "breakoutalle", navn: "Hele stigen", tekst: "Alle rommene i Breakout løst, fra montør til konserndirektør", ikon: "🌐" },
     { id: "eksamen5", navn: "Sensorklar", tekst: "Fem eksamensnære oppgaver skrevet og sammenliknet", ikon: "✍️" }
   ];
 
@@ -61629,6 +61688,10 @@ LOM.spill = (function () {
       }
       case "drift": { if (S.beste["drift:" + d.uke]) break; S.beste["drift:" + d.uke] = d.riktig; giMerke("drift1"); if (d.riktig === d.antall) giMerke("driftfeilfri"); if (d.paRad >= 4) giMerke("drift4");
         tjen(satser.drift + d.riktig * satser.driftRiktig + (d.paRad >= 2 ? d.paRad * satser.driftRad : 0), `Ukens drift: ${d.riktig} av ${d.antall} riktige` + (d.paRad >= 2 ? `, ${d.paRad} uker på rad` : "")); break; }
+      case "breakout": {
+        if (!S.beste["bo:" + d.id]) { S.beste["bo:" + d.id] = d.poeng; giMerke("breakout1"); tjen(satser.breakout + d.poeng * satser.breakoutPoeng, `Breakout: ${d.tittel}, ${d.poeng} av ${d.maks} poeng`); }
+        else if (d.rep && !S.beste["borep:" + d.id]) { S.beste["borep:" + d.id] = 1; giMerke("breakoutrep"); tjen(satser.breakoutRep, `Breakout repetert: ${d.tittel}`); }
+        if (d.alle) giMerke("breakoutalle"); break; }
       case "tverr": { let sum = d.prosent * satser.provePerProsent; if (d.bestaatt) { sum += satser.tverr; giMerke("tverr"); } tjen(sum, `Prøve på tvers: ${d.prosent} %`); break; }
       case "daglig": { if (S.daglig[idag()]) break; S.daglig[idag()] = d.riktig; tjen(satser.daglig + d.riktig * satser.riktig, `Dagens utfordring: ${d.riktig} av ${d.antall}`); if (Object.keys(S.daglig).length >= 5) giMerke("daglig5"); break; }
     }
@@ -61782,6 +61845,611 @@ LOM.drift = (function () {
 
   return { ukeId, saker, svar, maks, ukerPaaRad, sum, historikk, kr, uke: (id) => D.uker[id || ukeId()] || { valg: [] },
     nullstill: () => { D = { uker: {} }; lagre(); } };
+})();
+
+
+/* ===================== Breakout: «Tre hoder, én skjerm» (2.30.0) =====================
+   Glenn 25.11.2026: en øvelse som kombinerer de tre fagene i LØM, bygd som rom med låser.
+   Hver lås er en hverdagssak fra Nordlys Elektro AS. Svaret på låsen åpner den neste.
+   Stigen går fra montør til konserndirektør, ett rom per trinn i første utgave.
+   Bygd for lag på tre rundt én skjerm (leser, regner, formidler), men kan spilles alene.
+
+   Læringsgrepene (Glenns bestilling, etter Barbara Oakley og Omid Mirmotaharis «Universet»):
+   - Hodet først: laget svarer før det slår opp. Hint koster poeng.
+   - Hint peker dit svaret står (bok og avsnitt), ikke på svaret.
+   - Siste lås i hvert rom er «Lær det bort»: formidleren forklarer med egne ord.
+   - Rom 1 til 4 bytter tall eller sak når de spilles igjen (rom 5 og 6 bruker faste tall fra faktaarket).
+     Spilt igjen en senere dag gir repetisjonsmerke.
+
+   Tall og fag: alt er hentet fra kapitlene i appen (kilde/innhold), som er kontrollert mot
+   «Økonomistyring for LØM-emnet» og «Markedsføring, organisasjon og ledelse for LØM-emnet».
+   Hver lås oppgir kilden. Fremdriften lagres lokalt (nøkkel lom_breakout_v1).
+   Lagkonkurranse (Glenn 25.11.2026, ja til sentral lagring): har laget skrevet inn en klassekode
+   og et lagnavn, sendes klassekode, lagnavn, rom, poeng og antall hint til tabellen lom_breakout
+   (Supabase, insert only). Tavla leses med funksjonen lom_breakout_tavle(kode) og vises bare for
+   dem som har koden. Ingen personnavn, ingen brukeridentitet. Poengene meldes av appen selv og
+   er ikke sikret mot juks. Uten klassekode sendes ingenting om laget.
+   app.js kaller LOM.breakout.vis(rot, hjelpere, delsti).
+   ======================================================================================= */
+window.LOM = window.LOM || {};
+LOM.breakout = (function () {
+  const NOKKEL = "lom_breakout_v1";
+  let B = { lag: "", klasse: "", antall: 3, rom: {} };   // rom: { r1: { beste, maks, hint, forsok, ganger, forst: dato, sist: dato, rep: bool } }
+  try { const l = localStorage.getItem(NOKKEL); if (l) B = Object.assign(B, JSON.parse(l)); } catch (e) { }
+  const lagre = () => { try { localStorage.setItem(NOKKEL, JSON.stringify(B)); } catch (e) { } };
+  const nf = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 2 });
+  const nf0 = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 });
+  const t0 = (v) => nf0.format(Math.round(v));
+  const t2 = (v) => new Intl.NumberFormat("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+  const kr = (v) => t0(v) + " kr";
+  const idag = () => new Date().toISOString().slice(0, 10);
+
+  const OK = "Økonomistyring for LØM-emnet";
+  const MOL = "Markedsføring, organisasjon og ledelse for LØM-emnet";
+  const POENG = { laas: 100, hint: 25, feil: 10, minst: 10, moment: 20 };
+
+  /* ---- tilfeldige tall som er like for samme rom og samme forsøk ---- */
+  function rng(id) { let x = 0; for (const c of id) x = (x * 31 + c.charCodeAt(0)) & 0x7fffffff; x = x || 1;
+    return () => { x = (x * 1103515245 + 12345) & 0x7fffffff; return x / 0x7fffffff; }; }
+  const velg = (r, liste) => liste[Math.floor(r() * liste.length)];
+  const blandet = (r, liste) => liste.map(v => [r(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+
+  /* ---- stigen ---- */
+  const trinn = [
+    { id: "r1", nr: 1, rolle: "Montør", ikon: "🔧", farge: "#2a78d6", tittel: "Første dag alene", fag: "Økonomistyring kapittel 2 og 5 · Markedsføring, organisasjon og ledelse kapittel 20",
+      ingress: "Sara er syk. Du tar servicebilen til familien Berg alene, og jobbmappa ligger i en låst kasse." },
+    { id: "r2", nr: 2, rolle: "Saksbehandler", ikon: "🗂️", farge: "#1baf7a", tittel: "Tilbudet som må ut før fire", fag: "Økonomistyring kapittel 5 · Markedsføring, organisasjon og ledelse kapittel 2, 7 og 20",
+      ingress: "Ida er på befaring. Tilbudet til Kruttverket må ut i dag, og en kunde klager på regningen." },
+    { id: "r3", nr: 3, rolle: "Fagskoleingeniør", ikon: "📐", farge: "#eb6834", tittel: "Mars er full", fag: "Økonomistyring kapittel 7 og 8 · Markedsføring, organisasjon og ledelse kapittel 17",
+      ingress: "Du er prosjektleder. Alle vil ha montørtimene dine, og serviceavdelingen går mot tap." },
+    { id: "r4", nr: 4, rolle: "Serviceleder", ikon: "🚐", farge: "#8a5cd6", tittel: "Pengene som ble borte", fag: "Økonomistyring kapittel 4 og 6 · Markedsføring, organisasjon og ledelse kapittel 6 og 16",
+      ingress: "Avdelingen selger godt, men kontoen er tom den femtende. Tom ber deg finne pengene." },
+    { id: "r5", nr: 5, rolle: "Daglig leder", ikon: "🏢", farge: "#c9342f", tittel: "Banken ringer mandag", fag: "Økonomistyring kapittel 4 og 9 · Markedsføring, organisasjon og ledelse kapittel 13 og 19",
+      ingress: "Kari er bortreist. Du møter banken på mandag med regnskapet for 2026 og budsjettet for 2027." },
+    { id: "r6", nr: 6, rolle: "Konserndirektør", ikon: "🌐", farge: "#9a6a00", tittel: "Investeringen", fag: "Økonomistyring kapittel 10 · Markedsføring, organisasjon og ledelse kapittel 5 og 12",
+      ingress: "Nordlys er blitt del av et konsern. Styret vil ha din innstilling om nytt utstyr og en ny satsing." }
+  ];
+
+  /* ---- rommene: hver funksjon får et tilfeldighetsfrø og gir låsene ---- */
+  const tall = (o) => Object.assign({ type: "tall", toleranse: 0.5 }, o);
+  const valg = (r, o) => Object.assign({ type: "valg" }, o, { alt: blandet(r, o.alt) });
+
+  const rom = {
+    /* ================= 1 MONTØR ================= */
+    r1(r) {
+      const [t, m] = velg(r, [[6, 4000], [8, 5500], [10, 5000], [4, 3000]]);
+      const pris = t * 890 + m * 1.2, medMva = pris * 1.25;
+      const overslag = velg(r, [16000, 20000, 25000, 30000]);
+      return [
+        valg(r, { tittel: "Kassa i bilen", kap: "ok02",
+          historie: "Kassa har en lapp fra Ronny: «Jeg bestilte kabel 3. mars. Fakturaen ble betalt 2. april. Montørene brukte kabelen på en jobb i mai.»",
+          sporsmaal: "I hvilken måned er kabelen en kostnad for Nordlys?",
+          alt: [{ t: "Mars", feil: "3. mars oppstår utgiften. Da forplikter Nordlys seg til å betale." }, { t: "April", feil: "2. april skjer utbetalingen. Da går pengene ut av kontoen." }, { t: "Mai", ok: true }],
+          hint: ["Tre ord som likner: utgift, utbetaling og kostnad.", `${OK}, avsnitt 2.2.1.`, "Kostnaden er forbruket. Spør: når ble kabelen brukt?"],
+          forklaring: "Utgiften oppstår når Nordlys forplikter seg (3. mars). Utbetalingen er når pengene går ut (2. april). Kostnaden er forbruket, og kabelen ble brukt i mai.",
+          kilde: `${OK}, avsnitt 2.2.1` }),
+        tall({ tittel: "Prisen til familien Berg", kap: "ok05", enhet: "kr", svar: pris,
+          historie: `Jobbmappa er åpen. Varmekabler på badet: ${t} montørtimer og materiell for ${kr(m)} i innkjøp. Nordlys tar 890 kr per time og legger 20 % på materiellet.`,
+          sporsmaal: "Hva blir prisen uten merverdiavgift?",
+          kjent: [[t * 890 + m, "Påslaget på materiellet mangler. Materiellet selges for innkjøpsprisen ganger 1,20."], [t * 640 + m, "640 kr er det montørtimen koster Nordlys i lønn. Kunden betaler timeprisen, 890 kr."], [medMva, "Det er prisen med merverdiavgift. Her spørres det etter prisen uten."]],
+          hint: ["Timer for seg, materiell for seg.", `Nordlys' prismodell står i ${OK}, kapittel 4 og 5, og i faktaarket for Nordlys.`, "Pris = timer × timepris + materiell × 1,20."],
+          forklaring: `${t} × 890 + ${t0(m)} × 1,20 = ${t0(t * 890)} + ${t0(m * 1.2)} = ${kr(pris)}.`,
+          kilde: `${OK}, kapittel 5, og faktaarket for Nordlys Elektro AS` }),
+        tall({ tittel: "Det kunden skal betale", kap: "ok05", enhet: "kr", svar: medMva,
+          historie: "Fru Berg er privatkunde. Hun vil vite hva hun faktisk skal betale.",
+          sporsmaal: `Hva blir ${kr(pris)} med merverdiavgift?`,
+          kjent: [[pris * 0.25, "Det er selve merverdiavgiften. Kunden betaler prisen pluss avgiften."], [pris, "Det er prisen uten merverdiavgift. Privatkunden betaler 25 % i tillegg."]],
+          hint: ["Den alminnelige satsen for merverdiavgift.", `Satsen er 25 % (merverdiavgiftsloven § 5-1). ${OK} regner med den i kapittel 5.`, "Pris med merverdiavgift = pris uten × 1,25."],
+          forklaring: `${t0(pris)} × 1,25 = ${kr(medMva)}.`,
+          kilde: `${OK}, kapittel 5 · merverdiavgiftsloven § 5-1` }),
+        tall({ tittel: "Prisoverslaget", kap: "ol20", enhet: "kr", svar: overslag * 1.15,
+          historie: `På neste jobb har Nordlys gitt en privatkunde et prisoverslag på ${kr(overslag)}. Jobben tok lengre tid enn ventet.`,
+          sporsmaal: "Hva er det høyeste regningen kan komme på uten å bryte prosentgrensen i håndverkertjenesteloven?",
+          kjent: [[overslag * 0.15, "Det er selve tillegget. Spørsmålet er hva regningen høyst kan komme på i alt."], [overslag * 1.25, "25 % er merverdiavgiften. Grensen for prisoverslag er en annen prosent."]],
+          hint: ["Et prisoverslag er et anslag som binder.", `${MOL}, avsnitt 20.2.4 · håndverkertjenesteloven § 32.`, "Taket er overslaget pluss 15 %."],
+          forklaring: `${t0(overslag)} × 1,15 = ${kr(overslag * 1.15)}. De 15 prosentene er et ytre tak, ikke en rettighet: prisen skal ikke overstige overslaget vesentlig. Taket gjelder ikke hvis en annen grense er avtalt, eller hvis det er tilleggsarbeid etter § 33.`,
+          kilde: `${MOL}, avsnitt 20.2.4 · håndverkertjenesteloven § 32` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ok02",
+          sporsmaal: "Formidleren forklarer for laget, uten å se i boka: Hva er forskjellen på utgift, utbetaling og kostnad? Bruk kabelen til Ronny som eksempel.",
+          momenter: ["Utgiften oppstår når bedriften forplikter seg til å betale.", "Utbetalingen er når pengene går ut av kontoen.", "Kostnaden er forbruket i perioden, og det er den som avgjør om perioden gikk med overskudd."],
+          kilde: `${OK}, avsnitt 2.2.1` }
+      ];
+    },
+
+    /* ================= 2 SAKSBEHANDLER ================= */
+    r2(r) {
+      const rabatt = velg(r, [5, 10]);
+      const nyDb = 7051.2 - 26611.2 * rabatt / 100;
+      const [ov, fakt] = velg(r, [[25000, 29500], [20000, 23900], [30000, 35400], [16000, 19000]]);
+      return [
+        tall({ tittel: "Hva en time koster", kap: "ok05", enhet: "kr", svar: 11472000 / 14400,
+          historie: "Kalkylearket til Ida er låst med selvkost per time. Nordlys har 12 montører. Hver har 1 695 tilgjengelige timer i året og fakturerer 1 200 av dem. Timene skal dekke 11 472 000 kr.",
+          sporsmaal: "Hva er selvkost per fakturert time?",
+          kjent: [[11472000 / 20340, "Du har delt på de tilgjengelige timene. Kostnadene må fordeles på timene kunden faktisk betaler for."], [11472000 / 12, "Det er kostnaden per montør i året. Del på fakturerte timer."]],
+          hint: ["Bare timer som kunden får regning for, kan bære kostnader.", `${OK}, avsnitt 5.2.1. Øvingsheftet kapittel 5, oppgave 1.`, "Selvkost per time = kostnadene timene må dekke / fakturerte timer."],
+          forklaring: "12 × 1 200 = 14 400 fakturerte timer. 11 472 000 / 14 400 = 796,67 kr.",
+          kilde: `${OK}, avsnitt 5.2.1` }),
+        tall({ tittel: "Fortjenesten i timeprisen", kap: "ok05", enhet: "kr", svar: 1344000 / 14400,
+          historie: "Kari vil ha et driftsresultat på 1 344 000 kr. Det må timene også hente inn.",
+          sporsmaal: "Hvor mye fortjeneste må ligge i hver fakturert time?",
+          kjent: [[890, "890 kr er hele timeprisen. Her spørres det bare etter fortjenesten per time."]],
+          hint: ["Fortjenesten fordeles på de samme timene som kostnadene.", `${OK}, avsnitt 5.2.1.`, "Fortjeneste per time = ønsket driftsresultat / fakturerte timer."],
+          forklaring: "1 344 000 / 14 400 = 93,33 kr. Timeprisen blir 796,67 + 93,33 = 890 kr uten merverdiavgift.",
+          kilde: `${OK}, avsnitt 5.2.1` }),
+        tall({ tittel: "Kunden som vil ha avslag", kap: "ma07", enhet: "kr", svar: nyDb, toleranse: 1,
+          historie: `Et sikringsskapbytte er priset til 26 611,20 kr uten merverdiavgift. Arbeid, materiell og kjøring koster 19 560 kr. Kunden ber om ${rabatt} % avslag.`,
+          sporsmaal: "Hva blir dekningsbidraget på jobben etter avslaget?",
+          kjent: [[7051.2 * (1 - rabatt / 100), "Avslaget regnes av prisen, ikke av dekningsbidraget. Men hele avslaget tas fra dekningsbidraget."], [26611.2 * (1 - rabatt / 100), "Det er den nye prisen. Trekk fra det jobben koster."], [7051.2, "Det er dekningsbidraget før avslaget."]],
+          hint: ["Kostnadene blir ikke lavere av at prisen settes ned.", `${MOL}, kapittel 7 (bidragsmetoden, 7.4.1). ${OK}, kapittel 5 om dekningsbidrag.`, "Nytt dekningsbidrag = ny pris − de variable kostnadene."],
+          forklaring: `Dekningsbidraget før er 26 611,20 − 19 560 = 7 051,20 kr. Avslaget er ${t2(26611.2 * rabatt / 100)} kr. Nytt dekningsbidrag: ${t2(nyDb)} kr. Det er et fall på ${nf.format(Math.round(1000 * (1 - nyDb / 7051.2)) / 10)} %, ikke ${rabatt} %.`,
+          kilde: `${MOL}, kapittel 7 · ${OK}, kapittel 5` }),
+        valg(r, { tittel: "Anbudet som forsvant", kap: "ma02",
+          historie: "Ida sendte anbudet på kontorbygget rett til prosjektlederen hos Haugerud Bygg AS. Det ble aldri registrert. Hos Haugerud går alle henvendelser først til prosjektkoordinatoren.",
+          sporsmaal: "Hvilken kjøpsrolle har prosjektkoordinatoren?",
+          alt: [{ t: "Portvakt", ok: true }, { t: "Beslutningstager", feil: "Beslutningstageren er prosjektlederen, som velger leverandør. Koordinatoren styrer hva som slipper fram til ham." }, { t: "Innkjøper", feil: "Innkjøperen gjennomfører selve kjøpet. Her er det innkjøpssjefen." }, { t: "Påvirker", feil: "Påvirkeren er den rådgivende ingeniøren som skrev kravspesifikasjonen." }],
+          hint: ["På bedriftsmarkedet er det sju kjøpsroller.", `${MOL}, avsnitt 2.5.`, "Én av rollene bestemmer hvilke henvendelser som slipper videre."],
+          forklaring: "Portvakten styrer informasjonen inn til de andre rollene. Den som vil inn, må bygge en god relasjon til portvakten, ikke prøve å hoppe over henne.",
+          kilde: `${MOL}, avsnitt 2.5` }),
+        tall({ tittel: "Klagen på regningen", kap: "ol20", enhet: "kr", svar: fakt - ov * 1.15,
+          historie: `En privatkunde fikk et prisoverslag på ${kr(ov)}. Fakturaen kom på ${kr(fakt)}. Det er ikke avtalt noe tilleggsarbeid.`,
+          sporsmaal: "Hvor mange kroner kan kunden avvise etter prosentgrensen i håndverkertjenesteloven?",
+          kjent: [[fakt - ov, "Det er hele overskridelsen. Loven lar regningen ligge inntil 15 % over overslaget."], [ov * 1.15, "Det er taket. Spørsmålet er hvor mye fakturaen ligger over taket."]],
+          hint: ["Du regnet et slikt tak som montør.", `${MOL}, avsnitt 20.2.4 · håndverkertjenesteloven § 32.`, "Avvist beløp = faktura − overslag × 1,15."],
+          forklaring: `Taket er ${t0(ov)} × 1,15 = ${kr(ov * 1.15)}. Fakturaen ligger ${kr(fakt - ov * 1.15)} over. De kan kunden avvise, med mindre Nordlys kan vise til tilleggsarbeid etter §§ 9 og 33 eller til at det bare var gitt en uforpliktende prisantydning.`,
+          kilde: `${MOL}, avsnitt 20.2.4 · håndverkertjenesteloven §§ 32 og 33` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ma07",
+          sporsmaal: "Formidleren forklarer for laget: Hvorfor tas et prisavslag fra dekningsbidraget og ikke fra prisen?",
+          momenter: ["Prisen går ned, men det jobben koster, er det samme.", "Hele avslaget går derfor ut av dekningsbidraget.", "Et lite avslag i prosent av prisen blir et stort fall i prosent av dekningsbidraget."],
+          kilde: `${MOL}, kapittel 7` }
+      ];
+    },
+
+    /* ================= 3 FAGSKOLEINGENIØR ================= */
+    r3(r) {
+      const folk = velg(r, [
+        ["Sara Lien, lærling i andre læreår. Hun vil mye, men kan ennå ikke nok om oppgaven.", 1],
+        ["En ny montør i solcelleavdelingen, tredje uke. Han har verken erfaring med oppgaven eller lyst på den ennå.", 0],
+        ["En montør som kan serviceavtalene bedre enn noen, men som har mistet lysten.", 2],
+        ["Ronny Fjeld, formann med tjue år i faget. Han både kan og vil.", 3]]);
+      const stiler = ["Instruerende", "Overtalende (selgende)", "Deltagende", "Delegerende"];
+      const hvorfor = ["Instruerende passer når medarbeideren verken har kompetanse eller motivasjon.", "Overtalende passer når motivasjonen er der, men ikke kompetansen.", "Deltagende passer når kompetansen er der, men motivasjonen er svak.", "Delegerende passer når medarbeideren både kan og vil."];
+      const jobber = [["Ladepunkt", 1800, 2], ["Solcelleanlegg", 11100, 14], ["Serviceoppdrag", 1900, 6], ["Garasje", 8000, 50]];
+      return [
+        tall({ tittel: "Hva ladepunktet legger igjen", kap: "ok07", enhet: "kr", svar: 1800,
+          historie: "Planleggingstavla er låst. Et montert ladepunkt tar 2 montørtimer og materiell for 6 500 kr i innkjøp. Prisen er timer × 890 + materiell × 1,20. Montørtimen koster 640 kr i direkte lønn.",
+          sporsmaal: "Hva er dekningsbidraget per ladepunkt?",
+          kjent: [[500, "Materiellet selges med 20 % påslag. Prisen er 2 × 890 + 6 500 × 1,20."], [9580, "Det er prisen. Trekk fra materiellet og lønna til montøren."], [3080, "Du har trukket fra materiellet, men ikke lønna: 2 timer × 640 kr."]],
+          hint: ["Pris minus det som bare påløper hvis jobben tas.", `${OK}, kapittel 7. Nordlys' prismodell står i faktaarket.`, "Dekningsbidrag = pris − materiell − timer × 640."],
+          forklaring: "Pris: 2 × 890 + 6 500 × 1,20 = 9 580 kr. Dekningsbidrag: 9 580 − 6 500 − 2 × 640 = 1 800 kr.",
+          kilde: `${OK}, kapittel 7` }),
+        { type: "rekke", tittel: "Hvem får timene?", kap: "ok07",
+          historie: "Montørtimene er den knappe faktoren i mars. Fire typer oppdrag står i kø: " + jobber.map(j => `${j[0].toLowerCase()} (${kr(j[1])} i dekningsbidrag, ${j[2]} timer)`).join(", ") + ".",
+          sporsmaal: "Trykk oppdragene i den rekkefølgen de skal få timer, det beste først.",
+          ledd: blandet(r, jobber.map(j => j[0])), riktig: ["Ladepunkt", "Solcelleanlegg", "Serviceoppdrag", "Garasje"],
+          hint: ["Mest per oppdrag er ikke det samme som mest per time.", `${OK}, kapittel 7.`, "Regn dekningsbidrag per montørtime for hvert oppdrag, og ranger etter det."],
+          forklaring: "Per montørtime: ladepunkt 1 800 / 2 = 900 kr, solcelleanlegg 11 100 / 14 = 793 kr, serviceoppdrag 1 900 / 6 = 317 kr, garasje 8 000 / 50 = 160 kr. Rangeringen gir rekkefølgen. Antallet bestemmes av hvor mange kundene faktisk ber om.",
+          kilde: `${OK}, kapittel 7` },
+        tall({ tittel: "Serviceavdelingens nullpunkt", kap: "ok08", enhet: "oppdrag", svar: 288, toleranse: 0,
+          historie: "Tom Berg ber om hjelp. Et snittoppdrag i serviceavdelingen faktureres med 18 500 kr og har variable kostnader på 11 200 kr. De faste kostnadene er 2 100 000 kr i året.",
+          sporsmaal: "Hvor mange oppdrag må avdelingen ha i året for å gå i null?",
+          kjent: [[287, "2 100 000 / 7 300 = 287,7. Et halvt oppdrag finnes ikke, og 287 oppdrag dekker ikke de faste kostnadene. Rund opp."], [114, "Du har delt på prisen. Det er dekningsbidraget per oppdrag som skal dekke de faste kostnadene."], [188, "Du har delt på de variable kostnadene. Del på dekningsbidraget per oppdrag."]],
+          hint: ["Hvert oppdrag legger igjen et dekningsbidrag.", `${OK}, avsnitt 8.2. Øvingsheftet kapittel 8, oppgave 1.`, "Nullpunkt i antall = faste kostnader / dekningsbidrag per oppdrag. Rund opp."],
+          forklaring: "Dekningsbidrag per oppdrag: 18 500 − 11 200 = 7 300 kr. 2 100 000 / 7 300 = 287,7, altså 288 oppdrag.",
+          kilde: `${OK}, avsnitt 8.2` }),
+        tall({ tittel: "Kravet fra Kari", kap: "ok08", enhet: "oppdrag", svar: 329, toleranse: 0,
+          historie: "Avdelingen planlegger 210 oppdrag. Kari krever 300 000 kr i overskudd fra serviceavdelingen.",
+          sporsmaal: "Hvor mange oppdrag må til for å nå kravet?",
+          kjent: [[328, "(2 100 000 + 300 000) / 7 300 = 328,8. Rund opp, ellers nås ikke kravet."], [288, "Det er nullpunktet. Overskuddet må også dekkes av dekningsbidrag."], [42, "Det er bare oppdragene som gir selve overskuddet. De faste kostnadene må dekkes først."]],
+          hint: ["Ønsket overskudd behandles som en ekstra fast kostnad.", `${OK}, avsnitt 8.2.`, "Antall = (faste kostnader + ønsket resultat) / dekningsbidrag per oppdrag."],
+          forklaring: "(2 100 000 + 300 000) / 7 300 = 328,8, altså 329 oppdrag. Med 210 oppdrag går avdelingen mot et tap: 210 × 7 300 − 2 100 000 = −567 000 kr.",
+          kilde: `${OK}, avsnitt 8.2` }),
+        valg(r, { tittel: "Lede den som skal gjøre jobben", kap: "ol17",
+          historie: "Flere oppdrag krever at folk får nye oppgaver. " + folk[0],
+          sporsmaal: "Hvilken lederstil passer etter Hersey og Blanchard?",
+          alt: stiler.map((s, i) => i === folk[1] ? { t: s, ok: true } : { t: s, feil: hvorfor[i] + " Spør: kan medarbeideren oppgaven, og vil medarbeideren?" }),
+          hint: ["Stilen følger medarbeiderens modenhet, ikke lederens vane.", `${MOL}, avsnitt 17.5.3.`, "Modenhet er kompetanse og motivasjon i den oppgaven medarbeideren står i."],
+          forklaring: hvorfor[folk[1]] + " Lederen tilpasser seg medarbeiderens modenhetsnivå, ikke omvendt.",
+          kilde: `${MOL}, avsnitt 17.5.3` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ok07",
+          sporsmaal: "Formidleren forklarer for laget: Hvorfor går ladepunktet foran solcelleanlegget, når solcelleanlegget gir mest dekningsbidrag per oppdrag?",
+          momenter: ["Montørtimene er den knappe faktoren.", "Det som teller, er dekningsbidrag per montørtime, ikke per oppdrag.", "Rangeringen gir rekkefølgen, men antallet følger av hvor mange kundene ber om."],
+          kilde: `${OK}, kapittel 7` }
+      ];
+    },
+
+    /* ================= 4 SERVICELEDER ================= */
+    r4(r) {
+      const dager = velg(r, [5, 10, 15]);
+      const frigjort = 28000000 / 360 * dager;
+      const nivaa = velg(r, [
+        ["Serviceavtalen og fem års garanti som følger med anlegget", 2],
+        ["Det som står på databladet til ladeboksen: effekt, mål og kapsling", 1],
+        ["Ryktet til Nordlys og helhetsinntrykket kunden sitter igjen med", 3],
+        ["Behovet kunden vil ha dekket: trygghet for at anlegget er i orden", 0]]);
+      const navn = ["Kjerneproduktet", "Det konkrete produktet", "Det utvidete produktet", "Det uspesifiserte produktet (metaproduktet)"];
+      const nivaaTekst = ["Kjerneproduktet er behovet produktet først og fremst skal dekke.", "Det konkrete produktet er de fysiske kjennetegnene, det som kan telles, måles og leses på et datablad.", "Det utvidete produktet er tilleggsytelsene: garantier, serviceavtaler og opplæring.", "Det uspesifiserte produktet er status, service ut over det forventede og helhetsinntrykket."];
+      const konf = velg(r, [
+        ["To montører er enige om at anlegget skal dokumenteres skikkelig, men uenige om hvordan det bør gjøres.", 3],
+        ["To avdelinger slåss om hvem som får den ene nye servicebilen.", 2],
+        ["Ledergruppa er uenig om Nordlys skal prioritere vekst i service eller i prosjekt.", 1]]);
+      const typer = ["Verdikonflikt", "Målkonflikt", "Interessekonflikt", "Virkemiddelkonflikt"];
+      const typeTekst = ["Verdikonflikter handler om ulikt syn på hvilke verdier organisasjonen skal bygge på.", "Målkonflikter er uenighet om hvilke mål organisasjonen skal arbeide mot eller prioritere.", "Interessekonflikter er kamp om begrensede ressurser: det den ene vinner, taper den andre.", "Virkemiddelkonflikter oppstår når partene er enige om målet, men uenige om veien dit."];
+      return [
+        tall({ tittel: "Hvor lenge venter Nordlys?", kap: "ok04", enhet: "dager", svar: 54, toleranse: 0.1,
+          historie: "Nettbanken krever en kode. Balansen viser kundefordringer på 4 200 000 kr. Salgsinntekten er 22 400 000 kr uten merverdiavgift.",
+          sporsmaal: "Hva er kredittiden til kundene i dager? Boka regner året som 360 dager.",
+          kjent: [[67.5, "Kundefordringene er med merverdiavgift. Da må salget også ganges med 1,25 før du deler."], [54.75, "Boka regner året som 360 dager, ikke 365."]],
+          hint: ["Fordringene er fakturaer, og fakturaer har merverdiavgift.", `${OK}, avsnitt 4.2.`, "Kredittid kunder = kundefordringer × 360 / (salgsinntekt × 1,25)."],
+          forklaring: "4 200 000 × 360 / (22 400 000 × 1,25) = 1 512 000 000 / 28 000 000 = 54,0 dager.",
+          kilde: `${OK}, avsnitt 4.2` }),
+        tall({ tittel: "Tåler Nordlys regningene?", kap: "ok04", enhet: "%", svar: 6582650 * 100 / 4490000, toleranse: 0.1,
+          historie: "Omløpsmidlene er 6 582 650 kr (varelager 1 400 000, kundefordringer 4 200 000 og bank 982 650). Den kortsiktige gjelda er 4 490 000 kr.",
+          sporsmaal: "Hva er likviditetsgrad 1 i prosent, med én desimal?",
+          kjent: [[5182650 * 100 / 4490000, "Det er likviditetsgrad 2, der varelageret er trukket fra. Likviditetsgrad 1 bruker alle omløpsmidlene."], [4490000 * 100 / 6582650, "Brøken er snudd. Omløpsmidlene står over streken."]],
+          hint: ["Det som blir til penger innen et år, mot det som må betales innen et år.", `${OK}, avsnitt 4.2.2.`, "Likviditetsgrad 1 = omløpsmidler × 100 / kortsiktig gjeld."],
+          forklaring: "6 582 650 × 100 / 4 490 000 = 146,6 %. Normtallet i boka er 200 %, så Nordlys ligger under.",
+          kilde: `${OK}, avsnitt 4.2.2` }),
+        tall({ tittel: "Pengene som står hos kundene", kap: "ok06", enhet: "kr", svar: frigjort, toleranse: 10,
+          historie: `Du foreslår å fakturere samme dag som jobben er ferdig, og å purre. Da betaler kundene ${dager} dager raskere. Salget er 22 400 000 kr uten merverdiavgift, og alt selges på kreditt.`,
+          sporsmaal: "Hvor mange kroner frigjør det? Regn året som 360 dager.",
+          kjent: [[22400000 / 360 * dager, "Kundene betaler fakturaen med merverdiavgift. Gang salget med 1,25 først."]],
+          hint: ["Finn først hva én dags salg er verdt med merverdiavgift.", `${OK}, kapittel 6 (kundefordringer i kapitalbehovet).`, "Frigjort = salg med merverdiavgift × dager / 360."],
+          forklaring: `Salg med merverdiavgift: 22 400 000 × 1,25 = 28 000 000 kr. 28 000 000 × ${dager} / 360 = ${kr(frigjort)}.`,
+          kilde: `${OK}, kapittel 6` }),
+        valg(r, { tittel: "Hva kunden egentlig betaler for", kap: "ma06",
+          historie: "En kunde vurderer et billigere tilbud. Du må vise hva som skiller Nordlys. " + nivaa[0] + ".",
+          sporsmaal: "Hvilket av de fire produktnivåene hører dette til?",
+          alt: navn.map((n, i) => i === nivaa[1] ? { t: n, ok: true } : { t: n, feil: nivaaTekst[i] }),
+          hint: ["Produktet har fire lag, som en løk.", `${MOL}, avsnitt 6.2 og figur 6.1.`, "Innerst behovet, så det som kan måles, så tilleggsytelsene, ytterst helhetsinntrykket."],
+          forklaring: nivaaTekst[nivaa[1]],
+          kilde: `${MOL}, avsnitt 6.2 og figur 6.1` }),
+        valg(r, { tittel: "Krangelen på lageret", kap: "ol16",
+          historie: konf[0],
+          sporsmaal: "Hvilken type konflikt er dette etter læreboka?",
+          alt: typer.map((n, i) => i === konf[1] ? { t: n, ok: true } : { t: n, feil: typeTekst[i] }),
+          hint: ["Spør først: er partene enige om målet?", `${MOL}, kapittel 16.`, "Boka skiller mellom verdi-, mål-, interesse- og virkemiddelkonflikter."],
+          forklaring: typeTekst[konf[1]] + " Konflikter har sjelden bare én årsak, så de reelle årsakene må klarlegges før noen foreslår en løsning.",
+          kilde: `${MOL}, kapittel 16` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ok04",
+          sporsmaal: "Formidleren forklarer for laget: Hvordan kan en bedrift gå med overskudd og likevel mangle penger til lønn den femtende?",
+          momenter: ["Overskuddet måles med inntekter og kostnader, betalingsevnen med innbetalinger og utbetalinger.", "Salget står som kundefordringer til kunden betaler.", "Lang kredittid til kundene binder penger som bedriften trenger til lønn og leverandører."],
+          kilde: `${OK}, avsnitt 2.2.1 og 4.2.2` }
+      ];
+    },
+
+    /* ================= 5 DAGLIG LEDER ================= */
+    r5(r) {
+      return [
+        tall({ tittel: "Hva folkene koster", kap: "ok09", enhet: "kr", svar: 11010000, toleranse: 5,
+          historie: "Budsjettmappa for 2027 er låst. Lønna etter lønnsoppgjøret er 7 500 000 kr i året. Boka regner sosiale kostnader på toppen.",
+          sporsmaal: "Hva blir den samlede lønnskostnaden?",
+          kjent: [[7500000 * 1.141, "Arbeidsgiveravgiften er bare én del av de sosiale kostnadene. Boka regner 46,8 % i alt."], [3510000, "Det er de sosiale kostnadene alene. Lønna skal også med."]],
+          hint: ["Feriepenger, arbeidsgiveravgift, pensjon, helligdager, forsikring og sykepenger.", `${OK}, kapittel 9. Øvingsheftet kapittel 9, oppgave 2 b.`, "Samlet lønnskostnad = lønn × 1,468."],
+          forklaring: "7 500 000 × 1,468 = 11 010 000 kr. De sosiale kostnadene er 3 510 000 kr.",
+          kilde: `${OK}, kapittel 9` }),
+        tall({ tittel: "Avviket banken vil spørre om", kap: "ok09", enhet: "kr", svar: -136000, toleranse: 0,
+          historie: "Andre driftskostnader var budsjettert til 1 250 000 kr. Regnskapet viser 1 386 000 kr.",
+          sporsmaal: "Hva er avviket i kroner? Ta med fortegnet.",
+          kjent: [[136000, "Beløpet er riktig, men fortegnet mangler. For kostnader er avviket budsjett − regnskap, og høyere kostnad enn budsjettert er dårlig for resultatet."]],
+          hint: ["Positivt avvik er bra for resultatet, negativt er dårlig.", `${OK}, kapittel 9 om budsjettkontroll.`, "Kostnad: avvik = budsjett − regnskap."],
+          forklaring: "1 250 000 − 1 386 000 = −136 000 kr, som er −10,9 % av budsjettet.",
+          kilde: `${OK}, kapittel 9` }),
+        tall({ tittel: "Avkastningen på alt som er satt inn", kap: "ok04", enhet: "%", svar: 1400000 * 100 / 9791325, toleranse: 0.1,
+          historie: "Resultatet før skatt er 1 167 500 kr, og rentekostnadene er 232 500 kr. Totalkapitalen var 9 400 000 kr 1. januar og 10 182 650 kr 31. desember.",
+          sporsmaal: "Hva er totalkapitalrentabiliteten i prosent, med én desimal?",
+          kjent: [[1167500 * 100 / 9791325, "Rentekostnadene skal legges til resultatet. Totalkapitalen har tjent både eiernes og långivernes avkastning."], [1400000 * 100 / 10182650, "Bruk gjennomsnittlig totalkapital: (9 400 000 + 10 182 650) / 2."]],
+          hint: ["Både eierne og banken har satt inn kapital.", `${OK}, avsnitt 4.2.1.`, "(Resultat før skatt + rentekostnader) × 100 / gjennomsnittlig totalkapital."],
+          forklaring: "(1 167 500 + 232 500) × 100 / ((9 400 000 + 10 182 650) / 2) = 1 400 000 × 100 / 9 791 325 = 14,3 %.",
+          kilde: `${OK}, avsnitt 4.2.1` }),
+        tall({ tittel: "Hvor mye eier Nordlys selv?", kap: "ok04", enhet: "%", svar: 2892650 * 100 / 10182650, toleranse: 0.1,
+          historie: "Egenkapitalen er 2 892 650 kr ved årets slutt. Sum eiendeler er 10 182 650 kr.",
+          sporsmaal: "Hva er egenkapitalandelen i prosent, med én desimal?",
+          kjent: [[2.52, "Det er gjeldsgraden (gjeld delt på egenkapital). Egenkapitalandelen er egenkapital i prosent av totalkapitalen."]],
+          hint: ["Hvor stor del av eiendelene som er betalt med egne penger.", `${OK}, avsnitt 4.2.4.`, "Egenkapitalandel = egenkapital × 100 / totalkapital."],
+          forklaring: "2 892 650 × 100 / 10 182 650 = 28,4 %. Boka nevner 35 %, så banken vil spørre om dette.",
+          kilde: `${OK}, avsnitt 4.2.4` }),
+        valg(r, { tittel: "Møtet der alle var enige", kap: "ol19",
+          historie: "Ledergruppa vedtok satsingen på ti minutter. Ingen stilte kritiske spørsmål, og den ene som nølte, ble møtt med latter.",
+          sporsmaal: "Hva kaller læreboka dette?",
+          alt: [{ t: "Gruppetenkning", ok: true }, { t: "Motkultur", feil: "En motkultur står i opposisjon til den dominerende kulturen. Her er problemet at ingen sier imot." }, { t: "Virkemiddelkonflikt", feil: "Her er det ingen åpen konflikt. Problemet er at gruppa unngår den." }, { t: "Delegerende ledelse", feil: "Det er en lederstil hos Hersey og Blanchard, ikke en måte en gruppe tenker på." }],
+          hint: ["En sterk kultur har også en farlig side.", `${MOL}, avsnitt 19.5.`, "Gruppa setter enighet framfor alt og tester ikke forslagene kritisk."],
+          forklaring: "Gruppetenkning setter konsensus framfor alt. Gruppa lar være å teste og vurdere forslag kritisk, og den som likevel gjør det, kan bli stemplet som illojal.",
+          kilde: `${MOL}, avsnitt 19.5` }),
+        valg(r, { tittel: "Hvem og hva utenfor bedriften", kap: "ol13",
+          historie: "Banken spør hva som kan velte budsjettet utenfra. Du sorterer i aktører, som du kan forhandle med, og prosesser, som du må tilpasse deg.",
+          sporsmaal: "Hvilken av disse er en prosess og ikke en aktør?",
+          alt: [{ t: "Den teknologiske utviklingen", ok: true }, { t: "Banken", feil: "Banken er en aktør: noen utenfor bedriften som har noe å tjene eller tape på hvordan det går." }, { t: "Grossisten som leverer materiellet", feil: "Leverandøren er en aktør i interessentmodellen." }, { t: "Kundene", feil: "Kundene er aktører. Til sammen utgjør de bedriftens marked." }],
+          hint: ["Aktører er noen. Prosesser er noe.", `${MOL}, kapittel 13, figur 13.1 til 13.3.`, "Interessentmodellen viser aktørene. Prosessene står i avsnitt 13.9 til 13.14."],
+          forklaring: "Kunder, leverandører, konkurrenter, bank og myndigheter er aktører. Politiske, samfunnsøkonomiske, teknologiske, kulturelle og miljømessige forhold er prosesser.",
+          kilde: `${MOL}, kapittel 13` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ok04",
+          sporsmaal: "Formidleren forklarer for laget: Hva er forskjellen på totalkapitalrentabilitet og egenkapitalrentabilitet, og hvorfor spør banken om egenkapitalandelen?",
+          momenter: ["Totalkapitalrentabiliteten måler avkastningen på all kapital, og derfor legges rentekostnadene til resultatet.", "Egenkapitalrentabiliteten måler avkastningen på eiernes kapital, med resultat før skatt over streken.", "Egenkapitalandelen viser hvor mye bedriften tåler å tape før det går ut over långiverne."],
+          kilde: `${OK}, avsnitt 4.2.1 og 4.2.4` }
+      ];
+    },
+
+    /* ================= 6 KONSERNDIREKTØR ================= */
+    r6(r) {
+      return [
+        tall({ tittel: "Når er pengene tilbake?", kap: "ok10", enhet: "år", svar: 480000 / 170000, toleranse: 0.01,
+          historie: "Styrepapirene er låst. Termograferingsutstyret koster 480 000 kr i dag. Det gir 260 000 kr mer inn og 90 000 kr mer ut hvert år i fire år. Så er det verdiløst.",
+          sporsmaal: "Hva er tilbakebetalingstiden i år, med to desimaler?",
+          kjent: [[480000 / 260000, "Bruk nettoen. Det som kommer inn, minus det som går ut, er 170 000 kr i året."]],
+          hint: ["Det er nettoen per år som betaler tilbake investeringen.", `${OK}, kapittel 10, tabell 10.1.`, "Tilbakebetalingstid = investeringsutgift / årlig innbetalingsoverskudd."],
+          forklaring: "Innbetalingsoverskuddet er 260 000 − 90 000 = 170 000 kr. 480 000 / 170 000 = 2,82 år.",
+          kilde: `${OK}, kapittel 10` }),
+        tall({ tittel: "Hva er år fire verdt i dag?", kap: "ok10", enhet: "kr", svar: 170000 / Math.pow(1.1, 4), toleranse: 5,
+          historie: "Konsernet krever 10 % avkastning. Pengene som kommer om fire år, er mindre verdt enn penger i dag.",
+          sporsmaal: "Hva er nåverdien av de 170 000 kronene som kommer i år 4?",
+          kjent: [[170000 / 1.4, "Renten skal opphøyes, ikke ganges med antall år: 1,10 × 1,10 × 1,10 × 1,10 = 1,4641."], [170000 * 1.4641, "Du har regnet framover i tid. Nåverdi betyr å dele, ikke gange."]],
+          hint: ["Jo lenger fram, desto mer må beløpet deles på.", `${OK}, kapittel 10.`, "Nåverdi = beløp / (1 + renten) opphøyd i antall år."],
+          forklaring: "170 000 / 1,10⁴ = 170 000 / 1,4641 = 116 112 kr.",
+          kilde: `${OK}, kapittel 10` }),
+        tall({ tittel: "Hele investeringen i dagens kroner", kap: "ok10", enhet: "kr", svar: 58877, toleranse: 25,
+          historie: "Gjør det samme for alle fire årene, legg sammen og trekk fra det utstyret koster i dag.",
+          sporsmaal: "Hva er nåverdien av investeringen ved 10 %?",
+          kjent: [[200000, "Du har lagt sammen uten å diskontere: 4 × 170 000 − 480 000. Hvert år må først regnes om til dagens kroner."], [538877, "Det er summen av de diskonterte beløpene. Trekk fra investeringsutgiften."]],
+          hint: ["År 0 diskonteres ikke.", `${OK}, kapittel 10.`, "Nåverdi = sum av diskonterte innbetalingsoverskudd − investeringsutgift."],
+          forklaring: "154 545 + 140 496 + 127 724 + 116 112 = 538 877 kr. 538 877 − 480 000 = 58 877 kr.",
+          kilde: `${OK}, kapittel 10` }),
+        valg(r, { tittel: "Innstillingen til styret", kap: "ok10",
+          historie: "Nåverdien er 58 877 kr ved 10 %. Ved 16 % er den −4 309 kr.",
+          sporsmaal: "Hva sier du til styret?",
+          alt: [{ t: "Investeringen er lønnsom ved kravet på 10 %, og internrenten ligger mellom 10 og 16 %", ok: true }, { t: "Investeringen er ulønnsom, fordi nåverdien er negativ ved 16 %", feil: "Kravet er 10 %, ikke 16 %. Ved kravet er nåverdien positiv." }, { t: "Investeringen er lønnsom uansett krav, fordi tilbakebetalingstiden er under tre år", feil: "Tilbakebetalingstiden ser ikke på når pengene kommer. Ved et krav over internrenten blir nåverdien negativ." }, { t: "Det kan ikke avgjøres uten avskrivningene", feil: "Avskrivninger står ikke i kontantstrømmen. Investeringsutgiften er allerede med i år 0." }],
+          hint: ["Internrenten er den renten som gir nåverdi lik null.", `${OK}, avsnitt 10.3.`, "Positiv nåverdi ved kravet betyr lønnsom. Internrenten ligger der nåverdien skifter fortegn."],
+          forklaring: "Nåverdien er positiv ved avkastningskravet, så investeringen er lønnsom. Nåverdien skifter fortegn mellom 10 og 16 %, så internrenten ligger der (om lag 15,6 %).",
+          kilde: `${OK}, kapittel 10` }),
+        valg(r, { tittel: "Satsingen på elbileiere", kap: "ma05",
+          historie: "Markedsavdelingen foreslår målgruppen «alle som har elbil i Oslo». Nordlys har 12 montører på ett sted, og kalenderen er full.",
+          sporsmaal: "Hvilket av de fire kravene til en målgruppe oppfyller segmentet klart?",
+          alt: [{ t: "Stort nok", ok: true }, { t: "Tilgjengelig", feil: "12 montører på ett sted kan verken kjøre til hele Oslo eller annonsere mot hele segmentet." }, { t: "Tilpasset bedriftens kapasitet", feil: "Kalenderen er full. Segmentet er altfor stort for kapasiteten." }, { t: "Identifiserbart og målbart", feil: "Bare delvis. Antall elbiler kan telles, men ikke hvem som har parkeringsplass eller eier boligen." }],
+          hint: ["Et segment er noe du finner. En målgruppe er noe du velger.", `${MOL}, avsnitt 5.7.`, "De fire kravene: identifiserbart og målbart, tilgjengelig, stort nok, tilpasset kapasiteten."],
+          forklaring: "Segmentet er stort nok, og det er problemet: det største segmentet er ikke alltid det mest lønnsomme. Det må snevres inn til noe Nordlys kan nå og betjene.",
+          kilde: `${MOL}, avsnitt 5.7` }),
+        valg(r, { tittel: "Én endring, fire hjørner", kap: "ol12",
+          historie: "Konsernet innfører digital timeregistrering i alle selskapene.",
+          sporsmaal: "Hvilket hjørne i Leavitts diamant endres først?",
+          alt: [{ t: "Teknologi", ok: true }, { t: "Mål", feil: "Målene er de samme. Det er verktøyet og rutinene som endres." }, { t: "Deltagere", feil: "Deltagerne blir påvirket, men endringen starter i verktøyet." }, { t: "Sosial struktur", feil: "Arbeidsdelingen flytter seg som en følge, men endringen starter i verktøyet." }],
+          hint: ["Fire elementer som henger sammen.", `${MOL}, kapittel 12, figur 12.1.`, "Mål, teknologi, deltagere og sosial struktur. Teknologi er også administrative verktøy og rutiner."],
+          forklaring: "Timeregistreringen er teknologi. Men den endrer også arbeidsdelingen på kontoret og kravene til montørene. Bruk diamanten som sjekkliste før en endring.",
+          kilde: `${MOL}, avsnitt 12.3 og figur 12.1` }),
+        { type: "laer", tittel: "Lær det bort", kap: "ok10",
+          sporsmaal: "Formidleren forklarer for laget: Hvorfor er en krone om fire år mindre verdt enn en krone i dag, og hva gjør et høyere avkastningskrav med nåverdien?",
+          momenter: ["Penger i dag kan settes i arbeid og gi avkastning i mellomtiden.", "Derfor deles framtidige beløp på (1 + renten) opphøyd i antall år.", "Jo høyere avkastningskrav, desto lavere nåverdi."],
+          kilde: `${OK}, kapittel 10` }
+      ];
+    }
+  };
+
+  /* ---- tilstand og regler ---- */
+  const status = (id) => B.rom[id] || null;
+  const aapent = (i) => i === 0 || !!(B.rom[trinn[i - 1].id] && B.rom[trinn[i - 1].id].beste !== undefined);
+  const tittelNaa = () => { let t = null; for (const x of trinn) if (B.rom[x.id] && B.rom[x.id].beste !== undefined) t = x; return t; };
+  const stjerner = (p, m) => { const a = m ? p / m : 0; return a >= 0.85 ? 3 : a >= 0.65 ? 2 : 1; };
+  const sumPoeng = () => trinn.reduce((s, x) => s + ((B.rom[x.id] || {}).beste || 0), 0);
+  const antallFerdig = () => trinn.filter(x => B.rom[x.id] && B.rom[x.id].beste !== undefined).length;
+  function lesTall(s) {
+    s = String(s).trim().replace(/[\s  ]/g, "").replace(/[−–]/g, "-").replace(/(kr|%|år|dager|oppdrag)$/i, "").replace(",", ".");
+    if (!/^-?\d+(\.\d+)?$/.test(s)) return null; return Number(s);
+  }
+  const naer = (a, b, tol) => Math.abs(a - b) <= tol + 1e-9;
+  function kode(id, p, lag) { let x = 7; for (const c of id + "|" + p + "|" + lag) x = (x * 33 + c.charCodeAt(0)) % 9973; return String(x).padStart(4, "0"); }
+  const ROLLER = { 3: [["A leser saken høyt", "B regner", "C forklarer svaret"], ["B leser saken høyt", "C regner", "A forklarer svaret"], ["C leser saken høyt", "A regner", "B forklarer svaret"]],
+    2: [["A leser og forklarer", "B regner"], ["B leser og forklarer", "A regner"]], 1: [[]] };
+
+  /* ---- lagkonkurranse: sentral lagtavle ---- */
+  const renLag = (s) => String(s || "").replace(/[^A-Za-zÆØÅæøå0-9 _-]/g, "").replace(/\s+/g, " ").trim().slice(0, 24);
+  const renKode = (s) => String(s || "").toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 16);
+  const nett = () => { const O = (LOM.oppsett && LOM.oppsett.telling) || {}; return O.url && O.nokkel ? O : null; };
+  const kanSende = () => !!nett() && renKode(B.klasse).length >= 3 && renLag(B.lag).length >= 2;
+  function kall(sti, kropp) {
+    const O = nett(); if (!O) return Promise.reject(new Error("av"));
+    return fetch(O.url.replace(/\/$/, "") + "/rest/v1/" + sti, { method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": O.nokkel, "Authorization": "Bearer " + O.nokkel, "Prefer": "return=minimal" },
+      body: JSON.stringify(kropp) }).then(r => { if (!r.ok) throw new Error("svar " + r.status); return r.status === 204 || r.status === 201 ? null : r.json().catch(() => null); });
+  }
+  function sendResultat(id, poeng, maks, hint) {
+    if (!kanSende()) return Promise.resolve(false);
+    return kall("lom_breakout", { klasse: renKode(B.klasse), lag: renLag(B.lag), rom: id, poeng, maks, hint: Math.min(40, hint), versjon: String((LOM.oppsett && LOM.oppsett.versjon) || "").slice(0, 40) }).then(() => true, () => false);
+  }
+  const hentTavle = () => kall("rpc/lom_breakout_tavle", { kode: renKode(B.klasse) });
+
+  /* ---- visning ---- */
+  function vis(rot, H, del, ekstra) {
+    const el = H.el;
+    if (del === "bli" && ekstra) { const k = renKode(decodeURIComponent(ekstra)); if (k.length >= 3) { B.klasse = k; lagre(); } H.gaaTil("/breakout"); return; }
+    const tell = (n) => { try { LOM.telling && LOM.telling.hendelse(n); } catch (e) { } };
+    if (del && rom[del] && aapent(trinn.findIndex(x => x.id === del))) return visRom(del);
+    return visStige();
+
+    function stigeSvg() {
+      const naa = antallFerdig();
+      return el("div", { class: "bo-stige" }, trinn.map((x, i) => {
+        const s = status(x.id), ferdig = s && s.beste !== undefined, kan = aapent(i);
+        return el("div", { class: "bo-trinn" + (ferdig ? " ferdig" : kan ? " aapen" : " laast"), style: `--f:${x.farge}`, onclick: kan ? () => H.gaaTil("/breakout/" + x.id) : null },
+          el("div", { class: "bo-node" }, ferdig ? "✓" : kan ? x.ikon : "🔒"),
+          el("div", { class: "bo-t" },
+            el("small", null, `Trinn ${x.nr} · ${x.rolle}`),
+            el("b", null, x.tittel),
+            el("span", null, kan ? x.ingress : `Åpnes når «${trinn[i - 1].tittel}» er løst.`),
+            el("em", null, x.fag),
+            ferdig ? el("div", { class: "bo-res" }, "★".repeat(stjerner(s.beste, s.maks)) + "☆".repeat(3 - stjerner(s.beste, s.maks)), ` ${s.beste} av ${s.maks} poeng`, s.rep ? el("span", { class: "merkelapp", title: "Spilt igjen en senere dag" }, "🔁 repetert") : null) : null),
+          kan ? el("span", { class: "bo-pil" }, ferdig ? "Spill igjen" : i === naa ? "Start" : "Åpne") : null);
+      }));
+    }
+
+    function visStige() {
+      const t = tittelNaa();
+      const navn = el("input", { class: "felt", type: "text", maxlength: "24", placeholder: "Lagnavn, for eksempel Kortslutning", value: B.lag || "" });
+      navn.addEventListener("change", () => { B.lag = renLag(navn.value); navn.value = B.lag; lagre(); visStige(); });
+      const kodeFelt = el("input", { class: "felt", type: "text", maxlength: "16", placeholder: "Klassekode, for eksempel 3EKD-H26", value: B.klasse || "", autocapitalize: "characters" });
+      kodeFelt.addEventListener("change", () => { B.klasse = renKode(kodeFelt.value); kodeFelt.value = B.klasse; lagre(); visStige(); });
+      const tavleBoks = el("div", { class: "bo-tavle" });
+      const lastTavle = () => {
+        tavleBoks.replaceChildren(el("p", { class: "kilder" }, "Henter tavla ..."));
+        hentTavle().then(rader => {
+          if (!rader || !rader.length) { tavleBoks.replaceChildren(el("p", { class: "kilder" }, "Ingen lag har levert på denne koden ennå. Løs et rom, så står dere først.")); return; }
+          const mitt = renLag(B.lag);
+          tavleBoks.replaceChildren(el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Plass"), el("th", null, "Lag"), el("th", { class: "num" }, "Rom"), el("th", { class: "num" }, "Poeng"), el("th", { class: "num" }, "Hint"))),
+            el("tbody", null, rader.map((x, i) => el("tr", { class: x.lag === mitt ? "bo-mitt" : "" }, el("td", null, i < 3 ? ["🥇", "🥈", "🥉"][i] : String(i + 1)), el("td", null, x.lag), el("td", { class: "num" }, `${x.rom} av ${trinn.length}`), el("td", { class: "num" }, String(x.poeng)), el("td", { class: "num" }, String(x.hint)))))));
+        }, () => tavleBoks.replaceChildren(el("p", { class: "kilder" }, "Fikk ikke hentet tavla. Sjekk nettet og prøv igjen.")));
+      };
+      const delLenke = () => { const adr = ((LOM.oppsett && LOM.oppsett.nettadresse) || location.href.split("#")[0]) + "#/breakout/bli/" + encodeURIComponent(renKode(B.klasse));
+        const ok = () => H.melding("Lenka er kopiert. Del den med klassen.");
+        try { navigator.clipboard.writeText(adr).then(ok, () => window.prompt("Kopier lenka:", adr)); } catch (e) { window.prompt("Kopier lenka:", adr); } };
+      const harKode = renKode(B.klasse).length >= 3;
+      const konkurranse = nett() ? el("div", { class: "kort bo-konk" },
+        el("h2", null, "Lagkonkurranse"),
+        el("p", null, harKode ? `Dere konkurrerer på koden ${renKode(B.klasse)}. Hver gang dere løser et rom, sendes lagnavn, rom, poeng og antall hint til tavla.` : "Skriv inn en klassekode for å konkurrere mot andre lag. Læreren velger koden, eller dere lager en selv og deler lenka."),
+        el("div", { class: "bo-lag" }, el("label", null, el("small", null, "Klassekode (3 til 16 tegn: bokstaver, tall og bindestrek)"), kodeFelt),
+          harKode ? el("div", { class: "knapperad" }, el("button", { class: "knapp", onclick: delLenke }, "Kopier lenke til klassen"), el("button", { class: "knapp", onclick: lastTavle }, "Oppdater tavla")) : null),
+        harKode && renLag(B.lag).length < 2 ? el("p", { class: "bo-feil" }, "Skriv inn et lagnavn øverst, ellers kommer dere ikke på tavla.") : null,
+        harKode ? tavleBoks : null,
+        el("p", { class: "kilder" }, "Tavla viser lagnavn og poeng for alle som har koden. Bruk et lagnavn, ikke egne navn. Uten klassekode sendes ingenting om laget.")) : null;
+      if (konkurranse && harKode) lastTavle();
+      const antKnapper = [1, 2, 3].map(n => el("button", { class: "knapp" + (B.antall === n ? " primar" : ""), onclick: () => { B.antall = n; lagre(); visStige(); } }, n === 1 ? "Alene" : `${n} på laget`));
+      const topp = el("div", { class: "kort bo-topp" },
+        el("div", { class: "merkelapp" }, "Breakout · Nordlys Elektro AS"),
+        el("h1", null, "Tre hoder, én skjerm"),
+        el("p", null, "Seks rom, fra montør til konserndirektør. Hvert rom er en sak fra hverdagen i en elektrobedrift, og hver lås krever noe fra økonomi, markedsføring eller ledelse. Svaret på én lås åpner den neste."),
+        el("div", { class: "bo-regler" },
+          el("div", null, el("b", null, "1 Hodet først"), el("span", null, "Bli enige om et svar før dere slår opp. Kalkulator til regningen er greit. Oppsettet skal komme fra dere.")),
+          el("div", null, el("b", null, "2 Hint koster"), el("span", null, `Hvert hint koster ${POENG.hint} av ${POENG.laas} poeng. Det første er et stikkord, det andre sier hvor i boka, det tredje viser framgangsmåten.`)),
+          el("div", null, el("b", null, "3 Lær det bort"), el("span", null, "Hvert rom ender med at én forklarer for de andre. Det du kan forklare uten boka, sitter."))),
+        el("div", { class: "bo-lag" },
+          el("label", null, el("small", null, "Lagnavn (bruk ikke egne navn)"), navn),
+          el("div", { class: "knapperad" }, antKnapper)),
+        el("div", { class: "drift-tall" },
+          el("div", null, el("b", null, t ? t.rolle : "Lærling"), el("small", null, "tittelen deres nå")),
+          el("div", null, el("b", null, `${antallFerdig()} av ${trinn.length}`), el("small", null, "rom løst")),
+          el("div", null, el("b", null, String(sumPoeng())), el("small", null, "poeng i alt"))),
+        el("p", { class: "kilder", style: "margin:10px 0 0" }, "Hvorfor slik: å hente svaret fram fra eget hode gir mer læring enn å lese om igjen (Karpicke og Blunt, Science 2011). KI og oppslag brukes til å kontrollere etterpå, ikke til å finne svaret."));
+      const tavle = antallFerdig() ? el("div", { class: "kort" },
+        el("h2", null, "Resultatene deres"),
+        el("table", { class: "tab" }, el("thead", null, el("tr", null, el("th", null, "Rom"), el("th", { class: "num" }, "Poeng"), el("th", { class: "num" }, "Hint"), el("th", { class: "num" }, "Ganger"), el("th", null, "Kode"))),
+          el("tbody", null, trinn.filter(x => status(x.id) && status(x.id).beste !== undefined).map(x => { const s = status(x.id); return el("tr", null, el("td", null, `${x.nr} ${x.tittel}`), el("td", { class: "num" }, `${s.beste} av ${s.maks}`), el("td", { class: "num" }, String(s.hint)), el("td", { class: "num" }, String(s.ganger)), el("td", null, kode(x.id, s.beste, B.lag || ""))); }))),
+        el("p", { class: "kilder" }, "Koden hører til lagnavnet og poengsummen. Les den opp når lagene sammenlikner i timen."),
+        el("div", { class: "knapperad" }, el("button", { class: "knapp", onclick: delResultat }, "Kopier resultatet"))) : null;
+      rot.replaceChildren(H.verktoylinje([["← Forside", () => H.gaaTil("/")]]), topp, stigeSvg(), ...(konkurranse ? [konkurranse] : []), ...(tavle ? [tavle] : []), H.bunn());
+    }
+
+    function delResultat() {
+      const linjer = trinn.filter(x => status(x.id) && status(x.id).beste !== undefined).map(x => { const s = status(x.id); return `Rom ${x.nr} «${x.tittel}»: ${s.beste} av ${s.maks} poeng, ${s.hint} hint, kode ${kode(x.id, s.beste, B.lag || "")}`; });
+      const tekst = `Breakout LØM · ${B.lag || "Lag uten navn"} · ${(tittelNaa() || { rolle: "Lærling" }).rolle}\n` + linjer.join("\n");
+      const ferdig = () => H.melding("Resultatet er kopiert. Lim det inn i Teams.");
+      try { navigator.clipboard.writeText(tekst).then(ferdig, () => window.prompt("Kopier resultatet:", tekst)); } catch (e) { window.prompt("Kopier resultatet:", tekst); }
+    }
+
+    function visRom(id) {
+      const T = trinn.find(x => x.id === id), forrige = status(id) || { ganger: 0 };
+      const frø = `${id}|${forrige.ganger || 0}`;
+      const laaser = rom[id](rng(frø));
+      const maks = laaser.reduce((s, l) => s + (l.type === "laer" ? l.momenter.length * POENG.moment : POENG.laas), 0);
+      const K = laaser.map(() => ({ ok: false, hint: 0, feil: 0, poeng: 0, melding: "", valgt: [] }));
+      let naa = 0;
+      tell("breakout-start-" + id);
+      const boks = el("div");
+      const roller = (i) => (ROLLER[B.antall] || ROLLER[3])[i % (ROLLER[B.antall] || ROLLER[3]).length];
+      const poengNaa = () => K.reduce((s, k) => s + k.poeng, 0);
+      const verdi = (k) => Math.max(POENG.minst, POENG.laas - k.hint * POENG.hint - k.feil * POENG.feil);
+
+      function ferdigRom() {
+        const p = poengNaa(), hint = K.reduce((s, k) => s + k.hint, 0), s = B.rom[id] || {};
+        const forsteGang = s.beste === undefined;
+        const rep = !forsteGang && s.forst && s.forst < idag();
+        B.rom[id] = { beste: Math.max(p, s.beste || 0), maks, hint: forsteGang || p >= (s.beste || 0) ? hint : s.hint, ganger: (s.ganger || 0) + 1, forst: s.forst || idag(), sist: idag(), rep: s.rep || rep };
+        lagre(); tell("breakout-ferdig-" + id);
+        const sendt = el("p", { class: "kilder" }, kanSende() ? "Sender resultatet til lagtavla ..." : "");
+        if (kanSende()) sendResultat(id, p, maks, hint).then(ok => { sendt.textContent = ok ? `Resultatet står på lagtavla for ${renKode(B.klasse)}.` : "Fikk ikke sendt resultatet til lagtavla. Det er lagret på denne enheten."; });
+        try { LOM.spill && LOM.spill.hendelse("breakout", { id, tittel: T.tittel, poeng: p, maks, alle: antallFerdig() === trinn.length, rep }); } catch (e) { }
+        const st = stjerner(p, maks), neste = trinn[T.nr];
+        H.feiring(forsteGang ? `Dere er nå ${T.rolle.toLowerCase()}` : rep ? "Repetert. Det er slik det fester seg." : "Rommet er løst igjen", `${p} av ${maks} poeng, ${"★".repeat(st)}${"☆".repeat(3 - st)}.`);
+        boks.replaceChildren(el("div", { class: "kort resultatboks bestaatt bo-slutt" },
+          el("div", { class: "bo-node stor", style: `--f:${T.farge}` }, T.ikon),
+          el("h2", null, `«${T.tittel}» er løst`),
+          el("div", { class: "bo-stjerner" }, "★".repeat(st) + "☆".repeat(3 - st)),
+          el("p", null, `${p} av ${maks} poeng med ${hint} hint. ${st === 3 ? "Dette sitter." : "Spill rommet igjen i morgen. Da merker dere hva som sitter."}`),
+          sendt,
+          el("p", { class: "kilder" }, "Til i morgen: hver av dere skriver ned de tre viktigste tingene fra rommet, uten å se. Sammenlikn så med boka."),
+          el("div", { class: "knapperad" },
+            neste ? el("button", { class: "knapp primar", onclick: () => H.gaaTil("/breakout/" + neste.id) }, `Neste trinn: ${neste.rolle}`) : null,
+            el("button", { class: "knapp", onclick: () => visRom(id) }, "Spill igjen"),
+            el("button", { class: "knapp", onclick: () => H.gaaTil("/breakout") }, "Til stigen"))));
+        window.scrollTo(0, 0);
+      }
+
+      function tegn() {
+        const L = laaser[naa], k = K[naa], rl = roller(naa);
+        const rad = el("div", { class: "bo-laaser" }, laaser.map((l, i) => el("span", { class: "bo-laas" + (K[i].ok ? " aapen" : i === naa ? " naa" : ""), title: l.tittel }, K[i].ok ? "🔓" : l.type === "laer" ? "🎓" : "🔒")));
+        const hode = el("div", { class: "kort bo-hode", style: `--f:${T.farge}` },
+          el("div", { class: "bo-hode-rad" }, el("span", { class: "merkelapp" }, `Trinn ${T.nr} · ${T.rolle}`), el("span", { class: "bo-poeng" }, `${poengNaa()} poeng`)),
+          el("h1", null, T.tittel), naa === 0 ? el("p", null, T.ingress) : null, rad);
+        const kapLenke = L.kap ? el("a", { class: "drift-kap", href: `#/kap/${L.kap}/les`, target: "_blank", rel: "noopener" }, "Åpne kapitlet i ny fane") : null;
+        const hintBoks = el("div", { class: "bo-hint" },
+          L.hint ? L.hint.slice(0, k.hint).map((h, i) => el("p", null, el("b", null, ["Stikkord: ", "Hvor: ", "Framgangsmåte: "][i]), h)) : null,
+          L.hint && k.hint >= 2 && !k.ok ? kapLenke : null,
+          L.hint && !k.ok && k.hint < L.hint.length ? el("button", { class: "knapp liten", onclick: () => { k.hint++; tegn(); } }, `Hint ${k.hint + 1} av ${L.hint.length} (−${POENG.hint} poeng)`) : null);
+        const svarBoks = el("div", { class: "bo-svar" });
+        const fyll = (...barn) => { for (const x of barn.flat(3)) if (x !== null && x !== undefined && x !== false) svarBoks.append(x); };   // nettleserens append() pakker ikke ut lister og skriver «null»
+        const riktig = () => { k.ok = true; k.poeng = verdi(k); k.melding = ""; tegn(); };
+        const feil = (m) => { k.feil++; k.melding = m; tegn(); };
+
+        if (L.type === "tall" && !k.ok) {
+          const inn = el("input", { class: "felt bo-kode", type: "text", inputmode: "decimal", autocomplete: "off", placeholder: "Koden", "aria-label": "Svar" });
+          const sjekk = () => { const v = lesTall(inn.value);
+            if (v === null) { k.melding = "Skriv bare tallet."; tegn(); return; }
+            if (naer(v, L.svar, L.toleranse)) return riktig();
+            const kj = (L.kjent || []).find(x => naer(v, x[0], Math.max(L.toleranse, Math.abs(x[0]) * 0.002, 0.05)));
+            feil(kj ? kj[1] : v > L.svar ? "For høyt. Les saken en gang til, og bli enige om oppsettet." : "For lavt. Les saken en gang til, og bli enige om oppsettet."); };
+          inn.addEventListener("keydown", (e) => { if (e.key === "Enter") sjekk(); });
+          fyll(el("div", { class: "bo-inn" }, inn, el("span", { class: "bo-enhet" }, L.enhet || ""), el("button", { class: "knapp primar", onclick: sjekk }, "Lås opp")));
+          setTimeout(() => { try { inn.focus({ preventScroll: true }); } catch (e) { } }, 30);
+        } else if (L.type === "valg" && !k.ok) {
+          fyll(el("div", { class: "drift-valg" }, L.alt.map((a, j) => { const b = el("button", { class: "knapp" + (k.valgt.includes(j) ? " galt" : ""), onclick: () => { if (a.ok) return riktig(); if (!k.valgt.includes(j)) k.valgt.push(j); feil(a.feil || "Ikke riktig."); } }, a.t); if (k.valgt.includes(j)) b.disabled = true; return b; })));
+        } else if (L.type === "rekke" && !k.ok) {
+          const tatt = k.valgt;
+          fyll(
+            el("div", { class: "bo-rekke" }, tatt.length ? tatt.map((n, i) => el("span", { class: "bo-brikke valgt" }, `${i + 1} ${n}`)) : el("span", { class: "kilder" }, "Ingen valgt ennå")),
+            el("div", { class: "bo-rekke" }, L.ledd.filter(n => !tatt.includes(n)).map(n => el("button", { class: "knapp bo-brikke", onclick: () => { tatt.push(n);
+              if (tatt.length === L.ledd.length) { if (tatt.every((x, i) => x === L.riktig[i])) return riktig(); k.valgt = []; return feil("Rekkefølgen stemmer ikke. Regn dekningsbidrag per montørtime for hvert oppdrag."); } tegn(); } }, n))),
+            tatt.length ? el("button", { class: "knapp liten", onclick: () => { k.valgt = []; tegn(); } }, "Begynn på nytt") : null);
+        } else if (L.type === "laer" && !k.ok) {
+          if (!k.vist) {
+            fyll(el("p", { class: "kilder" }, "Forklar ferdig før dere ser momentene. Spiller dere alene, skriv tre setninger på et ark."),
+              el("button", { class: "knapp primar", onclick: () => { k.vist = true; tegn(); } }, "Vi har forklart. Vis momentene"));
+          } else {
+            const bokser = L.momenter.map(m => { const c = el("input", { type: "checkbox" }); return [c, el("label", { class: "bo-moment" }, c, el("span", null, m))]; });
+            fyll(el("p", null, "Kryss av for det forklaringen deres fikk med. Vær ærlige, poengene er til dere selv."), bokser.map(b => b[1]),
+              el("button", { class: "knapp primar", onclick: () => { k.ok = true; k.poeng = bokser.filter(b => b[0].checked).length * POENG.moment; tegn(); } }, "Ferdig"));
+          }
+        }
+
+        const etter = k.ok ? el("div", { class: "drift-svar bo-riktig" },
+          el("b", null, L.type === "laer" ? `${k.poeng} av ${L.momenter.length * POENG.moment} poeng for forklaringen.` : `🔓 Låsen er åpen. +${k.poeng} poeng.`),
+          L.forklaring ? el("p", null, L.forklaring) : null,
+          el("p", { class: "kilder" }, "Kilde: " + L.kilde),
+          L.type !== "laer" && rl.length ? el("p", { class: "bo-forklar" }, `Før dere går videre: ${(rl.find(x => /forklarer/.test(x)) || rl[0]).split(" ")[0]} sier med egne ord hvorfor svaret ble slik.`) : null,
+          el("button", { class: "knapp primar", onclick: () => { if (naa < laaser.length - 1) { naa++; tegn(); window.scrollTo(0, 0); } else ferdigRom(); } }, naa < laaser.length - 1 ? "Neste lås" : "Fullfør rommet")) : null;
+
+        const sak = el("div", { class: "kort bo-sak" + (k.ok ? " ok" : "") },
+          el("div", { class: "drift-sak-topp" }, el("span", { class: "drift-nr" }, String(naa + 1)), el("span", null, `Lås ${naa + 1} av ${laaser.length}`), !k.ok && L.type !== "laer" ? el("span", { class: "bo-verdi" }, `verdt ${verdi(k)} poeng`) : null),
+          el("h3", null, L.tittel),
+          rl.length ? el("div", { class: "bo-roller" }, rl.map(x => el("span", null, x))) : null,
+          L.historie ? el("p", { class: "bo-historie" }, L.historie) : null,
+          el("p", { class: "bo-sp" }, L.sporsmaal),
+          svarBoks,
+          k.melding && !k.ok ? el("div", { class: "bo-feil", role: "status" }, k.melding) : null,
+          !k.ok && L.hint ? hintBoks : null,
+          etter);
+        boks.replaceChildren(hode, sak);
+      }
+      rot.replaceChildren(H.verktoylinje([["← Stigen", () => H.gaaTil("/breakout")]]), boks, H.bunn());
+      tegn();
+    }
+  }
+
+  return { vis, trinn, _ren: [renLag, renKode], status, antallFerdig, sumPoeng, tittelNaa, _rom: rom, _rng: rng, _lesTall: lesTall };
 })();
 
 
@@ -62218,6 +62886,7 @@ LOM.pwa = (function () {
     if (a === "podkast") return "Podkast";
     if (a === "video") return "Video";
     if (a === "drift") return "Ukens drift";
+    if (a === "breakout") return "Breakout";
     return "Forsiden";
   }
   function oppdaterTilbake() {
@@ -62249,6 +62918,7 @@ LOM.pwa = (function () {
     else if (a === "podkast") visPodkast(b ? decodeURIComponent(b) : "alle");
     else if (a === "video") visVideo(b ? decodeURIComponent(b) : "");
     else if (a === "drift" && LOM.drift) visDrift();
+    else if (a === "breakout" && LOM.breakout) visBreakout(b, c);
     else visForside();
     pakkTabeller();
     if (typeof pkOppdaterKnapper === "function") pkOppdaterKnapper();
@@ -62706,7 +63376,7 @@ LOM.pwa = (function () {
         el("span", { class: "hero-merke" }, O.undertittel),
         el("h1", null, O.tittel),
         el("p", { class: "hero-ingress" }, "Økonomistyring, organisasjon og ledelse og markedsforståelse — forklart med tall og situasjoner fra elektrobransjen, med kalkulatorer du kan leke med og øvelser som gir deg begrunnelsen, ikke bare fasiten."),
-        el("div", { class: "hero-knapper" }, cta, driftKnapp(), studieplan, podkast, video),
+        el("div", { class: "hero-knapper" }, cta, driftKnapp(), breakoutKnapp(), studieplan, podkast, video),
         el("label", { class: "hero-sok" }, ikon("sok"), sokFelt),
         fremdrift));
 
@@ -62801,6 +63471,7 @@ LOM.pwa = (function () {
       el("div", { class: "sp-kort-rad" },
         el("div", { class: "v", onclick: () => gaaTil("/daglig") }, el("span", { class: "ikon" }, dagensGjort ? "✓" : "⚡"), el("div", null, el("b", null, "Dagens utfordring"), el("small", null, dagensGjort ? `Gjort i dag: ${T.daglig[new Date().toISOString().slice(0, 10)]} av 5. Ny i morgen.` : `Fem spørsmål på tvers av pensum. ${SP.kr(SP.satser.daglig)} + bonus per riktig.`))),
         LOM.drift ? el("div", { class: "v", onclick: () => gaaTil("/drift") }, el("span", { class: "ikon" }, LOM.drift.uke().ferdig ? "✓" : "🏗"), el("div", null, el("b", null, "Ukens drift"), el("small", null, LOM.drift.uke().ferdig ? `Uka er levert: ${LOM.drift.kr(LOM.drift.uke().db)}. Nye saker mandag.` : `${LOM.drift.saker(LOM.drift.ukeId()).length} saker venter. ${LOM.drift.ukerPaaRad()} uker på rad.`))) : null,
+        LOM.breakout ? el("div", { class: "v", onclick: () => gaaTil("/breakout") }, el("span", { class: "ikon" }, "🔓"), el("div", null, el("b", null, "Breakout"), el("small", null, LOM.breakout.antallFerdig() ? `${LOM.breakout.antallFerdig()} av ${LOM.breakout.trinn.length} rom løst. Spill igjen en annen dag.` : "Seks rom fra montør til konserndirektør. Best med tre på laget."))) : null,
         el("div", { class: "v", onclick: () => gaaTil("/spill") }, el("span", { class: "ikon" }, "🏅"), el("div", null, el("b", null, "Merker, rekorder og logg"), el("small", null, "Alt du har oppnådd, og hva som gir kroner.")))));
   }
   function navnModal(etter) {
@@ -62848,6 +63519,17 @@ LOM.pwa = (function () {
   }
 
   /* ---------- Ukens drift (2.27.0): driftssimulatoren, se motor/drift.js ---------- */
+  /* ---------- Breakout (2.30.0): rom med låser på tvers av fagene, se motor/breakout.js ---------- */
+  function breakoutKnapp() {
+    if (!LOM.breakout) return null;
+    const BO = LOM.breakout, n = BO.antallFerdig(), t = BO.tittelNaa();
+    const tekst = n ? `${t.rolle} · ${n} av ${BO.trinn.length} rom løst` : "Nytt · løs sakene sammen, tre og tre";
+    return el("a", { class: "hero-knapp sekundaer drift-knapp", href: "#/breakout" }, el("span", null, el("small", null, tekst), "Breakout"), ikon("pil"));
+  }
+  function visBreakout(del, ekstra) {
+    sti.replaceChildren(el("span", { onclick: () => gaaTil("/") }, "Forside"), " › ", del ? el("span", { onclick: () => gaaTil("/breakout") }, "Breakout") : "Breakout");
+    LOM.breakout.vis(rot, { el, gaaTil, melding, feiring, verktoylinje, bunn }, del, ekstra);
+  }
   function driftKnapp() {
     if (!LOM.drift) return null;
     const u = LOM.drift.uke(), svart = (u.valg || []).filter(v => v !== undefined && v !== null).length;
